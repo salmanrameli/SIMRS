@@ -23,7 +23,7 @@ class UserDatabaseSeeder extends Seeder
             'alamat' => 'null',
             'telepon' => 'null',
             'jabatan' => 'administrator',
-            'password' => 'admin'
+            'password' => bcrypt('admin')
         ]);
 
         // $this->call("OthersTableSeeder");
