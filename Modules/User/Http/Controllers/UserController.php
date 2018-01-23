@@ -5,16 +5,23 @@ namespace Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\User\Entities\User;
 
 class UserController extends Controller
 {
+    use ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('user::index');
+        $user = User::all();
+
+        return view('user::index')->with('users', $user);
     }
 
     /**
@@ -33,6 +40,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'id' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'password' => 'required',
+            'jabatan' => 'required'
+        ]);
+
+        $user = new User();
+        $user->id = $request->id;
+        $user->nama = $request->nama;
+        $user->alamat = $request->alamat;
+        $user->telepon = $request->telepon;
+        $user->password = bcrypt($request->password);
+        $user->jabatan = $request->jabatan;
+
+        $user->save();
+
+        Session::flash('message', 'Akun berhasil dibuat');
+
+        return redirect()->route('user.index');
     }
 
     /**
