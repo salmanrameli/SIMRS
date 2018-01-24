@@ -17,7 +17,8 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check())
+        {
             if($request->jabatan == 'administrator')
             {
                 return view('administrator');
@@ -33,7 +34,7 @@ class RedirectIfAuthenticated
 
             }
 
-            //return redirect('/home');
+            return view('welcome');
         }
 
         return $next($request);
