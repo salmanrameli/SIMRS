@@ -18,7 +18,22 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            if($request->jabatan == 'administrator')
+            {
+                return view('administrator');
+            }
+            else if($request->jabatan == 'petugas')
+            {
+                return view('petugas');
+
+            }
+            else if($request->jabatan == 'kasir')
+            {
+                return view('kasir');
+
+            }
+
+            //return redirect('/home');
         }
 
         return $next($request);

@@ -1,8 +1,10 @@
 <?php
 
-Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controllers', 'as' => 'admin.'], function()
 {
-    Route::get('/', 'UserController@index');
+    //Route::get('/', 'UserController@index');
 
-    Route::resource('user', 'UserController');
+    Route::group(['middleware' => 'checkRole:administrator'], function() {
+        Route::resource('user', 'UserController');
+    });
 });

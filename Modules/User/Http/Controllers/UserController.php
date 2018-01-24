@@ -13,6 +13,16 @@ class UserController extends Controller
 {
     use ValidatesRequests;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function home()
+    {
+        return view('user::administrator');
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response

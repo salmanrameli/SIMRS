@@ -47,7 +47,7 @@
                     <div class="card card-body">
                         <div class="list-group list-group-flush">
                             <a class="list-group-item list-group-item-light" href="/">Beranda</a>
-                            <a class="list-group-item list-group-item-primary" href="{{ route('user.index') }}">Manajemen Akun Staff</a>
+                            <a class="list-group-item list-group-item-primary" href="{{ route('admin.user.index') }}">Manajemen Akun Staff</a>
                             <a class="list-group-item list-group-item-light">Pengaturan Lantai RS</a>
                             <a class="list-group-item list-group-item-light">Pengaturan Kamar RS</a>
                         </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-lg-12">
-    {{ Form::open(['route' => 'user.store']) }}
+    {{ Form::open(['route' => 'admin.user.store']) }}
 
     <div class="form-group">
         {{ Form::label('id', 'ID', ['class' => 'control-label']) }}
