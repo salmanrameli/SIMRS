@@ -31,7 +31,7 @@
 
     <br>
 
-    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-lg btn-outline-success']) }}
+    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
 
     {{ Form::close() }}
     @endsection

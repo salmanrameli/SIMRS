@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="col-lg-12">
-    {{ Form::open(['route' => 'admin.user.store']) }}
+    <h3>Registrasi Akun Baru</h3>
+    <br>
+    {{ Form::open(['route' => 'user.store']) }}
 
     <div class="form-group">
         {{ Form::label('id', 'ID', ['class' => 'control-label']) }}
@@ -37,8 +39,8 @@
         {{ Form::radio('jabatan', 'kasir') }} &nbsp; Kasir<br>
     </div>
     <br>
-    {{ Form::submit('Buat Akun User', ['class' => 'btn btn-lg btn-outline-success']) }}
+    {{ Form::submit('Buat Akun', ['class' => 'btn btn-outline-success']) }}
 
     {{ Form::close() }}
 </div>
-    @endsection()
+    @endsection

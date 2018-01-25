@@ -1,10 +1,10 @@
 @extends('saya::layouts.master')
 
 @section('content')
-    <h1>Detail Akun: <b>{{ $user->nama }}</b></h1>
+    <h3>Detail Akun: <b>{{ $user->nama }}</b></h3>
 
     <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Ubah
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -12,9 +12,7 @@
             <a class="dropdown-item" href="{{ route('saya.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
         </div>
     </div>
-
     <br>
-
     <table class="table">
         <tbody>
             <tr>
@@ -39,4 +37,4 @@
             </tr>
         </tbody>
     </table>
-@stop
+@endsection

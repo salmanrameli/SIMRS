@@ -49,9 +49,7 @@
         </div>
 
         <br>
-        <button type="submit" class="btn btn-lg btn-outline-success">Simpan Perubahan</button>
+        <button type="submit" class="btn btn-outline-success">Simpan Perubahan</button>
 
     </form>
-
-
     @endsection
