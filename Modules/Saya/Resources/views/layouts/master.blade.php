@@ -30,28 +30,30 @@
                         {{ csrf_field() }}
                     </form>
 
-                    @if($errors->any())
-                        <div class="alert alert-danger alert-dismissable">
-                            @foreach($errors->all() as $error)
+                    <div class="col-md-12">
+                        @if($errors->any())
+                            <div class="alert alert-danger alert-dismissable">
+                                @foreach($errors->all() as $error)
+                                    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(Session::has('message'))
+                            <div class="alert alert-success alert-dismissable">
                                 <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <p>{{ $error }}</p>
-                            @endforeach
-                        </div>
-                    @endif
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
 
-                    @if(Session::has('message'))
-                        <div class="alert alert-success alert-dismissable">
-                            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            {{ Session::get('message') }}
-                        </div>
-                    @endif
-
-                    @if(Session::has('warning'))
-                        <div class="alert alert-warning alert-dismissable">
-                            <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            {{ Session::get('warning') }}
-                        </div>
-                    @endif
+                        @if(Session::has('warning'))
+                            <div class="alert alert-warning alert-dismissable">
+                                <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{ Session::get('warning') }}
+                            </div>
+                        @endif
+                    </div>
 
                     <div class="col-md-3">
                         <div class="card card-body">
@@ -59,7 +61,7 @@
                                 <a class="list-group-item list-group-item-light" href="/">Beranda</a>
                                 <a class="list-group-item list-group-item-light" href="{{ route('user.index') }}">Manajemen Akun Staff</a>
                                 <a class="list-group-item list-group-item-light">Pengaturan Rumah Sakit</a>
-                                <a class="list-group-item list-group-item-primary">Pengaturan Akun</a>
+                                <a class="list-group-item list-group-item-primary" href="{{ route('saya.index') }}">Pengaturan Akun</a>
                             </div>
                         </div>
                     </div>
