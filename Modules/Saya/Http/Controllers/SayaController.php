@@ -82,7 +82,7 @@ class SayaController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'alamat' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|numeric',
             'jabatan' => 'required'
         ]);
 
