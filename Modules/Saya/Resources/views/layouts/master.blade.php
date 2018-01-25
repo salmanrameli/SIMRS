@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     </head>
     <body>
-        <div class="jumbotron jumbotron-fluid" style="background-color: white">
-            <div class="container">
+        <div class="jumbotron" style="background-color: white">
+            <div class="container-fluid">
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
             </div>
@@ -25,6 +25,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
+
                     @if($errors->any())
                         <div class="alert alert-danger alert-dismissable">
                             @foreach($errors->all() as $error)
@@ -47,16 +48,18 @@
                             {{ Session::get('warning') }}
                         </div>
                     @endif
+
                     <div class="col-md-3">
                         <div class="card card-body">
                             <div class="list-group list-group-flush">
                                 <a class="list-group-item list-group-item-light" href="/">Beranda</a>
-                                <a class="list-group-item list-group-item-primary" href="{{ route('user.index') }}">Manajemen Akun Staff</a>
-                                <a class="list-group-item list-group-item-light">Pengaturan Lantai RS</a>
-                                <a class="list-group-item list-group-item-light">Pengaturan Kamar RS</a>
+                                <a class="list-group-item list-group-item-light" href="{{ route('user.index') }}">Manajemen Akun Staff</a>
+                                <a class="list-group-item list-group-item-light">Pengaturan Rumah Sakit</a>
+                                <a class="list-group-item list-group-item-primary">Pengaturan Akun</a>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-9">
                         <div class="row">
                             <div class="card card-body">
@@ -64,6 +67,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
