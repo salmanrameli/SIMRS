@@ -16,7 +16,7 @@
         <div class="card">
             <img class="img-fluid mx-auto" src="{{ asset('img/hospital.png') }}" alt="Users">
             <div class="card-body">
-                <h5 class="card-title">Pengaturan Rumah Sakit</h5>
+                <h5 class="card-title">Manajemen Rumah Sakit</h5>
                 <p class="card-text"></p>
                 <a href="" class="btn btn-outline-primary">Go somewhere</a>
             </div>
@@ -28,8 +28,8 @@
             <img class="img-fluid mx-auto" src="{{ asset('img/cog.png') }}" alt="Users">
             <div class="card-body">
                 <h5 class="card-title">Pengaturan Akun</h5>
-                <p class="card-text"></p>
-                <a href="" class="btn btn-outline-primary">Go somewhere</a>
+                <p class="card-text">Melihat serta melakukan perubahan detail akun</p>
+                <a href="{{ route('saya.index') }}" class="btn btn-outline-primary">Masuk</a>
             </div>
         </div>
     </div>

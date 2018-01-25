@@ -2,17 +2,20 @@
 
 namespace Modules\Saya\Http\Controllers;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Modules\User\Entities\User;
 //use App\User;
 
 class SayaController extends Controller
 {
-
+    use ValidatesRequests;
     /**
      * Display a listing of the resource.
      * @return Response
@@ -30,7 +33,7 @@ class SayaController extends Controller
      */
     public function create()
     {
-        return view('saya::create');
+        return redirect()->back();
     }
 
     /**
@@ -48,16 +51,23 @@ class SayaController extends Controller
      */
     public function show()
     {
-        return view('saya::show');
+        return redirect()->back();
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('saya::edit');
+        $user = User::findorFail($id);
+
+        return view('saya::edit')->with('user', $user);
+    }
+
+    public function editPassword($id)
+    {
+        return view('saya::edit_password');
     }
 
     /**
@@ -65,8 +75,47 @@ class SayaController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
+        $user = User::findorFail($id);
+
+        $this->validate($request, [
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'jabatan' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $user->fill($input)->save();
+
+        Session::flash('message', 'Akun berhasil diupdate');
+
+        return redirect('/saya');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'old' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+
+        $user = User::find(Auth::id());
+
+        $hashedPassword = $user->password;
+
+        if (Hash::check($request->old, $hashedPassword))
+        {
+            $user->fill([
+                'password' => Hash::make($request->password)
+            ])->save();
+
+            Session::flash('message', "Password berhasil diubah");
+
+            return redirect('/saya');
+        }
     }
 
     /**
