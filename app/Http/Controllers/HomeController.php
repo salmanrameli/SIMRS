@@ -19,15 +19,15 @@ class HomeController extends Controller
 
             if($user->jabatan == 'administrator')
             {
-                return view('administrator');
+                return view('administrator')->with('nama', $user->nama);
             }
             else if(Auth::user()->jabatan == 'petugas')
             {
-                return view('petugas');
+                return view('petugas')->with('nama', $user->nama);
             }
             else if(Auth::user()->jabatan == 'kasir')
             {
-                return view('kasir');
+                return view('kasir')->with('nama', $user->nama);
             }
         }
 
