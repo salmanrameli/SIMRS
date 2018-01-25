@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>SIMRS – Login</title>
+        <title>Login</title>
 
         <!-- Styles -->
         <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
@@ -17,7 +17,13 @@
     <body>
         <div id="app">
             <div class="container-fluid">
-                <div class="row" style="padding-top: 10%">
+                <div class="row">
+                    <div class="jumbotron" style="background-color: white">
+                        <div class="container-fluid">
+                            <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
+                            <p class="lead">Silahkan login untuk melanjutkan</p>
+                        </div>
+                    </div>
                     <div class="col-md-10 offset-md-1">
                         <div class="card card-body">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">

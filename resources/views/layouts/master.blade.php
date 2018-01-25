@@ -22,7 +22,7 @@
             <div class="container-fluid">
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
-                <p class="lead">Selamat datang kembali, <b>{{ $nama }}</b></p>
+                @yield('greetings')
             </div>
         </div>
         <div class="container-fluid">
@@ -33,28 +33,7 @@
                     </form>
 
                     <div class="col-md-12">
-                        @if($errors->any())
-                            <div class="alert alert-danger alert-dismissable">
-                                @foreach($errors->all() as $error)
-                                    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <p>{{ $error }}</p>
-                                @endforeach
-                            </div>
-                        @endif
-
-                        @if(Session::has('message'))
-                            <div class="alert alert-success alert-dismissable">
-                                <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
-
-                        @if(Session::has('warning'))
-                            <div class="alert alert-warning alert-dismissable">
-                                <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                {{ Session::get('warning') }}
-                            </div>
-                        @endif
+                        @include('layouts.alert')
                     </div>
 
                     @yield('content')
@@ -63,4 +42,5 @@
             </div>
         </div>
     </body>
+    <footer style="padding-bottom: 5%"></footer>
 </html>

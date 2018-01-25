@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('greetings')
+    <p class="lead">Selamat datang kembali, <b>{{ $nama }}</b></p>
+@endsection
+
 @section('content')
     <div class="col-4">
         <div class="card">

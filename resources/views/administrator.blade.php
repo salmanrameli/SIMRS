@@ -1,12 +1,16 @@
 @extends('layouts.master')
 
+@section('greetings')
+    <p class="lead">Selamat datang kembali, <b>{{ $nama }}</b></p>
+    @endsection
+
 @section('content')
     <div class="col-4">
         <div class="card">
             <img class="img-fluid mx-auto" src="{{ asset('img/users.png') }}" alt="Users">
             <div class="card-body">
                 <h5 class="card-title">Manajemen Akun Staff</h5>
-                <p class="card-text">Menambah, merubah, menghapus akun staff Rumah Sakit.</p>
+                <p class="card-text">Mengelola akun staff Rumah Sakit seperti membuat akun baru, atau merubah dan menghapus akun yang sudah ada</p>
                 <a href="{{ route('user.index') }}" class="btn btn-outline-primary">Masuk</a>
             </div>
         </div>
@@ -14,7 +18,7 @@
 
     <div class="col-4">
         <div class="card">
-            <img class="img-fluid mx-auto" src="{{ asset('img/hospital.png') }}" alt="Users">
+            <img class="img-fluid mx-auto" src="{{ asset('img/hospital.png') }}" alt="Rumah Sakit">
             <div class="card-body">
                 <h5 class="card-title">Manajemen Rumah Sakit</h5>
                 <p class="card-text"></p>
@@ -25,10 +29,10 @@
 
     <div class="col-4">
         <div class="card">
-            <img class="img-fluid mx-auto" src="{{ asset('img/cog.png') }}" alt="Users">
+            <img class="img-fluid mx-auto" src="{{ asset('img/cog.png') }}" alt="Setting">
             <div class="card-body">
                 <h5 class="card-title">Pengaturan Akun</h5>
-                <p class="card-text">Melihat serta melakukan perubahan detail akun</p>
+                <p class="card-text">Melihat serta melakukan perubahan detail akun.</p>
                 <a href="{{ route('saya.index') }}" class="btn btn-outline-primary">Masuk</a>
             </div>
         </div>
