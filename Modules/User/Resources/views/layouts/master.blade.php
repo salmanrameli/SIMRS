@@ -10,6 +10,10 @@
 
         <title>Module User</title>
 
+        <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     </head>
     <body>
@@ -53,9 +57,9 @@
                         <div class="card card-body">
                             <div class="list-group list-group-flush">
                                 <a class="list-group-item list-group-item-light" href="/">Beranda</a>
-                                <a class="list-group-item list-group-item-primary" href="{{ route('user.index') }}">Manajemen Akun Staff</a>
-                                <a class="list-group-item list-group-item-light">Pengaturan Lantai RS</a>
-                                <a class="list-group-item list-group-item-light">Pengaturan Kamar RS</a>
+                                <a class="list-group-item list-group-item-primary">Manajemen Akun Staff</a>
+                                <a class="list-group-item list-group-item-light">Pengaturan Rumah Sakit</a>
+                                <a class="list-group-item list-group-item-light" href="{{ route('saya.index') }}">Pengaturan Akun</a>
                             </div>
                         </div>
                     </div>
@@ -71,6 +75,5 @@
                 </div>
             </div>
         </div>
-        <script src="{{ asset('bootstrap/js/app.js') }}"></script>
     </body>
 </html>

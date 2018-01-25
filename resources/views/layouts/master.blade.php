@@ -7,9 +7,14 @@
 
         <title>Beranda</title>
 
+        <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/css/fontawesome-all.css') }}">
         {{--<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">--}}
+
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <body>

@@ -10,6 +10,10 @@
 
         <title>Module User</title>
 
+        <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     </head>
     <body>
@@ -67,10 +71,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-        <script src="{{ asset('bootstrap/js/app.js') }}"></script>
     </body>
 </html>
