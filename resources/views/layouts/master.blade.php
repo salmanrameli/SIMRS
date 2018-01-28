@@ -18,8 +18,8 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <body>
-        <div class="jumbotron" style="background-color: white">
-            <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
                 @yield('greetings')
