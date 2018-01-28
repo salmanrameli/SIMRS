@@ -1,7 +1,7 @@
 @extends('user::layouts.master')
 
 @section('content')
-<div class="col-lg-12">
+<div class="card card-body">
     <h3>Registrasi Akun Baru</h3>
     <br>
     {{ Form::open(['route' => 'user.store']) }}
