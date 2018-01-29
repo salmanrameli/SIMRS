@@ -12,7 +12,6 @@
             </form>
         </div>
     </div>
-    <br>
     <div class="card card-body">
         <div class="col-md-12">
             <a class="btn btn-outline-primary" href="{{ route('user.create') }}">Buat User Baru</a>
