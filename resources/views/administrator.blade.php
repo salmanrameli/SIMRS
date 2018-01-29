@@ -18,6 +18,17 @@
 
     <div class="col-4">
         <div class="card">
+            <img class="img-fluid mx-auto" src="{{ asset('img/patient.png') }}" alt="Pasien">
+            <div class="card-body">
+                <h5 class="card-title">Manajemen Data Pasien</h5>
+                <p class="card-text">Melihat serta melakukan perubahan data pasien Rumah Sakit.</p>
+                <a href="{{ route('pasien.index') }}" class="btn btn-outline-primary">Masuk</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card">
             <img class="img-fluid mx-auto" src="{{ asset('img/hospital.png') }}" alt="Rumah Sakit">
             <div class="card-body">
                 <h5 class="card-title">Manajemen Rumah Sakit</h5>

@@ -28,6 +28,7 @@
                     <li>
                         <a href="/">Beranda</a>
                         <a href="{{ route('user.index') }}">Manajemen Akun Staff</a>
+                        <a href="{{ route('pasien.index') }}">Manajemen Data Pasien</a>
                         <a href="">Pengaturan Rumah Sakit</a>
                         <a class="sidebar-active" href="{{ route('saya.index') }}">Pengaturan Akun</a>
                     </li>
