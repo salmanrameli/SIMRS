@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'pasien', 'namespace' => 'Modules\Pasien\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'namespace' => 'Modules\Pasien\Http\Controllers'], function()
 {
-    Route::get('/', 'PasienController@index');
+    Route::resource('pasien', 'PasienController');
 });

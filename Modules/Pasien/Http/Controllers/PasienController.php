@@ -5,6 +5,7 @@ namespace Modules\Pasien\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Pasien\Entities\Pasien;
 
 class PasienController extends Controller
 {
@@ -14,7 +15,9 @@ class PasienController extends Controller
      */
     public function index()
     {
-        return view('pasien::index');
+        $pasien = Pasien::orderBy('id')->get();
+
+        return view('pasien::index')->with('pasiens', $pasien);
     }
 
     /**
