@@ -6,7 +6,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Saya\Http\Controlle
 
     Route::resource('/saya', 'SayaController');
 
-    Route::get('/saya/{id}/password', [
+    Route::get('/saya/{id}/edit/password', [
         'as' => 'saya.edit_password',
         'uses' => 'SayaController@editPassword'
     ]);
