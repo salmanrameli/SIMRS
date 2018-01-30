@@ -40,7 +40,7 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand"><h3>Manajemen Akun Staff</h3></a>
+                        <a class="navbar-brand"><h3>Pengaturan Akun</h3></a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
 

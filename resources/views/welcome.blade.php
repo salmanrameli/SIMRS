@@ -16,14 +16,14 @@
     </head>
     <body>
         <div id="app">
+            <div class="col-md-12">
+                <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
+                    <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
+                    <p class="lead">Silahkan login untuk melanjutkan</p>
+                </div>
+            </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="jumbotron" style="background-color: white">
-                        <div class="container-fluid">
-                            <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
-                            <p class="lead">Silahkan login untuk melanjutkan</p>
-                        </div>
-                    </div>
                     <div class="col-md-10 offset-md-1">
                         <div class="card card-body">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
