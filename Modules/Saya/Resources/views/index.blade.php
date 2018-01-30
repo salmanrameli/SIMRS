@@ -4,15 +4,6 @@
     <div class="card card-body">
         <h3>Detail Akun: <b>{{ $user->nama }}</b></h3>
 
-        {{--<div class="btn-group" role="group">--}}
-            {{--<button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                {{--Ubah--}}
-            {{--</button>--}}
-            {{--<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">--}}
-                {{--<a class="dropdown-item" href="{{ route('saya.edit', ['id' => $user->id]) }}">Ubah Akun</a>--}}
-                {{--<a class="dropdown-item" href="{{ route('saya.edit_password', ['id' => $user->id]) }}">Ubah Password</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
         <div class="row">
             <div class="col-md-12">
                 <a class="btn btn-outline-primary" href="{{ route('saya.edit', ['id' => $user->id]) }}">Ubah Akun</a>
