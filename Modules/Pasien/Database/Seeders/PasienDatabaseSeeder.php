@@ -59,16 +59,6 @@ class PasienDatabaseSeeder extends Seeder
                 $pasien->jenkel = 'wanita';
             }
 
-            $rand1 = mt_rand(0, 1);
-            if($rand1 == 0)
-            {
-                $pasien->punya_bpjs = 'ya';
-            }
-            else
-            {
-                $pasien->punya_bpjs = 'tidak';
-            }
-
             $pasien->save();
         }
     }

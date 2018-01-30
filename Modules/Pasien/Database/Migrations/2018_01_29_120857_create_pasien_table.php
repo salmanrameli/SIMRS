@@ -23,7 +23,6 @@ class CreatePasienTable extends Migration
             $table->string('alamat');
             $table->string('telepon');
             $table->string('jenkel');
-            $table->string('punya_bpjs');
 
             $table->timestamps();
         });
