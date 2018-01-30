@@ -2,13 +2,16 @@
 
 namespace Modules\Pasien\Http\Controllers;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 
 class PasienController extends Controller
 {
+    use ValidatesRequests;
     /**
      * Display a listing of the resource.
      * @return Response
@@ -36,6 +39,23 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'id' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'jenkel' => 'required',
+            'tanggal_lahir' => 'required',
+            'golongan_darah' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        Pasien::create($input);
+
+        Session::flash('message', 'Data pasien berhasil disimpan');
+
+        return redirect()->route('pasien.index');
     }
 
     /**

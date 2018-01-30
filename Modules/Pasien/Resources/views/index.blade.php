@@ -14,7 +14,7 @@
     </div>
     <div class="card card-body">
        <div class="col-md-12">
-           <a href="" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
+           <a href="{{ route('pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
            <br>
            <br>
            <table class="table">
