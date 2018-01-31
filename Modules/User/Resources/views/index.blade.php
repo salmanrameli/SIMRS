@@ -3,10 +3,10 @@
 @section('content')
     <div class="card card-body">
         <div class="col-md-12">
-            <form class="form-inline">
+            <form class="form-inline" action="{{ route('user.cari') }}" method="get">
                 <label for="cari" class="control-label">Cari Staff: </label>
                 &nbsp;&nbsp;
-                <input type="text" class="form-control" id="cari" placeholder="John Doe">
+                <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
                 &nbsp;
                 <button type="submit" class="btn btn-primary">Cari</button>
             </form>

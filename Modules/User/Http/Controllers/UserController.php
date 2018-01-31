@@ -5,6 +5,7 @@ namespace Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Modules\User\Entities\User;
@@ -111,5 +112,17 @@ class UserController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function cari(Request $request)
+    {
+        $query = $request->get('query');
+
+        $results = DB::table('users')->select('*')->where('id', 'like', '%'.$query.'%')->
+            orWhere('nama', 'like', '%'.$query.'%')->
+            orWhere('alamat', 'like', '%'.$query.'%')->
+            orWhere('telepon', 'like', '%'.$query.'%')->get();
+
+        return view('user::hasil_cari')->with('results', $results)->with('query', $query);
     }
 }
