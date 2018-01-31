@@ -3,10 +3,10 @@
 @section('content')
     <div class="card card-body">
         <div class="col-md-12">
-            <form class="form-inline">
+            <form class="form-inline" action="{{ route('pasien.cari') }}" method="get">
                 <label for="cari" class="control-label">Cari Pasien: </label>
                 &nbsp;&nbsp;
-                <input type="text" class="form-control" id="cari" placeholder="John Doe">
+                <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
                 &nbsp;
                 <button type="submit" class="btn btn-primary">Cari</button>
             </form>
@@ -23,6 +23,7 @@
                    <th>Nama</th>
                    <th>Tanggal Lahir</th>
                    <th>Alamat</th>
+                   <th></th>
                </tr>
                @foreach($pasiens as $pasien)
                    <tr>
@@ -30,6 +31,7 @@
                        <td>{{ $pasien->nama }}</td>
                        <td>{{ $pasien->tanggal_lahir }}</td>
                        <td>{{ $pasien->alamat }}</td>
+                       <td><a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Lihat</a></td>
                    </tr>
                @endforeach
            </table>

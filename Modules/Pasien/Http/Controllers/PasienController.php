@@ -62,9 +62,11 @@ class PasienController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('pasien::show');
+        $pasien = Pasien::findorFail($id);
+
+        return view('pasien::show')->with('pasien', $pasien);
     }
 
     /**
@@ -91,5 +93,18 @@ class PasienController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function cari(Request $request)
+    {
+        $query = $request->get('query');
+
+        $results = Pasien::where('id', 'like', '%'.$query.'%')->
+            orWhere('nama', 'like', '%'.$query.'%')->
+            orWhere('tanggal_lahir', 'like', '%'.$query.'%')->
+            orWhere('alamat', 'like', '%'.$query.'%')->
+            orWhere('telepon', 'like', '%'.$query.'%')->get();
+
+        return view('pasien::hasil_cari')->with('results', $results)->with('query', $query);
     }
 }
