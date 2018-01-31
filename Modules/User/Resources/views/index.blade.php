@@ -14,7 +14,7 @@
     </div>
     <div class="card card-body">
         <div class="col-md-12">
-            <a class="btn btn-outline-primary" href="{{ route('user.create') }}">Buat User Baru</a>
+            <a class="btn btn-outline-primary" href="{{ route('user.create') }}">Daftarkan Staff Baru</a>
             <br>
             <br>
             <table class="table">
@@ -24,6 +24,7 @@
                     <th>Nama</th>
                     <th>Telepon</th>
                     <th>Jabatan</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,7 @@
                         <td>{{ $user->nama }}</td>
                         <td>{{ $user->telepon }}</td>
                         <td>{{ $user->jabatan }}</td>
+                        <td><a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-outline-info">Lihat</a></td>
                     </tr>
                 @endforeach
                 </tbody>

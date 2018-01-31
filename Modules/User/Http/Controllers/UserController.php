@@ -78,18 +78,22 @@ class UserController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('user::show');
+        $staff = User::findorFail($id);
+
+        return view('user::show')->with('user', $staff);
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('user::edit');
+        $user = User::findorFail($id);
+
+        return view('user::edit')->with('user', $user);
     }
 
     /**
