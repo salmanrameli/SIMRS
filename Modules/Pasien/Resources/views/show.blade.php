@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="card card-body">
-        <table class="table">
-            <tbody>
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
                 <tr>
-                    <th class="w-25">ID</th>
-                    <td>{{ $pasien->id }}</td>
+                    <th class="w-25">KTP</th>
+                    <td>{{ $pasien->ktp }}</td>
                 </tr>
                 <tr>
                     <th>Nama</th>
@@ -32,7 +33,9 @@
                     <th>Telepon</th>
                     <td>{{ $pasien->telepon }}</td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+            <a href="{{ route('pasien.edit', ['id' => $pasien->id]) }}" class="btn btn-outline-primary">Ubah Data Pasien</a>
+        </div>
     </div>
     @endsection

@@ -19,17 +19,15 @@
            <br>
            <table class="table">
                <tr>
-                   <th>ID</th>
+                   <th>KTP</th>
                    <th>Nama</th>
-                   <th>Tanggal Lahir</th>
                    <th>Alamat</th>
                    <th></th>
                </tr>
                @foreach($pasiens as $pasien)
                    <tr>
-                       <td>{{ $pasien->id }}</td>
+                       <td>{{ $pasien->ktp }}</td>
                        <td>{{ $pasien->nama }}</td>
-                       <td>{{ $pasien->tanggal_lahir }}</td>
                        <td>{{ $pasien->alamat }}</td>
                        <td><a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Lihat</a></td>
                    </tr>
