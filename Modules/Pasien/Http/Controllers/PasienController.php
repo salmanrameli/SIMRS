@@ -73,9 +73,11 @@ class PasienController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pasien::edit');
+        $pasien = Pasien::findorFail($id);
+
+        return view('pasien::edit')->with('pasien', $pasien);
     }
 
     /**
@@ -83,8 +85,27 @@ class PasienController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'ktp' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'jenkel' => 'required',
+            'tanggal_lahir' => 'required',
+            'golongan_darah' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $pasien = Pasien::findorFail($id);
+
+        $pasien->fill($input)->save();
+
+        Session::flash('message', 'Data pasien berhasil diubah');
+
+        return redirect()->route('pasien.show', $pasien->id);
     }
 
     /**

@@ -3,15 +3,13 @@
 @section('content')
     <div class="card card-body">
         <div class="col-md-12">
+            <h3>{{ $pasien->nama }}</h3>
+            &nbsp;
             <table class="table">
                 <tbody>
                 <tr>
                     <th class="w-25">KTP</th>
                     <td>{{ $pasien->ktp }}</td>
-                </tr>
-                <tr>
-                    <th>Nama</th>
-                    <td>{{ $pasien->nama }}</td>
                 </tr>
                 <tr>
                     <th>Jenis Kelamin</th>
