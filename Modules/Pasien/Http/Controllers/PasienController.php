@@ -131,7 +131,7 @@ class PasienController extends Controller
     {
         $query = $request->get('query');
 
-        $results = Pasien::where('id', 'like', '%'.$query.'%')->
+        $results = Pasien::where('ktp', 'like', '%'.$query.'%')->
             orWhere('nama', 'like', '%'.$query.'%')->
             orWhere('tanggal_lahir', 'like', '%'.$query.'%')->
             orWhere('alamat', 'like', '%'.$query.'%')->

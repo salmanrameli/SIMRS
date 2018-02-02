@@ -17,7 +17,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>KTP</th>
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>Telepon</th>
@@ -27,7 +27,7 @@
                 <tbody>
                 @foreach($results as $result)
                     <tr>
-                        <td>{{ $result->id }}</td>
+                        <td>{{ $result->ktp }}</td>
                         <td>{{ $result->nama }}</td>
                         <td>{{ $result->alamat }}</td>
                         <td>{{ $result->telepon }}</td>
