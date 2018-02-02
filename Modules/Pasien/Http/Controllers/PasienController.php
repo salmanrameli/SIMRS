@@ -40,7 +40,7 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required',
+            'ktp' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required',

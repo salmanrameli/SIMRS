@@ -5,8 +5,8 @@
         {{ Form::open(['route' => 'pasien.store']) }}
 
         <div class="form-group">
-            {{ Form::label('id', 'ID Pasien', ['class' => 'control-label']) }}
-            {{ Form::text('id', null, ['class' => 'form-control']) }}
+            {{ Form::label('ktp', 'KTP Pasien', ['class' => 'control-label']) }}
+            {{ Form::text('ktp', null, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
