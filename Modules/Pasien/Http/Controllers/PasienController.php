@@ -39,23 +39,34 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'ktp' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'telepon' => 'required',
-            'jenkel' => 'required',
-            'tanggal_lahir' => 'required',
-            'golongan_darah' => 'required'
-        ]);
+        $pasien = Pasien::where('ktp', $request->ktp)->first();
 
-        $input = $request->all();
+        if($pasien != null)
+        {
+            Session::flash('warning', 'KTP sudah terdaftar');
 
-        Pasien::create($input);
+            return redirect()->back();
+        }
+        else
+        {
+            $this->validate($request, [
+                'ktp' => 'required',
+                'nama' => 'required',
+                'alamat' => 'required',
+                'telepon' => 'required',
+                'jenkel' => 'required',
+                'tanggal_lahir' => 'required',
+                'golongan_darah' => 'required'
+            ]);
 
-        Session::flash('message', 'Data pasien berhasil disimpan');
+            $input = $request->all();
 
-        return redirect()->route('pasien.index');
+            Pasien::create($input);
+
+            Session::flash('message', 'Data pasien berhasil disimpan');
+
+            return redirect()->route('pasien.index');
+        }
     }
 
     /**
