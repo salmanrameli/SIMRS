@@ -22,6 +22,7 @@
             {{ Form::text('telepon', null, ['class' => 'form-control']) }}
         </div>
 
+        @if($user->jabatan == 'administrator')
         <div class="form-group">
             {{ Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) }}
             <br>
@@ -29,6 +30,7 @@
             {{ Form::radio('jabatan', 'petugas') }} &nbsp; Petugas Rawat Inap<br>
             {{ Form::radio('jabatan', 'kasir') }} &nbsp; Kasir<br>
         </div>
+        @endif
 
         <br>
 
