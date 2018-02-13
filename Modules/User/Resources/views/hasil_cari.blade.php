@@ -1,4 +1,8 @@
-@extends('user::layouts.master')
+@extends('layouttemplate::pages')
+
+@section('title')
+    Hasil Pencarian: {{ $query }}
+@endsection
 
 @section('content')
     <div class="card card-body">

@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Manajemen Akun Staff</title>
+        <title>@yield('title')</title>
 
         <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
         <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
@@ -27,7 +27,7 @@
                     </li>
                     <li>
                         <a href="/">Beranda</a>
-                        <a class="sidebar-active" href="{{ route('user.index') }}">Manajemen Akun Staff</a>
+                        <a href="{{ route('user.index') }}">Manajemen Akun Staff</a>
                         <a href="{{ route('pasien.index') }}">Manajemen Data Pasien</a>
                         <a href="">Pengaturan Rumah Sakit</a>
                         <a href="{{ route('setting.index') }}">Pengaturan Akun</a>
@@ -40,7 +40,7 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand"><h3>Manajemen Akun Staff</h3></a>
+                        <a class="navbar-brand"><h3>Manajemen Data Pasien</h3></a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
 

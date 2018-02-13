@@ -1,4 +1,8 @@
-@extends('user::layouts.master')
+@extends('layouttemplate::pages')
+
+@section('title')
+    Data Akun
+@endsection
 
 @section('content')
     <div class="card card-body">

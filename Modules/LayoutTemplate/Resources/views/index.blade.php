@@ -1,4 +1,4 @@
-@extends('layouttemplate::layouts.master')
+@extends('layouttemplate::master')
 
 @section('content')
     <h1>Hello World</h1>

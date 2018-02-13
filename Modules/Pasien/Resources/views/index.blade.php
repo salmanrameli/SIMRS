@@ -1,4 +1,8 @@
-@extends('pasien::layouts.master')
+@extends('layouttemplate::pages')
+
+@section('title')
+    Manajemen Pasien
+@endsection
 
 @section('content')
     <div class="card card-body">

@@ -1,4 +1,4 @@
-@extends('layouttemplate::layouts.master')
+@extends('layouttemplate::master')
 
 @section('greetings')
     <p class="lead">Selamat datang kembali, <b>{{ $nama }}</b></p>

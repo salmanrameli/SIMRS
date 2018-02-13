@@ -1,4 +1,8 @@
-@extends('pasien::layouts.master')
+@extends('layouttemplate::pages')
+
+@section('title')
+    Hasil pencarian: {{ $query }}
+@endsection
 
 @section('content')
     <div class="card card-body">

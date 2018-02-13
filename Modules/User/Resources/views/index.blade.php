@@ -1,4 +1,8 @@
-@extends('user::layouts.master')
+@extends('layouttemplate::pages')
+
+@section('title')
+    Manajemen Akun Staff
+@endsection
 
 @section('content')
     <div class="card card-body">

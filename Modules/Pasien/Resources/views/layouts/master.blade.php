@@ -56,7 +56,7 @@
                         </form>
 
                         <div class="col-md-12">
-                            @include('layouttemplate::layouts.alert')
+                            @include('layouttemplate::alert')
                         </div>
 
                         @yield('content')

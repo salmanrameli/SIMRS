@@ -1,4 +1,8 @@
-@extends('user::layouts.master')
+@extends('layouttemplate::pages')
+
+@section('title')
+    Registrasi Akun
+@endsection
 
 @section('content')
 <div class="card card-body">
