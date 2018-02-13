@@ -1,4 +1,4 @@
-@extends('user::jabatan.layouts.master')
+@extends('layouttemplate::layouts.master')
 
 @section('greetings')
     <p class="lead">Selamat datang kembali, <b>{{ $nama }}</b></p>

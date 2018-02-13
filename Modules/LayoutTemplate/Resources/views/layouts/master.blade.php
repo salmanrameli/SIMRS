@@ -33,7 +33,7 @@
                     </form>
 
                     <div class="col-md-12">
-                        @include('user::jabatan.layouts.alert')
+                        @include('layouttemplate::layouts.alert')
                     </div>
 
                     @yield('content')
