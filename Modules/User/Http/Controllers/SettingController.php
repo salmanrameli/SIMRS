@@ -1,21 +1,20 @@
 <?php
 
-namespace Modules\Saya\Http\Controllers;
+namespace Modules\User\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Modules\User\Entities\User;
-//use App\User;
 
-class SayaController extends Controller
+class SettingController extends Controller
 {
     use ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -24,7 +23,7 @@ class SayaController extends Controller
     {
         $user = User::where('id', Auth::id())->first();
 
-        return view('saya::index')->with('user', $user);
+        return view('user::setting.index')->with('user', $user);
     }
 
     /**
@@ -33,7 +32,7 @@ class SayaController extends Controller
      */
     public function create()
     {
-        return redirect()->back();
+        return view('user::create');
     }
 
     /**
@@ -51,7 +50,7 @@ class SayaController extends Controller
      */
     public function show()
     {
-        return redirect()->back();
+        return view('user::show');
     }
 
     /**
@@ -60,14 +59,32 @@ class SayaController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findorFail($id);
+        $user_id = Auth::id();
 
-        return view('saya::edit')->with('user', $user);
+        if($id == $user_id)
+        {
+            $user = User::findorFail($id);
+
+            return view('user::setting.edit')->with('user', $user);
+        }
+
+        Session::flash('warning', 'Anda tidak memiliki hak akses');
+
+        return redirect()->back();
     }
 
     public function editPassword($id)
     {
-        return view('saya::edit_password');
+        $user_id = Auth::id();
+
+        if($id == $user_id)
+        {
+            return view('user::setting.edit_password');
+        }
+
+        Session::flash('warning', 'Anda tidak memiliki hak akses');
+
+        return redirect()->back();
     }
 
     /**
@@ -92,7 +109,7 @@ class SayaController extends Controller
 
         Session::flash('message', 'Akun berhasil diupdate');
 
-        return redirect('/saya');
+        return redirect()->route('setting.index');
     }
 
     public function updatePassword(Request $request)
@@ -114,8 +131,12 @@ class SayaController extends Controller
 
             Session::flash('message', "Password berhasil diubah");
 
-            return redirect('/saya');
+            return redirect()->route('setting.index');
         }
+
+        Session::flash('error', 'Terjadi kesalahan');
+
+        return redirect()->back();
     }
 
     /**

@@ -1,11 +1,11 @@
-@extends('saya::layouts.master')
+@extends('user::setting.layouts.master')
 
 @section('content')
     <div class="card card-body">
         <h3>Ubah Password</h3>
         <br>
         <div class="col-md-12">
-            <form action="{{ route('saya.update_password') }}" method="post" role="form" class="form-horizontal">
+            <form action="{{ route('setting.update_password') }}" method="post" role="form" class="form-horizontal">
                 {{csrf_field()}}
 
                 <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">

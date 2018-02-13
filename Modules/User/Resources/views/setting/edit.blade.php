@@ -1,11 +1,11 @@
-@extends('saya::layouts.master')
+@extends('user::setting.layouts.master')
 
 @section('content')
     <div class="card card-body">
         <h3>Ubah Data Akun</h3>
         <br>
 
-        {{ Form::model($user, ['method' => 'PATCH', 'route' => ['saya.update', $user->id]]) }}
+        {{ Form::model($user, ['method' => 'PATCH', 'route' => ['setting.update', $user->id]]) }}
 
         <div class="form-group">
             {{ Form::label('nama', 'Nama', ['class' => 'control-label']) }}

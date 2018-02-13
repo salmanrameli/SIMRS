@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('Modules.User.Resources.views.jabatan.layouts.app')
 
 @section('content')
 <div class="container">

@@ -21,16 +21,16 @@ class RedirectIfAuthenticated
         {
             if($request->jabatan == 'administrator')
             {
-                return view('administrator');
+                return view('user::jabatan.administrator');
             }
             else if($request->jabatan == 'petugas')
             {
-                return view('petugas');
+                return view('user::jabatan.petugas');
 
             }
             else if($request->jabatan == 'kasir')
             {
-                return view('kasir');
+                return view('user::jabatan.kasir');
 
             }
 

@@ -2,6 +2,18 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controllers'], function()
 {
+    Route::resource('user/setting', 'SettingController');
+
+    Route::get('/user/setting/{id}/edit/password', [
+        'as' => 'setting.edit_password',
+        'uses' => 'SettingController@editPassword'
+    ]);
+
+    Route::post('/user/setting/update_password', [
+        'as' => 'setting.update_password',
+        'uses' => 'SettingController@updatePassword'
+    ]);
+
     Route::group(['middleware' => 'checkRole:administrator'], function() {
         Route::get('/user/cari', [
             'as' => 'user.cari',
@@ -10,4 +22,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
 
         Route::resource('user', 'UserController');
     });
+
+
 });

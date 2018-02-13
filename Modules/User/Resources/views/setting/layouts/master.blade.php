@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Pengaturan Akun</title>
+        <title>Manajemen Akun Staff</title>
 
         <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
         <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
@@ -23,10 +23,14 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
+                        {{--<a href="/">Beranda</a>--}}
                     </li>
                     <li>
                         <a href="/">Beranda</a>
-                        <a class="sidebar-active" href="{{ route('saya.index') }}">Pengaturan Akun</a>
+                        <a href="{{ route('user.index') }}">Manajemen Akun Staff</a>
+                        <a href="{{ route('pasien.index') }}">Manajemen Data Pasien</a>
+                        <a href="">Pengaturan Rumah Sakit</a>
+                        <a class="sidebar-active" href="{{ route('setting.index') }}">Pengaturan Akun</a>
                     </li>
                 </ul>
             </div>
