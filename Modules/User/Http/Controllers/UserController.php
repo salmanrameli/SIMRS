@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\User\Entities\Jabatan;
 use Modules\User\Entities\User;
 
 class UserController extends Controller
@@ -32,7 +33,11 @@ class UserController extends Controller
     {
         $user = User::all();
 
-        return view('user::index')->with('users', $user);
+        $jabatan = Jabatan::all();
+
+        return view('user::user.index')
+            ->with('users', $user)
+            ->with('jabatans', $jabatan);
     }
 
     /**
@@ -41,7 +46,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user::create');
+        return view('user::user.create');
     }
 
     /**
@@ -52,7 +57,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required|unique:users',
+            'id_user' => 'required|unique:users',
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
@@ -83,7 +88,8 @@ class UserController extends Controller
     {
         $staff = User::findorFail($id);
 
-        return view('user::show')->with('user', $staff);
+
+        return view('user::user.show')->with('user', $staff);
     }
 
     /**
@@ -94,7 +100,11 @@ class UserController extends Controller
     {
         $user = User::findorFail($id);
 
-        return view('user::edit')->with('user', $user);
+        $jabatan = Jabatan::all();
+
+        return view('user::user.edit')
+            ->with('user', $user)
+            ->with('jabatans', $jabatan);
     }
 
     /**
@@ -102,8 +112,28 @@ class UserController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $user = User::findorFail($id);
+
+        $this->validate($request, [
+            'id_user' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required|numeric',
+            'jabatan_id' => 'required'
+        ]);
+
+        $user->id_user = $request->id_user;
+        $user->nama = $request->nama;
+        $user->alamat = $request->alamat;
+        $user->telepon = $request->telepon;
+        $user->jabatan_id = $request->jabatan_id;
+        $user->save();
+
+        Session::flash('message', 'Perubahan berhasil disimpan');
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -123,6 +153,6 @@ class UserController extends Controller
             orWhere('alamat', 'like', '%'.$query.'%')->
             orWhere('telepon', 'like', '%'.$query.'%')->get();
 
-        return view('user::hasil_cari')->with('results', $results)->with('query', $query);
+        return view('user::user.hasil_cari')->with('results', $results)->with('query', $query);
     }
 }

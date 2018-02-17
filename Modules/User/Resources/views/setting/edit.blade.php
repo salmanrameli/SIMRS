@@ -26,14 +26,12 @@
             {{ Form::text('telepon', null, ['class' => 'form-control']) }}
         </div>
 
-        @if($user->jabatan == 'administrator')
-        <div class="form-group">
-            {{ Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) }}
+        @if($user->jabatan_id == '1')
+            <label name="jabatan_id">Jabatan</label><br>
+            @foreach($jabatans as $jabatan)
+                <input type="radio" name="jabatan_id" value="{{ $jabatan->id }}" {{ $user->jabatan_id == $jabatan->id ? 'checked' : '' }} > {{ ucfirst($jabatan->nama )}}<br>
+            @endforeach
             <br>
-            {{ Form::radio('jabatan', 'administrator') }} &nbsp; Administrator<br>
-            {{ Form::radio('jabatan', 'petugas') }} &nbsp; Petugas Rawat Inap<br>
-            {{ Form::radio('jabatan', 'kasir') }} &nbsp; Kasir<br>
-        </div>
         @endif
 
         <br>

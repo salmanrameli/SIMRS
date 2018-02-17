@@ -15,7 +15,7 @@ class checkRole
      */
     public function handle($request, Closure $next, $jabatan)
     {
-        $jabatan_user = $request->user()->jabatan;
+        $jabatan_user = $request->user()->jabatan_id;
 
         if($jabatan_user != $jabatan)
         {

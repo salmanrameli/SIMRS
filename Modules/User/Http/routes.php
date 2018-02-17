@@ -14,13 +14,15 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
         'uses' => 'SettingController@updatePassword'
     ]);
 
-    Route::group(['middleware' => 'checkRole:administrator'], function() {
+    Route::group(['middleware' => 'checkRole:1'], function() {
         Route::get('/user/cari', [
             'as' => 'user.cari',
             'uses' => 'UserController@cari'
         ]);
 
         Route::resource('user', 'UserController');
+
+        Route::resource('jabatan', 'JabatanController');
     });
 
 

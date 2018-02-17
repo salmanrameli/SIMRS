@@ -9,8 +9,8 @@
         {{ Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', 'id' => $user->id]]) }}
 
         <div class="form-group">
-            {{ Form::label('id', 'ID', ['class' => 'control-label']) }}
-            {{ Form::text('id', null, ['class' => 'form-control']) }}
+            {{ Form::label('id_user', 'ID', ['class' => 'control-label']) }}
+            {{ Form::text('id_user', null, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
@@ -28,17 +28,11 @@
             {{ Form::text('telepon', null, ['class' => 'form-control']) }}
         </div>
 
-        <label>Hak Akses</label>
-        <div class="form-group">
-            {{ Form::radio('jabatan', 'administrator') }}
-            {{ Form::label('jabatan', 'Administrator', ['class' => 'control-label']) }}
-            <br>
-            {{ Form::radio('jabatan', 'petugas') }}
-            {{ Form::label('jabatan', 'Petugas Rawat Inap', ['class' => 'control-label']) }}
-            <br>
-            {{ Form::radio('jabatan', 'kasir') }}
-            {{ Form::label('jabatan', 'Kasir', ['class' => 'control-label']) }}
-        </div>
+        <label name="jabatan_id">Jabatan</label><br>
+        @foreach($jabatans as $jabatan)
+            <input type="radio" name="jabatan_id" value="{{ $jabatan->id }}" {{ $user->jabatan_id == $jabatan->id ? 'checked' : '' }} > {{ ucfirst($jabatan->nama )}}<br>
+        @endforeach
+        <br>
 
         {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-primary']) }}
         {{ Form::close() }}

@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Modules\User\Entities\Jabatan;
 use Modules\User\Entities\User;
 
 class SettingController extends Controller
@@ -64,8 +65,11 @@ class SettingController extends Controller
         if($id == $user_id)
         {
             $user = User::findorFail($id);
+            $jabatan = Jabatan::all();
 
-            return view('user::setting.edit')->with('user', $user);
+            return view('user::setting.edit')
+                ->with('user', $user)
+                ->with('jabatans', $jabatan);
         }
 
         Session::flash('warning', 'Anda tidak memiliki hak akses');
@@ -100,12 +104,15 @@ class SettingController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
-            'jabatan' => 'required'
+            'jabatan_id' => 'required'
         ]);
 
-        $input = $request->all();
-
-        $user->fill($input)->save();
+        $user->id_user = $request->id_user;
+        $user->nama = $request->nama;
+        $user->alamat = $request->alamat;
+        $user->telepon = $request->telepon;
+        $user->jabatan_id = $request->jabatan_id;
+        $user->save();
 
         Session::flash('message', 'Akun berhasil diupdate');
 

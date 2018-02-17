@@ -29,15 +29,15 @@
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
 
-                                <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
-                                    <label for="id" class="col-md-10 offset-md-1 control-label">ID</label>
+                                <div class="form-group{{ $errors->has('id_user') ? ' has-error' : '' }}">
+                                    <label for="id_user" class="col-md-10 offset-md-1 control-label">ID</label>
 
                                     <div class="col-md-10 offset-md-1">
-                                        <input id="id" type="text" class="form-control" name="id" value="{{ old('id') }}" placeholder="12345" required autofocus>
+                                        <input id="id_user" type="text" class="form-control" name="id_user" value="{{ old('id_user') }}" placeholder="12345" required autofocus>
 
-                                        @if ($errors->has('id'))
+                                        @if ($errors->has('id_user'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('id') }}</strong>
+                                                <strong>{{ $errors->first('id_user') }}</strong>
                                             </span>
                                         @endif
                                     </div>

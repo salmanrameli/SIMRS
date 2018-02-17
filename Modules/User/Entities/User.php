@@ -12,10 +12,15 @@ class User extends Authenticatable
     use HasRoles;
 
     protected $fillable = [
-        'id', 'nama', 'alamat', 'telepon', 'jabatan', 'password'
+        'id_user', 'nama', 'alamat', 'telepon', 'jabatan', 'password'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class);
+    }
 }

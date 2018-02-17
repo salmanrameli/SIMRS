@@ -9,7 +9,7 @@
         <table class="table">
             <tr>
                 <th class="w-25">ID</th>
-                <td>{{ $user->id }}</td>
+                <td>{{ $user->id_user }}</td>
             </tr>
             <tr>
                 <th>Nama</th>
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <th>Hak Akses</th>
-                <td>{{ $user->jabatan }}</td>
+                <td>{{ ucfirst($user->jabatan->nama) }}</td>
             </tr>
         </table>
         <div class="row">

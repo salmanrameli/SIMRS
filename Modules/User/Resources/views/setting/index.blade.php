@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <th>Hak Akses</th>
-                <td>{{ $user->jabatan }}</td>
+                <td>{{ ucfirst($user->jabatan->nama ) }}</td>
             </tr>
             </tbody>
         </table>

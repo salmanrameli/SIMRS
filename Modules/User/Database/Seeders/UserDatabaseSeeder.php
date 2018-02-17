@@ -21,7 +21,7 @@ class UserDatabaseSeeder extends Seeder
         $faker = Faker::create();
 
         DB::table('users')->insert([
-            'id' => '1',
+            'id_user' => '1',
             'nama' => $faker->name,
             'alamat' => $faker->address,
             'telepon' => $faker->phoneNumber,
@@ -30,7 +30,7 @@ class UserDatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id' => '2',
+            'id_user' => '2',
             'nama' => $faker->name,
             'alamat' => $faker->address,
             'telepon' => $faker->phoneNumber,
@@ -39,7 +39,7 @@ class UserDatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'id' => '3',
+            'id_user' => '3',
             'nama' => $faker->name,
             'alamat' => $faker->address,
             'telepon' => $faker->phoneNumber,
