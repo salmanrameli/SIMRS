@@ -25,7 +25,7 @@ class UserDatabaseSeeder extends Seeder
             'nama' => $faker->name,
             'alamat' => $faker->address,
             'telepon' => $faker->phoneNumber,
-            'jabatan' => 'administrator',
+            'jabatan_id' => '1',
             'password' => bcrypt('pass')
         ]);
 
@@ -34,7 +34,7 @@ class UserDatabaseSeeder extends Seeder
             'nama' => $faker->name,
             'alamat' => $faker->address,
             'telepon' => $faker->phoneNumber,
-            'jabatan' => 'petugas',
+            'jabatan_id' => '2',
             'password' => bcrypt('pass')
         ]);
 
@@ -43,9 +43,22 @@ class UserDatabaseSeeder extends Seeder
             'nama' => $faker->name,
             'alamat' => $faker->address,
             'telepon' => $faker->phoneNumber,
-            'jabatan' => 'kasir',
+            'jabatan_id' => '3',
             'password' => bcrypt('pass')
         ]);
-        // $this->call("OthersTableSeeder");
+
+        DB::table('jabatan')->insert([
+            'nama' => 'administrator'
+        ]);
+
+        DB::table('jabatan')->insert([
+            'nama' => 'petugas'
+        ]);
+
+        DB::table('jabatan')->insert([
+            'nama' => 'kasir'
+        ]);
+
+         //$this->call("JabatanDatabaseSeeder");
     }
 }

@@ -17,17 +17,17 @@ class HomeController extends Controller
         {
             $user = Auth::user();
 
-            if($user->jabatan == 'administrator')
+            if($user->jabatan_id == '1')
             {
-                return view('user::homepage.administrator')->with('nama', $user->nama);
+                return view('user::homepage.administrator')->with('nama', Auth::user()->nama);
             }
-            else if(Auth::user()->jabatan == 'petugas')
+            else if($user->jabatan_id == '2')
             {
-                return view('user::homepage.petugas')->with('nama', $user->nama);
+                return view('user::homepage.petugas')->with('nama', Auth::user()->nama);
             }
-            else if(Auth::user()->jabatan == 'kasir')
+            else if($user->jabatan_id == '3')
             {
-                return view('user::homepage.kasir')->with('nama', $user->nama);
+                return view('user::homepage.kasir')->with('nama', Auth::user()->nama);
             }
         }
 
