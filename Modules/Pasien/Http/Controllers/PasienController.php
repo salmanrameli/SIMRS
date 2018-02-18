@@ -18,7 +18,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $pasien = Pasien::orderBy('id')->get();
+        $pasien = Pasien::orderBy('id')->paginate(15);
 
         return view('pasien::index')->with('pasiens', $pasien);
     }

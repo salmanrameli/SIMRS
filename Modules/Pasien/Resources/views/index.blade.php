@@ -21,6 +21,11 @@
            <a href="{{ route('pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
            <br>
            <br>
+           <nav>
+               <ul class="pagination justify-content-end float-left">
+                   {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
+               </ul>
+           </nav>
            <table class="table">
                <tr>
                    <th>KTP</th>
