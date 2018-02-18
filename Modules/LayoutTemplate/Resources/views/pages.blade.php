@@ -60,6 +60,7 @@
             </div>
             <!-- /#page-content-wrapper -->
         </div>
+        @yield('script')
     </body>
     <footer style="padding-bottom: 5%"></footer>
 </html>

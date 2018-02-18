@@ -84,5 +84,10 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-@stop
+@endsection
+
+@section('script')
+    @include('layouttemplate::attributes.user')
+@endsection

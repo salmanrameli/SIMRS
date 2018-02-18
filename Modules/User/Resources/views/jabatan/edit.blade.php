@@ -18,3 +18,7 @@
         {{ Form::close() }}
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.user')
+@endsection

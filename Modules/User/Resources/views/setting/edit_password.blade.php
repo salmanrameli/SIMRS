@@ -61,3 +61,7 @@
         </div>
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.setting')
+@endsection

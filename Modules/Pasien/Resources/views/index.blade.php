@@ -39,4 +39,8 @@
            </table>
        </div>
     </div>
-@stop
+@endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien')
+@endsection

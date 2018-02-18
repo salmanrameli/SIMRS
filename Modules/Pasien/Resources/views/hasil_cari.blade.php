@@ -43,3 +43,7 @@
         </div>
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien')
+@endsection
