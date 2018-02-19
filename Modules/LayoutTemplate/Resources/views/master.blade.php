@@ -13,8 +13,7 @@
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/css/fontawesome-all.css') }}">
-        {{--<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">--}}
-
+        <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <body>

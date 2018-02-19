@@ -16,6 +16,7 @@
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('css/simple-sidebar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
     </head>
     <body style="background-color: #f8f9fa">
         <div id="wrapper">
