@@ -6,4 +6,3 @@
     <a href="" id="pengaturan_rumah_sakit">Pengaturan Rumah Sakit</a>
     @endif
 
-<a href="{{ route('setting.index') }}" id="pengaturan_akun">Pengaturan Akun</a>

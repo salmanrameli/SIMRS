@@ -68,7 +68,7 @@
                             <tbody>
                             @foreach($jabatans as $jabatan)
                                 <tr>
-                                    <td>{{ $jabatan->nama }}</td>
+                                    <td>{{ ucfirst($jabatan->nama) }}</td>
                                     <td>
                                         <form action="{{ route('jabatan.destroy', $jabatan->id) }}" method="POST" class="float-right" style="margin-left: 5px">
                                             {{ csrf_field() }}

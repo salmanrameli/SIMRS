@@ -42,6 +42,9 @@
 
                             </ul>
                             <form class="form-inline my-2 my-lg-0">
+                                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
+                            </form>
+                            <form class="form-inline my-2 my-lg-0">
                                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                             </form>
                         </div>

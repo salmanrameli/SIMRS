@@ -10,8 +10,8 @@
         <br>
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-outline-primary" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
-                <a class="btn btn-outline-primary" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
+                <a class="btn btn-outline-info" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
+                <a class="btn btn-outline-info" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
             </div>
         </div>
         <br>
