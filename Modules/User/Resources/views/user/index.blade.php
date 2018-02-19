@@ -48,6 +48,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <ul class="pagination justify-content-end float-left">
+                            {{ $users->links('vendor.pagination.bootstrap-4') }}
+                        </ul>
                     </div>
                 </div>
             </div>

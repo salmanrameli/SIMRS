@@ -42,6 +42,9 @@
                    </tr>
                @endforeach
            </table>
+           <ul class="pagination justify-content-end float-left">
+               {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
+           </ul>
        </div>
     </div>
 @endsection

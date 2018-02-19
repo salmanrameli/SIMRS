@@ -47,6 +47,18 @@ class UserDatabaseSeeder extends Seeder
             'password' => bcrypt('pass')
         ]);
 
+        for ($index = 4; $index <= 20; $index++)
+        {
+            DB::table('users')->insert([
+                'id_user' => $index,
+                'nama' => $faker->name,
+                'alamat' => $faker->address,
+                'telepon' => $faker->phoneNumber,
+                'jabatan_id' => '2',
+                'password' => bcrypt('pass')
+            ]);
+        }
+
         DB::table('jabatan')->insert([
             'nama' => 'administrator'
         ]);
