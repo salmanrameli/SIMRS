@@ -16,7 +16,6 @@
     <div class="card card-body">
         <div class="row">
             <div class="col-md-12">
-                {{--{{ $kamars }}--}}
                 @foreach($kamars as $kamar)
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-8">

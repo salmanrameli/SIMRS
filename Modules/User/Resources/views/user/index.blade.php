@@ -78,7 +78,7 @@
                                             <input type="hidden" name="_method" value="DELETE" />
                                             <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus jabatan ini?')">Hapus</button>
                                         </form>
-                                        <a href="{{ route('jabatan.edit', $jabatan->id) }}" class="btn btn-outline-info float-right">Ubah</a>
+                                        <a href="{{ route('jabatan.edit', $jabatan->id) }}" class="btn btn-outline-warning float-right">Ubah</a>
                                     </td>
                                 </tr>
                             @endforeach

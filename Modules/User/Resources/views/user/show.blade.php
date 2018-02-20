@@ -30,7 +30,7 @@
         </table>
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-outline-primary">Ubah Data Staff</a>
+                <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-outline-warning">Ubah Data Staff</a>
                 <a href="" class="btn btn-danger" onclick="return alert('Apakah anda yakin menghapus data staff?')">Hapus Staff</a>
             </div>
         </div>
