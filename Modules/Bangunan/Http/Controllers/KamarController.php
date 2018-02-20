@@ -62,18 +62,24 @@ class KamarController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('bangunan::kamar.show');
+        $kamar = Kamar::findorFail($id);
+
+        return view('bangunan::kamar.show')
+            ->with('kamar', $kamar);
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('bangunan::edit');
+        $kamar = Kamar::findorFail($id);
+
+        return view('bangunan::kamar.edit')
+            ->with('kamar', $kamar);
     }
 
     /**
@@ -81,8 +87,22 @@ class KamarController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $kamar = Kamar::findorFail($id);
+
+        $this->validate($request, [
+            'nama_kamar' => 'required',
+            'jumlah_maks_pasien' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $kamar->fill($input)->save();
+
+        Session::flash('message', 'Detail kamar berhasil diubah');
+
+        return redirect()->route('kamar.show', $id);
     }
 
     /**
