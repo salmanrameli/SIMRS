@@ -1,0 +1,16 @@
+{
+    "name": "Bangunan",
+    "alias": "bangunan",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Bangunan\\Providers\\BangunanServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

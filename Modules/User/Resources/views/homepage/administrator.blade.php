@@ -32,8 +32,8 @@
             <img class="img-fluid mx-auto" src="{{ asset('img/hospital.png') }}" alt="Rumah Sakit">
             <div class="card-body">
                 <h5 class="card-title">Manajemen Rumah Sakit</h5>
-                <p class="card-text"></p>
-                <a href="" class="btn btn-outline-primary">Go somewhere</a>
+                <p class="card-text">Mengelola lantai dan kamar dalam rumah sakit.</p>
+                <a href="{{ route('bangunan.index') }}" class="btn btn-outline-primary">Masuk</a>
             </div>
         </div>
     </div>
