@@ -2,19 +2,26 @@
 
 namespace Modules\Dokter\Http\Controllers;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Session;
+use Modules\Dokter\Entities\Dokter;
 
 class DokterController extends Controller
 {
+    use ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('dokter::index');
+        $dokter = Dokter::all();
+
+        return view('dokter::index')->with('dokters', $dokter);
     }
 
     /**
@@ -23,7 +30,7 @@ class DokterController extends Controller
      */
     public function create()
     {
-        return view('dokter::create');
+        return view('dokter::dokter.create');
     }
 
     /**
@@ -33,24 +40,43 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'id_dokter' => 'required|unique:dokter',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required|numeric',
+            'bidang_spesialis' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        Dokter::create($input);
+
+        Session::flash('message', 'Data dokter berhasil disimpan');
+
+        return redirect()->route('dokter.index');
     }
 
     /**
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('dokter::show');
+        $dokter = Dokter::findorFail($id);
+
+        return view('dokter::dokter.show')->with('dokter', $dokter);
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('dokter::edit');
+        $dokter = Dokter::findorFail($id);
+
+        return view('dokter::dokter.edit')->with('dokter', $dokter);
     }
 
     /**
@@ -58,8 +84,25 @@ class DokterController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'id_dokter' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required|numeric',
+            'bidang_spesialis' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $dokter = Dokter::findorFail($id);
+
+        $dokter->fill($input)->save();
+
+        Session::flash('message', 'Perubahan berhasil disimpan');
+
+        return redirect()->route('dokter.index');
     }
 
     /**
