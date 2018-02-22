@@ -36,7 +36,11 @@
 
                 <div class="form-group">
                     {{ Form::label('bidang_spesialis', 'Bidang Spesialis', ['class' => 'control-label']) }}
-                    {{ Form::text('bidang_spesialis', null, ['class' => 'form-control']) }}
+                    <select class="form-control" name="bidang_spesialis">
+                        @foreach($spesialiss as $spesialis)
+                            <option value="{{ $spesialis }}" id="bidang_spesialis" name="{{ $spesialis }}" {{ $dokter->bidang_spesialis == $spesialis ? 'selected' : '' }}>{{ $spesialis }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <br>
 

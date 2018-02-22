@@ -8,9 +8,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\Dokter\Entities\BidangSpesialisDokter;
-use Modules\Dokter\Entities\Dokter;
 
-class DokterController extends Controller
+class BidangSpesialisDokterController extends Controller
 {
     use ValidatesRequests;
 
@@ -20,12 +19,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $dokter = Dokter::all();
-        $spesialis = BidangSpesialisDokter::all();
-
-        return view('dokter::index')
-            ->with('dokters', $dokter)
-            ->with('spesialiss', $spesialis);
+        return view('dokter::index');
     }
 
     /**
@@ -34,9 +28,7 @@ class DokterController extends Controller
      */
     public function create()
     {
-        $spesialis = BidangSpesialisDokter::all()->pluck('nama');
-
-        return view('dokter::dokter.create')->with('spesialiss', $spesialis);
+        return view('dokter::spesialis.create');
     }
 
     /**
@@ -47,18 +39,14 @@ class DokterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_dokter' => 'required|unique:dokter',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'telepon' => 'required|numeric',
-            'bidang_spesialis' => 'required'
+            'nama' => 'required'
         ]);
 
         $input = $request->all();
 
-        Dokter::create($input);
+        BidangSpesialisDokter::create($input);
 
-        Session::flash('message', 'Data dokter berhasil disimpan');
+        Session::flash('message', 'Bidang spesialis dokter berhasil disimpan');
 
         return redirect()->route('dokter.index');
     }
@@ -67,11 +55,9 @@ class DokterController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id)
+    public function show()
     {
-        $dokter = Dokter::findorFail($id);
-
-        return view('dokter::dokter.show')->with('dokter', $dokter);
+        return view('dokter::show');
     }
 
     /**
@@ -80,12 +66,9 @@ class DokterController extends Controller
      */
     public function edit($id)
     {
-        $dokter = Dokter::findorFail($id);
-        $spesialis = BidangSpesialisDokter::all()->pluck('nama');
+        $spesialis = BidangSpesialisDokter::findorFail($id);
 
-        return view('dokter::dokter.edit')
-            ->with('dokter', $dokter)
-            ->with('spesialiss', $spesialis);
+        return view('dokter::spesialis.edit')->with('spesialis', $spesialis);
     }
 
     /**
@@ -95,21 +78,17 @@ class DokterController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $spesialis = BidangSpesialisDokter::findorFail($id);
+
         $this->validate($request, [
-            'id_dokter' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'telepon' => 'required|numeric',
-            'bidang_spesialis' => 'required'
+            'nama' => 'required'
         ]);
 
         $input = $request->all();
 
-        $dokter = Dokter::findorFail($id);
+        $spesialis->fill($input)->save();
 
-        $dokter->fill($input)->save();
-
-        Session::flash('message', 'Perubahan berhasil disimpan');
+        Session::flash('message', 'Perubahan detail bidang spesialis berhasil disimpan');
 
         return redirect()->route('dokter.index');
     }

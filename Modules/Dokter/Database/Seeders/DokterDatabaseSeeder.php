@@ -5,6 +5,7 @@ namespace Modules\Dokter\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Faker\Factory as Faker;
+use Modules\Dokter\Entities\BidangSpesialisDokter;
 use Modules\Dokter\Entities\Dokter;
 
 class DokterDatabaseSeeder extends Seeder
@@ -23,6 +24,18 @@ class DokterDatabaseSeeder extends Seeder
         $bs1 = $faker->currencyCode;
         $bs2 = $faker->currencyCode;
         $bs3 = $faker->currencyCode;
+
+        $spesialis = new BidangSpesialisDokter();
+        $spesialis->nama = $bs1;
+        $spesialis->save();
+
+        $spesialis = new BidangSpesialisDokter();
+        $spesialis->nama = $bs2;
+        $spesialis->save();
+
+        $spesialis = new BidangSpesialisDokter();
+        $spesialis->nama = $bs3;
+        $spesialis->save();
 
         for($index = 1; $index <= 10; $index++)
         {
