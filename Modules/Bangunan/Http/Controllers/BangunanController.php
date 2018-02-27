@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Modules\Bangunan\Entities\Kamar;
+use Modules\Bangunan\Entities\Lantai;
 
 class BangunanController extends Controller
 {
@@ -16,12 +16,15 @@ class BangunanController extends Controller
      */
     public function index()
     {
-        $kamar = Kamar::join('lantai', 'lantai.nomor_lantai', '=', 'kamar.nomor_lantai')
-            ->groupBy('kamar.nomor_lantai')
+        $lantai = Lantai::orderBy('lantai.id', 'desc')->get();
+
+        $kamar = Lantai::join('kamar', 'kamar.nomor_lantai', '=', 'lantai.nomor_lantai')
+            ->groupBy('lantai.nomor_lantai')
             ->orderByDesc('lantai.id')
-            ->get(['kamar.nomor_lantai', DB::raw('count(kamar.id) as total_kamar')]);
+            ->get(['lantai.nomor_lantai', DB::raw('count(kamar.id) as total_kamar')]);
 
         return view('bangunan::index')
+            ->with('lantais', $lantai)
             ->with('kamars', $kamar);
     }
 
