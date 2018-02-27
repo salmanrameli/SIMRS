@@ -6,6 +6,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Dokter\Entities\BidangSpesialisDokter;
 use Modules\Dokter\Entities\Dokter;
@@ -120,5 +121,17 @@ class DokterController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function cari(Request $request)
+    {
+        $query = $request->get('query');
+
+        $results = DB::table('dokter')->select('*')->where('id_dokter', 'like', '%'.$query.'%')->
+        orWhere('nama', 'like', '%'.$query.'%')->
+        orWhere('alamat', 'like', '%'.$query.'%')->
+        orWhere('telepon', 'like', '%'.$query.'%')->get();
+
+        return view('dokter::dokter.hasil_cari')->with('dokters', $results)->with('query', $query);
     }
 }
