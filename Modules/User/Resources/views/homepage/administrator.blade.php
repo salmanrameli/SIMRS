@@ -18,7 +18,7 @@
 
     <div class="col-md-3">
         <div class="card">
-            <img class="img-fluid mx-auto" src="{{ asset('img/users.png') }}" alt="Users">
+            <img class="img-fluid mx-auto" src="{{ asset('img/doctor.png') }}" alt="Users">
             <div class="card-body">
                 <h5 class="card-title">Manajemen Dokter RS</h5>
                 <p class="card-text">Mengelola data dokter rumah sakit, seperti mendaftarkan dokter, merubah, atau menghapus data dokter yang terdaftar di rumah sakit.</p>
