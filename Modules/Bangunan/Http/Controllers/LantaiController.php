@@ -58,12 +58,6 @@ class LantaiController extends Controller
      */
     public function show($id)
     {
-//        $kamar = Kamar::join('lantai', 'lantai.nomor_lantai', '=', 'kamar.nomor_lantai')
-//            ->groupBy('kamar.nomor_lantai')
-//            ->orderByDesc('lantai.id')
-//            ->where('lantai.nomor_lantai', '=', $id)
-//            ->get(['lantai.*', 'kamar.*', DB::raw('count(kamar.id) as total_kamar')]);
-
         $kamar = Kamar::where('nomor_lantai', '=', $id)->get();
 
         return view('bangunan::lantai.show')
@@ -75,9 +69,11 @@ class LantaiController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('bangunan::edit');
+        $lantai = Lantai::findorFail($id);
+
+        return view('bangunan::lantai.edit')->with('lantai', $lantai);
     }
 
     /**
@@ -85,8 +81,21 @@ class LantaiController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $lantai = Lantai::findorFail($id);
+
+        $this->validate($request, [
+            'nomor_lantai' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $lantai->fill($input)->save();
+
+        Session::flash('message', 'Nomor lantai berhasil diubah');
+
+        return redirect()->route('bangunan.index');
     }
 
     /**

@@ -20,8 +20,11 @@
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-8">
                             <div class="card card-body">
-                                <h3>Lantai {{ $lantai->nomor_lantai }} <a href="{{ route('lantai.show', $lantai->id) }}" class="btn btn-outline-info float-right">Lihat Detail</a></h3>
-                                &nbsp;
+                                <h3>
+                                    Lantai {{ $lantai->nomor_lantai }}
+                                    <a href="{{ route('lantai.show', $lantai->id) }}" class="btn btn-outline-info float-right" style="margin-left: 5px">Lihat Detail</a>
+                                    <a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-outline-warning float-right">Ubah</a>
+                                </h3>
                                 @foreach($kamars as $kamar)
                                     @if($lantai->nomor_lantai == $kamar->nomor_lantai)
                                         <table class="table">
