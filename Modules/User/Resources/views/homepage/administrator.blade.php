@@ -1,9 +1,5 @@
 @extends('layouttemplate::master')
 
-@section('greetings')
-    <p class="lead">Selamat datang kembali, <b>{{ $nama }}</b></p>
-    @endsection
-
 @section('content')
     <div class="col-md-3">
         <div class="card">
