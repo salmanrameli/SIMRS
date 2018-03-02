@@ -20,6 +20,7 @@
         <div class="col-md-12">
             <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
                 <h2>Sistem Informasi Manajemen Rumah Sakit</h2>
                 @yield('greetings')
             </div>
