@@ -64,7 +64,7 @@ class UserDatabaseSeeder extends Seeder
         ]);
 
         DB::table('jabatan')->insert([
-            'nama' => 'petugas'
+            'nama' => 'administrasi'
         ]);
 
         DB::table('jabatan')->insert([

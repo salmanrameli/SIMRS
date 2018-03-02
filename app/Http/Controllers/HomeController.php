@@ -23,7 +23,7 @@ class HomeController extends Controller
             }
             else if($user->jabatan_id == '2')
             {
-                return view('user::homepage.petugas')->with('nama', Auth::user()->nama);
+                return view('user::homepage.administrasi')->with('nama', Auth::user()->nama);
             }
             else if($user->jabatan_id == '3')
             {
