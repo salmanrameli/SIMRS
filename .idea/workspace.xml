@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="717e821c-96a9-461b-9de0-155011c328e7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Config/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Config/config.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Console/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Database/Migrations/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Database/Migrations/2018_02_19_055305_create_lantai_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Database/Migrations/2018_02_19_055313_create_kamar_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Database/Seeders/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Database/Seeders/BangunanDatabaseSeeder.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Database/factories/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Entities/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Entities/Kamar.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Entities/Lantai.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/BangunanController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/KamarController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/LantaiController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/Middleware/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/Requests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Http/routes.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Providers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Providers/BangunanServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/assets/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/lang/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/show.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/show.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Resources/views/layouts/master.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/Tests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/module.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Bangunan/start.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Config/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Config/config.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Console/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Database/Migrations/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Database/Migrations/2018_02_21_032838_create_dokter_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Database/Migrations/2018_02_21_052346_create_bidang_spesialis_dokter_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Database/Seeders/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Database/Seeders/DokterDatabaseSeeder.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Database/factories/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Entities/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Entities/BidangSpesialisDokter.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Entities/Dokter.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Http/Controllers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Http/Controllers/BidangSpesialisDokterController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Http/Controllers/DokterController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Http/Middleware/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Http/Requests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Http/routes.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Providers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Providers/DokterServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/assets/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/lang/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/hasil_cari.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/show.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/layouts/master.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/spesialis/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Resources/views/spesialis/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/Tests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/module.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Dokter/start.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Config/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Config/config.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Http/Controllers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Http/Controllers/LayoutTemplateController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Http/Middleware/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Http/Requests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Http/routes.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Providers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Providers/LayoutTemplateServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/assets/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/lang/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/alert.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/app.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/attributes/bangunan.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/attributes/dokter.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/attributes/pasien.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/attributes/setting.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/attributes/user.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/master.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/pages.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/sidebar.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/module.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/LayoutTemplate/start.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Config/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Config/config.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Console/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Database/Migrations/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Database/Migrations/2018_01_29_120857_create_pasien_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Database/Seeders/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Database/Seeders/PasienDatabaseSeeder.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Database/factories/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Entities/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Entities/Pasien.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Http/Controllers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Http/Controllers/PasienController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Http/Middleware/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Http/Requests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Http/routes.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Providers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Providers/PasienServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/assets/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/lang/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/hasil_cari.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/layouts/attributes.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/layouts/master.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Resources/views/show.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/Tests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/module.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pasien/start.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Config/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Config/config.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Console/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Database/Migrations/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Database/Seeders/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Database/Seeders/RawatInapDatabaseSeeder.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Database/factories/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Entities/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Http/Controllers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Http/Controllers/RawatInapController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Http/Middleware/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Http/Requests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Http/routes.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Providers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Providers/RawatInapServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Resources/assets/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Resources/lang/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Resources/views/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Resources/views/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Resources/views/layouts/master.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/Tests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/module.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/RawatInap/start.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Config/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Config/config.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Console/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Database/Migrations/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Database/Migrations/2018_01_23_045923_create_users_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Database/Migrations/2018_02_17_050254_create_jabatan_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Database/Seeders/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Database/Seeders/UserDatabaseSeeder.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Database/factories/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Entities/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Entities/Jabatan.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Entities/User.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/Controllers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/Controllers/JabatanController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/Controllers/SettingController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/Controllers/UserController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/Middleware/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/Requests/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Http/routes.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Providers/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Providers/UserServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/assets/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/lang/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/.gitkeep" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/homepage/administrasi.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/homepage/administrator.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/homepage/kasir.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/jabatan/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/jabatan/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/layouts/master.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/setting/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/setting/edit_password.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/setting/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/user/create.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/user/edit.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/user/hasil_cari.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/user/index.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/Resources/views/user/show.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/module.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Modules/User/start.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/checkRole.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/artisan" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/cache.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/modules.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/queue.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/session.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/config/view.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/database/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-grid.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-grid.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-grid.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-grid.min.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-reboot.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-reboot.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-reboot.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap-reboot.min.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.bundle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.bundle.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.bundle.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.bundle.min.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/bootstrap.min.js.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/jquery.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap/js/popper.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/css/fontawesome-all.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/css/simple-sidebar.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/cog.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/doctor.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/hospital.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/patient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/users.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_animated.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_bordered-pulled.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_core.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_fixed-width.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_icons.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_larger.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_list.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_mixins.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_rotated-flipped.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_screen-reader.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_stacked.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/_variables.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/fa-brands.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/fa-regular.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/fa-solid.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/less/fontawesome.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_animated.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_bordered-pulled.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_core.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_fixed-width.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_icons.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_larger.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_list.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_mixins.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_rotated-flipped.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_screen-reader.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_stacked.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/_variables.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/fa-brands.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/fa-regular.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/fa-solid.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/scss/fontawesome.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-brands-400.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-brands-400.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-brands-400.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-brands-400.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-brands-400.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-regular-400.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-regular-400.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-regular-400.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-regular-400.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-regular-400.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-solid-900.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-solid-900.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-solid-900.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-solid-900.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/webfonts/fa-solid-900.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/app.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/components/ExampleComponent.vue" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/sass/_variables.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/sass/app.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/bootstrap-4.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/semantic-ui.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-bootstrap-4.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-default.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/routes/channels.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/routes/console.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/server.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/testing/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" afterPath="" />
+    </list>
+    <ignored path="public/img/original/" />
+    <ignored path=".gitattributes" />
+    <ignored path=".gitignore" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="simrs" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/config/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="49" column="35" lean-forward="false" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>btn-light</find>
+      <find>btn-outline-light</find>
+      <find>list-group-light</find>
+      <find>list-group-item-light</find>
+      <find>card-img-top</find>
+      <find>jumbotron</find>
+      <find>card</find>
+      <find>active</find>
+      <find>.active</find>
+    </findStrings>
+  </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="php artisan module:make Dokter" />
+      <command text="php artisan module:make-migration create_dokter_table Dokter" />
+      <command text="php artisan module:make-model Dokter Dokter" />
+      <command text="php artisan module:make-seed" />
+      <command text="php artisan module:migrate-refresh" />
+      <command text="php artisan module:seed" />
+      <command text="php artisan module:migrate-refresh" />
+      <command text="php artisan module:seed" />
+      <command text="php artisan module:make-migration create_bidang_spesialis_dokter_table Dokter" />
+      <command text="php artisan module:make-model BidangSpesialisDokter Dokter" />
+      <command text="php artisan module:make-controller BidangSpesialisDokterController Dokter" />
+      <command text="php artisan module:migrate-refresh" />
+      <command text="php artisan module:seed" />
+      <command text="php artisan module:migrate-refresh" />
+      <command text="php artisan module:seed" />
+      <command text="php artisan module:migrate-refresh" />
+      <command text="php artisan module:seed" />
+      <command text="php artisan module:make RawatInap" />
+      <command text="php artisan route:list" />
+      <command text="php artisan module:make migration create_rawat_inap_table RawatInap" />
+      <command text="php artisan module:make-migration create_rawat_inap_table RawatInap" />
+      <command text="php artisan module:migrate-refresh" />
+      <command text="php artisan module:seed" />
+      <command text="php artisan module:make-model RawatInap RawatInap" />
+      <command text="php artisan module:migrate" />
+    </commandsHistory>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="also known as Anugra Pratama Rameli &lt;salmanrameli@hotmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="spatie-laravel-permission" />
+      </map>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/create.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/show.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/KamarController.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/edit.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/user/show.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/setting/index.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Pasien/Resources/views/show.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/show.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Route/Http/routes.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Http/routes.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Database/Migrations/2018_02_21_032838_create_dokter_table.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Entities/Dokter.php" />
+        <option value="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/attributes/dokter.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/show.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Database/Migrations/2018_02_21_052346_create_bidang_spesialis_dokter_table.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Entities/BidangSpesialisDokter.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/spesialis/create.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/spesialis/edit.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Http/Controllers/BidangSpesialisDokterController.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Database/Seeders/DokterDatabaseSeeder.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/create.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/edit.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Http/routes.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Http/Controllers/DokterController.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/user/index.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/index.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Pasien/Resources/views/index.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/hasil_cari.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/BangunanController.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/edit.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Resources/views/index.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/LantaiController.php" />
+        <option value="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/homepage/petugas.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Database/Seeders/UserDatabaseSeeder.php" />
+        <option value="$PROJECT_DIR$/Modules/RawatInap/Http/routes.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/homepage/administrator.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/homepage/kasir.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/RawatInap/Resources/views/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/master.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/RawatInap/Database/Migrations/2018_03_02_121553_create_rawat_inap_table.php" />
+        <option value="$PROJECT_DIR$/Modules/RawatInap/Entities/RawatInap.php" />
+        <option value="$PROJECT_DIR$/Modules/User/Resources/views/homepage/administrasi.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/pages-alt.blade.php" />
+        <option value="$PROJECT_DIR$/Modules/RawatInap/Http/Controllers/RawatInapController.php" />
+        <option value="$PROJECT_DIR$/Modules/RawatInap/Resources/views/create.blade.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/source/config/database.php" />
+        <option value="$PROJECT_DIR$/source/.env" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/thanks" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/nwidart/laravel-modules" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="983" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="simrs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simrs" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="simrs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simrs" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="source" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="database&#9;FILE&#9;file:///Users/SalmanRameli/Google Drive/simrs/source/config/database.php&#10;data&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;mas&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/master.blade.php&#10;pa&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/pages-alt.blade.php&#10;master&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/master.blade.php&#10;pages&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/pages.blade.php&#10;route&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/RawatInap/Http/routes.php&#10;rawa&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/RawatInap/Http/Controllers/RawatInapController.php&#10;home&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/app/Http/Controllers/HomeController.php&#10;inde&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/setting/index.blade.php&#10;kasir&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/kasir.blade.php&#10;admi&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/administrator.blade.php&#10;admini&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/administrator.blade.php&#10;logincon&#9;null&#9;null&#10;login&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/resources/views/auth/login.blade.php&#10;homecon&#9;null&#9;null&#10;userc&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Http/Controllers/UserController.php&#10;jabatan&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Database/Migrations/2018_02_17_050254_create_jabatan_table.php&#10;usersee&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Database/Seeders/UserDatabaseSeeder.php&#10;kasi&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/kasir.blade.php&#10;page&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/pages.blade.php&#10;pet&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/petugas.blade.php&#10;side&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/sidebar.blade.php&#10;lantai&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Http/Controllers/LantaiController.php&#10;log&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/resources/views/auth/login.blade.php&#10;index&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Resources/views/index.blade.php&#10;hasil&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Pasien/Resources/views/hasil_cari.blade.php&#10;routes&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Http/routes.php&#10;adminis&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/administrator.blade.php&#10;dok&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Dokter/Http/Controllers/DokterController.php&#10;dokterse&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Dokter/Database/Seeders/DokterDatabaseSeeder.php&#10;dokter&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Dokter/Http/Controllers/DokterController.php&#10;crea&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Dokter/Resources/views/dokter/create.blade.php&#10;user&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Http/Controllers/UserController.php&#10;pasiensee&#9;null&#9;null&#10;ba&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Http/Controllers/BangunanController.php&#10;banguna&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Http/Controllers/BangunanController.php&#10;usercon&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Http/Controllers/UserController.php&#10;kamar&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Entities/Kamar.php&#10;bangu&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Http/Controllers/BangunanController.php&#10;lanta&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Bangunan/Entities/Lantai.php&#10;lantaicon&#9;null&#9;null&#10;sidebar&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/sidebar.blade.php&#10;ad&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/homepage/administrator.blade.php&#10;create&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/user/create.blade.php&#10;pasiencon&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/Pasien/Http/Controllers/PasienController.php&#10;setting&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Http/Controllers/SettingController.php&#10;app.&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/bootstrap/app.php&#10;sett&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/LayoutTemplate/Resources/views/attributes/setting.blade.php&#10;attr&#9;FILE&#9;file:///Users/SalmanRameli/Dropbox/development/htdocs/simrs/Modules/User/Resources/views/layouts/attributes.blade.php" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source" />
+      <recent name="$PROJECT_DIR$/Modules/User/Resources/views/user" />
+      <recent name="$PROJECT_DIR$/Modules/Jabatan/Database/Migrations" />
+      <recent name="$PROJECT_DIR$/Modules/User/Database/Migrations" />
+      <recent name="$PROJECT_DIR$/Modules/User/Resources/views/homepage" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Modules/User/Resources/views" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="717e821c-96a9-461b-9de0-155011c328e7" name="Default" comment="" />
+      <created>1515816131856</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1515816131856</updated>
+      <workItem from="1515816134697" duration="344000" />
+      <workItem from="1516680686411" duration="15712000" />
+      <workItem from="1516767382831" duration="4528000" />
+      <workItem from="1516795148489" duration="7177000" />
+      <workItem from="1516849521780" duration="14264000" />
+      <workItem from="1516882690447" duration="4208000" />
+      <workItem from="1516969378612" duration="4451000" />
+      <workItem from="1517054488572" duration="7909000" />
+      <workItem from="1517115590058" duration="6602000" />
+      <workItem from="1517227213848" duration="5912000" />
+      <workItem from="1517304735036" duration="5058000" />
+      <workItem from="1517380706358" duration="5399000" />
+      <workItem from="1517399749054" duration="465000" />
+      <workItem from="1517542385392" duration="4963000" />
+      <workItem from="1517973724770" duration="4272000" />
+      <workItem from="1518493931364" duration="8641000" />
+      <workItem from="1518528831438" duration="5000" />
+      <workItem from="1518578896811" duration="6642000" />
+      <workItem from="1518771012491" duration="8643000" />
+      <workItem from="1518840015361" duration="6902000" />
+      <workItem from="1518867901535" duration="3891000" />
+      <workItem from="1518937938136" duration="5716000" />
+      <workItem from="1519013763968" duration="7564000" />
+      <workItem from="1519095376547" duration="7622000" />
+      <workItem from="1519182405424" duration="8563000" />
+      <workItem from="1519301502639" duration="1063000" />
+      <workItem from="1519303018670" duration="209000" />
+      <workItem from="1519715358776" duration="4104000" />
+      <workItem from="1519734730281" duration="3135000" />
+      <workItem from="1519912744531" duration="2021000" />
+      <workItem from="1519984840405" duration="8823000" />
+      <workItem from="1520236372898" duration="3699000" />
+    </task>
+    <task id="LOCAL-00034" summary="update route edit password">
+      <created>1517306002560</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1517306002560</updated>
+    </task>
+    <task id="LOCAL-00035" summary="merapikan layout">
+      <created>1517306072921</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1517306072921</updated>
+    </task>
+    <task id="LOCAL-00036" summary="merapikan layout">
+      <created>1517306095496</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1517306095496</updated>
+    </task>
+    <task id="LOCAL-00037" summary="menghapus kriteria punya_bpjs">
+      <created>1517308656608</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1517308656608</updated>
+    </task>
+    <task id="LOCAL-00038" summary="menambah fitur simpan pasien">
+      <created>1517309196967</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1517309196967</updated>
+    </task>
+    <task id="LOCAL-00039" summary="menambah fitur melihat detail data dan merubah data">
+      <created>1517381275986</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1517381275987</updated>
+    </task>
+    <task id="LOCAL-00040" summary="menambah fitur mencari data user (staff)">
+      <created>1517383083255</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1517383083255</updated>
+    </task>
+    <task id="LOCAL-00041" summary="merubah url pencarian &amp; urutan route">
+      <created>1517402268942</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1517402268942</updated>
+    </task>
+    <task id="LOCAL-00042" summary="menambah fitur pencarian pasien dan melihat data pasien secara detail">
+      <created>1517402447212</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1517402447212</updated>
+    </task>
+    <task id="LOCAL-00043" summary="tabel pasien set id autoincrement, tambah kolom ktp">
+      <created>1517544660016</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1517544660016</updated>
+    </task>
+    <task id="LOCAL-00044" summary="kolom id ganti jadi nomor ktp">
+      <created>1517544915208</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1517544915208</updated>
+    </task>
+    <task id="LOCAL-00045" summary="menambah fitur ubah data pasien">
+      <created>1517545261673</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1517545261673</updated>
+    </task>
+    <task id="LOCAL-00046" summary="cek apakah ktp pasien sudah terdaftar atau belum">
+      <created>1517545672829</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1517545672829</updated>
+    </task>
+    <task id="LOCAL-00047" summary="ganti kolom pencarian pasien dari id ke ktp">
+      <created>1517545975259</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1517545975259</updated>
+    </task>
+    <task id="LOCAL-00048" summary="merubah ukuran card ke 3, update teks card">
+      <created>1517546216605</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1517546216605</updated>
+    </task>
+    <task id="LOCAL-00049" summary="memasang middleware sehingga hanya administrator yang bisa mengakses">
+      <created>1517557435508</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1517557435508</updated>
+    </task>
+    <task id="LOCAL-00050" summary="menghilangkan link sidebar">
+      <created>1517557533180</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1517557533181</updated>
+    </task>
+    <task id="LOCAL-00051" summary="hanya administrator yang bisa merubah jabatan">
+      <created>1517557601424</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1517557601424</updated>
+    </task>
+    <task id="LOCAL-00052" summary="update seeder">
+      <created>1517986132240</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1517986132241</updated>
+    </task>
+    <task id="LOCAL-00053" summary="menghilangkan modul Saya – fungsionalitas digabung dengan modul User. memindahkan file view dari resource laravel ke resource modul User">
+      <created>1518500080144</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1518500080145</updated>
+    </task>
+    <task id="LOCAL-00054" summary="membuat modul LayoutTemplate yang berisi file2 views umum yang dipakai di modul lain">
+      <created>1518508905717</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1518508905717</updated>
+    </task>
+    <task id="LOCAL-00055" summary="views sekarang extends dari layouts di modul LayoutTemplate">
+      <created>1518511811821</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1518511811821</updated>
+    </task>
+    <task id="LOCAL-00056" summary="rename folder jabatan jadi homepage">
+      <created>1518512908100</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1518512908100</updated>
+    </task>
+    <task id="LOCAL-00057" summary="membuat tabel jabatan untuk user - sekarang tabel user ada jabatan_id, mengatur ulang rute autentifikasi ketika login">
+      <created>1518845259385</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1518845259386</updated>
+    </task>
+    <task id="LOCAL-00058" summary="link navigasi sidebar dipisah ke file layout tersendiri">
+      <created>1518845313298</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1518845313298</updated>
+    </task>
+    <task id="LOCAL-00059" summary="membuat pengelolaan jabatan, jabatan di edit user diambil secara dinamik dari database, memisahkan id dan id_user di tabel user, mengatur login berdasarkan id_user">
+      <created>1518876018203</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1518876018204</updated>
+    </task>
+    <task id="LOCAL-00060" summary="membuat folder atribut di modul LayoutTemplate untuk menambah class sidebar-active di nav sidebar yang aktif, menambah script di tiap halaman untuk mengikutkan file atribut">
+      <created>1518942011677</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1518942011678</updated>
+    </task>
+    <task id="LOCAL-00061" summary="membuat layout pagination untuk bootstrap 4">
+      <created>1518943654047</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1518943654047</updated>
+    </task>
+    <task id="LOCAL-00062" summary="paginasi data pasien">
+      <created>1518943684018</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1518943684018</updated>
+    </task>
+    <task id="LOCAL-00063" summary="memindahkan link pengaturan akun dari sidebar ke navbar">
+      <created>1519014421797</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1519014421798</updated>
+    </task>
+    <task id="LOCAL-00064" summary="include font-awesome">
+      <created>1519017931029</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1519017931029</updated>
+    </task>
+    <task id="LOCAL-00065" summary="tambah jumlah user tipe pegawai di seeder, paginasi hasil index user">
+      <created>1519018692152</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1519018692152</updated>
+    </task>
+    <task id="LOCAL-00066" summary="menambah modul Bangunan untuk mengelola lantai dan kamar rumah sakit">
+      <created>1519103340925</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1519103340926</updated>
+    </task>
+    <task id="LOCAL-00067" summary="mengganti nilai parameter strict mysql jadi false">
+      <created>1519103410242</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1519103410242</updated>
+    </task>
+    <task id="LOCAL-00068" summary="menambah fitur melihat serta merubah detail kamar">
+      <created>1519111154681</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1519111154681</updated>
+    </task>
+    <task id="LOCAL-00069" summary="mengganti warna tombol ubah jadi btn-outline-warning">
+      <created>1519112762495</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1519112762495</updated>
+    </task>
+    <task id="LOCAL-00070" summary="membuat modul Dokter untuk mengelola dokter rumah sakit">
+      <created>1519185137905</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1519185137906</updated>
+    </task>
+    <task id="LOCAL-00071" summary="menambah manajemen dokter">
+      <created>1519185987493</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1519185987493</updated>
+    </task>
+    <task id="LOCAL-00072" summary="menambah fitur menambah, melihat, merubah dokter">
+      <created>1519190200705</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1519190200705</updated>
+    </task>
+    <task id="LOCAL-00073" summary="menambah bidang spesialis dokter. sudah bisa membuat dan merubah bidang spesialis dokter">
+      <created>1519302079940</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1519302079941</updated>
+    </task>
+    <task id="LOCAL-00074" summary="tambah icon dokter">
+      <created>1519715577903</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1519715577904</updated>
+    </task>
+    <task id="LOCAL-00075" summary="menambah fitur cari dokter">
+      <created>1519718170820</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1519718170820</updated>
+    </task>
+    <task id="LOCAL-00076" summary="menyesuaikan layout">
+      <created>1519737133480</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1519737133482</updated>
+    </task>
+    <task id="LOCAL-00077" summary="memperbaiki bug dimana lantai tidak muncul jika tidak ada kamar yang terdaftar pada lantai yang bersangkutan">
+      <created>1519737604421</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1519737604421</updated>
+    </task>
+    <task id="LOCAL-00078" summary="menambah fitur mengubah detail lantai">
+      <created>1519913422011</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1519913422012</updated>
+    </task>
+    <task id="LOCAL-00079" summary="memindahkan pilihan pengaturan akun ke navbar">
+      <created>1519985177206</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1519985177207</updated>
+    </task>
+    <task id="LOCAL-00080" summary="ganti jabatan petugas jadi administrasi">
+      <created>1519986049456</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1519986049456</updated>
+    </task>
+    <task id="LOCAL-00081" summary="menghilangkan greeting, memindahkan username di navbar">
+      <created>1519987189469</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1519987189469</updated>
+    </task>
+    <task id="LOCAL-00082" summary="membuat modul rawat inap">
+      <created>1519992564814</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1519992564814</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="178507000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1920" height="983" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12619808" sideWeight="0.49652433" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32648125" sideWeight="0.5021299" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3828829" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30983117" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18317358" sideWeight="0.50347567" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43693694" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="link navigasi sidebar dipisah ke file layout tersendiri" />
+    <MESSAGE value="membuat pengelolaan jabatan, jabatan di edit user diambil secara dinamik dari database, memisahkan id dan id_user di tabel user, mengatur login berdasarkan id_user" />
+    <MESSAGE value="membuat folder atribut di modul LayoutTemplate untuk menambah class sidebar-active di nav sidebar yang aktif, menambah script di tiap halaman untuk mengikutkan file atribut" />
+    <MESSAGE value="membuat layout pagination untuk bootstrap 4" />
+    <MESSAGE value="paginasi data pasien" />
+    <MESSAGE value="memindahkan link pengaturan akun dari sidebar ke navbar" />
+    <MESSAGE value="include font-awesome" />
+    <MESSAGE value="tambah jumlah user tipe pegawai di seeder, paginasi hasil index user" />
+    <MESSAGE value="menambah modul Bangunan untuk mengelola lantai dan kamar rumah sakit" />
+    <MESSAGE value="mengganti nilai parameter strict mysql jadi false" />
+    <MESSAGE value="menambah fitur melihat serta merubah detail kamar" />
+    <MESSAGE value="mengganti warna tombol ubah jadi btn-outline-warning" />
+    <MESSAGE value="membuat modul Dokter untuk mengelola dokter rumah sakit" />
+    <MESSAGE value="menambah manajemen dokter" />
+    <MESSAGE value="menambah fitur menambah, melihat, merubah dokter" />
+    <MESSAGE value="menambah bidang spesialis dokter. sudah bisa membuat dan merubah bidang spesialis dokter" />
+    <MESSAGE value="tambah icon dokter" />
+    <MESSAGE value="menambah fitur cari dokter" />
+    <MESSAGE value="menyesuaikan layout" />
+    <MESSAGE value="memperbaiki bug dimana lantai tidak muncul jika tidak ada kamar yang terdaftar pada lantai yang bersangkutan" />
+    <MESSAGE value="menambah fitur mengubah detail lantai" />
+    <MESSAGE value="memindahkan pilihan pengaturan akun ke navbar" />
+    <MESSAGE value="ganti jabatan petugas jadi administrasi" />
+    <MESSAGE value="menghilangkan greeting, memindahkan username di navbar" />
+    <MESSAGE value="membuat modul rawat inap" />
+    <option name="LAST_COMMIT_MESSAGE" value="membuat modul rawat inap" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Entities/Dokter.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/show.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Entities/BidangSpesialisDokter.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Database/Migrations/2018_02_21_052346_create_bidang_spesialis_dokter_table.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Database/Seeders/DokterDatabaseSeeder.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/spesialis/create.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Bangunan/Resources/views/kamar/create.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/spesialis/edit.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Http/Controllers/BidangSpesialisDokterController.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/create.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/edit.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Resources/views/user/edit.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Pasien/Resources/views/hasil_cari.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Http/routes.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Resources/views/user/index.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Http/routes.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Http/Controllers/DokterController.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/dokter/hasil_cari.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Pasien/Resources/views/index.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Dokter/Resources/views/index.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/BangunanController.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Bangunan/Http/Controllers/LantaiController.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Bangunan/Resources/views/index.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/edit.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/Bangunan/Resources/views/lantai/create.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/sidebar.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Database/Migrations/2018_02_17_050254_create_jabatan_table.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Http/Controllers/UserController.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Database/Seeders/UserDatabaseSeeder.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/start.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Providers/RawatInapServiceProvider.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Resources/views/homepage/administrator.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Resources/views/homepage/kasir.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Resources/views/setting/index.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Resources/views/index.blade.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Http/routes.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/pages.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Entities/RawatInap.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Database/Migrations/2018_03_02_121553_create_rawat_inap_table.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/User/Resources/views/homepage/administrasi.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/master.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/LayoutTemplate/Resources/views/pages-alt.blade.php" />
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Http/Controllers/RawatInapController.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="319" column="20" lean-forward="false" selection-start-line="319" selection-start-column="20" selection-end-line="319" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/RawatInap/Resources/views/create.blade.php" />
+    <entry file="file://$PROJECT_DIR$/source/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="49" column="35" lean-forward="false" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
