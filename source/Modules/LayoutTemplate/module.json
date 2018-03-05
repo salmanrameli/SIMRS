@@ -1,0 +1,16 @@
+{
+    "name": "LayoutTemplate",
+    "alias": "layouttemplate",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\LayoutTemplate\\Providers\\LayoutTemplateServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Pasien",
+    "alias": "pasien",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Pasien\\Providers\\PasienServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

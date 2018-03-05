@@ -1,0 +1,16 @@
+{
+    "name": "RawatInap",
+    "alias": "rawatinap",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\RawatInap\\Providers\\RawatInapServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

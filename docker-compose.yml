@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    volumes:
+      - ./source:/var/www
+    ports:
+      - "8080:80"
+    links:
+      - app
+    tty: true
+
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    volumes:
+      - ./source:/var/www
+    links:
+      - database
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  database:
+    image: mysql:latest
+    environment:
+      - "MYSQL_DATABASE=simrs"
+      - "MYSQL_USER=homestead"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "33061:3306"
+    volumes:
+      - ./mysql/:/var/lib/mysql
