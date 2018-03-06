@@ -16,9 +16,9 @@ class CreateRawatInapTable extends Migration
         Schema::create('rawat_inap', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('nama_pasien');
-            $table->string('nomor_kamar');
-            $table->string('dokter_pj');
+            $table->string('id_pasien');
+            $table->string('nama_kamar');
+            $table->string('id_dokter_pj');
             $table->date('tanggal_masuk');
             $table->date('tanggal_keluar');
 
