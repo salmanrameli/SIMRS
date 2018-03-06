@@ -1,5 +1,9 @@
 @extends('layouttemplate::pages-alt')
 
+@section('title')
+    Registrasi Rawat Inap Baru
+    @endsection
+
 @section('content')
     <div class="col-md-12">
         <div class="card card-body">
@@ -10,18 +14,26 @@
                     {{ Form::open(['route' => 'ranap.store']) }}
 
                     <div class="form-group">
-                        {{ Form::label('nama_pasien', 'Nama Pasien', ['class' => 'control-label']) }}
-                        {{ Form::text('nama_pasien', null, ['class' => 'form-control']) }}
+                        {{ Form::label('id_pasien', 'ID Pasien', ['class' => 'control-label']) }}
+                        {{ Form::text('id_pasien', null, ['class' => 'form-control']) }}
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('nomor_kamar', 'Nomor Kamar', ['class' => 'control-label']) }}
-                        {{ Form::text('nomor_kamar', null, ['class' => 'form-control']) }}
+                        {{ Form::label('nama_kamar', 'Kamar', ['class' => 'control-label']) }}
+                        <select class="form-control" name="nama_kamar">
+                            @foreach($kosongs as $kosong)
+                                <option value="{{ $kosong }}" id="nama_kamar" name="{{ $kosong }}">{{ $kosong }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('dokter_pj', 'Dokter Penanggung Jawab', ['class' => 'control-label']) }}
-                        {{ Form::text('dokter_pj', null, ['class' => 'form-control']) }}
+                        {{ Form::label('id_dokter_pj', 'Dokter Penanggung Jawab', ['class' => 'control-label']) }}
+                        <select class="form-control" name="id_dokter_pj">
+                            @foreach($dokters as $dokter)
+                                <option value="{{ $dokter->id }}" id="id_dokter_pj" name="{{ $dokter->id }}">{{ $dokter->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
