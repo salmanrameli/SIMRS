@@ -99,9 +99,11 @@ class RawatInapController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('rawatinap::show');
+        $ranap = RawatInap::findorFail($id);
+
+        return view('rawatinap::show')->with('ranap', $ranap);
     }
 
     /**
