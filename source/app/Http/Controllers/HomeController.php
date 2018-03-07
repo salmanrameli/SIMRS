@@ -23,7 +23,7 @@ class HomeController extends Controller
             }
             else if($user->jabatan_id == '2')
             {
-                return view('user::homepage.administrasi')->with('nama', Auth::user()->nama);
+                return redirect()->route('ranap.index');
             }
             else if($user->jabatan_id == '3')
             {
