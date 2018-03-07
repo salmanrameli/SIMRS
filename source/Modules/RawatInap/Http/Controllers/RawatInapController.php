@@ -40,9 +40,7 @@ class RawatInapController extends Controller
 
         $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
 
-        $temp = RawatInap::select('nama_kamar')->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
-
-        $kamar_kosong = Kamar::select('nama_kamar')->whereNotIn('nama_kamar', $temp->toArray())->get();
+        $kamar_kosong = Kamar::select('nama_kamar')->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get()->toArray())->get();
 
         $kamar_tersedia = [];
 
