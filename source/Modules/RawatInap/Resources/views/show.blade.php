@@ -28,6 +28,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-outline-warning">Ubah</a>
             </div>
         </div>
     </div>

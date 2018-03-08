@@ -120,9 +120,42 @@ class RawatInapController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('rawatinap::edit');
+        $ranap = RawatInap::findOrFail($id);
+
+        $dokter = Dokter::orderBy('nama')->get();
+
+        $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
+
+        $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
+
+        $kamar_kosong = Kamar::select('nama_kamar')->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get()->toArray())->get();
+
+        $kamar_tersedia = [];
+
+        foreach ($kamars as $kamar)
+        {
+            foreach ($terisi_sekarang as $terisi)
+            {
+                if(($kamar->nama_kamar == $terisi->nama_kamar) && ($kamar->jumlah_maks_pasien > $terisi->pasien_inap))
+                {
+                    array_push($kamar_tersedia, $kamar->nama_kamar);
+                }
+            }
+        }
+
+        foreach ($kamar_kosong as $kamar)
+        {
+            array_push($kamar_tersedia, $kamar->nama_kamar);
+        }
+
+        array_push($kamar_tersedia, $ranap->nama_kamar);
+
+        return view('rawatinap::edit')
+            ->with('ranap', $ranap)
+            ->with('dokters', $dokter)
+            ->with('kosongs', $kamar_tersedia);
     }
 
     /**
@@ -130,8 +163,26 @@ class RawatInapController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $ranap = RawatInap::findOrFail($id);
+
+        $this->validate($request, [
+            'id_pasien' => 'required',
+            'nama_kamar' => 'required',
+            'id_dokter_pj' => 'required',
+            'tanggal_masuk' => 'required'
+        ]);
+
+        $ranap->id_pasien = $request->id_pasien;
+        $ranap->nama_kamar  = $request->nama_kamar;
+        $ranap->id_dokter_pj = $request->id_dokter_pj;
+        $ranap->tanggal_masuk = $request->tanggal_masuk;
+        $ranap->save();
+
+        Session::flash('message', 'Perubahan detail rawat inap berhasil disimpan');
+
+        return redirect()->route('ranap.show', $id);
     }
 
     /**
