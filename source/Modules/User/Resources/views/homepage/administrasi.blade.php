@@ -2,6 +2,47 @@
 
 @section('content')
     <div class="col-md-12">
+        <div class="page-header">
+            <h4>Detail Ruangan</h4>
+        </div>
+        <div class="col-md-12">
+            @foreach($lantais as $lantai)
+                <div class="row align-items-center justify-content-center">
+                    <div class="card card-body">
+                        <h5>
+                            Lantai {{ $lantai }}
+                        </h5>
+                        <div class="row">
+                            @foreach($kamars as $kamar)
+                                @if($kamar->nomor_lantai == $lantai)
+                                    <div class="col-md-2">
+                                        <div class="card card-body">
+                                            <h6 class="text-center">Kamar {{ $kamar->nama_kamar }}</h6>
+                                            <table class="table">
+                                                <tbody class="small">
+                                                <tr>
+                                                    <th>Kapasitas</th>
+                                                    <td>{{ $kamar->jumlah_maks_pasien }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Terisi</th>
+                                                    @foreach($terisis as $terisi)
+                                                        @if($terisi->nama_kamar == $kamar->nama_kamar)
+                                                            <td>{{ $terisi->pasien_inap }}</td>
+                                                        @endif
+                                                    @endforeach
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
