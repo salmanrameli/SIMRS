@@ -17,6 +17,7 @@
                         <th>Nama Pasien</th>
                         <th>Dokter Penanggung Jawab</th>
                         <th>Tanggal Masuk</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,7 @@
                             <td>{{ $pasien->pasien->nama }}</td>
                             <td>{{ $pasien->dokter->nama }}</td>
                             <td>{{ $pasien->tanggal_masuk }}</td>
+                            <td><a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Detail...</a></td>
                         </tr>
                         @endforeach
                 </tbody>
