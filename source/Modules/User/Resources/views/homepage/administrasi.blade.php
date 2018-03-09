@@ -81,6 +81,7 @@
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
+                                                            <a href="{{ route('ranap.kamar.show', $kamar->nama_kamar) }}" class="btn btn-outline-info btn-sm">Detail...</a>
                                                         </div>
                                                     </div>
                                                 @endif

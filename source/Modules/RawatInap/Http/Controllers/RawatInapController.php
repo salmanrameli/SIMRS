@@ -192,4 +192,18 @@ class RawatInapController extends Controller
     public function destroy()
     {
     }
+
+    public function showKamar($id)
+    {
+        $pasien = RawatInap::select('*')->whereNull('tanggal_keluar')->where('nama_kamar', '=', $id)->get();
+
+        return view('rawatinap::showKamar')
+            ->with('pasiens', $pasien)
+            ->with('kamar', $id);
+    }
+
+    public function back()
+    {
+        return redirect()->route('ranap.index');
+    }
 }
