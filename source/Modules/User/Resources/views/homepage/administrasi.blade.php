@@ -44,6 +44,8 @@
                                 </tbody>
                             </table>
                         </div>
+                        <br>
+                        <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info">Lihat Semua Pasien</a>
                     </div>
                 </div>
 

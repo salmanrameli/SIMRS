@@ -14,9 +14,13 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
 
 Route::group(['middleware' => 'web'], function ()
 {
-    Route::get('/ranap/pasien/{id}', [
+    Route::get('ranap/pasien/index', [
+        'as' => 'ranap.pasien.index',
+        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@index',
+    ]);
+
+    Route::get('ranap/pasien/{id}', [
         'as' => 'ranap.pasien.show',
         'uses' => 'Modules\Pasien\Http\Controllers\PasienController@show',
-        'only' => 'show'
     ]);
 });

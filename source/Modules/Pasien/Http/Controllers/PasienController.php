@@ -18,7 +18,7 @@ class PasienController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1')->except('show');
+        $this->middleware('checkRole:1')->except(['index', 'show']);
     }
 
     /**
@@ -28,6 +28,11 @@ class PasienController extends Controller
     public function index()
     {
         $pasien = Pasien::orderBy('id')->paginate(15);
+
+        if(Auth::user()->jabatan_id == 1)
+        {
+            return view('pasien::index-administrator')->with('pasiens', $pasien);
+        }
 
         return view('pasien::index')->with('pasiens', $pasien);
     }
