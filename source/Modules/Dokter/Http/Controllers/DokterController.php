@@ -15,6 +15,13 @@ class DokterController extends Controller
 {
     use ValidatesRequests;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole:1')->except(['show']);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response

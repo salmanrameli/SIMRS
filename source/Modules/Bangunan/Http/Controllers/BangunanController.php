@@ -10,6 +10,13 @@ use Modules\Bangunan\Entities\Lantai;
 
 class BangunanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole:1');
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
