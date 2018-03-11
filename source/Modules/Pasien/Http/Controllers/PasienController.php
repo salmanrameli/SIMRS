@@ -6,6 +6,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 
@@ -15,7 +16,9 @@ class PasienController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkRole:1');
+        $this->middleware('auth');
+
+        $this->middleware('checkRole:1')->except('show');
     }
 
     /**
@@ -83,7 +86,13 @@ class PasienController extends Controller
     {
         $pasien = Pasien::findorFail($id);
 
+        if(Auth::user()->jabatan_id == 1)
+        {
+            return view('pasien::show-administrator')->with('pasien', $pasien);
+        }
+
         return view('pasien::show')->with('pasien', $pasien);
+
     }
 
     /**

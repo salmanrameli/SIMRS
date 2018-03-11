@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::pages')
 
 @section('title')
     Detail Pasien {{ $pasien->nama }}
@@ -37,6 +37,11 @@
                 </tr>
                 </tbody>
             </table>
+            <a href="{{ route('pasien.edit', ['id' => $pasien->id]) }}" class="btn btn-outline-warning">Ubah Data Pasien</a>
         </div>
     </div>
+    @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien')
 @endsection

@@ -10,5 +10,13 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
         'as' => 'ranap.kamar.show',
         'uses' => 'RawatInapController@showKamar'
     ]);
+});
 
+Route::group(['middleware' => 'web'], function ()
+{
+    Route::get('/ranap/pasien/{id}', [
+        'as' => 'ranap.pasien.show',
+        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@show',
+        'only' => 'show'
+    ]);
 });

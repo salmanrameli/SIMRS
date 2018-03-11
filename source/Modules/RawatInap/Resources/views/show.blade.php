@@ -28,6 +28,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <a href="{{ route('ranap.pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Data Pasien</a>
                 <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-outline-warning">Ubah</a>
             </div>
         </div>
