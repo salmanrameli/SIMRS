@@ -12,6 +12,12 @@ use Modules\Pasien\Entities\Pasien;
 class PasienController extends Controller
 {
     use ValidatesRequests;
+
+    public function __construct()
+    {
+        $this->middleware('checkRole:1');
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
