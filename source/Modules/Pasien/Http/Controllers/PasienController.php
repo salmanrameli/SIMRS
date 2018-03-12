@@ -17,8 +17,6 @@ class PasienController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        $this->middleware('checkRole:1')->except(['index', 'show']);
     }
 
     /**
@@ -43,6 +41,11 @@ class PasienController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->jabatan_id == 1)
+        {
+            return view('pasien::create-administrator');
+        }
+
         return view('pasien::create');
     }
 
@@ -66,10 +69,13 @@ class PasienController extends Controller
             $this->validate($request, [
                 'ktp' => 'required',
                 'nama' => 'required',
-                'alamat' => 'required',
-                'telepon' => 'required',
                 'jenkel' => 'required',
+                'nama_wali' => 'required',
+                'alamat' => 'required',
                 'tanggal_lahir' => 'required',
+                'telepon' => 'required',
+                'pekerjaan' => 'required',
+                'agama' => 'required',
                 'golongan_darah' => 'required'
             ]);
 
@@ -121,10 +127,13 @@ class PasienController extends Controller
         $this->validate($request, [
             'ktp' => 'required',
             'nama' => 'required',
-            'alamat' => 'required',
-            'telepon' => 'required',
             'jenkel' => 'required',
+            'nama_wali' => 'required',
+            'alamat' => 'required',
             'tanggal_lahir' => 'required',
+            'telepon' => 'required',
+            'pekerjaan' => 'required',
+            'agama' => 'required',
             'golongan_darah' => 'required'
         ]);
 

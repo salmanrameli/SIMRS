@@ -16,11 +16,17 @@ Route::group(['middleware' => 'web'], function ()
 {
     Route::get('ranap/pasien/index', [
         'as' => 'ranap.pasien.index',
-        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@index',
+        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@index'
+    ]);
+
+    Route::get('ranap/pasien/create', [
+        'as' => 'ranap.pasien.create',
+        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@create'
     ]);
 
     Route::get('ranap/pasien/{id}', [
         'as' => 'ranap.pasien.show',
-        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@show',
+        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@show'
     ]);
+
 });

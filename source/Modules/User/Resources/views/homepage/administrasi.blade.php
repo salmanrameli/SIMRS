@@ -17,6 +17,7 @@
                 <div class="tab-pane active" id="pasien" role="tabpanel">
                     <div class="col-md-12">
                         <br>
+                        <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
                         <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary" style="margin-left: 10px">Daftarkan Rawat Inap Baru</a>
                         <br>
                         <br>
