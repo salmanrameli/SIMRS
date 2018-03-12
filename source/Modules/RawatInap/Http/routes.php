@@ -14,6 +14,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
 
 Route::group(['middleware' => 'web'], function ()
 {
+    Route::get('ranap/pasien/cari', [
+        'as' => 'ranap.pasien.cari',
+        'uses' => 'Modules\Pasien\Http\Controllers\PasienController@cari'
+    ]);
+
     Route::get('ranap/pasien/index', [
         'as' => 'ranap.pasien.index',
         'uses' => 'Modules\Pasien\Http\Controllers\PasienController@index'
@@ -28,5 +33,7 @@ Route::group(['middleware' => 'web'], function ()
         'as' => 'ranap.pasien.show',
         'uses' => 'Modules\Pasien\Http\Controllers\PasienController@show'
     ]);
+
+
 
 });

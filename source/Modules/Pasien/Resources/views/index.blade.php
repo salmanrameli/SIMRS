@@ -11,7 +11,7 @@
                 <div class="card card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form class="form-inline" action="{{ route('pasien.cari') }}" method="get">
+                            <form class="form-inline" action="{{ route('ranap.pasien.cari') }}" method="get">
                                 <label for="cari" class="control-label">Cari Pasien: </label>
                                 &nbsp;&nbsp;
                                 <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
@@ -26,16 +26,16 @@
                             </nav>
                             <table class="table">
                                 <tr>
-                                    <th>KTP</th>
                                     <th>Nama</th>
                                     <th>Alamat</th>
+                                    <th>Telepon</th>
                                     <th></th>
                                 </tr>
                                 @foreach($pasiens as $pasien)
                                     <tr>
-                                        <td>{{ $pasien->ktp }}</td>
-                                        <td>{{ $pasien->nama }}</td>
-                                        <td>{{ $pasien->alamat }}</td>
+                                        <td>{{ ucwords($pasien->nama) }}</td>
+                                        <td>{{ ucwords($pasien->alamat) }}</td>
+                                        <td>{{ ucwords($pasien->telepon) }}</td>
                                         <td><a href="{{ route('ranap.pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Lihat</a></td>
                                     </tr>
                                 @endforeach

@@ -33,16 +33,15 @@
                         </nav>
                         <table class="table">
                             <tr>
-                                <th>KTP</th>
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th></th>
                             </tr>
                             @foreach($pasiens as $pasien)
                                 <tr>
-                                    <td>{{ $pasien->ktp }}</td>
-                                    <td>{{ $pasien->nama }}</td>
-                                    <td>{{ $pasien->alamat }}</td>
+                                    <td>{{ ucwords($pasien->nama) }}</td>
+                                    <td>{{ ucwords($pasien->alamat) }}</td>
+                                    <td>{{ $pasien->telepon }}</td>
                                     <td><a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Lihat</a></td>
                                 </tr>
                             @endforeach
