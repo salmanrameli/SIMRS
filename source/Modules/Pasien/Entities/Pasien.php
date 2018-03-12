@@ -10,7 +10,7 @@ class Pasien extends Model
     protected $table = 'pasien';
 
     protected $fillable = [
-        'id', 'ktp', 'nama', 'tanggal_lahir', 'golongan_darah', 'alamat', 'telepon', 'jenkel'
+        'id', 'ktp', 'nama', 'jenkel', 'nama_wali', 'alamat', 'tanggal_lahir', 'telepon', 'pekerjaan', 'agama', 'golongan_darah'
     ];
 
     public function rawat_inap()

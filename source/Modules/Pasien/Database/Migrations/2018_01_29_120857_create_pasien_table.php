@@ -18,11 +18,14 @@ class CreatePasienTable extends Migration
 
             $table->string('ktp')->unique();
             $table->string('nama');
-            $table->date('tanggal_lahir');
-            $table->string('golongan_darah', 2);
-            $table->string('alamat');
-            $table->string('telepon');
             $table->string('jenkel');
+            $table->string('nama_wali');
+            $table->string('alamat');
+            $table->date('tanggal_lahir');
+            $table->string('telepon');
+            $table->string('pekerjaan');
+            $table->string('agama');
+            $table->string('golongan_darah', 2);
 
             $table->timestamps();
         });
