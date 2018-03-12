@@ -15,6 +15,6 @@ class Pasien extends Model
 
     public function rawat_inap()
     {
-        return $this->hasMany(RawatInap::class, 'id_pasien', 'ktp');
+        return $this->hasMany(RawatInap::class, 'id_pasien', 'id');
     }
 }

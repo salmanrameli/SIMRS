@@ -16,7 +16,7 @@ class RawatInap extends Model
 
     public function pasien()
     {
-        return $this->belongsTo(Pasien::class, 'id_pasien', 'ktp');
+        return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
     }
 
     public function dokter()
