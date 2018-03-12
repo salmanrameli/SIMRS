@@ -29,7 +29,7 @@ class PasienController extends Controller
 
         if(Auth::user()->jabatan_id == 1)
         {
-            return view('pasien::index-administrator')->with('pasiens', $pasien);
+            return view('pasien::administrator.index')->with('pasiens', $pasien);
         }
 
         return view('pasien::index')->with('pasiens', $pasien);
@@ -43,7 +43,7 @@ class PasienController extends Controller
     {
         if(Auth::user()->jabatan_id == 1)
         {
-            return view('pasien::create-administrator');
+            return view('pasien::administrator.create');
         }
 
         return view('pasien::create');
@@ -99,7 +99,7 @@ class PasienController extends Controller
 
         if(Auth::user()->jabatan_id == 1)
         {
-            return view('pasien::show-administrator')->with('pasien', $pasien);
+            return view('pasien::administrator.show')->with('pasien', $pasien);
         }
 
         return view('pasien::show')->with('pasien', $pasien);
