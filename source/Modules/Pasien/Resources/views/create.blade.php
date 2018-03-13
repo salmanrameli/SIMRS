@@ -7,6 +7,10 @@
 @section('content')
     <div class="col-md-12">
         <div class="card card-body">
+            <div class="page-header">
+                <h3>Form Registrasi Pasien</h3>
+                <br>
+            </div>
             {{ Form::open(['route' => 'pasien.store']) }}
 
             <div class="form-group">
