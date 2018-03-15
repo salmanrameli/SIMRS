@@ -1,6 +1,7 @@
 <script>
-    $("#manajemen_staff_jabatan").removeAttr("class", "sidebar-active");
-    $("#manajemen_data_pasien").attr("class", "sidebar-active");
-    $("#pengaturan_rumah_sakit").removeAttr("class", "sidebar-active");
-    $("#pengaturan_akun").removeAttr("class", "sidebar-active");
+    $('#beranda').removeAttr("class", "active").attr("class", "nav-link");
+    $('#manajemen_staff_jabatan').removeAttr("class", "active").attr("class", "nav-link");
+    $('#manajemen_data_pasien').attr("class", "nav-link active");
+    $('#manajemen_dokter').removeAttr("class", "active").attr("class", "nav-link");
+    $('#pengaturan_rumah_sakit').removeAttr("class", "active").attr("class", "nav-link");
 </script>

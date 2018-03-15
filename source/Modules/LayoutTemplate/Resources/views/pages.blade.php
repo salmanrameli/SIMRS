@@ -4,8 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>@yield('title')</title>
@@ -17,52 +15,49 @@
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('css/simple-sidebar.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/vertical-tabs.css') }}">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
-    <body style="background-color: #f8f9fa">
-        <div id="wrapper">
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        {{--<a href="/">Beranda</a>--}}
-                    </li>
-                    <li>
-                        @include('layouttemplate::sidebar')
-                    </li>
-                </ul>
+    <body>
+        <div class="col-md-12">
+            <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
+                <a href="/" class="btn btn-outline-info float-left">Home</a>
+                <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
+                <h3><br></h3>
             </div>
-            <!-- /#sidebar-wrapper -->
+        </div>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="row">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
 
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand"><h3>@yield('title')</h3></a>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto">
-
-                            </ul>
-                            <form class="form-inline my-2 my-lg-0">
-                                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
-                            </form>
-                            <form class="form-inline my-2 my-lg-0">
-                                <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            </form>
-                        </div>
-                    </nav>
                     <div class="col-md-12">
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-
                         @include('layouttemplate::alert')
+                    </div>
 
-                        @yield('content')
-
+                    <div class="d-flex">
+                        <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left">
+                            @include('layouttemplate::sidebar')
+                        </ul>
+                        <div class="tab-content">
+                            <div class="row" style="padding: 10px 25px 0 10px">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th class="w-100 hidden"></th>
+                                            <td class="w-100 hidden"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                @yield('content')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
         </div>
         @yield('script')
     </body>

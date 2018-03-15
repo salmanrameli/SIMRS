@@ -1,20 +1,30 @@
 @extends('layouttemplate::pages')
 
-@section('title')
-    Detail Ruang {{ $kamar->nama_kamar }}
-    @endsection
-
 @section('content')
-    <div class="card card-body">
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-outline-warning float-right">Ubah Detail Ruang</a>
-                    <h2>Ruang {{ $kamar->nama_kamar }}</h2>
-                    <hr>
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-outline-warning float-right">Ubah Detail Ruang</a>
+                            <h2>Ruang {{ $kamar->nama_kamar }}</h2>
+                            <br>
+                        </div>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th style="padding-right: 150px">Lokasi:</th>
+                                <td class="w-100" style="padding-left: 70px">Lantai {{ $kamar->nomor_lantai }} </td>
+                            </tr>
+                            <tr>
+                                <th>Jumlah Maksimal Penghuni:</th>
+                                <td style="padding-left: 70px">{{ $kamar->jumlah_maks_pasien }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <p>Lokasi: Lantai {{ $kamar->nomor_lantai }}</p>
-                <p>Jumlah Maksimal Penghuni: {{ $kamar->jumlah_maks_pasien }}</p>
             </div>
         </div>
     </div>

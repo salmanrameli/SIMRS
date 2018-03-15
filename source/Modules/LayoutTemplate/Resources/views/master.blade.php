@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Beranda</title>
 
@@ -14,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/css/fontawesome-all.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/vertical-tabs.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <body>
@@ -35,11 +37,20 @@
                         @include('layouttemplate::alert')
                     </div>
 
-                    @yield('content')
-
+                    <div class="d-flex">
+                        <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left">
+                            @include('layouttemplate::sidebar')
+                        </ul>
+                        <div class="tab-content">
+                            <div class="row" style="padding: 10px 25px 0 10px">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        @yield('script')
     </body>
     <footer style="padding-bottom: 5%"></footer>
 </html>

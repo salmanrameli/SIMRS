@@ -1,20 +1,25 @@
 @extends('layouttemplate::pages')
 
-@section('title')
-    Manajemen Pasien
-@endsection
 
 @section('content')
-    <div class="card card-body">
+    <div class="page-header">
+        <h3>Manajemen Pasien</h3>
+        <br>
+    </div>
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12">
-                <form class="form-inline" action="{{ route('pasien.cari') }}" method="get">
-                    <label for="cari" class="control-label">Cari Pasien: </label>
-                    &nbsp;&nbsp;
-                    <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
-                    &nbsp;
-                    <button type="submit" class="btn btn-primary">Cari</button>
-                </form>
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-inline" action="{{ route('pasien.cari') }}" method="get">
+                            <label for="cari" class="control-label">Cari Pasien: </label>
+                            &nbsp;&nbsp;
+                            <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
+                            &nbsp;
+                            <button type="submit" class="btn btn-primary">Cari</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -35,6 +40,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Alamat</th>
+                                <th>Telepon</th>
                                 <th></th>
                             </tr>
                             @foreach($pasiens as $pasien)

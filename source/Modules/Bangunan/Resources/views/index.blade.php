@@ -1,24 +1,28 @@
 @extends('layouttemplate::pages')
 
-@section('title')
-    Manajemen Lantai & Kamar
-    @endsection
-
 @section('content')
-    <div class="card card-body">
+    <div class="page-header">
+        <h3>Manajemen Bangunan</h3>
+        <br>
+    </div>
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12">
-                <a href="{{ route('lantai.create') }}" class="btn btn-outline-primary">Tambah Lantai Baru</a>
-                <a href="{{ route('kamar.create') }}" class="btn btn-outline-primary">Tambah Kamar Baru</a>
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ route('lantai.create') }}" class="btn btn-outline-primary">Tambah Lantai Baru</a>
+                        <a href="{{ route('kamar.create') }}" class="btn btn-outline-primary">Tambah Kamar Baru</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="card card-body">
+    <div class="col-md-12">
         <div class="row">
             <div class="col-md-12">
                 @foreach($lantais as $lantai)
                     <div class="row align-items-center justify-content-center">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card card-body">
                                 <h3>
                                     Lantai {{ $lantai->nomor_lantai }}
@@ -30,13 +34,13 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <th>Jumlah Kamar</th>
+                                                    <th class="w-100" style="padding-right: 100px">Jumlah Kamar</th>
                                                     <td>{{ $kamar->total_kamar }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     @endif
-                                    @endforeach
+                                @endforeach
                             </div>
                         </div>
                     </div>
