@@ -1,5 +1,8 @@
 @extends('layouttemplate::pages')
 
+@section('title')
+    Manajemen Pasien
+@endsection
 
 @section('content')
     <div class="page-header">

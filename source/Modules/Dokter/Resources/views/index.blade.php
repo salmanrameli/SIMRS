@@ -1,8 +1,12 @@
 @extends('layouttemplate::pages')
 
+@section('title')
+    Manajemen Dokter
+@endsection
+
 @section('content')
     <div class="page-header">
-        <h3>Manajemen Dokter RS</h3>
+        <h3>Manajemen Dokter</h3>
         <br>
     </div>
     <div class="col-md-12">

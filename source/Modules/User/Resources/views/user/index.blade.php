@@ -1,5 +1,9 @@
 @extends('layouttemplate::pages')
 
+@section('title')
+    Manajemen Staff
+@endsection
+
 @section('content')
     <div class="page-header">
         <h3>Manajemen Staff & Jabatan</h3>

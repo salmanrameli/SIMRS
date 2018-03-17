@@ -1,5 +1,9 @@
 @extends('layouttemplate::pages')
 
+@section('title')
+    Manajemen Bangunan
+    @endsection
+
 @section('content')
     <div class="page-header">
         <h3>Manajemen Bangunan</h3>
@@ -49,7 +53,7 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
-                                                    <a href="{{ route('ranap.kamar.show', $kamar->nama_kamar) }}" class="btn btn-outline-info btn-sm">Detail...</a>
+                                                    <a href="{{ route('kamar.show', $kamar->id) }}" class="btn btn-outline-info btn-sm">Detail...</a>
                                                 </div>
                                             </div>
                                         @endif
