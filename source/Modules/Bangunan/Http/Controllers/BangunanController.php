@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
+use Modules\RawatInap\Entities\RawatInap;
 
 class BangunanController extends Controller
 {
@@ -23,14 +25,17 @@ class BangunanController extends Controller
      */
     public function index()
     {
-        $lantai = Lantai::orderBy('lantai.id', 'desc')->get();
+        $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('tanggal_masuk', 'desc')->get();
 
-        $kamar = Lantai::join('kamar', 'kamar.nomor_lantai', '=', 'lantai.nomor_lantai')
-            ->groupBy('lantai.nomor_lantai')
-            ->orderByDesc('lantai.id')
-            ->get(['lantai.nomor_lantai', DB::raw('count(kamar.id) as total_kamar')]);
+        $lantai = Lantai::select('nomor_lantai')->orderBy('lantai.id', 'desc')->pluck('nomor_lantai');
+
+        $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
+
+        $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
 
         return view('bangunan::index')
+            ->with('pasiens', $pasien_ranap)
+            ->with('terisis', $terisi_sekarang)
             ->with('lantais', $lantai)
             ->with('kamars', $kamar);
     }
