@@ -14,7 +14,7 @@
 
     <div class="col-md-3">
         <div class="card">
-            <img class="img-fluid mx-auto" src="{{ asset('img/doctor.png') }}" alt="Users">
+            <img class="img-fluid mx-auto" src="{{ asset('img/doctor.png') }}" alt="Dokter">
             <div class="card-body">
                 <h5 class="card-title">Manajemen Dokter RS</h5>
                 <p class="card-text">Mengelola data dokter rumah sakit, seperti mendaftarkan dokter, merubah, atau menghapus data dokter yang terdaftar di rumah sakit.</p>
@@ -47,11 +47,5 @@
     @endsection
 
 @section('script')
-    <script>
-        $('#beranda').attr("class", "nav-link active");
-        $('#manajemen_staff_jabatan').removeAttr("class", "nav-link active").attr("class", "nav-link");
-        $('#manajemen_data_pasien').removeAttr("class", "active").attr("class", "nav-link");
-        $('#manajemen_dokter').removeAttr("class", "active").attr("class", "nav-link");
-        $('#pengaturan_rumah_sakit').removeAttr("class", "active").attr("class", "nav-link");
-    </script>
+    @include('layouttemplate::attributes.home')
 @endsection
