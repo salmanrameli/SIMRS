@@ -1,4 +1,4 @@
-@extends('layouttemplate::master')
+@extends('layouttemplate::pages')
 
 @section('content')
     <div class="col-md-12">
