@@ -8,8 +8,7 @@
     <div class="card card-body">
         <div class="col-md-12">
             <h3>{{ $pasien->nama }}</h3>
-            &nbsp;
-            <table class="table">
+            <table class="table" id="table">
                 <tbody>
                     <tr>
                         <th class="w-25">KTP</th>
@@ -29,7 +28,7 @@
                     </tr>
                     <tr>
                         <th>Tanggal Lahir</th>
-                        <td>{{ $pasien->tanggal_lahir }}</td>
+                        <td id="tanggal_lahir">{{ date("d F Y", strtotime($pasien->tanggal_lahir)) }}</td>
                     </tr>
                     <tr>
                         <th>Telepon</th>
@@ -56,4 +55,13 @@
 
 @section('script')
     @include('layouttemplate::attributes.pasien')
+
+    <script>
+        var lahir = new Date($('#table').find('#tanggal_lahir').text());
+        var sekarang = new Date();
+        var tahun_sekarang = sekarang.getFullYear();
+        var tahun_lahir = lahir.getFullYear();
+        var umur = tahun_sekarang - tahun_lahir;
+        $('#tanggal_lahir').append(" (" + umur + " tahun)");
+    </script>
 @endsection

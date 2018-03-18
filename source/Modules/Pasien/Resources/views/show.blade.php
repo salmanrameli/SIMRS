@@ -1,15 +1,14 @@
 @extends('layouttemplate::pages-alt')
 
 @section('title')
-    Detail Pasien {{ $pasien->nama }}
+    Detail Pasien: {{ $pasien->nama }}
 @endsection
 
 @section('content')
     <div class="col-md-12">
         <div class="card card-body">
             <h3>{{ ucfirst($pasien->nama) }}</h3>
-            &nbsp;
-            <table class="table">
+            <table class="table" id="table">
                 <tbody>
                     <tr>
                         <th class="w-25">KTP</th>
@@ -29,7 +28,7 @@
                     </tr>
                     <tr>
                         <th>Tanggal Lahir</th>
-                        <td>{{ $pasien->tanggal_lahir }}</td>
+                        <td id="tanggal_lahir">{{ date("d F Y", strtotime($pasien->tanggal_lahir)) }}</td>
                     </tr>
                     <tr>
                         <th>Telepon</th>
@@ -52,3 +51,14 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        var lahir = new Date($('#table').find('#tanggal_lahir').text());
+        var sekarang = new Date();
+        var tahun_sekarang = sekarang.getFullYear();
+        var tahun_lahir = lahir.getFullYear();
+        var umur = tahun_sekarang - tahun_lahir;
+        $('#tanggal_lahir').append(" (" + umur + " tahun)");
+    </script>
+    @endsection
