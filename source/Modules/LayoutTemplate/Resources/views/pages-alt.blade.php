@@ -41,6 +41,7 @@
                 </div>
             </div>
         </div>
+        @yield('script')
     </body>
     <footer style="padding-bottom: 5%"></footer>
 </html>
