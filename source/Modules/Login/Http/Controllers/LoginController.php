@@ -21,23 +21,7 @@ class LoginController extends Controller
                     return view('login::homepage.administrator')->with('nama', Auth::user()->nama);
                     break;
                 case '2':
-                    $nama = Auth::user()->nama;
-
-                    $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('tanggal_masuk', 'desc')->get();
-
-                    $lantai = Lantai::select('nomor_lantai')->orderBy('lantai.id', 'desc')->pluck('nomor_lantai');
-
-                    $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
-
-                    $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
-
-                    return view('login::homepage.administrasi')
-                        ->with('nama', $nama)
-                        ->with('pasiens', $pasien_ranap)
-                        ->with('lantais', $lantai)
-                        ->with('kamars', $kamar)
-                        ->with('terisis', $terisi_sekarang);
-
+                    return view('login::homepage.administrasi')->with('nama', Auth::user()->nama);
                     break;
                 case '3':
                     return view('login::homepage.kasir')->with('nama', Auth::user()->nama);

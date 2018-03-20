@@ -16,3 +16,12 @@
         <a href="{{ route('bangunan.index') }}" class="nav-link" id="pengaturan_rumah_sakit">Manajemen Bangunan</a>
     </li>
     @endif
+
+@if(Auth::user()->jabatan_id == 2)
+    <li class="nav-item">
+        <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap">Pasien Rawat Inap</a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('ranap.kamar') }}" class="nav-link" id="denah_ruangan">Ruangan</a>
+    </li>
+    @endif
