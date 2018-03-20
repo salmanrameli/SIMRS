@@ -43,6 +43,14 @@
                         </ul>
                         <div class="tab-content">
                             <div class="row" style="padding: 10px 25px 0 10px">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <th class="w-100 hidden"></th>
+                                        <td class="w-100 hidden"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                                 @yield('content')
                             </div>
                         </div>
