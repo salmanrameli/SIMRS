@@ -25,7 +25,7 @@
                         <tr>
                             <td>{{ $pasien->pasien->nama }}</td>
                             <td>{{ $pasien->dokter->nama }}</td>
-                            <td>{{ $pasien->tanggal_masuk }}</td>
+                            <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
                             <td><a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Detail...</a></td>
                         </tr>
                         @endforeach

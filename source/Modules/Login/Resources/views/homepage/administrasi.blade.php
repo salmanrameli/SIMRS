@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('content')
     <div class="col-md-12">
@@ -38,7 +38,7 @@
                                         <td>{{ $pasien->pasien->nama }}</td>
                                         <td>{{ $pasien->nama_kamar }}</td>
                                         <td>{{ $pasien->dokter->nama }}</td>
-                                        <td>{{ $pasien->tanggal_masuk }}</td>
+                                        <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
                                         <th><a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Detail...</a></th>
                                     </tr>
                                 @endforeach
@@ -99,3 +99,7 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.home')
+    @endsection
