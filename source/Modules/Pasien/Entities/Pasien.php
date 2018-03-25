@@ -3,6 +3,7 @@
 namespace Modules\Pasien\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\RawatInap\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
 
 class Pasien extends Model
@@ -15,6 +16,11 @@ class Pasien extends Model
 
     public function rawat_inap()
     {
-        return $this->hasMany(RawatInap::class, 'id_pasien', 'id');
+        return $this->hasMany(RawatInap::class, 'id_pasien', 'ktp');
+    }
+
+    public function perjalanan_penyakit()
+    {
+        return $this->hasMany(PerjalananPenyakit::class, 'id_pasien', 'id');
     }
 }

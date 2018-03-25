@@ -29,7 +29,12 @@
                     </tbody>
                 </table>
                 <a href="{{ route('ranap.pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Data Pasien</a>
-                <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-outline-warning">Ubah</a>
+
+                @if(Auth::user()->jabatan_id == 3)
+                    <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perjalanan Penyakit Pasien</a>
+                @endif
+
+                <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-outline-warning float-right">Ubah</a>
             </div>
         </div>
     </div>

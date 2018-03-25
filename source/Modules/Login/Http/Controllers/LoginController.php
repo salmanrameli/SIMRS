@@ -24,7 +24,7 @@ class LoginController extends Controller
                     return view('login::homepage.administrasi')->with('nama', Auth::user()->nama);
                     break;
                 case '3':
-                    return view('login::homepage.kasir')->with('nama', Auth::user()->nama);
+                    return view('login::homepage.perawat')->with('nama', Auth::user()->nama);
                     break;
                 default:
                     return view('welcome');

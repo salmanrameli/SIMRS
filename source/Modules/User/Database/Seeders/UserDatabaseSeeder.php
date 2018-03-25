@@ -68,7 +68,7 @@ class UserDatabaseSeeder extends Seeder
         ]);
 
         DB::table('jabatan')->insert([
-            'nama' => 'kasir'
+            'nama' => 'perawat'
         ]);
 
          //$this->call("JabatanDatabaseSeeder");

@@ -2,12 +2,14 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Controllers'], function()
 {
-    Route::get('/kamar', [
+    Route::get('kamar', [
         'as' => 'ranap.kamar',
         'uses' => 'RawatInapController@indexKamar'
     ]);
 
-    Route::resource('/ranap', 'RawatInapController');
+    Route::resource('ranap', 'RawatInapController');
+
+    Route::resource('ranap/{id}/perjalanan_penyakit', 'PerjalananPenyakitController');
 
     Route::get('/ranap/kamar/{id}', [
         'as' => 'ranap.kamar.show',
