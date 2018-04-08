@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Detail Rawat Inap

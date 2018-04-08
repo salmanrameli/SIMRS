@@ -23,7 +23,7 @@
             <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
-                <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ $nama }}</small></h4>
+                <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
             </div>
         </div>
         <div class="container-fluid">

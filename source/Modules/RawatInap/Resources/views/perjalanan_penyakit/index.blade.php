@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Perjalanan Penyakit Pasien
@@ -29,7 +29,7 @@
                         <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
                     </div>
                 </div>
-                <table class="table table-striped">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Tanggal</th>
