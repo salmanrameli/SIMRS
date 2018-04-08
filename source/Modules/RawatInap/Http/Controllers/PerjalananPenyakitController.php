@@ -61,7 +61,7 @@ class PerjalananPenyakitController extends Controller
 
         Session::flash('message', 'Catatan berhasil disimpan');
 
-        return redirect('/ranap');
+        return redirect()->route('perjalanan_penyakit.index', $request->id_pasien);
     }
 
     /**
