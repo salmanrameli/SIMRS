@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::pages')
 
 @section('title')
     Detail Rawat Inap
@@ -38,4 +38,8 @@
             </div>
         </div>
     </div>
+    @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien_ranap')
     @endsection

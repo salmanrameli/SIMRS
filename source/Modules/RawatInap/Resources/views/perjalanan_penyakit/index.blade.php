@@ -9,13 +9,11 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
+                    <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
                     <h4>Perjalanan Penyakit: {{ $pasien->nama }}</h4>
-                    <br>
                     <p>Jenis Kelamin: {{ ucfirst($pasien->jenkel) }}</p>
                     <p id="umur">Umur: </p>
                     <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
-                    <a href="{{ route('perjalanan_penyakit.create', $pasien->id) }}" class="btn btn-outline-primary">Buat Catatan Baru</a>
-                    <br><br>
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -49,4 +47,5 @@
         var umur = tahun_sekarang - tahun_lahir;
         $('#umur').append(umur + " Tahun");
     </script>
+    @include('layouttemplate::attributes.pasien_ranap')
     @endsection

@@ -6,7 +6,8 @@
             <div class="col-md-12">
                 <br>
                 <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
-                <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary" style="margin-left: 10px">Daftarkan Rawat Inap Baru</a>
+                <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary">Daftarkan Rawat Inap Baru</a>
+                <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
                 <br>
                 <br>
                 <div style="max-height: 500px; overflow: auto">
@@ -27,14 +28,18 @@
                                 <td>{{ $pasien->nama_kamar }}</td>
                                 <td>{{ $pasien->dokter->nama }}</td>
                                 <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
-                                <th><a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Detail...</a></th>
+                                <th>
+                                    <a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right" style="margin-left: 5px">Detail...</a>
+                                    @if(Auth::user()->jabatan_id == 3)
+                                        <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Perjalanan Penyakit Pasien</a>
+                                    @endif
+                                </th>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
                 <br>
-                <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info">Lihat Semua Pasien</a>
             </div>
         </div>
     </div>
