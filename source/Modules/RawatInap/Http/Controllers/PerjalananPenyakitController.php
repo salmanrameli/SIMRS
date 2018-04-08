@@ -77,9 +77,11 @@ class PerjalananPenyakitController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id, $perjalanan)
     {
-        return view('rawatinap::edit');
+        $perjalanan = PerjalananPenyakit::findorFail($perjalanan);
+
+        return view('rawatinap::perjalanan_penyakit.edit')->with('perjalanan', $perjalanan);
     }
 
     /**
@@ -87,8 +89,25 @@ class PerjalananPenyakitController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id_pasien, $perjalanan)
     {
+        $perjalanan = PerjalananPenyakit::findorFail($perjalanan);
+
+        $this->validate($request, [
+            'id_pasien' => 'required',
+            'tanggal_keterangan' => 'required',
+            'perjalanan_penyakit' => 'required',
+            'perintah_dokter_dan_pengobatan' => 'required',
+            'id_petugas' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $perjalanan->fill($input)->save();
+
+        Session::flash('message', 'Perubahan berhasil disimpan');
+
+        return redirect()->route('perjalanan_penyakit.index', $id_pasien);
     }
 
     /**
