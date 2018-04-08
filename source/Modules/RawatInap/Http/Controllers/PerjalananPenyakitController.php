@@ -81,7 +81,11 @@ class PerjalananPenyakitController extends Controller
     {
         $perjalanan = PerjalananPenyakit::findorFail($perjalanan);
 
-        return view('rawatinap::perjalanan_penyakit.edit')->with('perjalanan', $perjalanan);
+        $pasien = Pasien::findorFail($id)->value('nama');
+
+        return view('rawatinap::perjalanan_penyakit.edit')
+            ->with('perjalanan', $perjalanan)
+            ->with('pasien', $pasien);
     }
 
     /**

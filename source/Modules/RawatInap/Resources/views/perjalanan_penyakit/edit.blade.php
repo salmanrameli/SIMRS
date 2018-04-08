@@ -1,7 +1,7 @@
 @extends('layouttemplate::pages')
 
 @section('title')
-    Catatan Perjalanan Penyakit Baru
+    Ubah Catatan Perjalanan Penyakit Baru
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Perjalanan Penyakit Pasien</h4>
+                    <h4>Ubah Catatan Perjalanan Penyakit Pasien: {{ $pasien }}</h4>
                     <br>
                 </div>
 
@@ -43,4 +43,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien_ranap')
 @endsection

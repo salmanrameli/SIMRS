@@ -9,7 +9,7 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Perjalanan Penyakit Pasien</h4>
+                    <h4>Buat Catatan Perjalanan Penyakit Pasien: {{ $pasien->nama }}</h4>
                     <br>
                 </div>
 
@@ -44,3 +44,7 @@
         </div>
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien_ranap')
+@endsection
