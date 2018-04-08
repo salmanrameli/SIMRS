@@ -4,10 +4,6 @@ namespace Modules\Login\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Modules\Bangunan\Entities\Kamar;
-use Modules\Bangunan\Entities\Lantai;
-use Modules\RawatInap\Entities\RawatInap;
 
 class LoginController extends Controller
 {
@@ -18,13 +14,13 @@ class LoginController extends Controller
 
             switch ($jabatan) {
                 case '1':
-                    return view('login::homepage.administrator')->with('nama', Auth::user()->nama);
+                    return view('login::homepage.administrator');
                     break;
                 case '2':
-                    return view('login::homepage.administrasi')->with('nama', Auth::user()->nama);
+                    return view('login::homepage.administrasi');
                     break;
                 case '3':
-                    return view('login::homepage.perawat')->with('nama', Auth::user()->nama);
+                    return view('login::homepage.perawat');
                     break;
                 default:
                     return view('welcome');
