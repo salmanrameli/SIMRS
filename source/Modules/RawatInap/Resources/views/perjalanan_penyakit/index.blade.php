@@ -23,6 +23,10 @@
                                     <th>Umur</th>
                                     <td id="umur" style="padding-left: 10px"></td>
                                 </tr>
+                                <tr>
+                                    <th>Tanggal Masuk</th>
+                                    <td style="padding-left: 10px">: {{ date("d F Y", strtotime($tanggal_masuk)) }}</td>
+                                </tr>
                             </tbody>
                         </table>
                         <br>

@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\PerintahDokterDanPengobatan;
+use Modules\RawatInap\Entities\RawatInap;
 
 class PerintahDokterDanPengobatanController extends Controller
 {
@@ -24,9 +25,12 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $perintah_dokter = PerintahDokterDanPengobatan::where('id_pasien', $id)->get();
 
+        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->whereNull('tanggal_keluar')->value('tanggal_masuk');
+
         return view('rawatinap::perintah_dokter_dan_pengobatan.index')
             ->with('pasien', $pasien)
-            ->with('perintahs', $perintah_dokter);
+            ->with('perintahs', $perintah_dokter)
+            ->with('tanggal_masuk', $tanggal_masuk);
     }
 
     /**

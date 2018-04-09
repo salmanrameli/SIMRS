@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\PerjalananPenyakit;
+use Modules\RawatInap\Entities\RawatInap;
 
 class PerjalananPenyakitController extends Controller
 {
@@ -24,9 +25,12 @@ class PerjalananPenyakitController extends Controller
 
         $perjalanan = PerjalananPenyakit::where('id_pasien', $id)->get();
 
+        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->whereNull('tanggal_keluar')->value('tanggal_masuk');
+
         return view('rawatinap::perjalanan_penyakit.index')
             ->with('pasien', $pasien)
-            ->with('perjalanans', $perjalanan);
+            ->with('perjalanans', $perjalanan)
+            ->with('tanggal_masuk', $tanggal_masuk);
     }
 
     /**
