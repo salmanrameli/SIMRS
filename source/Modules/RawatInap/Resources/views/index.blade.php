@@ -1,5 +1,9 @@
 @extends('layouttemplate::master')
 
+@section('title')
+    Pasien Rawat Inap
+    @endsection
+
 @section('content')
     <div class="col-md-12">
         <div class="card card-body">
@@ -29,17 +33,24 @@
                                 <td>{{ $pasien->dokter->nama }}</td>
                                 <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
                                 <th>
-                                    <a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right" style="margin-left: 5px">Detail...</a>
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Perjalanan Penyakit Pasien</a>
-                                    @endif
+                                    <div class="dropdown show">
+                                        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Pilihan...
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a href="{{ route('ranap.show', $pasien->id) }}" class="dropdown-item">Detail...</a>
+                                            @if(Auth::user()->jabatan_id == 3)
+                                                <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </th>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-                <br>
             </div>
         </div>
     </div>

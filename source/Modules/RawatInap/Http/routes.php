@@ -11,6 +11,8 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
 
     Route::resource('ranap/{id}/perjalanan_penyakit', 'PerjalananPenyakitController');
 
+    Route::resource('ranap/{id}/perintah_dokter_dan_pengobatan', 'PerintahDokterDanPengobatanController');
+
     Route::get('/ranap/kamar/{id}', [
         'as' => 'ranap.kamar.show',
         'uses' => 'RawatInapController@showKamar'
