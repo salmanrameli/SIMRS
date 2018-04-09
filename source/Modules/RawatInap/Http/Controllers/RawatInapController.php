@@ -118,7 +118,7 @@ class RawatInapController extends Controller
 
         Session::flash('message', 'Pendaftaran rawat inap berhasil disimpan');
 
-        return redirect('/');
+        return redirect()->route('ranap.index');
     }
 
     /**
