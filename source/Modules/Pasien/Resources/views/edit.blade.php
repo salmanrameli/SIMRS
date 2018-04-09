@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Ubah Data Pasien
