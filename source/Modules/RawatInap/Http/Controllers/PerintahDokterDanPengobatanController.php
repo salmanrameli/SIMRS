@@ -77,9 +77,15 @@ class PerintahDokterDanPengobatanController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id, $perintah)
     {
-        return view('rawatinap::edit');
+        $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
+
+        $pasien = Pasien::findorFail($id);
+
+        return view('rawatinap::perintah_dokter_dan_pengobatan.edit')
+            ->with('perintah', $perintah)
+            ->with('pasien', $pasien);
     }
 
     /**
@@ -87,8 +93,25 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id_pasien, $perintah)
     {
+        $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
+
+        $this->validate($request, [
+            'id_pasien' => 'required',
+            'tanggal_keterangan' => 'required',
+            'terapi_dan_rencana_tindakan' => 'required',
+            'catatan_perawat' => 'required',
+            'id_petugas' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $perintah->fill($input)->save();
+
+        Session::flash('message', 'Perubahan berhasil disimpan');
+
+        return redirect()->route('perintah_dokter_dan_pengobatan.index', $id_pasien);
     }
 
     /**

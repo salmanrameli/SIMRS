@@ -44,7 +44,7 @@
                                 <td>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</td>
                                 <td class="text-justify">{{ $perintah->terapi_dan_rencana_tindakan }}</td>
                                 <td class="text-justify">{{ $perintah->catatan_perawat }}</td>
-                                <td><a href="{{ route('perjalanan_penyakit.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-outline-warning">Ubah</a></td>
+                                <td><a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-outline-warning">Ubah</a></td>
                             </tr>
                         @endforeach
                     </tbody>
