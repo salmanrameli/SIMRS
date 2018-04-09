@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Beranda</title>
+        <title>@yield('title')</title>
 
         <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
         <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
