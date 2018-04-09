@@ -54,7 +54,17 @@
 
 @if(Auth::user()->jabatan_id == 2)
     <li class="nav-item">
-        <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap">Pasien Rawat Inap</a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropright</span>
+            </button>
+            <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap">Pasien Rawat Inap</a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('ranap.pasien.create') }}" class="nav-link small">Daftarkan Pasien Baru</a>
+                <a href="{{ route('ranap.create') }}" class="nav-link small">Daftarkan Rawat Inap Baru</a>
+                <a href="{{ route('ranap.pasien.index') }}" class="nav-link small">Lihat Semua Pasien</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a href="{{ route('ranap.kamar') }}" class="nav-link" id="denah_ruangan">Ruangan</a>
