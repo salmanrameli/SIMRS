@@ -45,10 +45,10 @@
                     <tbody>
                     @foreach($catatans as $catatan)
                         <tr>
-                            <td>{{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</td>
+                            <td style="min-width: 190px">{{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</td>
                             <td class="text-justify">{{ $catatan->asuhan_keperawatan_soap }}</td>
                             <td class="text-justify">{{ $catatan->id_petugas }}</td>
-                            <td><a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$catatan->id_pasien, $catatan->id]) }}" class="btn btn-outline-warning">Ubah</a></td>
+                            <td><a href="{{ route('catatan_harian_perawatan.edit', [$catatan->id_pasien, $catatan->id]) }}" class="btn btn-outline-warning">Ubah</a></td>
                         </tr>
                     @endforeach
                     </tbody>

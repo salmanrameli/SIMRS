@@ -63,7 +63,7 @@ class CatatanHarianPerawatanController extends Controller
 
         CatatanHarianPerawatan::create($input);
 
-        Session::flash('message', 'Catatan Harian dan Perawatan berhasil disimpan');
+        Session::flash('message', 'Catatan harian dan perawatan berhasil disimpan');
 
         return redirect()->route('catatan_harian_perawatan.index', $request->id_pasien);
     }
@@ -81,9 +81,15 @@ class CatatanHarianPerawatanController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id, $catatan)
     {
-        return view('rawatinap::edit');
+        $catatan = CatatanHarianPerawatan::findorFail($catatan);
+
+        $pasien = Pasien::findorFail($id);
+
+        return view('rawatinap::catatan_harian_perawatan.edit')
+            ->with('catatan', $catatan)
+            ->with('pasien', $pasien);
     }
 
     /**
@@ -91,8 +97,25 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id_pasien, $catatan)
     {
+        $catatan = CatatanHarianPerawatan::findorFail($catatan);
+
+        $this->validate($request, [
+            'id_pasien' => 'required',
+            'tanggal_keterangan' => 'required',
+            'jam' => 'required|date_format:H:i',
+            'asuhan_keperawatan_soap' => 'required',
+            'id_petugas' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $catatan->fill($input)->save();
+
+        Session::flash('message', 'Catatan harian dan perawatan berhasil diubah');
+
+        return redirect()->route('catatan_harian_perawatan.index', $id_pasien);
     }
 
     /**
