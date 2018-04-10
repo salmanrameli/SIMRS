@@ -30,7 +30,7 @@
                 <br>
                 <div class="form-group">
                     {{ Form::label('asuhan_keperawatan_soap', 'Asuhan Keperawatan', ['class' => 'control-label']) }}
-                    {{ Form::textarea('asuhan_keperawatan_soap', 'Integer vulputate iaculis nibh blandit maximus. Donec ac viverra velit. Curabitur vitae magna eleifend, facilisis nibh et, gravida eros. Vestibulum ipsum lacus, egestas id augue at, consequat rhoncus lacus.', ['class' => 'form-control']) }}
+                    {{ Form::textarea('asuhan_keperawatan_soap', null, ['class' => 'form-control']) }}
                 </div>
 
                 <div hidden>
