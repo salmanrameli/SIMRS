@@ -1,7 +1,7 @@
 @extends('layouttemplate::master')
 
 @section('title')
-    Catatan Perintah Dokter dan Pengobatan Baru
+    Ubah Catatan Perintah Dokter dan Pengobatan
 @endsection
 
 @section('content')
