@@ -11,11 +11,13 @@
         <script src="{{ asset('bootstrap/js/jquery.min.js') }}"></script>
         <script src="{{ asset('bootstrap/js/popper.js') }}"></script>
         <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-timepicker.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('bootstrap/css/fontawesome-all.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
         <link rel="stylesheet" href="{{ asset('css/vertical-tabs.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-timepicker.min.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <body>
