@@ -14,7 +14,7 @@
                 <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
                 <br>
                 <br>
-                <div style="max-height: 500px; overflow: auto">
+                <div>
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -37,11 +37,12 @@
                                         <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Pilihan...
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                             <a href="{{ route('ranap.show', $pasien->id) }}" class="dropdown-item">Detail...</a>
                                             @if(Auth::user()->jabatan_id == 3)
                                                 <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
+                                                <a href="{{ route('catatan_harian_perawatan.index', $pasien->pasien->id) }}" class="dropdown-item">Catatan Harian dan Perawatan</a>
                                             @endif
                                         </div>
                                     </div>
