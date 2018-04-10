@@ -17,7 +17,7 @@ class CreateCatatanHarianPerawatanTable extends Migration
             $table->increments('id');
             $table->string('id_pasien');
             $table->date('tanggal_keterangan');
-            $table->integer('jam');
+            $table->string('jam');
             $table->text('asuhan_keperawatan_soap');
             $table->string('id_petugas');
 
