@@ -9,6 +9,6 @@ class CatatanHarianPerawatan extends Model
     protected $table = 'catatan_harian_perawatan';
 
     protected $fillable = [
-        'tanggal', 'jam', 'asuhan_keperawatan_soap', 'id_petugas'
+        'tanggal_keterangan', 'jam', 'asuhan_keperawatan_soap', 'id_petugas'
     ];
 }
