@@ -10,7 +10,13 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs small">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Perjalanan Penyakit</a>
+                        <a class="nav-link active">Perjalanan Penyakit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
                     </li>
                 </ul>
             </div>
@@ -41,15 +47,15 @@
                             <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead class="small">
+                    <table class="table small">
+                        <thead>
                             <tr>
                                 <th>Tanggal</th>
                                 <th>Perjalanan Penyakit</th>
                                 <th>Perintah Dokter dan Pengobatan</th>
                             </tr>
                         </thead>
-                        <tbody class="small">
+                        <tbody>
                         @foreach($perjalanans as $perjalanan)
                             <tr>
                                 <td>{{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</td>
