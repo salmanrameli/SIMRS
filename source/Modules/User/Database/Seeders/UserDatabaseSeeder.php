@@ -47,7 +47,16 @@ class UserDatabaseSeeder extends Seeder
             'password' => bcrypt('pass')
         ]);
 
-        for ($index = 4; $index <= 20; $index++)
+        DB::table('users')->insert([
+            'id_user' => '4',
+            'nama' => $faker->name,
+            'alamat' => $faker->address,
+            'telepon' => $faker->phoneNumber,
+            'jabatan_id' => '4',
+            'password' => bcrypt('pass')
+        ]);
+
+        for ($index = 5; $index <= 20; $index++)
         {
             DB::table('users')->insert([
                 'id_user' => $index,
@@ -69,6 +78,10 @@ class UserDatabaseSeeder extends Seeder
 
         DB::table('jabatan')->insert([
             'nama' => 'perawat'
+        ]);
+
+        DB::table('jabatan')->insert([
+            'nama' => 'dokter'
         ]);
 
          //$this->call("JabatanDatabaseSeeder");
