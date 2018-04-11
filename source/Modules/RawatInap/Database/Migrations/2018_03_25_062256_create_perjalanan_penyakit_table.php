@@ -17,8 +17,10 @@ class CreatePerjalananPenyakitTable extends Migration
             $table->increments('id');
             $table->string('id_pasien');
             $table->date('tanggal_keterangan');
-            $table->text('perjalanan_penyakit');
-            $table->text('perintah_dokter_dan_pengobatan');
+            $table->text('subjektif');
+            $table->text('objektif');
+            $table->text('assessment');
+            $table->text('planning_perintah_dokter_dan_pengobatan');
             $table->string('id_petugas');
             $table->timestamps();
         });
