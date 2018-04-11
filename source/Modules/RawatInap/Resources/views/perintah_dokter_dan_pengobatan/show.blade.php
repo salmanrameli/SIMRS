@@ -58,7 +58,7 @@
                         <tbody>
                             <tr>
                                 <td>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</td>
-                                <td>{{ $perintah->terapi_dan_rencana_tindakan }}</td>
+                                <td>{{ $perintah->terapi_dan_rencana_tindakan }} &nbsp; <a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></td>
                                 <td>{{ $perintah->catatan_perawat }}</td>
                             </tr>
                         </tbody>

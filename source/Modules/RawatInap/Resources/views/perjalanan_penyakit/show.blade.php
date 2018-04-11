@@ -66,7 +66,7 @@
                                     <label><b>Assessment</b></label>
                                     <p>{{ $perjalanan->assessment }}</p>
                                 </td>
-                                <td>{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}</td>
+                                <td>{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }} &nbsp; <a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a></td>
                             </tr>
                         </tbody>
                     </table>
