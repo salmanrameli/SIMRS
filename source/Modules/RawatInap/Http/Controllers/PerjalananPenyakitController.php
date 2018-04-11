@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
+use Modules\RawatInap\Entities\PerintahDokterDanPengobatan;
 use Modules\RawatInap\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
 
@@ -61,9 +62,25 @@ class PerjalananPenyakitController extends Controller
             'id_petugas' => 'required'
         ]);
 
+        $request->request->add(['id_perintah_dokter_dan_pengobatan', '0']);
         $input = $request->all();
 
         PerjalananPenyakit::create($input);
+
+        $id_perjalanan_penyakit = PerjalananPenyakit::where('subjektif', '=', $request->subjektif)->value('id');
+
+        $perintah_dokter = new PerintahDokterDanPengobatan();
+        $perintah_dokter->id_pasien = $request->id_pasien;
+        $perintah_dokter->tanggal_keterangan = $request->tanggal_keterangan;
+        $perintah_dokter->terapi_dan_rencana_tindakan = $request->planning_perintah_dokter_dan_pengobatan;
+        $perintah_dokter->catatan_perawat = null;
+        $perintah_dokter->id_petugas = null;
+        $perintah_dokter->id_perjalanan_penyakit = $id_perjalanan_penyakit;
+        $perintah_dokter->save();
+
+        $id_perintah_dokter = PerintahDokterDanPengobatan::where('terapi_dan_rencana_tindakan', '=', $request->planning_perintah_dokter_dan_pengobatan)->value('id');
+
+        PerjalananPenyakit::where('subjektif', '=', $request->subjektif)->update(['id_perintah_dokter_dan_pengobatan' => $id_perintah_dokter]);
 
         Session::flash('message', 'Catatan berhasil disimpan');
 

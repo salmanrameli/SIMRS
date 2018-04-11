@@ -10,7 +10,7 @@ class PerjalananPenyakit extends Model
     protected $table = 'perjalanan_penyakit';
 
     protected $fillable = [
-        'id_pasien', 'tanggal_keterangan', 'subjektif', 'objektif', 'assessment', 'planning_perintah_dokter_dan_pengobatan', 'id_petugas'
+        'id_pasien', 'tanggal_keterangan', 'subjektif', 'objektif', 'assessment', 'planning_perintah_dokter_dan_pengobatan', 'id_petugas', 'id_perintah_dokter_dan_pengobatan'
     ];
 
     public function pasien()
