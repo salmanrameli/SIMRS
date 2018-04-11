@@ -18,8 +18,9 @@ class CreatePerintahDokterDanPengobatanTable extends Migration
             $table->string('id_pasien');
             $table->date('tanggal_keterangan');
             $table->text('terapi_dan_rencana_tindakan');
-            $table->text('catatan_perawat');
-            $table->string('id_petugas');
+            $table->text('catatan_perawat')->nullable();
+            $table->string('id_petugas')->nullable();
+            $table->string('id_perjalanan_penyakit');
             $table->timestamps();
         });
     }
