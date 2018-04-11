@@ -54,8 +54,10 @@ class PerjalananPenyakitController extends Controller
         $this->validate($request, [
             'id_pasien' => 'required',
             'tanggal_keterangan' => 'required',
-            'perjalanan_penyakit' => 'required',
-            'perintah_dokter_dan_pengobatan' => 'required',
+            'subjektif' => 'required',
+            'objektif' => 'required',
+            'assessment' => 'required',
+            'planning_perintah_dokter_dan_pengobatan' => 'required',
             'id_petugas' => 'required'
         ]);
 
@@ -104,8 +106,10 @@ class PerjalananPenyakitController extends Controller
         $this->validate($request, [
             'id_pasien' => 'required',
             'tanggal_keterangan' => 'required',
-            'perjalanan_penyakit' => 'required',
-            'perintah_dokter_dan_pengobatan' => 'required',
+            'subjektif' => 'required',
+            'objektif' => 'required',
+            'assessment' => 'required',
+            'planning_perintah_dokter_dan_pengobatan' => 'required',
             'id_petugas' => 'required'
         ]);
 

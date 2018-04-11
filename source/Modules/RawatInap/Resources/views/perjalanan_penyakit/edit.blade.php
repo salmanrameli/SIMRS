@@ -1,7 +1,7 @@
 @extends('layouttemplate::master')
 
 @section('title')
-    Ubah Catatan Perjalanan Penyakit Baru
+    Ubah Catatan Perjalanan Penyakit
 @endsection
 
 @section('content')
@@ -24,13 +24,28 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('perjalanan_penyakit', 'Perjalanan Penyakit', ['class' => 'control-label']) }}
-                    {{ Form::textarea('perjalanan_penyakit', null, ['class' => 'form-control']) }}
+                    {{ Form::label('tanggal_keterangan', 'Tanggal', ['class' => 'control-label']) }}
+                    {{ Form::date('tanggal_keterangan', null, ['class' => 'form-control']) }}
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('perintah_dokter_dan_pengobatan', 'Perintah Dokter dan Pengobatan', ['class' => 'control-label']) }}
-                    {{ Form::textarea('perintah_dokter_dan_pengobatan', null, ['class' => 'form-control']) }}
+                    {{ Form::label('subjektif', 'Subjektif', ['class' => 'control-label']) }}
+                    {{ Form::textarea('subjektif', null, ['class' => 'form-control']) }}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('objektif', 'Objektif', ['class' => 'control-label']) }}
+                    {{ Form::textarea('objektif', null, ['class' => 'form-control']) }}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('assessment', 'Assessment', ['class' => 'control-label']) }}
+                    {{ Form::textarea('assessment', null, ['class' => 'form-control']) }}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('planning_perintah_dokter_dan_pengobatan', 'Planning / Perintah Dokter dan Pengobatan', ['class' => 'control-label']) }}
+                    {{ Form::textarea('planning_perintah_dokter_dan_pengobatan', null, ['class' => 'form-control']) }}
                 </div>
 
                 <div hidden>
