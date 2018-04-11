@@ -91,9 +91,18 @@ class PerjalananPenyakitController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id, $id_perjalanan)
     {
-        return view('rawatinap::show');
+        $pasien = Pasien::where('id', $id)->first();
+
+        $perjalanan = PerjalananPenyakit::where('id', '=', $id_perjalanan)->first();
+
+        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->whereNull('tanggal_keluar')->value('tanggal_masuk');
+
+        return view('rawatinap::perjalanan_penyakit.show')
+            ->with('pasien', $pasien)
+            ->with('perjalanan', $perjalanan)
+            ->with('tanggal_masuk', $tanggal_masuk);
     }
 
     /**
