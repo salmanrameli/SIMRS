@@ -1,7 +1,7 @@
 @extends('layouttemplate::master')
 
 @section('title')
-    Perjalanan Penyakit Pasien
+    Perintah Dokter dan Pengobatan
     @endsection
 
 @section('content')
@@ -10,10 +10,10 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs small">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('perjalanan_penyakit.index', $pasien->id) }}">Perjalanan Penyakit</a>
+                        <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $pasien->id) }}">Perjalanan Penyakit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
+                        <a class="nav-link active" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
@@ -51,25 +51,16 @@
                         <thead>
                             <tr>
                                 <th>Tanggal</th>
-                                <th>Perjalanan Penyakit</th>
-                                <th>Perintah Dokter dan Pengobatan</th>
+                                <th>Terapi dan Rencana Tindakan</th>
+                                <th>Catatan Perawat</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($perjalanans as $perjalanan)
                             <tr>
-                                <td>{{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</td>
-                                <td>
-                                    <label><b>Subjektif</b></label>
-                                    <p>{{ $perjalanan->subjektif }}</p>
-                                    <label><b>Objektif</b></label>
-                                    <p>{{ $perjalanan->objektif }}</p>
-                                    <label><b>Assessment</b></label>
-                                    <p>{{ $perjalanan->assessment }}</p>
-                                </td>
-                                <td>{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }} &nbsp; <a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a></td>
+                                <td>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</td>
+                                <td>{{ $perintah->terapi_dan_rencana_tindakan }}</td>
+                                <td>{{ $perintah->catatan_perawat }}</td>
                             </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
