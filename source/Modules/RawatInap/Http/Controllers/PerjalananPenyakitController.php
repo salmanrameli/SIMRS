@@ -143,6 +143,8 @@ class PerjalananPenyakitController extends Controller
 
         $perjalanan->fill($input)->save();
 
+        PerintahDokterDanPengobatan::where('id_perjalanan_penyakit', '=', $perjalanan->id)->update(['terapi_dan_rencana_tindakan' => $request->planning_perintah_dokter_dan_pengobatan]);
+
         Session::flash('message', 'Perubahan berhasil disimpan');
 
         return redirect()->route('perjalanan_penyakit.index', $id_pasien);

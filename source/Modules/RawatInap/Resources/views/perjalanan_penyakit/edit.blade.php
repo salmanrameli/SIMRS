@@ -24,11 +24,6 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('tanggal_keterangan', 'Tanggal', ['class' => 'control-label']) }}
-                    {{ Form::date('tanggal_keterangan', null, ['class' => 'form-control']) }}
-                </div>
-
-                <div class="form-group">
                     {{ Form::label('subjektif', 'Subjektif', ['class' => 'control-label']) }}
                     {{ Form::textarea('subjektif', null, ['class' => 'form-control']) }}
                 </div>
