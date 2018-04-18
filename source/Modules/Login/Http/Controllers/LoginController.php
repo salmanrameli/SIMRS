@@ -22,6 +22,8 @@ class LoginController extends Controller
                 case '3':
                     return view('login::homepage.perawat');
                     break;
+                case '4':
+                    return view('login::homepage.dokter');
                 default:
                     return view('welcome');
                     break;
