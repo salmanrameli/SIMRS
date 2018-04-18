@@ -31,7 +31,7 @@ class RawatInapController extends Controller
     {
         $nama = Auth::user()->nama;
 
-        $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('tanggal_masuk', 'desc')->get();
+        $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('created_at', 'desc')->get();
 
         return view('rawatinap::index')
             ->with('nama', $nama)
