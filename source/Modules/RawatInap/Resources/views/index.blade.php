@@ -14,16 +14,16 @@
                 <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
                 <br>
                 <br>
-                <div>
+                <div style="min-height: 60vh;">
                     <table class="table table-striped">
                         <thead>
-                        <tr>
-                            <th>Nama Pasien</th>
-                            <th>Nomor Kamar</th>
-                            <th>Dokter Penanggung Jawab</th>
-                            <th>Tanggal Masuk</th>
-                            <th></th>
-                        </tr>
+                            <tr>
+                                <th>Nama Pasien</th>
+                                <th>Nomor Kamar</th>
+                                <th>Dokter Penanggung Jawab</th>
+                                <th>Tanggal Masuk</th>
+                                <th></th>
+                            </tr>
                         </thead>
                         <tbody>
                         @foreach($pasiens as $pasien)
@@ -32,7 +32,7 @@
                                 <td>{{ $pasien->nama_kamar }}</td>
                                 <td>{{ $pasien->dokter->nama }}</td>
                                 <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
-                                <th>
+                                <td>
                                     <div class="dropdown show">
                                         <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Pilihan...
@@ -40,13 +40,18 @@
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                             <a href="{{ route('ranap.show', $pasien->id) }}" class="dropdown-item">Detail...</a>
                                             @if(Auth::user()->jabatan_id == 3)
+                                                <div class="dropdown-divider"></div>
                                                 <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
+                                                <a href="{{ route('perjalanan_penyakit.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Perjalanan Penyakit Baru</a>
+                                                <div class="dropdown-divider"></div>
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
+                                                <div class="dropdown-divider"></div>
                                                 <a href="{{ route('catatan_harian_perawatan.index', $pasien->pasien->id) }}" class="dropdown-item">Catatan Harian dan Perawatan</a>
+                                                <a href="{{ route('catatan_harian_perawatan.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Harian dan Perawatan Baru</a>
                                             @endif
                                         </div>
                                     </div>
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
