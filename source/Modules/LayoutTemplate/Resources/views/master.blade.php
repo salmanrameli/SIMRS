@@ -35,16 +35,12 @@
                         {{ csrf_field() }}
                     </form>
 
-                    <div class="col-md-12">
-                        @include('layouttemplate::alert')
-                    </div>
-
                     <div class="d-flex">
                         <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left">
                             @include('layouttemplate::sidebar')
                         </ul>
                         <div class="tab-content">
-                            <div class="row" style="padding: 10px 25px 0 10px">
+                            <div class="row pre-scrollable" style="padding: 10px 25px 0 10px; max-height: 82vh; min-width: 100%">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -53,12 +49,16 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="pre-scrollable" style="max-height: 82vh; min-width: 100%">
-                                    @yield('content')
+
+                                <div class="col-md-12">
+                                    @include('layouttemplate::alert')
                                 </div>
+
+                                @yield('content')
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
