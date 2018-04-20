@@ -19,7 +19,6 @@
     <body>
         <div class="col-md-12">
             <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
-                <a href="/" class="btn btn-outline-info float-left">Home</a>
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
                 <h3><br></h3>
