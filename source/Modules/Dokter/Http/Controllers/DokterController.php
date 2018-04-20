@@ -29,11 +29,9 @@ class DokterController extends Controller
     public function index()
     {
         $dokter = Dokter::all();
-        $spesialis = BidangSpesialisDokter::all();
 
         return view('dokter::index')
-            ->with('dokters', $dokter)
-            ->with('spesialiss', $spesialis);
+            ->with('dokters', $dokter);
     }
 
     /**
@@ -42,9 +40,7 @@ class DokterController extends Controller
      */
     public function create()
     {
-        $spesialis = BidangSpesialisDokter::all()->pluck('nama');
-
-        return view('dokter::dokter.create')->with('spesialiss', $spesialis);
+        return view('dokter::dokter.create');
     }
 
     /**
@@ -59,7 +55,6 @@ class DokterController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
-            'bidang_spesialis' => 'required'
         ]);
 
         $input = $request->all();
@@ -89,11 +84,9 @@ class DokterController extends Controller
     public function edit($id)
     {
         $dokter = Dokter::findorFail($id);
-        $spesialis = BidangSpesialisDokter::all()->pluck('nama');
 
         return view('dokter::dokter.edit')
-            ->with('dokter', $dokter)
-            ->with('spesialiss', $spesialis);
+            ->with('dokter', $dokter);
     }
 
     /**
@@ -108,7 +101,6 @@ class DokterController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
-            'bidang_spesialis' => 'required'
         ]);
 
         $input = $request->all();

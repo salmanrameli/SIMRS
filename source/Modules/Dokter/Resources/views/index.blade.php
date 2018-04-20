@@ -37,7 +37,6 @@
                             <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Spesialis</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -45,33 +44,7 @@
                             @foreach($dokters as $dokter)
                                 <tr>
                                     <td>{{ $dokter->nama }}</td>
-                                    <td>{{ $dokter->bidang_spesialis }}</td>
-                                    <td><a href="{{ route('dokter.show', $dokter->id) }}" class="btn btn-outline-info float-right">Lihat</a></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            &nbsp;&nbsp;
-            <div class="card card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="{{ route('spesialis.create') }}" class="btn btn-outline-primary">Tambah Bidang Spesialis Dokter</a>
-                        <br><br>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($spesialiss as $spesialis)
-                                <tr>
-                                    <td>{{ $spesialis->nama }}</td>
-                                    <td><a href="{{ route('spesialis.edit', $spesialis->id) }}" class="btn btn-outline-warning float-right">Ubah</a></td>
+                                    <td><a href="{{ route('dokter.show', $dokter->id) }}" class="btn btn-sm btn-outline-info float-right">Detail...</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

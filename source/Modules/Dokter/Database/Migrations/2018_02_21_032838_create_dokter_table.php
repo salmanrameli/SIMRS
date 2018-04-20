@@ -20,7 +20,6 @@ class CreateDokterTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('telepon');
-            $table->string('bidang_spesialis');
 
             $table->timestamps();
         });

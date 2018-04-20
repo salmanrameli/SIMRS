@@ -19,23 +19,7 @@ class DokterDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $faker =Faker::create();
-
-        $bs1 = $faker->currencyCode;
-        $bs2 = $faker->currencyCode;
-        $bs3 = $faker->currencyCode;
-
-        $spesialis = new BidangSpesialisDokter();
-        $spesialis->nama = $bs1;
-        $spesialis->save();
-
-        $spesialis = new BidangSpesialisDokter();
-        $spesialis->nama = $bs2;
-        $spesialis->save();
-
-        $spesialis = new BidangSpesialisDokter();
-        $spesialis->nama = $bs3;
-        $spesialis->save();
+        $faker = Faker::create();
 
         for($index = 1; $index <= 10; $index++)
         {
@@ -44,21 +28,6 @@ class DokterDatabaseSeeder extends Seeder
             $dokter->nama = $faker->name;
             $dokter->alamat = $faker->address;
             $dokter->telepon = $faker->phoneNumber;
-
-            $random = mt_rand(1, 3);
-
-            if($random == 1)
-            {
-                $dokter->bidang_spesialis = $bs1;
-            }
-            else if($random == 2)
-            {
-                $dokter->bidang_spesialis = $bs2;
-            }
-            else if($random == 3)
-            {
-                $dokter->bidang_spesialis = $bs3;
-            }
 
             $dokter->save();
         }
