@@ -23,7 +23,6 @@
             <a href="{{ route('dokter.index') }}" class="nav-link" id="manajemen_dokter" style="min-width: 200px">Manajemen Dokter</a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('dokter.create') }}" class="nav-link small">Daftarkan Dokter Baru</a>
-                <a href="{{ route('spesialis.create') }}" class="nav-link small">Tambah Bidang Spesialis Dokter</a>
             </div>
         </div>
     </li>
