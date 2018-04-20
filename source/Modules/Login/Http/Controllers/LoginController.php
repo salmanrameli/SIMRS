@@ -17,13 +17,14 @@ class LoginController extends Controller
                     return view('login::homepage.administrator');
                     break;
                 case '2':
-                    return view('login::homepage.administrasi');
+                    return redirect()->route('ranap.index');
                     break;
                 case '3':
-                    return view('login::homepage.perawat');
+                    return redirect()->route('ranap.index');
                     break;
                 case '4':
-                    return view('login::homepage.dokter');
+                    return redirect()->route('ranap.index');
+                    break;
                 default:
                     return view('welcome');
                     break;
