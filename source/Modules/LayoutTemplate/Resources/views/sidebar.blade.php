@@ -1,7 +1,3 @@
-<li class="nav-item">
-    <a href="/" id="beranda">Beranda</a>
-</li>
-
 @if(Auth::user()->jabatan_id == 1)
     <li class="nav-item d-inline-block">
         <div class="btn-group">
