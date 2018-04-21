@@ -26,10 +26,6 @@
                             <th>Alamat</th>
                             <td>{{ $dokter->alamat }}</td>
                         </tr>
-                        <tr>
-                            <th>Spesialis</th>
-                            <td>{{ $dokter->bidang_spesialis }}</td>
-                        </tr>
                     </tbody>
                 </table>
                 <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-outline-warning float-left">Ubah Data</a>

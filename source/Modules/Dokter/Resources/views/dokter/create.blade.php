@@ -30,14 +30,6 @@
                     {{ Form::text('telepon', null, ['class' => 'form-control']) }}
                 </div>
 
-                <div class="form-group">
-                    {{ Form::label('bidang_spesialis', 'Bidang Spesialis', ['class' => 'control-label']) }}
-                    <select class="form-control" name="bidang_spesialis">
-                        @foreach($spesialiss as $spesialis)
-                            <option value="{{ $spesialis }}" id="bidang_spesialis" name="{{ $spesialis }}">{{ $spesialis }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 <br>
 
                 {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
