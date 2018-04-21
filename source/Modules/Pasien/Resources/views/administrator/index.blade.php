@@ -51,7 +51,7 @@
                                     <td>{{ ucwords($pasien->nama) }}</td>
                                     <td>{{ ucwords($pasien->alamat) }}</td>
                                     <td>{{ $pasien->telepon }}</td>
-                                    <td><a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Lihat</a></td>
+                                    <td><a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Detail...</a></td>
                                 </tr>
                             @endforeach
                         </table>

@@ -34,7 +34,7 @@
                     <td>{{ $result->nama }}</td>
                     <td>{{ $result->alamat }}</td>
                     <td>{{ $result->telepon }}</td>
-                    <td><a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Lihat</a></td>
+                    <td><a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-sm btn-outline-info">Detail...</a></td>
                 </tr>
                 @endforeach
             </tbody>

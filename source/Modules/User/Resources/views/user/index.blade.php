@@ -50,7 +50,7 @@
                                 <td>{{ $user->nama }}</td>
                                 <td>{{ $user->telepon }}</td>
                                 <td>{{ ucfirst($user->jabatan->nama ) }}</td>
-                                <td><a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-outline-info">Lihat</a></td>
+                                <td><a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-info">Detail...</a></td>
                             </tr>
                         @endforeach
                         </tbody>

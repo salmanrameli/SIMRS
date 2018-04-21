@@ -38,7 +38,7 @@
                                     <td>{{ $dokter->nama }}</td>
                                     <td>{{ $dokter->alamat }}</td>
                                     <td>{{ $dokter->telepon }}</td>
-                                    <td><a href="{{ route('dokter.show', $dokter->id) }}" class="btn btn-outline-info float-right">Lihat</a></td>
+                                    <td><a href="{{ route('dokter.show', $dokter->id) }}" class="btn btn-sm btn-outline-info float-right">Detail...</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
