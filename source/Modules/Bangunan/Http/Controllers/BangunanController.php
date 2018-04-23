@@ -27,7 +27,7 @@ class BangunanController extends Controller
     {
         $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('tanggal_masuk', 'desc')->get();
 
-        $lantai = Lantai::select('nomor_lantai')->orderBy('lantai.id', 'desc')->pluck('nomor_lantai');
+        $lantai = Lantai::select('nomor_lantai', 'id')->orderBy('lantai.id', 'desc')->get();
 
         $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
 

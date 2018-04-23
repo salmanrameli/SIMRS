@@ -27,13 +27,13 @@
                 @foreach($lantais as $lantai)
                     <div class="card">
                         <div class="card-header">
-                            <h5>Lantai {{ $lantai }}</h5>
+                            <h5>Lantai {{ $lantai->nomor_lantai }}<a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-sm btn-warning float-right">Ubah</a></h5>
                         </div>
                         <div class="card-body row align-items-center justify-content-center">
                             <div class="col-md-12">
                                 <div class="row">
                                     @foreach($kamars as $kamar)
-                                        @if($lantai == $kamar->nomor_lantai)
+                                        @if($lantai->nomor_lantai == $kamar->nomor_lantai)
                                             <div class="col-md-2">
                                                 <div class="card card-body">
                                                     <h6 class="text-center">Kamar {{ $kamar->nama_kamar }}</h6>
