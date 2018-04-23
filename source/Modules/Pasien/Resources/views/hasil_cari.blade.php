@@ -22,6 +22,14 @@
                 <h3>Hasil pencarian untuk: {{ $query }}</h3>
                 <br>
             </div>
+            <table>
+                <tbody>
+                <tr>
+                    <th class="w-100 hidden"></th>
+                    <td class="w-100 hidden"></td>
+                </tr>
+                </tbody>
+            </table>
             <div class="col-md-12">
                 <table class="table">
                     <thead>
