@@ -46,7 +46,17 @@
                             <td>{{ ucwords($result->nama) }}</td>
                             <td>{{ ucwords($result->alamat) }}</td>
                             <td>{{ ucwords($result->telepon) }}</td>
-                            <td><a href="{{ route('pasien.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Detail...</a></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{{ route('pasien.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Detail...</a>
+                                    <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $result->id]) }}">Ubah</a>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

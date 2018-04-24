@@ -50,7 +50,17 @@
                                 <td>{{ $user->nama }}</td>
                                 <td>{{ $user->telepon }}</td>
                                 <td>{{ ucfirst($user->jabatan->nama ) }}</td>
-                                <td><a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-info">Detail...</a></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-outline-info">Detail...</a>
+                                        <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Ubah</a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -58,37 +68,6 @@
                     <ul class="pagination justify-content-end float-left">
                         {{ $users->links('vendor.pagination.bootstrap-4') }}
                     </ul>
-                </div>
-            </div>
-            &nbsp;&nbsp;
-            <div class="card card-body">
-                <div class="col-md-12">
-                    <a class="btn btn-outline-primary" href="{{ route('jabatan.create') }}">Buat Jabatan Baru</a>
-                    <br>
-                    <br>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Nama Jabatan</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($jabatans as $jabatan)
-                            <tr>
-                                <td>{{ ucfirst($jabatan->nama) }}</td>
-                                <td>
-                                    <form action="{{ route('jabatan.destroy', $jabatan->id) }}" method="POST" class="float-right" style="margin-left: 5px">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="_method" value="DELETE" />
-                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus jabatan ini?')">Hapus</button>
-                                    </form>
-                                    <a href="{{ route('jabatan.edit', $jabatan->id) }}" class="btn btn-outline-warning float-right">Ubah</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
