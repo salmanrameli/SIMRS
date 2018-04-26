@@ -13,6 +13,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
 
     Route::resource('ranap/{id}/perintah_dokter_dan_pengobatan', 'PerintahDokterDanPengobatanController');
 
+    Route::get('ranap/{id}/perintah_dokter_dan_pengobatan/{perintah}/create', [
+        'as' => 'perintah_dokter_dan_pengobatan.create',
+        'uses' => 'PerintahDokterDanPengobatanController@create'
+    ]);
+
     Route::resource('ranap/{id}/catatan_harian_perawatan', 'CatatanHarianPerawatanController');
 
     Route::get('/ranap/kamar/{id}', [

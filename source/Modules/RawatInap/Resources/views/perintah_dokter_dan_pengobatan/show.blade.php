@@ -23,7 +23,6 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
                         <h4>Perjalanan Penyakit: {{ $pasien->nama }}</h4>
                         <hr>
                         <div class="col-md-12">
@@ -53,13 +52,15 @@
                                 <th>Tanggal</th>
                                 <th>Terapi dan Rencana Tindakan</th>
                                 <th>Catatan Perawat</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</td>
-                                <td>{{ $perintah->terapi_dan_rencana_tindakan }} &nbsp; <a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></td>
+                                <td>{{ $perintah->terapi_dan_rencana_tindakan }} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></td>
                                 <td>{{ $perintah->catatan_perawat }}</td>
+                                <td><a class="btn btn-sm btn-warning" href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}">Ubah</a></td>
                             </tr>
                         </tbody>
                     </table>

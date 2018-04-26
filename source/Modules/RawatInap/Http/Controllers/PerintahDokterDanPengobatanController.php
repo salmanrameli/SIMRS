@@ -6,6 +6,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\PerintahDokterDanPengobatan;
@@ -37,11 +38,15 @@ class PerintahDokterDanPengobatanController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create($id)
+    public function create($id, $perintah)
     {
-        $pasien = Pasien::where('id', $id)->first();
+        $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
 
-        return view('rawatinap::perintah_dokter_dan_pengobatan.create')->with('pasien', $pasien);
+        $pasien = Pasien::findorFail($id);
+
+        return view('rawatinap::perintah_dokter_dan_pengobatan.create')
+            ->with('perintah', $perintah)
+            ->with('pasien', $pasien);
     }
 
     /**
@@ -52,16 +57,14 @@ class PerintahDokterDanPengobatanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_pasien' => 'required',
-            'tanggal_keterangan' => 'required',
-            'terapi_dan_rencana_tindakan' => 'required',
             'catatan_perawat' => 'required',
             'id_petugas' => 'required'
         ]);
 
-        $input = $request->all();
-
-        PerintahDokterDanPengobatan::create($input);
+        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->id_perintah);
+        $perintah_dokter->catatan_perawat = $request->catatan_perawat;
+        $perintah_dokter->id_petugas = Auth::id();
+        $perintah_dokter->save();
 
         Session::flash('message', 'Catatan berhasil disimpan');
 
@@ -108,19 +111,15 @@ class PerintahDokterDanPengobatanController extends Controller
      */
     public function update(Request $request, $id_pasien, $perintah)
     {
-        $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
-
         $this->validate($request, [
-            'id_pasien' => 'required',
-            'tanggal_keterangan' => 'required',
-            'terapi_dan_rencana_tindakan' => 'required',
             'catatan_perawat' => 'required',
             'id_petugas' => 'required'
         ]);
 
-        $input = $request->all();
-
-        $perintah->fill($input)->save();
+        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->id_perintah);
+        $perintah_dokter->catatan_perawat = $request->catatan_perawat;
+        $perintah_dokter->id_petugas = Auth::id();
+        $perintah_dokter->save();
 
         Session::flash('message', 'Perubahan berhasil disimpan');
 

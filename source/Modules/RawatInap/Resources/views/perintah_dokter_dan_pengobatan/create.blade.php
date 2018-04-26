@@ -18,15 +18,13 @@
                     {{ Form::text('id_pasien', $pasien->id) }}
                 </div>
 
-                <div class="form-group">
-                    {{ Form::label('tanggal_keterangan', 'Tanggal', ['class' => 'control-label']) }}
-                    {{ Form::date('tanggal_keterangan', null, ['class' => 'form-control']) }}
+                <div hidden>
+                    {{ Form::text('id_perintah', $perintah->id) }}
                 </div>
 
-                <div class="form-group">
-                    {{ Form::label('terapi_dan_rencana_tindakan', 'Terapi dan Rencana Tindakan', ['class' => 'control-label']) }}
-                    {{ Form::textarea('terapi_dan_rencana_tindakan', null, ['class' => 'form-control']) }}
-                </div>
+                <label><b>Terapi dan Rencana Tindakan:</b></label>
+                <p>{{ $perintah->terapi_dan_rencana_tindakan }}</p>
+                <hr>
 
                 <div class="form-group">
                     {{ Form::label('catatan_perawat', 'Catatan Perawat', ['class' => 'control-label']) }}

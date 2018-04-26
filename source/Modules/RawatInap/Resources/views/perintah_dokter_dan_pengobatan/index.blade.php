@@ -23,7 +23,6 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <div class="float-right"><a href="{{ route('perintah_dokter_dan_pengobatan.create', $pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
                         <h4>Perintah Dokter dan Pengobatan: {{ $pasien->nama }}</h4>
                         <hr>
                         <div class="col-md-12">
@@ -60,9 +59,19 @@
                         @foreach($perintahs as $perintah)
                             <tr>
                                 <td>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</td>
-                                <td class="text-justify">{{ $perintah->terapi_dan_rencana_tindakan }} &nbsp; <a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></td>
+                                <td class="text-justify">{{ $perintah->terapi_dan_rencana_tindakan }} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></td>
                                 <td class="text-justify">{{ $perintah->catatan_perawat }}</td>
-                                <td><a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only"></span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}">Ubah</a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
