@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'id_user', 'nama', 'alamat', 'telepon', 'jabatan', 'password'
+        'id_user', 'nama', 'alamat', 'telepon', 'jabatan_id', 'password'
     ];
 
     protected $hidden = [
@@ -20,7 +20,7 @@ class User extends Authenticatable
 
     public function jabatan()
     {
-        return $this->belongsTo(Jabatan::class);
+        return $this->belongsTo(Jabatan::class, 'jabatan_id', 'id');
     }
 
     public function rawat_inap()

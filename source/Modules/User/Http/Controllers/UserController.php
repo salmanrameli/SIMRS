@@ -33,7 +33,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::paginate(15);
+        $user = User::where('jabatan_id', '!=', '4')->paginate(15);
 
         $jabatan = Jabatan::all();
 
