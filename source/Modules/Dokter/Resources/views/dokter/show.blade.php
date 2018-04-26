@@ -28,7 +28,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-outline-warning float-left">Ubah Data</a>
+                <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-warning float-left">Ubah Data</a>
             </div>
         </div>
     </div>

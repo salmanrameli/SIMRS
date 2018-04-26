@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-header">
-                            <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-outline-warning float-right">Ubah Detail Ruang</a>
+                            <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-warning float-right">Ubah Detail Ruang</a>
                             <h2>Ruang {{ $kamar->nama_kamar }}</h2>
                             <br>
                         </div>
