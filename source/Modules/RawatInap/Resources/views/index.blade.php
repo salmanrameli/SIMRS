@@ -8,9 +8,16 @@
     <div class="col-md-12">
         <div class="card card-body">
             <div class="col-md-12">
-                <br>
-                <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
-                <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary">Daftarkan Rawat Inap Baru</a>
+                <div class="page-header">
+                    <h3>Daftar Pasien Rawat Inap</h3>
+                    <hr>
+                </div>
+
+                @if(Auth::user()->jabatan_id == 2)
+                    <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
+                    <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary">Daftarkan Rawat Inap Baru</a>
+                @endif
+
                 <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
                 <br>
                 <br>
@@ -33,22 +40,25 @@
                                 <td>{{ $pasien->user->nama }}</td>
                                 <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
                                 <td>
-                                    <div class="dropdown show">
-                                        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Pilihan...
+                                    <div class="btn-group">
+                                        <a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info">Detail...</a>
+                                        <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only"></span>
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                            <a href="{{ route('ranap.show', $pasien->id) }}" class="dropdown-item">Detail...</a>
+                                        <div class="dropdown-menu">
+
                                             @if(Auth::user()->jabatan_id == 3)
-                                                <div class="dropdown-divider"></div>
-                                                <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
-                                                <a href="{{ route('perjalanan_penyakit.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Perjalanan Penyakit Baru</a>
-                                                <div class="dropdown-divider"></div>
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a href="{{ route('catatan_harian_perawatan.index', $pasien->pasien->id) }}" class="dropdown-item">Catatan Harian dan Perawatan</a>
                                                 <a href="{{ route('catatan_harian_perawatan.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Harian dan Perawatan Baru</a>
                                             @endif
+
+                                            @if(Auth::user()->jabatan_id == 4)
+                                                <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
+                                                <a href="{{ route('perjalanan_penyakit.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Perjalanan Penyakit Baru</a>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </td>
