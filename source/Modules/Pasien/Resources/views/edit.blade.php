@@ -88,7 +88,7 @@
 
             <br>
 
-            {{ Form::submit('Simpan Perubahan Data Pasien', ['class' => 'btn btn-outline-success']) }}
+            {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
             {{ Form::close() }}
         </div>
     </div>

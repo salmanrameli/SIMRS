@@ -41,7 +41,7 @@
                         {{ Form::date('tanggal_masuk', new DateTime(), ['class' => 'form-control']) }}
                     </div>
 
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
 
                     {{ Form::close() }}
                 </div>
