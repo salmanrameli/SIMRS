@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ $pasien->pasien->nama }}</td>
                                 <td>{{ $pasien->nama_kamar }}</td>
-                                <td>{{ $pasien->dokter->nama }}</td>
+                                <td>{{ $pasien->user->nama }}</td>
                                 <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
                                 <td>
                                     <div class="dropdown show">

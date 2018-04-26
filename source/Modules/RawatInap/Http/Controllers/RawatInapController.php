@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
-use Modules\Dokter\Entities\Dokter;
 use Modules\RawatInap\Entities\RawatInap;
+use Modules\User\Entities\User;
 
 class RawatInapController extends Controller
 {
@@ -29,6 +29,17 @@ class RawatInapController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->jabatan_id == 4)
+        {
+            $nama = Auth::user()->nama;
+
+            $pasien_ranap = RawatInap::with('pasien')->select('*')->where('id_dokter_pj', '=', Auth::id())->whereNull('tanggal_keluar')->orderBy('created_at', 'desc')->get();
+
+            return view('rawatinap::index')
+                ->with('nama', $nama)
+                ->with('pasiens', $pasien_ranap);
+        }
+        
         $nama = Auth::user()->nama;
 
         $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('created_at', 'desc')->get();
@@ -64,7 +75,7 @@ class RawatInapController extends Controller
      */
     public function create()
     {
-        $dokter = Dokter::orderBy('nama')->get();
+        $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
 
         $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
 
@@ -140,7 +151,7 @@ class RawatInapController extends Controller
     {
         $ranap = RawatInap::findOrFail($id);
 
-        $dokter = Dokter::orderBy('nama')->get();
+        $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
 
         $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
 

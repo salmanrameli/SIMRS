@@ -20,7 +20,7 @@
                         </tr>
                         <tr>
                             <th>Dokter Penanggung Jawab</th>
-                            <td>{{ $ranap->dokter->nama }}</td>
+                            <td>{{ $ranap->user->nama }}</td>
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>

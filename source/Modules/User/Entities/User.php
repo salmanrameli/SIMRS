@@ -4,12 +4,11 @@ namespace Modules\User\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Modules\RawatInap\Entities\RawatInap;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use HasRoles;
 
     protected $fillable = [
         'id_user', 'nama', 'alamat', 'telepon', 'jabatan', 'password'
@@ -22,5 +21,10 @@ class User extends Authenticatable
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class);
+    }
+
+    public function rawat_inap()
+    {
+        return $this->hasMany(RawatInap::class, 'id_dokter_pj', 'id');
     }
 }
