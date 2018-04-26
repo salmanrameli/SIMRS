@@ -70,8 +70,7 @@
                                 </td>
                                 <td>
                                     <label><b>Planning</b></label>
-                                    <p>{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}</p>
-                                    <a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a>
+                                    <p>{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a></p>
                                 </td>
                                 <td><a href="{{ route('perjalanan_penyakit.edit', [$pasien->id, $perjalanan->id]) }}" class="btn btn-warning">Ubah</a></td>
                             </tr>
