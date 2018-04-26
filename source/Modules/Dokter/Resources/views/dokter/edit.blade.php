@@ -15,8 +15,8 @@
                 {{ Form::model($dokter, ['method' => 'PATCH', 'route' => ['dokter.update', $dokter->id]]) }}
 
                 <div class="form-group">
-                    {{ Form::label('id_dokter', 'ID Dokter', ['class' => 'control-label']) }}
-                    {{ Form::text('id_dokter', null, ['class' => 'form-control']) }}
+                    {{ Form::label('id_user', 'ID Dokter', ['class' => 'control-label']) }}
+                    {{ Form::text('id_user', null, ['class' => 'form-control']) }}
                 </div>
 
                 <div class="form-group">

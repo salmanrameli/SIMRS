@@ -8,8 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Modules\Dokter\Entities\BidangSpesialisDokter;
-use Modules\Dokter\Entities\Dokter;
+use Modules\User\Entities\User;
 
 class DokterController extends Controller
 {
@@ -28,7 +27,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $dokter = Dokter::all();
+        $dokter = User::where('jabatan_id', '=', '4')->get();
 
         return view('dokter::index')
             ->with('dokters', $dokter);
@@ -51,15 +50,20 @@ class DokterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_dokter' => 'required|unique:dokter',
+            'id_user' => 'required|unique:users',
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
         ]);
 
-        $input = $request->all();
-
-        Dokter::create($input);
+        $user = new User();
+        $user->id_user = $request->id_user;
+        $user->nama = $request->nama;
+        $user->alamat = $request->alamat;
+        $user->telepon = $request->telepon;
+        $user->password = bcrypt($request->telepon);
+        $user->jabatan_id = '4';
+        $user->save();
 
         Session::flash('message', 'Data dokter berhasil disimpan');
 
@@ -72,7 +76,7 @@ class DokterController extends Controller
      */
     public function show($id)
     {
-        $dokter = Dokter::findorFail($id);
+        $dokter = User::findorFail($id);
 
         return view('dokter::dokter.show')->with('dokter', $dokter);
     }
@@ -83,7 +87,7 @@ class DokterController extends Controller
      */
     public function edit($id)
     {
-        $dokter = Dokter::findorFail($id);
+        $dokter = User::findorFail($id);
 
         return view('dokter::dokter.edit')
             ->with('dokter', $dokter);
@@ -97,7 +101,7 @@ class DokterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'id_dokter' => 'required',
+            'id_user' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
@@ -105,7 +109,7 @@ class DokterController extends Controller
 
         $input = $request->all();
 
-        $dokter = Dokter::findorFail($id);
+        $dokter = User::findorFail($id);
 
         $dokter->fill($input)->save();
 

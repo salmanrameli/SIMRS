@@ -5,8 +5,7 @@ namespace Modules\Dokter\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Faker\Factory as Faker;
-use Modules\Dokter\Entities\BidangSpesialisDokter;
-use Modules\Dokter\Entities\Dokter;
+use Modules\User\Entities\User;
 
 class DokterDatabaseSeeder extends Seeder
 {
@@ -21,13 +20,15 @@ class DokterDatabaseSeeder extends Seeder
 
         $faker = Faker::create();
 
-        for($index = 1; $index <= 10; $index++)
+        for($index = 4; $index <= 9; $index++)
         {
-            $dokter = new Dokter();
-            $dokter->id_dokter = $faker->creditCardNumber;
+            $dokter = new User();
+            $dokter->id_user = $index;
             $dokter->nama = $faker->name;
             $dokter->alamat = $faker->address;
             $dokter->telepon = $faker->phoneNumber;
+            $dokter->jabatan_id = '4';
+            $dokter->password = bcrypt('pass');
 
             $dokter->save();
         }
