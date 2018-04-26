@@ -9,5 +9,4 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Dokter\Http\Control
 
     Route::resource('dokter', 'DokterController');
 
-    Route::resource('dokter/spesialis', 'BidangSpesialisDokterController');
 });
