@@ -54,7 +54,7 @@ class UserDatabaseSeeder extends Seeder
                 'nama' => $faker->name,
                 'alamat' => $faker->address,
                 'telepon' => $faker->phoneNumber,
-                'jabatan_id' => '2',
+                'jabatan_id' => '3',
                 'password' => bcrypt('pass')
             ]);
         }
