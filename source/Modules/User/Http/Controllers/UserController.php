@@ -63,17 +63,16 @@ class UserController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'telepon' => 'required|numeric',
-            'password' => 'required',
-            'jabatan' => 'required'
+            'jabatan_id' => 'required'
         ]);
 
         $user = new User();
-        $user->id = $request->id;
+        $user->id_user = $request->id_user;
         $user->nama = $request->nama;
         $user->alamat = $request->alamat;
         $user->telepon = $request->telepon;
-        $user->password = bcrypt($request->password);
-        $user->jabatan = $request->jabatan;
+        $user->password = bcrypt($request->telepon);
+        $user->jabatan_id = $request->jabatan_id;
 
         $user->save();
 

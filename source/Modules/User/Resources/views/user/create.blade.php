@@ -11,8 +11,8 @@
     {{ Form::open(['route' => 'user.store']) }}
 
     <div class="form-group">
-        {{ Form::label('id', 'ID', ['class' => 'control-label']) }}
-        {{ Form::text('id', null, ['class' => 'form-control']) }}
+        {{ Form::label('id_user', 'ID', ['class' => 'control-label']) }}
+        {{ Form::text('id_user', null, ['class' => 'form-control']) }}
     </div>
 
     <div class="form-group">
@@ -31,16 +31,12 @@
     </div>
 
     <div class="form-group">
-        {{ Form::label('password', 'Password', ['class' => 'control-label']) }}
-        {{ Form::password('password', ['class' => 'form-control']) }}
-    </div>
-
-    <div class="form-group">
-        {{ Form::label('jabatan', 'Jabatan', ['class' => 'control-label']) }}
+        {{ Form::label('jabatan_id', 'Jabatan', ['class' => 'control-label']) }}
         <br>
-        {{ Form::radio('jabatan', 'administrator') }} &nbsp; Administrator<br>
-        {{ Form::radio('jabatan', 'petugas') }} &nbsp; Petugas Rawat Inap<br>
-        {{ Form::radio('jabatan', 'kasir') }} &nbsp; Kasir<br>
+        {{ Form::radio('jabatan_id', '1') }} &nbsp; Administrator<br>
+        {{ Form::radio('jabatan_id', '2') }} &nbsp; Administrasi<br>
+        {{ Form::radio('jabatan_id', '3') }} &nbsp; Perawat<br>
+        {{ Form::radio('jabatan_id', '5') }} &nbsp; Kasir<br>
     </div>
     <br>
     {{ Form::submit('Buat Akun', ['class' => 'btn btn-outline-success']) }}
