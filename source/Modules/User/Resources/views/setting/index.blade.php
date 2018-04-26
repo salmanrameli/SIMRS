@@ -13,8 +13,8 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-outline-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
-                            <a class="btn btn-outline-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
+                            <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
+                            <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
                         </div>
                     </div>
                     <br>
