@@ -7,9 +7,14 @@
 @section('content')
     <div class="col-md-12">
         <div class="card card-body">
-            <h3>{{ ucfirst($pasien->nama) }}</h3>
-            <table class="table" id="table">
-                <tbody>
+            <div class="col-md-12">
+                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                    <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-right">Ubah Data Pasien</a>
+                @endif
+                <h3>{{ ucfirst($pasien->nama) }}</h3>
+                <br>
+                <table class="table" id="table">
+                    <tbody>
                     <tr>
                         <th class="w-25">KTP</th>
                         <td>{{ $pasien->ktp }}</td>
@@ -46,8 +51,9 @@
                         <th>Golongan Darah</th>
                         <td>{{ $pasien->golongan_darah }}</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

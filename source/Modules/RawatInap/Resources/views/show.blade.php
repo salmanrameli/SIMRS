@@ -30,6 +30,10 @@
                 </table>
                 <a href="{{ route('ranap.pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Data Pasien</a>
 
+                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                    <a href="{{ route('pasien.edit', $ranap->pasien->id) }}" class="btn btn-warning">Ubah Data Pasien</a>
+                @endif
+
                 @if(Auth::user()->jabatan_id == 3)
                     <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perjalanan Penyakit Pasien</a>
                 @endif
