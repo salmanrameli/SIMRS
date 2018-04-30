@@ -14,6 +14,11 @@
                     {{ Form::open(['route' => 'ranap.store']) }}
 
                     <div class="form-group">
+                        {{ Form::label('id_rm', 'Nomor Rekam Medis', ['class' => 'control-label']) }}
+                        {{ Form::text('id_rm', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
                         {{ Form::label('id_pasien', 'ID Pasien', ['class' => 'control-label']) }}
                         {{ Form::text('id_pasien', null, ['class' => 'form-control']) }}
                     </div>
@@ -40,6 +45,8 @@
                         {{ Form::label('tanggal_masuk', 'Tanggal Masuk', ['class' => 'control-label']) }}
                         {{ Form::date('tanggal_masuk', new DateTime(), ['class' => 'form-control']) }}
                     </div>
+
+                    <br>
 
                     {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
 

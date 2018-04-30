@@ -11,7 +11,7 @@ class RawatInap extends Model
     protected $table = 'rawat_inap';
 
     protected $fillable = [
-        'id_pasien', 'nomor_kamar', 'id_dokter_pj', 'tanggal_masuk', 'tanggal_keluar'
+        'id_rm', 'id_pasien', 'nomor_kamar', 'id_dokter_pj'
     ];
 
     public function pasien()
@@ -22,5 +22,10 @@ class RawatInap extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_dokter_pj', 'id');
+    }
+
+    public function tanggal_keluar()
+    {
+        return $this->hasMany(TanggalKeluarRawatInap::class, 'id_rm', 'id_rm');
     }
 }

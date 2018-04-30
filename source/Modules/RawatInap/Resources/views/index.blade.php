@@ -45,7 +45,8 @@
                                         <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="sr-only"></span>
                                         </button>
-                                        <div class="dropdown-menu">
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="{{ route('ranap.edit', $pasien->id) }}" class="dropdown-item">Ubah</a>
 
                                             @if(Auth::user()->jabatan_id == 3)
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>

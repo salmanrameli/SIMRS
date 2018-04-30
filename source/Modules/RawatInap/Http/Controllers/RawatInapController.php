@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
 use Modules\RawatInap\Entities\RawatInap;
+use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
 use Modules\User\Entities\User;
 
 class RawatInapController extends Controller
@@ -33,7 +34,11 @@ class RawatInapController extends Controller
         {
             $nama = Auth::user()->nama;
 
-            $pasien_ranap = RawatInap::with('pasien')->select('*')->where('id_dokter_pj', '=', Auth::id())->whereNull('tanggal_keluar')->orderBy('created_at', 'desc')->get();
+            $pasien_ranap = RawatInap::with('pasien')
+                ->select('*')
+                ->where('id_dokter_pj', '=', Auth::id())
+                ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+                ->get();
 
             return view('rawatinap::index')
                 ->with('nama', $nama)
@@ -42,7 +47,10 @@ class RawatInapController extends Controller
         
         $nama = Auth::user()->nama;
 
-        $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('created_at', 'desc')->get();
+        $pasien_ranap = RawatInap::with('pasien')
+            ->select('*')
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->get();
 
         return view('rawatinap::index')
             ->with('nama', $nama)
@@ -53,13 +61,20 @@ class RawatInapController extends Controller
     {
         $nama = Auth::user()->nama;
 
-        $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('tanggal_masuk', 'desc')->get();
+        $pasien_ranap = RawatInap::with('pasien')
+            ->select('*')
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->get();
 
         $lantai = Lantai::select('nomor_lantai')->orderBy('lantai.id', 'desc')->pluck('nomor_lantai');
 
         $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
 
-        $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
+        $terisi_sekarang = DB::table('rawat_inap')
+            ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->groupBy('nama_kamar')
+            ->get();
 
         return view('rawatinap::index-ruangan')
             ->with('nama', $nama)
@@ -79,9 +94,15 @@ class RawatInapController extends Controller
 
         $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
 
-        $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
+        $terisi_sekarang = DB::table('rawat_inap')
+            ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->groupBy('nama_kamar')
+            ->get();
 
-        $kamar_kosong = Kamar::select('nama_kamar')->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get()->toArray())->get();
+        $kamar_kosong = Kamar::select('nama_kamar')
+            ->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())->groupBy('nama_kamar')->get()->toArray())
+            ->get();
 
         $kamar_tersedia = [];
 
@@ -114,6 +135,7 @@ class RawatInapController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'id_rm' => 'required',
             'id_pasien' => 'required',
             'nama_kamar' => 'required',
             'id_dokter_pj' => 'required',
@@ -121,13 +143,14 @@ class RawatInapController extends Controller
         ]);
 
         $ranap = new RawatInap();
+        $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = $request->id_dokter_pj;
         $ranap->tanggal_masuk = $request->tanggal_masuk;
         $ranap->save();
 
-        Session::flash('message', 'Pendaftaran rawat inap berhasil disimpan');
+        Session::flash('message', 'Pendaftaran rawat inap berhasil dilakukan');
 
         return redirect()->route('ranap.index');
     }
@@ -155,9 +178,15 @@ class RawatInapController extends Controller
 
         $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
 
-        $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
+        $terisi_sekarang = DB::table('rawat_inap')
+            ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->groupBy('nama_kamar')
+            ->get();
 
-        $kamar_kosong = Kamar::select('nama_kamar')->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get()->toArray())->get();
+        $kamar_kosong = Kamar::select('nama_kamar')
+            ->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())->groupBy('nama_kamar')->get()->toArray())
+            ->get();
 
         $kamar_tersedia = [];
 
@@ -195,12 +224,14 @@ class RawatInapController extends Controller
         $ranap = RawatInap::findOrFail($id);
 
         $this->validate($request, [
+            'id_rm' => 'required',
             'id_pasien' => 'required',
             'nama_kamar' => 'required',
             'id_dokter_pj' => 'required',
             'tanggal_masuk' => 'required'
         ]);
 
+        $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar  = $request->nama_kamar;
         $ranap->id_dokter_pj = $request->id_dokter_pj;
