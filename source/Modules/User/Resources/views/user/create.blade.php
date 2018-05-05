@@ -32,13 +32,15 @@
 
     <div class="form-group">
         {{ Form::label('jabatan_id', 'Jabatan', ['class' => 'control-label']) }}
-        <br>
-        {{ Form::radio('jabatan_id', '1') }} &nbsp; Administrator<br>
-        {{ Form::radio('jabatan_id', '2') }} &nbsp; Administrasi<br>
-        {{ Form::radio('jabatan_id', '3') }} &nbsp; Perawat<br>
-        {{ Form::radio('jabatan_id', '5') }} &nbsp; Kasir<br>
+        <select class="form-control" name="jabatan_id">
+            @foreach($jabatans as $jabatan)
+                <option value="{{ $jabatan->id }}" id="jabatan_id" name="{{ $jabatan->id }}">{{ ucfirst($jabatan->nama) }}</option>
+            @endforeach
+        </select>
     </div>
+
     <br>
+
     {{ Form::submit('Buat Akun', ['class' => 'btn btn-outline-success']) }}
 
     {{ Form::close() }}
