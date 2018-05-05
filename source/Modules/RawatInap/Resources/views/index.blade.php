@@ -46,7 +46,10 @@
                                             <span class="sr-only"></span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="{{ route('ranap.edit', $pasien->id) }}" class="dropdown-item">Ubah</a>
+
+                                            @if(Auth::user()->jabatan_id == 2)
+                                                <a href="{{ route('ranap.edit', $pasien->id) }}" class="dropdown-item">Ubah</a>
+                                            @endif
 
                                             @if(Auth::user()->jabatan_id == 3)
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
