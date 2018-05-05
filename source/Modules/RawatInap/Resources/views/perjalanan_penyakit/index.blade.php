@@ -55,7 +55,7 @@
                             <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
-                    <table class="table small">
+                    <table class="table table-striped small">
                         <thead>
                             <tr>
                                 <th>Perjalanan Penyakit</th>
@@ -69,15 +69,15 @@
                                 <td>
                                     <b><u>{{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</u></b><br>
                                     <label><b>Subjektif</b></label>
-                                    <p>{{ $perjalanan->subjektif }}</p>
+                                    <p>{!! $perjalanan->subjektif !!}</p>
                                     <label><b>Objektif</b></label>
-                                    <p>{{ $perjalanan->objektif }}</p>
+                                    <p>{!! $perjalanan->objektif !!}</p>
                                     <label><b>Assessment</b></label>
-                                    <p>{{ $perjalanan->assessment }}</p>
+                                    <p>{!! $perjalanan->assessment !!}</p>
                                 </td>
                                 <td>
                                     <label><b>Planning</b></label>
-                                    <p>{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a></p>
+                                    <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a></p>
                                 </td>
                                 @if(Auth::user()->jabatan_id == 4)
                                     <td><a href="{{ route('perjalanan_penyakit.edit', [$pasien->id, $perjalanan->id]) }}" class="btn btn-warning">Ubah</a></td>

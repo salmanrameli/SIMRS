@@ -25,22 +25,22 @@
 
                 <div class="form-group">
                     {{ Form::label('subjektif', 'Subjektif', ['class' => 'control-label']) }}
-                    {{ Form::textarea('subjektif', null, ['class' => 'form-control']) }}
+                    {!! Form::textarea('subjektif', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
                     {{ Form::label('objektif', 'Objektif', ['class' => 'control-label']) }}
-                    {{ Form::textarea('objektif', null, ['class' => 'form-control']) }}
+                    {!! Form::textarea('objektif', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
                     {{ Form::label('assessment', 'Assessment', ['class' => 'control-label']) }}
-                    {{ Form::textarea('assessment', null, ['class' => 'form-control']) }}
+                    {!! Form::textarea('assessment', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
                     {{ Form::label('planning_perintah_dokter_dan_pengobatan', 'Planning / Perintah Dokter dan Pengobatan', ['class' => 'control-label']) }}
-                    {{ Form::textarea('planning_perintah_dokter_dan_pengobatan', null, ['class' => 'form-control']) }}
+                    {!! Form::textarea('planning_perintah_dokter_dan_pengobatan', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div hidden>
@@ -56,5 +56,10 @@
 @endsection
 
 @section('script')
+    <script>
+        $(function(){
+            $("textarea").htmlarea();
+        });
+    </script>
     @include('layouttemplate::attributes.pasien_ranap')
 @endsection

@@ -46,13 +46,17 @@
 @endsection
 
 @section('script')
-    {{--<script type="text/javascript">--}}
-        {{--$('#timepicker').timepicker({--}}
-            {{--template: false,--}}
-            {{--showInputs: false,--}}
-            {{--minuteStep: 1,--}}
-            {{--showMeridian: false--}}
-        {{--});--}}
-    {{--</script>--}}
+    <script type="text/javascript">
+        // $('#timepicker').timepicker({
+        //     template: false,
+        //     showInputs: false,
+        //     minuteStep: 1,
+        //     showMeridian: false
+        // });
+
+        $(function(){
+            $("textarea").htmlarea();
+        });
+    </script>
     @include('layouttemplate::attributes.pasien_ranap')
 @endsection

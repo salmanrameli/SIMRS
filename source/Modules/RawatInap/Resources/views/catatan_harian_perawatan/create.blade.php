@@ -53,6 +53,10 @@
             minuteStep: 1,
             showMeridian: false
         });
+
+        $(function(){
+            $("textarea").htmlarea();
+        });
     </script>
     @include('layouttemplate::attributes.pasien_ranap')
 @endsection
