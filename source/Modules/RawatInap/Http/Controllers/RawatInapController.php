@@ -146,7 +146,7 @@ class RawatInapController extends Controller
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
-        $ranap->id_dokter_pj = $request->id_dokter_pj;
+        $ranap->id_dokter_pj = User::where('id_user', '=', $request->id_dokter_pj)->value('id');
         $ranap->tanggal_masuk = $request->tanggal_masuk;
         $ranap->save();
 
@@ -234,7 +234,7 @@ class RawatInapController extends Controller
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar  = $request->nama_kamar;
-        $ranap->id_dokter_pj = $request->id_dokter_pj;
+        $ranap->id_dokter_pj = User::where('id_user', '=', $request->id_dokter_pj)->value('id');
         $ranap->tanggal_masuk = $request->tanggal_masuk;
         $ranap->save();
 

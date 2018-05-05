@@ -26,7 +26,7 @@ class PerjalananPenyakitController extends Controller
 
         $perjalanan = PerjalananPenyakit::where('id_pasien', $id)->orderBy('tanggal_keterangan', 'desc')->get();
 
-        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->whereNull('tanggal_keluar')->value('tanggal_masuk');
+        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
         return view('rawatinap::perjalanan_penyakit.index')
             ->with('pasien', $pasien)
@@ -97,7 +97,7 @@ class PerjalananPenyakitController extends Controller
 
         $perjalanan = PerjalananPenyakit::where('id', '=', $id_perjalanan)->first();
 
-        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->whereNull('tanggal_keluar')->value('tanggal_masuk');
+        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
         return view('rawatinap::perjalanan_penyakit.show')
             ->with('pasien', $pasien)
