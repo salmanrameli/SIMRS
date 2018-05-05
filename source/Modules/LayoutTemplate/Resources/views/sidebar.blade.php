@@ -1,7 +1,7 @@
 @if(Auth::user()->jabatan_id == 1)
     <li class="nav-item d-inline-block">
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
             <a href="{{ route('user.index') }}" class="nav-link" id="manajemen_staff_jabatan" style="min-width: 200px">Manajemen Staff</a>
@@ -13,7 +13,7 @@
     </li>
     <li class="nav-item">
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
             <a href="{{ route('dokter.index') }}" class="nav-link" id="manajemen_dokter" style="min-width: 200px">Manajemen Dokter</a>
@@ -24,7 +24,7 @@
     </li>
     <li class="nav-item">
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
             <a href="{{ route('pasien.index') }}" class="nav-link" id="manajemen_data_pasien" style="min-width: 200px">Manajemen Pasien</a>
@@ -35,7 +35,7 @@
     </li>
     <li class="nav-item">
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
             <a href="{{ route('bangunan.index') }}" class="nav-link" id="pengaturan_rumah_sakit" style="min-width: 200px">Manajemen Bangunan</a>
@@ -50,7 +50,7 @@
 @if(Auth::user()->jabatan_id == 2)
     <li class="nav-item">
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
             <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap">Pasien Rawat Inap</a>
@@ -69,7 +69,7 @@
 @if(Auth::user()->jabatan_id == 3)
     <li class="nav-item">
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
             <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap">Pasien Rawat Inap</a>
@@ -81,3 +81,17 @@
         </div>
     </li>
     @endif
+
+@if(Auth::user()->jabatan_id == 4)
+    <li class="nav-item">
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropright</span>
+            </button>
+            <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap">Pasien Rawat Inap</a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('ranap.pasien.index') }}" class="nav-link small">Lihat Semua Pasien</a>
+            </div>
+        </div>
+    </li>
+@endif
