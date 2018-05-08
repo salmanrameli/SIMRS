@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
 use Modules\RawatInap\Entities\RawatInap;
+use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
 
 class BangunanController extends Controller
 {
@@ -25,13 +26,20 @@ class BangunanController extends Controller
      */
     public function index()
     {
-        $pasien_ranap = RawatInap::with('pasien')->select('*')->whereNull('tanggal_keluar')->orderBy('tanggal_masuk', 'desc')->get();
+        $pasien_ranap = RawatInap::with('pasien')
+            ->select('*')
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->get();
 
         $lantai = Lantai::select('nomor_lantai', 'id')->orderBy('lantai.id', 'desc')->get();
 
         $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
 
-        $terisi_sekarang = DB::table('rawat_inap')->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))->whereNull('tanggal_keluar')->groupBy('nama_kamar')->get();
+        $terisi_sekarang = DB::table('rawat_inap')
+            ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->groupBy('nama_kamar')
+            ->get();
 
         return view('bangunan::index')
             ->with('pasiens', $pasien_ranap)
