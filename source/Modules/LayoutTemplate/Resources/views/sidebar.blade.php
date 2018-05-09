@@ -45,6 +45,17 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropright</span>
+            </button>
+            <a href="{{ route('obat.index') }}" class="nav-link" id="manajemen_obat" style="min-width: 200px">Manajemen Obat</a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('obat.create') }}" class="nav-link small">Daftarkan Obat Baru</a>
+            </div>
+        </div>
+    </li>
     @endif
 
 @if(Auth::user()->jabatan_id == 2)
