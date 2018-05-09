@@ -56,6 +56,17 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropright</span>
+            </button>
+            <a href="{{ route('alat_kesehatan.index') }}" class="nav-link" id="manajemen_alkes" style="min-width: 200px">Manajemen<br>Alat Kesehatan</a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('alat_kesehatan.create') }}" class="nav-link small">Tambah Alat Kesehatan Baru</a>
+            </div>
+        </div>
+    </li>
     @endif
 
 @if(Auth::user()->jabatan_id == 2)
