@@ -1,5 +1,9 @@
 @extends('layouttemplate::master')
 
+@section('title')
+    Manajemen Obat
+    @endsection
+
 @section('content')
     <div class="page-header">
         <h3>Manajemen Obat</h3>
@@ -23,7 +27,7 @@
                             <tbody>
                             @foreach($obats as $obat)
                                 <tr>
-                                    <td>{{ $obat->nama }}</td>
+                                    <td>{{ ucfirst($obat->nama) }}</td>
                                     <td>{{ $obat->harga }}</td>
                                     <td>
                                         <div class="btn-group">
