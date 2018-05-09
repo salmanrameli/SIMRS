@@ -8,6 +8,9 @@
     <div class="col-md-12">
         <div class="card card-body">
             <div class="col-md-12">
+                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                    <a class="btn btn-warning float-right" href="{{ route('obat.edit', ['id' => $obat->id]) }}">Ubah</a>
+                @endif
                 <h3>Detail Obat: {{ ucfirst($obat->nama) }}</h3>
                 <br>
                 <table class="table">
