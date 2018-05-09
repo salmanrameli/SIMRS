@@ -1,0 +1,16 @@
+{
+    "name": "Obat",
+    "alias": "obat",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Obat\\Providers\\ObatServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
