@@ -28,6 +28,7 @@ class CreatePasienTable extends Migration
             $table->string('golongan_darah', 2);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
