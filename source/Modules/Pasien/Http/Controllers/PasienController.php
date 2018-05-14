@@ -27,11 +27,6 @@ class PasienController extends Controller
     {
         $pasien = Pasien::orderBy('id')->paginate(15);
 
-        if(Auth::user()->jabatan_id == 1)
-        {
-            return view('pasien::administrator.index')->with('pasiens', $pasien);
-        }
-
         return view('pasien::index')->with('pasiens', $pasien);
     }
 
@@ -167,11 +162,6 @@ class PasienController extends Controller
             orWhere('tanggal_lahir', 'like', '%'.$query.'%')->
             orWhere('alamat', 'like', '%'.$query.'%')->
             orWhere('telepon', 'like', '%'.$query.'%')->get();
-
-        if(Auth::user()->jabatan_id == 1)
-        {
-            return view('pasien::administrator.hasil_cari')->with('results', $results)->with('query', $query);
-        }
 
         return view('pasien::hasil_cari')->with('results', $results)->with('query', $query);
     }

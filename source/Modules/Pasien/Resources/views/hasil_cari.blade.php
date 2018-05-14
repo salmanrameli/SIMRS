@@ -1,23 +1,23 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::master')
 
 @section('title')
     Hasil pencarian: {{ $query }}
 @endsection
 
 @section('content')
-    <div class="col-md-12">
-        <div class="card card-body">
-            <div class="col-md-12">
-                <form class="form-inline" action="{{ route('ranap.pasien.cari') }}" method="get">
-                    <label for="cari" class="control-label">Cari Pasien: </label>
-                    &nbsp;&nbsp;
-                    <input type="text" class="form-control" id="query" name="query" placeholder="John Doe" value="{{ $query }}">
-                    &nbsp;
-                    <button type="submit" class="btn btn-primary">Cari</button>
-                </form>
-            </div>
+    <div class="card card-body">
+        <div class="col-md-12">
+            <form class="form-inline" action="{{ route('pasien.cari') }}" method="get">
+                <label for="cari" class="control-label">Cari Pasien: </label>
+                &nbsp;&nbsp;
+                <input type="text" class="form-control" id="query" name="query" placeholder="John Doe" value="{{ $query }}">
+                &nbsp;
+                <button type="submit" class="btn btn-primary">Cari</button>
+            </form>
         </div>
-        <div class="card card-body">
+    </div>
+    <div class="card card-body">
+        <div class="col-md-12">
             <div class="page-header">
                 <h3>Hasil pencarian untuk: {{ $query }}</h3>
                 <br>
@@ -30,17 +30,16 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Telepon</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Telepon</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach($results as $result)
                         <tr>
                             <td>{{ ucwords($result->nama) }}</td>
@@ -59,9 +58,12 @@
                             </td>
                         </tr>
                     @endforeach
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
-    @endsection
+@endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien')
+@endsection

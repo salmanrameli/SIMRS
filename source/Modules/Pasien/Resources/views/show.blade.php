@@ -62,6 +62,7 @@
 @endsection
 
 @section('script')
+    @include('layouttemplate::attributes.pasien')
     <script>
         var lahir = new Date($('#table').find('#tanggal_lahir').text());
         var sekarang = new Date();
