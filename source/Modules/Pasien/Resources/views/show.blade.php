@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::pages')
 
 @section('title')
     Detail Pasien: {{ $pasien->nama }}
@@ -8,9 +8,6 @@
     <div class="col-md-12">
         <div class="card card-body">
             <div class="col-md-12">
-                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                    <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-right">Ubah Data Pasien</a>
-                @endif
                 <h3>{{ ucfirst($pasien->nama) }}</h3>
                 <br>
                 <table class="table" id="table">
@@ -53,6 +50,12 @@
                     </tr>
                     </tbody>
                 </table>
+                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                    <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-left">Ubah Data Pasien</a>
+                    {{ Form::open(['method' => 'DELETE', 'route' => ['pasien.destroy', $pasien->id]]) }}
+                    {{ Form::submit('Hapus Pasien', ['class' => 'btn btn-danger float-right', 'onclick' => 'return confirm("Apakah anda yakin untuk menghapus data pasien?")']) }}
+                    {{ Form::close() }}
+                @endif
             </div>
         </div>
     </div>

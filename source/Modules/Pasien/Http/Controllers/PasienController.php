@@ -97,11 +97,6 @@ class PasienController extends Controller
     {
         $pasien = Pasien::findorFail($id);
 
-        if(Auth::user()->jabatan_id == 1)
-        {
-            return view('pasien::administrator.show')->with('pasien', $pasien);
-        }
-
         return view('pasien::show')->with('pasien', $pasien);
 
     }
@@ -152,8 +147,15 @@ class PasienController extends Controller
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy()
+    public function destroy($id)
     {
+        $pasien = Pasien::find($id);
+
+        $pasien->delete();
+
+        Session::flash('message', 'Pasien berhasil dihapus');
+
+        return redirect()->route('pasien.index');
     }
 
     public function cari(Request $request)
