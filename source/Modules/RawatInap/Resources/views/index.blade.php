@@ -27,6 +27,7 @@
                             <tr>
                                 <th>Nama Pasien</th>
                                 <th>Nomor Kamar</th>
+                                <th>Diagnosa Awal</th>
                                 <th>Dokter Penanggung Jawab</th>
                                 <th>Tanggal Masuk</th>
                                 <th></th>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>{{ $pasien->pasien->nama }}</td>
                                 <td>{{ $pasien->nama_kamar }}</td>
+                                <td>{{ $pasien->diagnosa_awal }}</td>
                                 <td>{{ $pasien->user->nama }}</td>
                                 <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
                                 <td>

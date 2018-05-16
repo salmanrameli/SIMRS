@@ -27,4 +27,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RawatInap::class, 'id_dokter_pj', 'id');
     }
+
+    public function petugas_penerima()
+    {
+        return $this->hasMany(RawatInap::class, 'id_petugas_penerima', 'id');
+    }
 }

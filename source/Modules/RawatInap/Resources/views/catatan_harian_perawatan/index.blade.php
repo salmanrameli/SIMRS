@@ -18,7 +18,7 @@
 
                     @if(Auth::user()->jabatan_id == 3)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
+                            <a class="nav-link active" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
                         </li>
                     @endif
 
@@ -44,6 +44,10 @@
                                     <tr>
                                         <th>Tanggal Masuk</th>
                                         <td style="padding-left: 10px">: {{ date("d F Y", strtotime($tanggal_masuk)) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Diagnosa Awal</th>
+                                        <td style="padding-left: 10px">: {{ ucfirst($diagnosa_awal) }}</td>
                                     </tr>
                                 </tbody>
                             </table>

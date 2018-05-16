@@ -20,6 +20,12 @@ class CreateRawatInapTable extends Migration
             $table->string('id_pasien');
             $table->string('nama_kamar');
             $table->string('id_dokter_pj');
+            $table->string('dokter_pengirim');
+            $table->string('id_petugas_penerima');
+            $table->string('diagnosa_awal');
+            $table->string('icd_x_diagnosa_awal');
+            $table->string('diagnosa_sekunder');
+            $table->string('icd_x_diagnosa_sekunder');
             $table->date('tanggal_masuk');
 
             $table->timestamps();

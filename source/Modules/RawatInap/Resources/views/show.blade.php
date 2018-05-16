@@ -15,16 +15,44 @@
                 <table class="table table-striped">
                     <tbody>
                         <tr>
-                            <th class="w-25">Kamar</th>
-                            <td>{{ $ranap->nama_kamar }}</td>
+                            <th>Nomor Rekam Medis</th>
+                            <td>{{ $ranap->id_rm }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <td>{{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Dokter Pengirim</th>
+                            <td>{{ $ranap->dokter_pengirim }}</td>
+                        </tr>
+                        <tr>
+                            <th>Petugas Penerima</th>
+                            <td>{{ $ranap->petugas->nama }}</td>
+                        </tr>
+                        <tr>
+                            <th>Diagnosa Awal</th>
+                            <td>{{ $diagnosa_awal }}</td>
+                        </tr>
+                        <tr>
+                            <th>ICD X Diagnosa Awal</th>
+                            <td>{{ $ranap->icd_x_diagnosa_awal }}</td>
                         </tr>
                         <tr>
                             <th>Dokter Penanggung Jawab</th>
                             <td>{{ $ranap->user->nama }}</td>
                         </tr>
                         <tr>
-                            <th>Tanggal Masuk</th>
-                            <td>{{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            <th>Diagnosa Sekunder</th>
+                            <td>{{ $ranap->diagnosa_sekunder }}</td>
+                        </tr>
+                        <tr>
+                            <th>ICD X Diagnosa Sekunder</th>
+                            <td>{{ $ranap->icd_x_diagnosa_sekunder }}</td>
+                        </tr>
+                        <tr>
+                            <th class="w-25">Kamar</th>
+                            <td>{{ $ranap->nama_kamar }}</td>
                         </tr>
                     </tbody>
                 </table>

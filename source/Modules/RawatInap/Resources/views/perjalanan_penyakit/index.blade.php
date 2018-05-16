@@ -49,6 +49,10 @@
                                     <th>Tanggal Masuk</th>
                                     <td style="padding-left: 10px">: {{ date("d F Y", strtotime($tanggal_masuk)) }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Diagnosa Awal</th>
+                                    <td style="padding-left: 10px">: {{ ucfirst($diagnosa_awal) }}</td>
+                                </tr>
                                 </tbody>
                             </table>
                             <br>

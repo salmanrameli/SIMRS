@@ -28,10 +28,13 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
+        $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
+
         return view('rawatinap::perintah_dokter_dan_pengobatan.index')
             ->with('pasien', $pasien)
             ->with('perintahs', $perintah_dokter)
-            ->with('tanggal_masuk', $tanggal_masuk);
+            ->with('tanggal_masuk', $tanggal_masuk)
+            ->with('diagnosa_awal', $diagnosa_awal);
     }
 
     /**
@@ -83,10 +86,13 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
+        $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
+
         return view('rawatinap::perintah_dokter_dan_pengobatan.show')
             ->with('pasien', $pasien)
             ->with('tanggal_masuk', $tanggal_masuk)
-            ->with('perintah', $perintah);
+            ->with('perintah', $perintah)
+            ->with('diagnosa_awal', $diagnosa_awal);
     }
 
     /**

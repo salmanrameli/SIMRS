@@ -92,6 +92,8 @@ class RawatInapController extends Controller
     {
         $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
 
+        $petugass = User::where('jabatan_id', '=', '2')->orWhere('jabatan_id', '=', '3')->orderBy('nama')->get();
+
         $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
 
         $terisi_sekarang = DB::table('rawat_inap')
@@ -124,6 +126,7 @@ class RawatInapController extends Controller
 
         return view('rawatinap::create')
             ->with('dokters', $dokter)
+            ->with('petugass', $petugass)
             ->with('kosongs', $kamar_tersedia);
     }
 
@@ -139,6 +142,10 @@ class RawatInapController extends Controller
             'id_pasien' => 'required',
             'nama_kamar' => 'required',
             'id_dokter_pj' => 'required',
+            'dokter_pengirim' => 'required',
+            'id_petugas_penerima' => 'required',
+            'diagnosa_awal' => 'required',
+            'icd_x_diagnosa_awal' => 'required',
             'tanggal_masuk' => 'required'
         ]);
 
@@ -147,6 +154,12 @@ class RawatInapController extends Controller
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = User::where('id_user', '=', $request->id_dokter_pj)->value('id');
+        $ranap->dokter_pengirim = $request->dokter_pengirim;
+        $ranap->id_petugas_penerima = $request->id_petugas_penerima;
+        $ranap->diagnosa_awal = $request->diagnosa_awal;
+        $ranap->icd_x_diagnosa_awal = $request->icd_x_diagnosa_awal;
+        $ranap->diagnosa_sekunder = $request->diagnosa_sekunder;
+        $ranap->icd_x_diagnosa_sekunder = $request->icd_x_diagnosa_sekunder;
         $ranap->tanggal_masuk = $request->tanggal_masuk;
         $ranap->save();
 
@@ -228,13 +241,23 @@ class RawatInapController extends Controller
             'id_pasien' => 'required',
             'nama_kamar' => 'required',
             'id_dokter_pj' => 'required',
+            'dokter_pengirim' => 'required',
+            'id_petugas_penerima' => 'required',
+            'diagnosa_awal' => 'required',
+            'icd_x_diagnosa_awal' => 'required',
             'tanggal_masuk' => 'required'
         ]);
 
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
-        $ranap->nama_kamar  = $request->nama_kamar;
+        $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = User::where('id_user', '=', $request->id_dokter_pj)->value('id');
+        $ranap->dokter_pengirim = $request->dokter_pengirim;
+        $ranap->id_petugas_penerima = $request->id_petugas_penerima;
+        $ranap->diagnosa_awal = $request->diagnosa_awal;
+        $ranap->icd_x_diagnosa_awal = $request->icd_x_diagnosa_awal;
+        $ranap->diagnosa_sekunder = $request->diagnosa_sekunder;
+        $ranap->icd_x_diagnosa_sekunder = $request->icd_x_diagnosa_sekunder;
         $ranap->tanggal_masuk = $request->tanggal_masuk;
         $ranap->save();
 

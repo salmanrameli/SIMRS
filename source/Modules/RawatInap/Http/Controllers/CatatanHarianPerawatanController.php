@@ -25,12 +25,15 @@ class CatatanHarianPerawatanController extends Controller
 
         $catatan = CatatanHarianPerawatan::where('id_pasien', $id)->get();
 
-        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->whereNull('tanggal_keluar')->value('tanggal_masuk');
+        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
+
+        $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
         return view('rawatinap::catatan_harian_perawatan.index')
             ->with('pasien', $pasien)
             ->with('catatans', $catatan)
-            ->with('tanggal_masuk', $tanggal_masuk);
+            ->with('tanggal_masuk', $tanggal_masuk)
+            ->with('diagnosa_awal', $diagnosa_awal);
     }
 
     /**
