@@ -24,8 +24,8 @@
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('tanggal_masuk', 'Tanggal Masuk', ['class' => 'control-label']) }}
-                        {{ Form::date('tanggal_masuk', new DateTime(), ['class' => 'form-control']) }}
+                        <label for="datepicker" id="tanggal_masuk" class="control-label">Tanggal Masuk</label>
+                        <input type="text" id="datepicker" name="tanggal_masuk" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -93,4 +93,11 @@
 
 @section('script')
     @include('layouttemplate::attributes.pasien_ranap')
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
 @endsection

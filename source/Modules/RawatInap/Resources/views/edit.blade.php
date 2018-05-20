@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::master')
 
 @section('title')
     Ubah Detail Rawat Inap
@@ -24,8 +24,8 @@
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('tanggal_masuk', 'Tanggal Masuk', ['class' => 'control-label']) }}
-                        {{ Form::date('tanggal_masuk', new DateTime(), ['class' => 'form-control']) }}
+                        <label for="datepicker" id="tanggal_masuk" class="control-label">Tanggal Masuk</label>
+                        <input type="text" id="datepicker" name="tanggal_masuk" class="form-control" value="{{ $ranap->tanggal_masuk }}">
                     </div>
 
                     <div class="form-group">
@@ -37,7 +37,7 @@
                         {{ Form::label('id_petugas_penerima', 'Petugas Penerima', ['class' => 'control-label']) }}
                         <select class="form-control" name="id_petugas_penerima">
                             @foreach($petugass as $petugas)
-                                <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}">{{ $petugas->nama }}</option>
+                                <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}" {{ $ranap->id_petugas_penerima == $petugas->id ? 'selected' : '' }}>{{ $petugas->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                         {{ Form::label('id_dokter_pj', 'Dokter Penanggung Jawab', ['class' => 'control-label']) }}
                         <select class="form-control" name="id_dokter_pj">
                             @foreach($dokters as $dokter)
-                                <option value="{{ $dokter->id }}" id="id_dokter_pj" name="{{ $dokter->id }}">{{ $dokter->nama }}</option>
+                                <option value="{{ $dokter->id }}" id="id_dokter_pj" name="{{ $dokter->id }}" {{ $ranap->id_dokter_pj == $dokter->id ? 'selected' : '' }}>{{ $dokter->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -75,7 +75,7 @@
                         {{ Form::label('nama_kamar', 'Kamar', ['class' => 'control-label']) }}
                         <select class="form-control" name="nama_kamar">
                             @foreach($kosongs as $kosong)
-                                <option value="{{ $kosong }}" id="nama_kamar" name="{{ $kosong }}">{{ $kosong }}</option>
+                                <option value="{{ $kosong }}" id="nama_kamar" name="{{ $kosong }}" {{ $ranap->nama_kamar == $kosong ? 'selected' : '' }}>{{ $kosong }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -89,4 +89,15 @@
             </div>
         </div>
     </div>
+    @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.pasien_ranap')
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
     @endsection

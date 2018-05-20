@@ -153,7 +153,7 @@ class RawatInapController extends Controller
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
-        $ranap->id_dokter_pj = User::where('id_user', '=', $request->id_dokter_pj)->value('id');
+        $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
         $ranap->dokter_pengirim = $request->dokter_pengirim;
         $ranap->id_petugas_penerima = $request->id_petugas_penerima;
         $ranap->diagnosa_awal = $request->diagnosa_awal;
@@ -186,6 +186,8 @@ class RawatInapController extends Controller
     public function edit($id)
     {
         $ranap = RawatInap::findOrFail($id);
+
+        $petugass = User::where('jabatan_id', '=', '2')->orWhere('jabatan_id', '=', '3')->orderBy('nama')->get();
 
         $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
 
@@ -224,6 +226,7 @@ class RawatInapController extends Controller
         return view('rawatinap::edit')
             ->with('ranap', $ranap)
             ->with('dokters', $dokter)
+            ->with('petugass', $petugass)
             ->with('kosongs', $kamar_tersedia);
     }
 
@@ -251,7 +254,7 @@ class RawatInapController extends Controller
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
-        $ranap->id_dokter_pj = User::where('id_user', '=', $request->id_dokter_pj)->value('id');
+        $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
         $ranap->dokter_pengirim = $request->dokter_pengirim;
         $ranap->id_petugas_penerima = $request->id_petugas_penerima;
         $ranap->diagnosa_awal = $request->diagnosa_awal;
