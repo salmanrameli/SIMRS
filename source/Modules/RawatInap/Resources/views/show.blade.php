@@ -24,31 +24,31 @@
                         </tr>
                         <tr>
                             <th>Dokter Pengirim</th>
-                            <td>{{ $ranap->dokter_pengirim }}</td>
+                            <td>{{ ucfirst($ranap->dokter_pengirim) }}</td>
                         </tr>
                         <tr>
                             <th>Petugas Penerima</th>
-                            <td>{{ $ranap->petugas->nama }}</td>
+                            <td>{{ ucfirst($ranap->petugas->nama) }}</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
-                            <td>{{ $diagnosa_awal }}</td>
+                            <td>{{ ucfirst($ranap->diagnosa_awal) }}</td>
                         </tr>
                         <tr>
                             <th>ICD X Diagnosa Awal</th>
-                            <td>{{ $ranap->icd_x_diagnosa_awal }}</td>
+                            <td>{{ ucfirst($ranap->icd_x_diagnosa_awal) }}</td>
                         </tr>
                         <tr>
                             <th>Dokter Penanggung Jawab</th>
-                            <td>{{ $ranap->user->nama }}</td>
+                            <td>{{ ucfirst($ranap->user->nama) }}</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Sekunder</th>
-                            <td>{{ $ranap->diagnosa_sekunder }}</td>
+                            <td>{{ ucfirst($ranap->diagnosa_sekunder) }}</td>
                         </tr>
                         <tr>
                             <th>ICD X Diagnosa Sekunder</th>
-                            <td>{{ $ranap->icd_x_diagnosa_sekunder }}</td>
+                            <td>{{ ucfirst($ranap->icd_x_diagnosa_sekunder) }}</td>
                         </tr>
                         <tr>
                             <th class="w-25">Kamar</th>
