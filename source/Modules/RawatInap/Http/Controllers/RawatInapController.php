@@ -22,6 +22,8 @@ class RawatInapController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->middleware('checkRole:1,2')->except(['index', 'show']);
     }
 
     /**
@@ -279,7 +281,7 @@ class RawatInapController extends Controller
 
     public function showKamar($id)
     {
-        $pasien = RawatInap::select('*')->whereNull('tanggal_keluar')->where('nama_kamar', '=', $id)->get();
+        $pasien = RawatInap::where('nama_kamar', '=', $id)->get();
 
         return view('rawatinap::showKamar')
             ->with('pasiens', $pasien)
