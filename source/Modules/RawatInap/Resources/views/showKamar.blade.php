@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::master')
 
 @section('title')
     Detail Rawat Inap Kamar
@@ -24,9 +24,9 @@
                     @foreach($pasiens as $pasien)
                         <tr>
                             <td>{{ $pasien->pasien->nama }}</td>
-                            <td>{{ $pasien->dokter->nama }}</td>
+                            <td>{{ $pasien->user->nama }}</td>
                             <td>{{ date("d F Y", strtotime($pasien->tanggal_masuk)) }}</td>
-                            <td><a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info btn-sm float-right">Detail...</a></td>
+                            <td><a href="{{ route('ranap.show', $pasien->id) }}" class="btn btn-outline-info float-right">Detail...</a></td>
                         </tr>
                         @endforeach
                 </tbody>
@@ -34,3 +34,7 @@
         </div>
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.denah')
+@endsection
