@@ -13,17 +13,21 @@ class checkRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $jabatan)
+    public function handle($request, Closure $next, ...$jabatans)
     {
         $jabatan_user = $request->user()->jabatan_id;
 
-        if($jabatan_user != $jabatan)
+        foreach ($jabatans as $jabatan)
         {
-            $warning = "Anda tidak memiliki hak akses";
-
-            return redirect()->back()->with('warning', $warning);
+            if($jabatan_user == $jabatan)
+            {
+                return $next($request);
+            }
         }
 
-        return $next($request);
+//        return $next($request);
+        $warning = "Anda tidak memiliki hak akses";
+
+        return redirect()->back()->with('warning', $warning);
     }
 }
