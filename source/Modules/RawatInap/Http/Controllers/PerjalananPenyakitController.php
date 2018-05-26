@@ -16,6 +16,11 @@ class PerjalananPenyakitController extends Controller
 {
     use ValidatesRequests;
 
+    public function __construct()
+    {
+        $this->middleware('checkRole:4')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response

@@ -16,6 +16,11 @@ class PerintahDokterDanPengobatanController extends Controller
 {
     use ValidatesRequests;
 
+    public function __construct()
+    {
+        $this->middleware('checkRole:3')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
