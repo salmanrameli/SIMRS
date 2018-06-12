@@ -25,7 +25,7 @@ class DokterController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllDokter()
     {
         $dokter = User::where('jabatan_id', '=', '4')->get();
 
@@ -37,7 +37,7 @@ class DokterController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function createNewDokter()
     {
         return view('dokter::dokter.create');
     }
@@ -47,7 +47,7 @@ class DokterController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewDokter(Request $request)
     {
         $this->validate($request, [
             'id_user' => 'required|unique:users',
@@ -74,7 +74,7 @@ class DokterController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id)
+    public function showDetailDokter($id)
     {
         $dokter = User::findorFail($id);
 
@@ -85,7 +85,7 @@ class DokterController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id)
+    public function editDokter($id)
     {
         $dokter = User::findorFail($id);
 
@@ -98,7 +98,7 @@ class DokterController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function updateDokter(Request $request, $id)
     {
         $this->validate($request, [
             'id_user' => 'required',
@@ -126,7 +126,7 @@ class DokterController extends Controller
     {
     }
 
-    public function cari(Request $request)
+    public function cariDokter(Request $request)
     {
         $query = $request->get('query');
 
