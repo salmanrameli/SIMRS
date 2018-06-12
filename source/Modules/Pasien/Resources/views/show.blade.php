@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Detail Pasien: {{ $pasien->nama }}
@@ -52,9 +52,6 @@
                 </table>
                 @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
                     <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-left">Ubah Data Pasien</a>
-                    {{ Form::open(['method' => 'DELETE', 'route' => ['pasien.destroy', $pasien->id]]) }}
-                    {{ Form::submit('Hapus Pasien', ['class' => 'btn btn-danger float-right', 'onclick' => 'return confirm("Apakah anda yakin untuk menghapus data pasien?")']) }}
-                    {{ Form::close() }}
                 @endif
             </div>
         </div>
