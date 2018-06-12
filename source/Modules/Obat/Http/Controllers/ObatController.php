@@ -22,7 +22,7 @@ class ObatController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllObat()
     {
         $obat = Obat::all();
 
@@ -33,7 +33,7 @@ class ObatController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function registerNewObat()
     {
         return view('obat::create');
     }
@@ -43,7 +43,7 @@ class ObatController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewObat(Request $request)
     {
         $this->validate($request, [
             'nama' => 'required',
@@ -63,7 +63,7 @@ class ObatController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id)
+    public function showDetailObat($id)
     {
         $obat = Obat::findorFail($id);
 
@@ -74,7 +74,7 @@ class ObatController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id)
+    public function editObat($id)
     {
         $obat = Obat::findorFail($id);
 
@@ -86,7 +86,7 @@ class ObatController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function updateObat(Request $request, $id)
     {
         $this->validate($request, [
             'nama' => 'required',
