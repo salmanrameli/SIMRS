@@ -23,7 +23,7 @@ class PasienController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllPasien()
     {
         $pasien = Pasien::orderBy('id')->paginate(15);
 
@@ -34,7 +34,7 @@ class PasienController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function createNewPasien()
     {
         if(Auth::user()->jabatan_id == 1)
         {
@@ -49,7 +49,7 @@ class PasienController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewPasien(Request $request)
     {
         $pasien = Pasien::where('ktp', $request->ktp)->first();
 
@@ -88,7 +88,7 @@ class PasienController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id)
+    public function showDetailPasien($id)
     {
         $pasien = Pasien::findorFail($id);
 
@@ -100,7 +100,7 @@ class PasienController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id)
+    public function editPasien($id)
     {
         $pasien = Pasien::findorFail($id);
 
@@ -112,7 +112,7 @@ class PasienController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function updatePasien(Request $request, $id)
     {
         $this->validate($request, [
             'ktp' => 'required',
@@ -153,7 +153,7 @@ class PasienController extends Controller
         return redirect()->route('pasien.index');
     }
 
-    public function cari(Request $request)
+    public function cariPasien(Request $request)
     {
         $query = $request->get('query');
 
