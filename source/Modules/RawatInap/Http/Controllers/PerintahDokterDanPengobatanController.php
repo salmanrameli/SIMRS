@@ -25,7 +25,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($id)
+    public function showAllPerintahDokterDanPengobatanPasien($id)
     {
         $pasien = Pasien::where('id', $id)->first();
 
@@ -46,7 +46,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create($id, $perintah)
+    public function createPerintahDokterDanPengobatanPasien($id, $perintah)
     {
         $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
 
@@ -62,7 +62,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function savePerintahDokterDanPengobatanPasien(Request $request)
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
@@ -83,7 +83,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id, $id_perintah_dokter)
+    public function showDetailPerintahDokterDanPengobatanPasien($id, $id_perintah_dokter)
     {
         $pasien = Pasien::where('id', $id)->first();
 
@@ -104,7 +104,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id, $perintah)
+    public function editPerintahDokterDanPengobatanPasien($id, $perintah)
     {
         $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
 
@@ -120,7 +120,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id_pasien, $perintah)
+    public function updatePerintahDokterDanPengobatanPasien(Request $request, $id_pasien, $perintah)
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
