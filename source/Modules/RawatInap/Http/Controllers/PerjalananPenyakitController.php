@@ -25,7 +25,7 @@ class PerjalananPenyakitController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($id)
+    public function showAllPerjalananPenyakitPasien($id)
     {
         $pasien = Pasien::where('id', $id)->first();
 
@@ -46,7 +46,7 @@ class PerjalananPenyakitController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create($id)
+    public function createNewPerjalananPenyakitPasien($id)
     {
         $pasien = Pasien::where('id', $id)->first();
 
@@ -58,7 +58,7 @@ class PerjalananPenyakitController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewPerjalananPenyakitPasien(Request $request)
     {
         $this->validate($request, [
             'id_pasien' => 'required',
@@ -99,7 +99,7 @@ class PerjalananPenyakitController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id, $id_perjalanan)
+    public function showDetailPerjalananPenyakitPasien($id, $id_perjalanan)
     {
         $pasien = Pasien::where('id', $id)->first();
 
@@ -120,7 +120,7 @@ class PerjalananPenyakitController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id, $perjalanan)
+    public function editPerjalananPenyakitPasien($id, $perjalanan)
     {
         $perjalanan = PerjalananPenyakit::findorFail($perjalanan);
 
@@ -136,7 +136,7 @@ class PerjalananPenyakitController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id_pasien, $perjalanan)
+    public function updatePerjalananPenyakitPasien(Request $request, $id_pasien, $perjalanan)
     {
         $perjalanan = PerjalananPenyakit::findorFail($perjalanan);
 
