@@ -30,7 +30,7 @@ class RawatInapController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllRawatInap()
     {
         if(Auth::user()->jabatan_id == 4)
         {
@@ -90,7 +90,7 @@ class RawatInapController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function createNewRawatInap()
     {
         $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
 
@@ -137,7 +137,7 @@ class RawatInapController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewRawatInap(Request $request)
     {
         $this->validate($request, [
             'id_rm' => 'required',
@@ -174,7 +174,7 @@ class RawatInapController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id)
+    public function showDetailRawatInap($id)
     {
         $ranap = RawatInap::findorFail($id);
 
@@ -185,7 +185,7 @@ class RawatInapController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id)
+    public function editRawatInap($id)
     {
         $ranap = RawatInap::findOrFail($id);
 
@@ -237,7 +237,7 @@ class RawatInapController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function updateRawatInap(Request $request, $id)
     {
         $ranap = RawatInap::findOrFail($id);
 
