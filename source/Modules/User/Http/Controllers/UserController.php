@@ -31,7 +31,7 @@ class UserController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllStaff()
     {
         $user = User::where('jabatan_id', '!=', '4')->paginate(15);
 
@@ -46,7 +46,7 @@ class UserController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function createNewStaff()
     {
         $jabatan = Jabatan::where('nama', '!=', 'dokter')->get();
 
@@ -58,7 +58,7 @@ class UserController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewStaff(Request $request)
     {
         $this->validate($request, [
             'id_user' => 'required|unique:users',
@@ -87,7 +87,7 @@ class UserController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id)
+    public function showDetailStaff($id)
     {
         $staff = User::findorFail($id);
 
@@ -98,7 +98,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id)
+    public function editStaff($id)
     {
         $user = User::findorFail($id);
 
@@ -114,7 +114,7 @@ class UserController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function updateStaff(Request $request, $id)
     {
         $user = User::findorFail($id);
 
@@ -146,7 +146,7 @@ class UserController extends Controller
     {
     }
 
-    public function cari(Request $request)
+    public function cariStaff(Request $request)
     {
         $query = $request->get('query');
 
