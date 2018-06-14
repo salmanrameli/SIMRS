@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function createNewStaff()
     {
-        $jabatan = Jabatan::where('nama', '!=', 'dokter')->get();
+        $jabatan = Jabatan::where('id', '!=', '4')->get();
 
         return view('user::user.create')->with('jabatans', $jabatan);
     }
@@ -102,7 +102,7 @@ class UserController extends Controller
     {
         $user = User::findorFail($id);
 
-        $jabatan = Jabatan::where('nama', '!=', 'dokter')->get();
+        $jabatan = Jabatan::where('id', '!=', '4')->get();
 
         return view('user::user.edit')
             ->with('user', $user)
