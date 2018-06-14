@@ -33,7 +33,7 @@ class JabatanController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function createNewJabatan()
     {
         return view('user::jabatan.create');
     }
@@ -43,7 +43,7 @@ class JabatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function saveNewJabatan(Request $request)
     {
         $this->validate($request, [
             'nama' => 'required|unique:jabatan'
@@ -71,7 +71,7 @@ class JabatanController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id)
+    public function editJabatan($id)
     {
         $jabatan = Jabatan::findorFail($id);
 
@@ -83,8 +83,21 @@ class JabatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function updateJabatan(Request $request, $id)
     {
+        $jabatan = Jabatan::findorFail($id);
+
+        $this->validate($request, [
+            'nama' => 'required|unique:jabatan'
+        ]);
+
+        $input = $request->all();
+
+        $jabatan->fill($input)->save();
+
+        Session::flash('message', 'Perubahan rincian jabatan berhasil disimpan');
+
+        return redirect()->route('user.index');
     }
 
     /**

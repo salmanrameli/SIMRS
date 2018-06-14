@@ -51,6 +51,25 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
         'uses' => 'UserController@updateStaff'
     ]);
 
-    Route::resource('jabatan', 'JabatanController');
+    //Route::resource('jabatan', 'JabatanController');
 
+    Route::get('/jabatan/create', [
+        'as' => 'jabatan.create',
+        'uses' => 'JabatanController@createNewJabatan'
+    ]);
+
+    Route::post('/jabatan', [
+        'as' => 'jabatan.store',
+        'uses' => 'JabatanController@saveNewJabatan'
+    ]);
+
+    Route::get('/jabatan/{id}/edit', [
+        'as' => 'jabatan.edit',
+        'uses' => 'JabatanController@editJabatan'
+    ]);
+
+    Route::patch('/jabatan/{id}', [
+        'as' => 'jabatan.update',
+        'uses' => 'JabatanController@updateJabatan'
+    ]);
 });
