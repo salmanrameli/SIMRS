@@ -27,7 +27,16 @@
                 @foreach($lantais as $lantai)
                     <div class="card">
                         <div class="card-header">
-                            <h5>Lantai {{ $lantai->nomor_lantai }}<a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-sm btn-warning float-right">Ubah</a></h5>
+                            <h5>
+                                Lantai {{ $lantai->nomor_lantai }}
+                                <div class="row float-right">
+                                    <a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
+
+                                    {{ Form::open(['route' => ['lantai.delete', $lantai->id], 'method' => 'delete']) }}
+                                    <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menghapus lantai ini?')">Hapus</button>
+                                    {{ Form::close() }}
+                                </div>
+                            </h5>
                         </div>
                         <div class="card-body row align-items-center justify-content-center">
                             <div class="col-md-12">

@@ -165,7 +165,23 @@ class BangunanController extends Controller
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy()
+    public function deleteLantai($id)
     {
+        $kamar = Kamar::where('nomor_lantai', '=', $id)->exists();
+
+        if($kamar)
+        {
+            Session::flash('warning', 'Lantai tidak bisa dihapus karena masih ada kamar yang bergantung pada lantai yang bersangkutan');
+
+            return redirect()->back();
+        }
+
+        $lantai = Lantai::findorFail($id);
+
+        $lantai->delete();
+
+        Session::flash('message', 'Lantai berhasil dihapus');
+
+        return redirect()->route('bangunan.index');
     }
 }

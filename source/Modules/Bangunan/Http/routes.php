@@ -31,6 +31,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Contr
         'uses' => 'BangunanController@updateLantai'
     ]);
 
+    Route::delete('/bangunan/lantai/{lantai}', [
+        'as' => 'lantai.delete',
+        'uses' => 'BangunanController@deleteLantai'
+    ]);
+
     //Route::resource('bangunan/lantai/kamar', 'KamarController');
 
     Route::get('/bangunan/lantai/kamar/create', [
