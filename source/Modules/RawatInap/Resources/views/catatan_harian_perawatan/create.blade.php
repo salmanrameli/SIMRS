@@ -19,8 +19,8 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('tanggal_keterangan', 'Tanggal', ['class' => 'control-label']) }}
-                    {{ Form::date('tanggal_keterangan', null, ['class' => 'form-control']) }}
+                    <label for="datepicker" id="tanggal_keterangan" class="control-label">Tanggal</label>
+                    <input type="text" id="datepicker" name="tanggal_keterangan" class="form-control" placeholder="yyyy-mm-dd">
                 </div>
 
                 <div class="bootstrap-timepicker">
@@ -47,6 +47,12 @@
 
 @section('script')
     <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+
         $('#timepicker').timepicker({
             template: false,
             showInputs: false,
