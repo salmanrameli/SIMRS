@@ -62,4 +62,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Contr
         'as' => 'kamar.update',
         'uses' => 'BangunanController@updateKamar'
     ]);
+
+    Route::delete('/bangunan/lantai/kamar/{kamar}', [
+        'as' => 'kamar.delete',
+        'uses' => 'BangunanController@deleteKamar'
+    ]);
 });

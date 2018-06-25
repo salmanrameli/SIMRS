@@ -11,7 +11,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-header">
-                            <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-warning float-right">Ubah Detail Ruang</a>
+                            <div class="row float-right">
+                                <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-warning float-right">Ubah Detail Ruang</a>
+
+                                {{ Form::open(['route' => ['kamar.delete', $kamar->id], 'method' => 'delete']) }}
+                                    <button type="submit" class="btn btn-danger" style="margin-left: 10px; margin-right: 10px" onclick="return confirm('Apakah anda yakin menghapus kamar ini?')">Hapus</button>
+                                {{ Form::close() }}
+                            </div>
                             <h2>Ruang {{ $kamar->nama_kamar }}</h2>
                             <br>
                         </div>

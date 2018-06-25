@@ -161,6 +161,26 @@ class BangunanController extends Controller
         return redirect()->route('kamar.show', $id);
     }
 
+    public function deleteKamar($id)
+    {
+        $ranap = RawatInap::where('nama_kamar', '=', Kamar::where('id', '=', $id)->value('nama_kamar'))->exists();
+        $belum_keluar = RawatInap::whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())->exists();
+
+        if($ranap && $belum_keluar)
+        {
+            Session::flash('warning', 'Ruangan tidak dapat dihapus karena masih ada pasien yang menempati ruang yang bersangkutan');
+
+            return redirect()->back();
+        }
+
+        $kamar = Kamar::findorFail($id);
+        $kamar->delete();
+
+        Session::flash('message', 'Ruangan berhasil dihapus');
+
+        return redirect()->route('bangunan.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      * @return Response
