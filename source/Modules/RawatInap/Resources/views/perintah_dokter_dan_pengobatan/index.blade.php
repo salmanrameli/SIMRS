@@ -61,7 +61,7 @@
                         <tbody>
                         @foreach($perintahs as $perintah)
                             <tr>
-                                <td class="text-justify"><b><u>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</u></b>
+                                <td class="text-justify w-25"><b><u>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</u></b>
                                     <p>{!! $perintah->terapi_dan_rencana_tindakan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">{!! $perintah->catatan_perawat !!}</td>
