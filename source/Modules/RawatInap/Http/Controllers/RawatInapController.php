@@ -23,7 +23,7 @@ class RawatInapController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1,2')->except(['index', 'show']);
+        $this->middleware('checkRole:1,2')->except(['showAllRawatInap', 'showDetailRawatInap']);
     }
 
     /**
