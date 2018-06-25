@@ -108,6 +108,13 @@ class PerintahDokterDanPengobatanController extends Controller
     {
         $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
 
+        if($perintah->catatan_perawat == null)
+        {
+            Session::flash('warning', 'Catatan perawat masih belum terisi');
+
+            return redirect()->back();
+        }
+
         $pasien = Pasien::findorFail($id);
 
         return view('rawatinap::perintah_dokter_dan_pengobatan.edit')
