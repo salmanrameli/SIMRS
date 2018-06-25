@@ -4,6 +4,7 @@ namespace Modules\User\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Modules\RawatInap\Entities\CatatanHarianPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class User extends Authenticatable
@@ -31,5 +32,10 @@ class User extends Authenticatable
     public function petugas_penerima()
     {
         return $this->hasMany(RawatInap::class, 'id_petugas_penerima', 'id');
+    }
+
+    public function catatan_harian_perawatan()
+    {
+        return $this->hasMany(CatatanHarianPerawatan::class, 'id_petugas', 'id');
     }
 }
