@@ -1,5 +1,9 @@
 @extends('layouttemplate::master')
 
+@section('title')
+    Detail Ruang
+@endsection()
+
 @section('content')
     <div class="col-md-12">
         <div class="row">
