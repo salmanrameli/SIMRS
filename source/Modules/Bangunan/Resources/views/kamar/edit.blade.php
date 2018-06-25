@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Ubah Detail Kamar
@@ -27,3 +27,7 @@
         </div>
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.bangunan')
+@endsection
