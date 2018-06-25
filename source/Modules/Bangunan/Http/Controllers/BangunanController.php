@@ -2,10 +2,12 @@
 
 namespace Modules\Bangunan\Http\Controllers;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
 use Modules\RawatInap\Entities\RawatInap;
@@ -13,6 +15,8 @@ use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
 
 class BangunanController extends Controller
 {
+    use ValidatesRequests;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,7 +28,7 @@ class BangunanController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllLantai()
     {
         $pasien_ranap = RawatInap::with('pasien')
             ->select('*')
@@ -48,49 +52,113 @@ class BangunanController extends Controller
             ->with('kamars', $kamar);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
+    public function addNewLantai()
     {
-        return view('bangunan::create');
+        return view('bangunan::lantai.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function saveNewLantai(Request $request)
     {
-    }
+        $this->validate($request, [
+            'nomor_lantai' => 'required'
+        ]);
 
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
+        $input = $request->all();
+
+        Lantai::create($input);
+
+        Session::flash('message', 'Lantai berhasil ditambahkan');
+
         return redirect()->route('bangunan.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
+    public function editLantai($id)
     {
-        return view('bangunan::edit');
+        $lantai = Lantai::findorFail($id);
+
+        return view('bangunan::lantai.edit')->with('lantai', $lantai);
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
+    public function updateLantai(Request $request, $id)
     {
+        $lantai = Lantai::findorFail($id);
+
+        $this->validate($request, [
+            'nomor_lantai' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $lantai->fill($input)->save();
+
+        Session::flash('message', 'Nomor lantai berhasil diubah');
+
+        return redirect()->route('bangunan.index');
+    }
+
+    public function getAllKamar()
+    {
+
+    }
+
+    public function addNewKamar()
+    {
+        $lantai = Lantai::pluck('nomor_lantai');
+
+        return view('bangunan::kamar.create')->with('lantais', $lantai);
+    }
+
+    public function saveKamar(Request $request)
+    {
+        $this->validate($request, [
+            'nomor_lantai' => 'required',
+            'nama_kamar' => 'required',
+            'jumlah_maks_pasien' => 'required'
+        ]);
+
+        $kamar = new Kamar();
+        $kamar->nomor_lantai = $request->nomor_lantai;
+        $kamar->nama_kamar = $request->nama_kamar;
+        $kamar->jumlah_maks_pasien = $request->jumlah_maks_pasien;
+        $kamar->save();
+
+        Session::flash('message', 'Kamar Berhasil Disimpan');
+
+        return redirect()->route('bangunan.index');
+    }
+
+    public function showDetailKamar($id)
+    {
+        $kamar = Kamar::findorFail($id);
+
+        return view('bangunan::kamar.show')
+            ->with('kamar', $kamar);
+    }
+
+    public function editKamar($id)
+    {
+        $kamar = Kamar::findorFail($id);
+
+        return view('bangunan::kamar.edit')
+            ->with('kamar', $kamar);
+    }
+
+    public function updateKamar(Request $request, $id)
+    {
+        $kamar = Kamar::findorFail($id);
+
+        $this->validate($request, [
+            'nama_kamar' => 'required',
+            'jumlah_maks_pasien' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $kamar->fill($input)->save();
+
+        Session::flash('message', 'Detail kamar berhasil diubah');
+
+        return redirect()->route('kamar.show', $id);
     }
 
     /**
