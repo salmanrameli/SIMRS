@@ -15,19 +15,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
                     </li>
-
-                    @if(Auth::user()->jabatan_id == 3)
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
-                        </li>
-                    @endif
-
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <div class="float-right"><a href="{{ route('catatan_harian_perawatan.create', $pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
+                        @if(Auth::user()->jabatan_id == 3)
+                            <div class="float-right"><a href="{{ route('catatan_harian_perawatan.create', $pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
+                        @endif
                         <h4>Catatan Harian Perawatan: {{ $pasien->nama }}</h4>
                         <hr>
                         <div class="col-md-12">
@@ -66,11 +64,11 @@
                         <tbody>
                         @foreach($catatans as $catatan)
                             <tr>
-                                <td class="text-justify">
+                                <td class="text-justify w-75">
                                     {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}
                                     <p>{{ $catatan->asuhan_keperawatan_soap }}</p>
                                 </td>
-                                <td class="text-justify">{{ $catatan->id_petugas }}</td>
+                                <td class="text-justify">{{ $catatan->user->nama }}</td>
                                 <td><a href="{{ route('catatan_harian_perawatan.edit', [$catatan->id_pasien, $catatan->id]) }}" class="btn btn-warning">Ubah</a></td>
                             </tr>
                         @endforeach

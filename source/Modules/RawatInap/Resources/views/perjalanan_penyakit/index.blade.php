@@ -15,13 +15,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
                     </li>
-
-                    @if(Auth::user()->jabatan_id == 3)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
-                        </li>
-                    @endif
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
