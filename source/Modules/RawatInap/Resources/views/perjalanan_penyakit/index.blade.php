@@ -60,13 +60,12 @@
                             <tr>
                                 <th>Perjalanan Penyakit</th>
                                 <th>Perintah Dokter dan Pengobatan</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($perjalanans as $perjalanan)
                             <tr>
-                                <td>
+                                <td class="text-justify">
                                     <b><u>{{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</u></b><br>
                                     <label><b>Subjektif</b></label>
                                     <p>{!! $perjalanan->subjektif !!}</p>
@@ -75,13 +74,14 @@
                                     <label><b>Assessment</b></label>
                                     <p>{!! $perjalanan->assessment !!}</p>
                                 </td>
-                                <td>
+                                <td class="text-justify">
                                     <label><b>Planning</b></label>
                                     <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id_perintah_dokter_dan_pengobatan]) }}">Pengobatan...</a></p>
-                                </td>
-                                @if(Auth::user()->jabatan_id == 4)
-                                    <td><a href="{{ route('perjalanan_penyakit.edit', [$pasien->id, $perjalanan->id]) }}" class="btn btn-warning">Ubah</a></td>
+                                    @if(Auth::user()->jabatan_id == 4)
+                                        <a href="{{ route('perjalanan_penyakit.edit', [$pasien->id, $perjalanan->id]) }}" class="btn btn-warning float-right">Ubah</a>
                                     @endif
+                                </td>
+
                             </tr>
                         @endforeach
                         </tbody>

@@ -15,13 +15,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
                     </li>
-
-                    @if(Auth::user()->jabatan_id == 3)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
-                        </li>
-                    @endif
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
@@ -67,21 +63,27 @@
                                 <td class="text-justify"><b><u>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</u></b>
                                     <p>{!! $perintah->terapi_dan_rencana_tindakan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
-                                <td class="text-justify">{!! $perintah->catatan_perawat !!}</td>
+                                <td class="text-justify">
+                                    {!! $perintah->catatan_perawat !!}
 
-                                @if(Auth::user()->jabatan_id == 3)
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
-                                            <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only"></span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}">Ubah</a>
+                                    @if(Auth::user()->jabatan_id == 3)
+                                        @if($perintah->terapi_dan_rencana_tindakan != null && $perintah->catatan_perawat != null)
+                                            <div class="btn-group float-right">
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
                                             </div>
-                                        </div>
-                                    </td>
-                                @endif
+                                        @else
+                                            <div class="btn-group float-right">
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
+                                                <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="sr-only"></span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}">Ubah</a>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endif
+                                </td>
 
                             </tr>
                         </tbody>

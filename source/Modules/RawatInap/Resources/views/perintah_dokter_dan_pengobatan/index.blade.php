@@ -50,25 +50,29 @@
                             <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
-                    <table class="table small">
+                    <table class="table table-striped small">
                         <thead>
                             <tr>
                                 <th>Terapi dan Rencana Tindakan</th>
                                 <th>Catatan Perawat</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($perintahs as $perintah)
                             <tr>
-                                <td class="text-justify w-25"><b><u>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</u></b>
+                                <td class="text-justify w-50"><b><u>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</u></b>
                                     <p>{!! $perintah->terapi_dan_rencana_tindakan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
-                                <td class="text-justify">{!! $perintah->catatan_perawat !!}</td>
-
-                                @if(Auth::user()->jabatan_id == 3)
-                                    <td>
-                                        <div class="btn-group">
+                                <td class="text-justify">
+                                    {!! $perintah->catatan_perawat !!}
+                                    <br>
+                                    @if(Auth::user()->jabatan_id == 3)
+                                        @if($perintah->terapi_dan_rencana_tindakan != null && $perintah->catatan_perawat != null)
+                                            <div class="btn-group float-right">
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
+                                            </div>
+                                        @else
+                                        <div class="btn-group float-right">
                                             <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
                                             <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="sr-only"></span>
@@ -77,9 +81,9 @@
                                                 <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}">Ubah</a>
                                             </div>
                                         </div>
-                                    </td>
-                                @endif
-
+                                        @endif
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
