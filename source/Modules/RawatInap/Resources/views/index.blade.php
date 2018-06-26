@@ -10,17 +10,17 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h3>Daftar Pasien Rawat Inap</h3>
-                    <hr>
                 </div>
 
                 @if(Auth::user()->jabatan_id == 2)
+                	<hr>
                     <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
                     <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary">Daftarkan Rawat Inap Baru</a>
+	                <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
+	                <br>
+                	<br>
                 @endif
-
-                <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
-                <br>
-                <br>
+                
                 <div style="min-height: 60vh;">
                     <table class="table table-striped">
                         <thead>
