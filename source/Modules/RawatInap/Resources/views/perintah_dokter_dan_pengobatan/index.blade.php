@@ -72,15 +72,9 @@
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
                                             </div>
                                         @else
-                                        <div class="btn-group float-right">
-                                            <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
-                                            <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only"></span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}">Ubah</a>
+                                            <div class="btn-group float-right">
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
                                             </div>
-                                        </div>
                                         @endif
                                     @endif
                                 </td>
