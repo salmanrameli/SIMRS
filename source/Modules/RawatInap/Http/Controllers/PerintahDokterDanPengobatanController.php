@@ -29,7 +29,7 @@ class PerintahDokterDanPengobatanController extends Controller
     {
         $pasien = Pasien::where('id', $id)->first();
 
-        $perintah_dokter = PerintahDokterDanPengobatan::where('id_pasien', $id)->orderBy('tanggal_keterangan', 'desc')->get();
+        $perintah_dokter = PerintahDokterDanPengobatan::where('id_pasien', $id)->orderBy('created_at', 'desc')->get();
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
@@ -72,6 +72,8 @@ class PerintahDokterDanPengobatanController extends Controller
         $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->id_perintah);
         $perintah_dokter->catatan_perawat = $request->catatan_perawat;
         $perintah_dokter->id_petugas = Auth::id();
+        $perintah_dokter->created_at = new \DateTime();
+        $perintah_dokter->updated_at = new \DateTime();
         $perintah_dokter->save();
 
         Session::flash('message', 'Catatan berhasil disimpan');
