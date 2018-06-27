@@ -66,7 +66,13 @@
                         @foreach($perjalanans as $perjalanan)
                             <tr>
                                 <td class="text-justify">
-                                    <b><u>{{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</u></b><br>
+                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</b><br>
+                                    @if(date("d F Y", strtotime($perjalanan->tanggal_keterangan)) == date("d F Y", strtotime($perjalanan->updated_at)))
+                                        <b>Diubah tanggal: –</b>
+                                        @else
+                                        <b>Diubah tanggal: {{ date("d F Y", strtotime($perjalanan->updated_at)) }}</b>
+                                        @endif
+                                    <hr>
                                     <label><b>Subjektif</b></label>
                                     <p>{!! $perjalanan->subjektif !!}</p>
                                     <label><b>Objektif</b></label>

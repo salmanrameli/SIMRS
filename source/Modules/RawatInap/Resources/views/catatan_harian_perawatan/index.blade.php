@@ -53,7 +53,7 @@
                             <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
-                    <table class="table small">
+                    <table class="table table-striped small">
                         <thead>
                             <tr>
                                 <th>Asuhan Keperawatan (SOAP)</th>
@@ -65,7 +65,13 @@
                         @foreach($catatans as $catatan)
                             <tr>
                                 <td class="text-justify w-75">
-                                    <b><u>{{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</u></b>
+                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</b><br>
+                                    @if(date("d F Y", strtotime($catatan->tanggal_keterangan)) == date("d F Y", strtotime($catatan->updated_at)))
+                                        <b>Diubah tanggal: –</b>
+                                    @else
+                                        <b>Diubah tanggal: {{ date("d F Y", strtotime($catatan->updated_at)) }}</b>
+                                    @endif
+                                    <hr>
                                     <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                                 </td>
                                 <td class="text-justify">{{ $catatan->user->nama }}</td>
