@@ -65,11 +65,13 @@
                         @foreach($catatans as $catatan)
                             <tr>
                                 <td class="text-justify w-75">
-                                    {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}
+                                    <b><u>{{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</u></b>
                                     <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                                 </td>
                                 <td class="text-justify">{{ $catatan->user->nama }}</td>
-                                <td><a href="{{ route('catatan_harian_perawatan.edit', [$catatan->id_pasien, $catatan->id]) }}" class="btn btn-warning">Ubah</a></td>
+                                @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
+                                    <td><a href="{{ route('catatan_harian_perawatan.edit', [$catatan->id_pasien, $catatan->id]) }}" class="btn btn-warning">Ubah</a></td>
+                                    @endif
                             </tr>
                         @endforeach
                         </tbody>
