@@ -19,11 +19,11 @@ class CatatanHarianPerawatanController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($id)
+    public function showAllCatatanHarianDanPerawatan($id)
     {
         $pasien = Pasien::where('id', $id)->first();
 
-        $catatan = CatatanHarianPerawatan::where('id_pasien', $id)->get();
+        $catatan = CatatanHarianPerawatan::where('id_pasien', $id)->orderBy('created_at', 'desc')->get();
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
@@ -40,7 +40,7 @@ class CatatanHarianPerawatanController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create($id)
+    public function createNewCatatanHarianDanPerawatan($id)
     {
         $pasien = Pasien::findorFail($id);
 
@@ -52,7 +52,7 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function storeCatatanHarianDanPerawatan(Request $request)
     {
         $this->validate($request, [
             'id_pasien' => 'required',
@@ -84,7 +84,7 @@ class CatatanHarianPerawatanController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id, $catatan)
+    public function editCatatanHarianDanPerawatan($id, $catatan)
     {
         $catatan = CatatanHarianPerawatan::findorFail($catatan);
 
@@ -100,7 +100,7 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, $id_pasien, $catatan)
+    public function updateCatatanHarianDanPerawatan(Request $request, $id_pasien, $catatan)
     {
         $catatan = CatatanHarianPerawatan::findorFail($catatan);
 
