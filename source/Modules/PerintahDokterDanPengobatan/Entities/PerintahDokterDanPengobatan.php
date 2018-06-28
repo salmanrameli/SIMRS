@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\RawatInap\Entities;
+namespace Modules\PerintahDokterDanPengobatan\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 

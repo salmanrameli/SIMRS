@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\RawatInap\Http\Controllers;
+namespace Modules\PerintahDokterDanPengobatan\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
-use Modules\RawatInap\Entities\PerintahDokterDanPengobatan;
+use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class PerintahDokterDanPengobatanController extends Controller
@@ -35,7 +35,7 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
-        return view('rawatinap::perintah_dokter_dan_pengobatan.index')
+        return view('perintahdokterdanpengobatan::index')
             ->with('pasien', $pasien)
             ->with('perintahs', $perintah_dokter)
             ->with('tanggal_masuk', $tanggal_masuk)
@@ -52,7 +52,7 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $pasien = Pasien::findorFail($id);
 
-        return view('rawatinap::perintah_dokter_dan_pengobatan.create')
+        return view('perintahdokterdanpengobatan::create')
             ->with('perintah', $perintah)
             ->with('pasien', $pasien);
     }
@@ -95,7 +95,7 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
-        return view('rawatinap::perintah_dokter_dan_pengobatan.show')
+        return view('perintahdokterdanpengobatan::show')
             ->with('pasien', $pasien)
             ->with('tanggal_masuk', $tanggal_masuk)
             ->with('perintah', $perintah)
@@ -119,7 +119,7 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $pasien = Pasien::findorFail($id);
 
-        return view('rawatinap::perintah_dokter_dan_pengobatan.edit')
+        return view('perintahdokterdanpengobatan::edit')
             ->with('perintah', $perintah)
             ->with('pasien', $pasien);
     }

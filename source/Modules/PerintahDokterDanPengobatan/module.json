@@ -1,0 +1,16 @@
+{
+    "name": "PerintahDokterDanPengobatan",
+    "alias": "perintahdokterdanpengobatan",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\PerintahDokterDanPengobatan\\Providers\\PerintahDokterDanPengobatanServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
