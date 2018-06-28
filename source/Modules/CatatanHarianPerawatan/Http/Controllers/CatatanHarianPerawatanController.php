@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\RawatInap\Http\Controllers;
+namespace Modules\CatatanHarianPerawatan\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
+use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
 use Modules\Pasien\Entities\Pasien;
-use Modules\RawatInap\Entities\CatatanHarianPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class CatatanHarianPerawatanController extends Controller
@@ -34,7 +34,7 @@ class CatatanHarianPerawatanController extends Controller
 
         $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
-        return view('rawatinap::catatan_harian_perawatan.index')
+        return view('catatanharianperawatan::index')
             ->with('pasien', $pasien)
             ->with('catatans', $catatan)
             ->with('tanggal_masuk', $tanggal_masuk)
@@ -49,7 +49,7 @@ class CatatanHarianPerawatanController extends Controller
     {
         $pasien = Pasien::findorFail($id);
 
-        return view('rawatinap::catatan_harian_perawatan.create')->with('pasien', $pasien);
+        return view('catatanharianperawatan::create')->with('pasien', $pasien);
     }
 
     /**
@@ -95,7 +95,7 @@ class CatatanHarianPerawatanController extends Controller
 
         $pasien = Pasien::findorFail($id);
 
-        return view('rawatinap::catatan_harian_perawatan.edit')
+        return view('catatanharianperawatan::edit')
             ->with('catatan', $catatan)
             ->with('pasien', $pasien);
     }

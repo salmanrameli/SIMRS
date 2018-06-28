@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\RawatInap\Entities;
+namespace Modules\CatatanHarianPerawatan\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Entities\User;

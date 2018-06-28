@@ -20,7 +20,6 @@ class CreateCatatanHarianPerawatanTable extends Migration
             $table->string('jam');
             $table->text('asuhan_keperawatan_soap');
             $table->string('id_petugas');
-
             $table->timestamps();
         });
     }
