@@ -8,8 +8,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
+use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
-use Modules\RawatInap\Entities\PerintahDokterDanPengobatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class PerjalananPenyakitController extends Controller
