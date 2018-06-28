@@ -39,38 +39,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
         'uses' => 'RawatInapController@updateRawatInap'
     ]);
 
-    //Route::resource('ranap/{id}/perjalanan_penyakit', 'PerjalananPenyakitController');
-
-    Route::get('/ranap/{id}/perjalanan_penyakit', [
-        'as' => 'perjalanan_penyakit.index',
-        'uses' => 'PerjalananPenyakitController@showAllPerjalananPenyakitPasien'
-    ]);
-
-    Route::get('/ranap/{id}/perjalanan_penyakit/create', [
-        'as' => 'perjalanan_penyakit.create',
-        'uses' => 'PerjalananPenyakitController@createNewPerjalananPenyakitPasien'
-    ]);
-
-    Route::post('/ranap/{id}/perjalanan_penyakit', [
-        'as' => 'perjalanan_penyakit.store',
-        'uses' => 'PerjalananPenyakitController@saveNewPerjalananPenyakitPasien'
-    ]);
-
-    Route::get('/ranap/{id}/perjalanan_penyakit/{perjalanan_penyakit}', [
-        'as' => 'perjalanan_penyakit.show',
-        'uses' => 'PerjalananPenyakitController@showDetailPerjalananPenyakitPasien'
-    ]);
-
-    Route::get('/ranap/{id}/perjalanan_penyakit/{perjalanan_penyakit}/edit', [
-        'as' => 'perjalanan_penyakit.edit',
-        'uses' => 'PerjalananPenyakitController@editPerjalananPenyakitPasien'
-    ]);
-
-    Route::patch('/ranap/{id}/perjalanan_penyakit/{perjalanan_penyakit}', [
-        'as' => 'perjalanan_penyakit.update',
-        'uses' => 'PerjalananPenyakitController@updatePerjalananPenyakitPasien'
-    ]);
-
     //Route::resource('ranap/{id}/perintah_dokter_dan_pengobatan', 'PerintahDokterDanPengobatanController');
 
     Route::get('/ranap/{id}/perintah_dokter_dan_pengobatan', [

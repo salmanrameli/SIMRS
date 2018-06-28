@@ -1,0 +1,16 @@
+{
+    "name": "PerjalananPenyakit",
+    "alias": "perjalananpenyakit",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\PerjalananPenyakit\\Providers\\PerjalananPenyakitServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

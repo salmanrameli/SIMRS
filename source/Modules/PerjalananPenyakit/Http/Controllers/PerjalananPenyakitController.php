@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\RawatInap\Http\Controllers;
+namespace Modules\PerjalananPenyakit\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -35,7 +35,7 @@ class PerjalananPenyakitController extends Controller
 
         $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
-        return view('rawatinap::perjalanan_penyakit.index')
+        return view('perjalananpenyakit::index')
             ->with('pasien', $pasien)
             ->with('perjalanans', $perjalanan)
             ->with('diagnosa_awal', $diagnosa_awal)
@@ -50,7 +50,7 @@ class PerjalananPenyakitController extends Controller
     {
         $pasien = Pasien::where('id', $id)->first();
 
-        return view('rawatinap::perjalanan_penyakit.create')->with('pasien', $pasien);
+        return view('perjalananpenyakit::create')->with('pasien', $pasien);
     }
 
     /**
@@ -109,7 +109,7 @@ class PerjalananPenyakitController extends Controller
 
         $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
-        return view('rawatinap::perjalanan_penyakit.show')
+        return view('perjalananpenyakit::show')
             ->with('pasien', $pasien)
             ->with('perjalanan', $perjalanan)
             ->with('tanggal_masuk', $tanggal_masuk)
@@ -126,7 +126,7 @@ class PerjalananPenyakitController extends Controller
 
         $pasien = Pasien::findorFail($id)->value('nama');
 
-        return view('rawatinap::perjalanan_penyakit.edit')
+        return view('perjalananpenyakit::edit')
             ->with('perjalanan', $perjalanan)
             ->with('pasien', $pasien);
     }

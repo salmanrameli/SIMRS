@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\RawatInap\Entities;
+namespace Modules\PerjalananPenyakit\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Pasien\Entities\Pasien;
