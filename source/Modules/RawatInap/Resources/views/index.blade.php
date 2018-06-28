@@ -51,20 +51,23 @@
 
                                             @if(Auth::user()->jabatan_id == 2)
                                                 <a href="{{ route('ranap.edit', $pasien->id) }}" class="dropdown-item">Ubah</a>
-                                            @endif
+                                            @else
+                                                <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
 
-                                            @if(Auth::user()->jabatan_id == 3)
+                                                @if(Auth::user()->jabatan_id == 4)
+                                                    <a href="{{ route('perjalanan_penyakit.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Perjalanan Penyakit Baru</a>
+                                                @endif
+                                                <div class="dropdown-divider"></div>
+
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->pasien->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a href="{{ route('catatan_harian_perawatan.index', $pasien->pasien->id) }}" class="dropdown-item">Catatan Harian dan Perawatan</a>
-                                                <a href="{{ route('catatan_harian_perawatan.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Harian dan Perawatan Baru</a>
-                                            @endif
 
-                                            @if(Auth::user()->jabatan_id == 4)
-                                                <a href="{{ route('perjalanan_penyakit.index', $pasien->pasien->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
-                                                <a href="{{ route('perjalanan_penyakit.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Perjalanan Penyakit Baru</a>
-                                            @endif
+                                                @if(Auth::user()->jabatan_id == 3)
+                                                    <a href="{{ route('catatan_harian_perawatan.create', $pasien->pasien->id) }}" class="dropdown-item">Buat Catatan Harian dan Perawatan Baru</a>
+                                                @endif
 
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
