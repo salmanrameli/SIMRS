@@ -25,7 +25,6 @@ class checkRole
             }
         }
 
-//        return $next($request);
         $warning = "Anda tidak memiliki hak akses";
 
         return redirect()->back()->with('warning', $warning);
