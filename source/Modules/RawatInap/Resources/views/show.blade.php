@@ -56,17 +56,28 @@
                         </tr>
                     </tbody>
                 </table>
-                <a href="{{ route('ranap.pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Data Pasien</a>
 
                 @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                    <a href="{{ route('pasien.edit', $ranap->pasien->id) }}" class="btn btn-warning">Ubah Data Pasien</a>
+                    <div class="btn-group">
+                        <a href="{{ route('ranap.pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Data Pasien</a>
+                        <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only"></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="{{ route('pasien.edit', $ranap->pasien->id) }}" class="dropdown-item">Ubah Data Pasien</a>
+                        </div>
+                    </div>
                 @endif
 
-                @if(Auth::user()->jabatan_id == 3)
+                @if(Auth::user()->jabatan_id == 3 || Auth::user()->jabatan_id == 4)
                     <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perjalanan Penyakit Pasien</a>
+                    <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perintah Dokter Dan Pengobatan</a>
+                    <a href="{{ route('catatan_harian_perawatan.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Catatan Harian dan Perawatan</a>
                 @endif
 
-                <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-warning float-right">Ubah</a>
+                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                    <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-warning float-right">Ubah</a>
+                @endif
             </div>
         </div>
     </div>
