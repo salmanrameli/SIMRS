@@ -6,14 +6,12 @@
 
 @section('content')
     <div class="card card-body">
+        <h3>{{ ucfirst($user->nama) }}</h3>
+        <br>
         <table class="table">
             <tr>
                 <th class="w-25">ID</th>
                 <td>{{ $user->id_user }}</td>
-            </tr>
-            <tr>
-                <th>Nama</th>
-                <td>{{ $user->nama }}</td>
             </tr>
             <tr>
                 <th>Alamat</th>
@@ -30,8 +28,12 @@
         </table>
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-outline-warning">Ubah Data Staff</a>
-                <a href="" class="btn btn-danger" onclick="return alert('Apakah anda yakin menghapus data staff?')">Hapus Staff</a>
+                <div class="row">
+                    <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-outline-warning">Ubah Data Staff</a>
+                    {{ Form::open(['route' => ['user.delete', $user->id], 'method' => 'delete']) }}
+                    <button type="submit" class="btn btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menghapus data staff?')">Hapus</button>
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
     </div>

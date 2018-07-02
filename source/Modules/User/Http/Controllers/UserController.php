@@ -142,8 +142,15 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy()
+    public function deleteStaff($id)
     {
+        $staff = User::findorFail($id);
+
+        $staff->delete();
+
+        Session::flash('message', 'Staff berhasil dihapus');
+
+        return redirect()->route('user.index');
     }
 
     public function cariStaff(Request $request)

@@ -51,6 +51,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
         'uses' => 'UserController@updateStaff'
     ]);
 
+    Route::delete('/user/{id}', [
+        'as' => 'user.delete',
+        'uses' => 'UserController@deleteStaff'
+    ]);
+
     //Route::resource('jabatan', 'JabatanController');
 
     Route::get('/jabatan/create', [
