@@ -23,7 +23,7 @@
                 </div>
 
                 <label><b>Terapi dan Rencana Tindakan:</b></label>
-                <p>{{ $perintah->terapi_dan_rencana_tindakan }}</p>
+                <p>{{ $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan }}</p>
                 <hr>
 
                 <div class="form-group">

@@ -85,11 +85,11 @@ class PerintahDokterDanPengobatanController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function showDetailPerintahDokterDanPengobatanPasien($id, $id_perintah_dokter)
+    public function showDetailPerintahDokterDanPengobatanPasien($id, $id_perjalanan_penyakit)
     {
         $pasien = Pasien::where('id', $id)->first();
 
-        $perintah = PerintahDokterDanPengobatan::where('id', '=', $id_perintah_dokter)->first();
+        $perintah = PerintahDokterDanPengobatan::where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 

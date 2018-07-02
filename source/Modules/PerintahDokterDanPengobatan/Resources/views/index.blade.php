@@ -74,7 +74,8 @@
                                     {!! $perintah->catatan_perawat !!}
                                     <br>
                                     @if(Auth::user()->jabatan_id == 3)
-                                        @if($perintah->terapi_dan_rencana_tindakan != null && $perintah->catatan_perawat != null)
+                                        @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
+                                            <hr>
                                             <div class="btn-group float-right">
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
                                             </div>

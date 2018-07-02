@@ -68,13 +68,14 @@
                                         <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                                     @endif
                                     <hr>
-                                    <p>{!! $perintah->terapi_dan_rencana_tindakan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
+                                    <p>{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">
                                     {!! $perintah->catatan_perawat !!}
 
                                     @if(Auth::user()->jabatan_id == 3)
-                                        @if($perintah->terapi_dan_rencana_tindakan != null && $perintah->catatan_perawat != null)
+                                        @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
+                                            <hr>
                                             <div class="btn-group float-right">
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
                                             </div>
