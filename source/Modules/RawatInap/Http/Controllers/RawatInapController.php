@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
+use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\RawatInap;
 use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
 use Modules\User\Entities\User;
@@ -151,12 +152,30 @@ class RawatInapController extends Controller
             'tanggal_masuk' => 'required'
         ]);
 
+        $terdaftar = Pasien::where('ktp', '=', $request->id_pasien)->first();
+
+        if(!$terdaftar)
+        {
+            Session::flash('warning', 'Pasien belum terdaftar di rumah sakit. Daftarkan pasien terlebih dahulu.');
+
+            return redirect()->back();
+        }
+
+        $id_rm_terdaftar = RawatInap::where('id_rm', '=', $request->id_rm)->first();
+
+        if($id_rm_terdaftar)
+        {
+            Session::flash('warning', 'Nomor rekam medis sudah terdaftar. Gunakan nomor rekam medis lain.');
+
+            return redirect()->back();
+        }
+
         $rawat_inap = RawatInap::where('id_pasien', '=', $request->id_pasien)->orderBy('id', 'desc')->first();
         $keluar = TanggalKeluarRawatInap::where('id_rm', '=', $rawat_inap->id_rm)->exists();
 
         if(!$keluar)
         {
-            Session::flash('warning', 'Pasien masih terdaftar dalam rawat inap rumah sakit');
+            Session::flash('warning', 'Pasien masih terdaftar dalam rawat inap rumah sakit.');
 
             return redirect()->back();
         }
@@ -276,7 +295,7 @@ class RawatInapController extends Controller
         $ranap->tanggal_masuk = $request->tanggal_masuk;
         $ranap->save();
 
-        Session::flash('message', 'Perubahan detail rawat inap berhasil disimpan');
+        Session::flash('message', 'Perubahan detail rawat inap berhasil disimpan.');
 
         return redirect()->route('ranap.show', $id);
     }
