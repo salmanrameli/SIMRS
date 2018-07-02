@@ -1,5 +1,9 @@
 @extends('layouttemplate::master')
 
+@section('title')
+    Administrator Dashboard
+    @endsection
+
 @section('content')
     <div class="col-md-3">
         <div class="card">
