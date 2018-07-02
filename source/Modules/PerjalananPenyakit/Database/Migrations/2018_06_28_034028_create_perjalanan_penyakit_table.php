@@ -22,7 +22,6 @@ class CreatePerjalananPenyakitTable extends Migration
             $table->text('assessment');
             $table->text('planning_perintah_dokter_dan_pengobatan');
             $table->string('id_petugas');
-            $table->string('id_perintah_dokter_dan_pengobatan');
             $table->timestamps();
         });
     }

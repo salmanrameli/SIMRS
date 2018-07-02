@@ -68,7 +68,7 @@
                                         <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                                     @endif
                                     <hr>
-                                    <p>{!! $perintah->terapi_dan_rencana_tindakan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
+                                    <p>{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">
                                     {!! $perintah->catatan_perawat !!}
