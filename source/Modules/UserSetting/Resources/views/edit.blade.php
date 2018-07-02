@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Ubah Data Akun
@@ -11,7 +11,7 @@
 
         {{ Form::model($user, ['method' => 'PATCH', 'route' => ['setting.update', $user->id]]) }}
 
-        <div class="form-group">
+        <div class="form-group d-none">
             {{ Form::label('id_user', 'ID', ['class' => 'control-label']) }}
             {{ Form::text('id_user', null, ['class' => 'form-control']) }}
         </div>
