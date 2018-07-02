@@ -2,14 +2,15 @@
 
 namespace Modules\User\Entities;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Modules\RawatInap\Entities\CatatanHarianPerawatan;
+use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     protected $fillable = [
         'id_user', 'nama', 'alamat', 'telepon', 'jabatan_id', 'password'
@@ -18,6 +19,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function jabatan()
     {
