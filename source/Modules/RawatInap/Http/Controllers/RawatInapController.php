@@ -151,6 +151,16 @@ class RawatInapController extends Controller
             'tanggal_masuk' => 'required'
         ]);
 
+        $rawat_inap = RawatInap::where('id_pasien', '=', $request->id_pasien)->orderBy('id', 'desc')->first();
+        $keluar = TanggalKeluarRawatInap::where('id_rm', '=', $rawat_inap->id_rm)->exists();
+
+        if(!$keluar)
+        {
+            Session::flash('warning', 'Pasien masih terdaftar dalam rawat inap rumah sakit');
+
+            return redirect()->back();
+        }
+
         $ranap = new RawatInap();
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
