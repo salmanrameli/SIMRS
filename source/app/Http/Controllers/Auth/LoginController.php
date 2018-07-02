@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class LoginController extends Controller
 {
@@ -19,6 +21,19 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => [
+                'required',
+                Rule::exists('users')->where(function ($query) {
+                    $query->where('deleted_at', null);
+                }),
+            ],
+            'password' => 'required'
+        ]);
+    }
 
     public function username()
     {
