@@ -171,13 +171,17 @@ class RawatInapController extends Controller
         }
 
         $rawat_inap = RawatInap::where('id_pasien', '=', $request->id_pasien)->orderBy('id', 'desc')->first();
-        $keluar = TanggalKeluarRawatInap::where('id_rm', '=', $rawat_inap->id_rm)->exists();
 
-        if(!$keluar)
+        if($rawat_inap != null)
         {
-            Session::flash('warning', 'Pasien masih terdaftar dalam rawat inap rumah sakit.');
+            $pasien_sudah_keluar = TanggalKeluarRawatInap::where('id_rm', '=', $rawat_inap->id_rm)->exists();
 
-            return redirect()->back();
+            if(!$pasien_sudah_keluar)
+            {
+                Session::flash('warning', 'Pasien masih terdaftar dalam proses rawat inap rumah sakit.');
+
+                return redirect()->back();
+            }
         }
 
         $ranap = new RawatInap();
