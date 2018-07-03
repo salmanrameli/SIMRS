@@ -68,19 +68,18 @@
                                         <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                                     @endif
                                     <hr>
-                                    <p>{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
+                                    <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">
-                                    {!! $perintah->catatan_perawat !!}
-                                    <br>
+                                    {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
                                     @if(Auth::user()->jabatan_id == 3)
-                                        @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
-                                            <hr>
+                                        @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
+                                            <br><hr>
                                             <div class="btn-group float-right">
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
                                             </div>
                                         @else
-                                            <div class="btn-group float-right">
+                                            <div class="btn-group float-left">
                                                 <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
                                             </div>
                                         @endif

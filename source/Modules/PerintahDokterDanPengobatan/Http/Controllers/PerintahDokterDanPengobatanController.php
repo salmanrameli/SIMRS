@@ -2,6 +2,7 @@
 
 namespace Modules\PerintahDokterDanPengobatan\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
+use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
 
 class PerintahDokterDanPengobatanController extends Controller
@@ -29,7 +31,7 @@ class PerintahDokterDanPengobatanController extends Controller
     {
         $pasien = Pasien::where('id', $id)->first();
 
-        $perintah_dokter = PerintahDokterDanPengobatan::where('id_pasien', $id)->orderBy('created_at', 'desc')->get();
+        $perintah_dokter = PerjalananPenyakit::with('perintah_dokter_dan_pengobatan')->where('id_pasien', '=', $id)->orderBy('created_at', 'desc')->get();
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
@@ -48,7 +50,7 @@ class PerintahDokterDanPengobatanController extends Controller
      */
     public function createPerintahDokterDanPengobatanPasien($id, $perintah)
     {
-        $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
+        $perintah = PerjalananPenyakit::findorFail($perintah);
 
         $pasien = Pasien::findorFail($id);
 
@@ -69,11 +71,12 @@ class PerintahDokterDanPengobatanController extends Controller
             'id_petugas' => 'required'
         ]);
 
-        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->id_perintah);
+        $perintah_dokter = new PerintahDokterDanPengobatan();
+        $perintah_dokter->id_pasien =  $request->id_pasien;
+        $perintah_dokter->tanggal_keterangan = Carbon::now();
+        $perintah_dokter->id_perjalanan_penyakit = $request->id_perintah;
         $perintah_dokter->catatan_perawat = $request->catatan_perawat;
         $perintah_dokter->id_petugas = Auth::id();
-        $perintah_dokter->created_at = new \DateTime();
-        $perintah_dokter->updated_at = new \DateTime();
         $perintah_dokter->save();
 
         Session::flash('message', 'Catatan berhasil disimpan');
@@ -87,18 +90,25 @@ class PerintahDokterDanPengobatanController extends Controller
      */
     public function showDetailPerintahDokterDanPengobatanPasien($id, $id_perjalanan_penyakit)
     {
+        if(!PerintahDokterDanPengobatan::where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->exists())
+        {
+            Session::flash('warning', 'Catatan perawat pada catatan perjalanan penyakit yang dipilih belum tersedia.');
+
+            return redirect()->back();
+        }
+
         $pasien = Pasien::where('id', $id)->first();
 
-        $perintah = PerintahDokterDanPengobatan::where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
+        $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
 
         $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
 
         $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
 
         return view('perintahdokterdanpengobatan::show')
+            ->with('perintah', $perintah)
             ->with('pasien', $pasien)
             ->with('tanggal_masuk', $tanggal_masuk)
-            ->with('perintah', $perintah)
             ->with('diagnosa_awal', $diagnosa_awal);
     }
 

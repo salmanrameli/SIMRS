@@ -72,15 +72,7 @@ class PerjalananPenyakitController extends Controller
 
         $input = $request->all();
 
-        $id_perjalanan_penyakit = PerjalananPenyakit::create($input)->id;
-
-        $perintah_dokter = new PerintahDokterDanPengobatan();
-        $perintah_dokter->id_pasien = $request->id_pasien;
-        $perintah_dokter->tanggal_keterangan = $request->tanggal_keterangan;
-        $perintah_dokter->id_perjalanan_penyakit = $id_perjalanan_penyakit;
-        $perintah_dokter->catatan_perawat = null;
-        $perintah_dokter->id_petugas = null;
-        $perintah_dokter->save();
+        PerjalananPenyakit::create($input);
 
         Session::flash('message', 'Catatan berhasil disimpan');
 
