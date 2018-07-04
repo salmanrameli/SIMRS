@@ -72,13 +72,15 @@
                                     <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">
-                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
-                                    @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
-                                        <b>Diubah tanggal: –</b>
-                                    @else
-                                        <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
+                                    @if(!empty($perintah->perintah_dokter_dan_pengobatan))
+                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b><br>
+                                        @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
+                                            <b>Diubah tanggal: –</b>
+                                        @else
+                                            <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
+                                        @endif
+                                        <hr>
                                     @endif
-                                    <hr>
 
                                     {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
 
