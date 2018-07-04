@@ -13,7 +13,7 @@
                     <br>
                 </div>
 
-                {{ Form::open(['route' => ['perintah_dokter_dan_pengobatan.store', $perintah->id], 'method' => 'POST']) }}
+                {{ Form::open(['route' => ['perintah_dokter_dan_pengobatan.store', $ranap->id], 'method' => 'POST']) }}
                 <div hidden>
                     {{ Form::text('id_ranap', $ranap->id) }}
                     {{ Form::text('id_perintah', $perintah->id) }}
