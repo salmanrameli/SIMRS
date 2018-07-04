@@ -50,14 +50,14 @@ class RawatInapController extends Controller
         
         $nama = Auth::user()->nama;
 
-        $pasien_ranap = RawatInap::with('pasien')
+        $ranap = RawatInap::with('pasien')
             ->select('*')
             ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
             ->get();
 
         return view('rawatinap::index')
             ->with('nama', $nama)
-            ->with('pasiens', $pasien_ranap);
+            ->with('ranaps', $ranap);
     }
 
     public function indexKamar()
