@@ -9,13 +9,14 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Ubah Catatan Perjalanan Penyakit Pasien: {{ $pasien }}</h4>
+                    <h4>Ubah Catatan Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h4>
                     <br>
                 </div>
 
-                {{ Form::model($perjalanan, ['method' => 'PATCH', 'route' => ['perjalanan_penyakit.update', $perjalanan->id_pasien, $perjalanan->id]]) }}
+                {{ Form::model($perjalanan, ['method' => 'PATCH', 'route' => ['perjalanan_penyakit.update', $perjalanan->id_ranap, $perjalanan->id]]) }}
                 <div hidden>
-                    {{ Form::text('id_pasien', $perjalanan->id_pasien) }}
+                    {{ Form::text('id_pasien', $ranap->id_pasien) }}
+                    {{ Form::text('id_ranap', $perjalanan->id_ranap) }}
                 </div>
 
                 <div class="form-group">

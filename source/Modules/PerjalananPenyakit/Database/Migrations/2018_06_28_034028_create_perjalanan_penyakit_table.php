@@ -15,7 +15,7 @@ class CreatePerjalananPenyakitTable extends Migration
     {
         Schema::create('perjalanan_penyakit', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_pasien');
+            $table->string('id_ranap');
             $table->date('tanggal_keterangan');
             $table->text('subjektif');
             $table->text('objektif');

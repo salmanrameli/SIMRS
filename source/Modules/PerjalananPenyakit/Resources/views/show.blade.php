@@ -10,13 +10,13 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs small">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('perjalanan_penyakit.index', $pasien->id) }}">Perjalanan Penyakit</a>
+                        <a class="nav-link active" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}">Perjalanan Penyakit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
+                        <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}">Perintah Dokter dan Pengobatan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
+                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}">Catatan Harian dan Perawatan</a>
                     </li>
                 </ul>
             </div>
@@ -24,17 +24,17 @@
                 <div class="col-md-12">
                     <div class="page-header">
                         @if(Auth::user()->jabatan_id == 4)
-                            <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
+                            <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $ranap->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
                         @endif
 
-                        <h4>Perjalanan Penyakit: {{ $pasien->nama }}</h4>
+                        <h4>Perjalanan Penyakit: {{ $ranap->pasien->nama }}</h4>
                         <hr>
                         <div class="col-md-12">
                             <table>
                                 <tbody class="small">
                                     <tr>
                                         <th>Jenis Kelamin</th>
-                                        <td style="padding-left: 10px">: {{ ucfirst($pasien->jenkel) }}</td>
+                                        <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
                                     </tr>
                                     <tr>
                                         <th>Umur</th>
@@ -42,16 +42,16 @@
                                     </tr>
                                     <tr>
                                         <th>Tanggal Masuk</th>
-                                        <td style="padding-left: 10px">: {{ date("d F Y", strtotime($tanggal_masuk)) }}</td>
+                                        <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
                                     </tr>
                                     <tr>
                                         <th>Diagnosa Awal</th>
-                                        <td style="padding-left: 10px">: {{ ucfirst($diagnosa_awal) }}</td>
+                                        <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <br>
-                            <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
+                            <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
                     <table class="table small">
@@ -66,7 +66,7 @@
                             <tr>
                                 <td class="text-justify">
                                     <b>Dibuat tanggal: {{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</b><br>
-                                    @if(date("d F Y", strtotime($perjalanan->tanggal_keterangan)) == date("d F Y", strtotime($perjalanan->updated_at)))
+                                    @if(strtotime($perjalanan->tanggal_keterangan) == strtotime($perjalanan->updated_at))
                                         <b>Diubah tanggal: –</b>
                                     @else
                                         <b>Diubah tanggal: {{ date("d F Y", strtotime($perjalanan->updated_at)) }}</b>
@@ -81,10 +81,10 @@
                                 </td>
                                 <td class="text-justify">
                                     <label><b>Planning</b></label>
-                                    <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$pasien->id, $perjalanan->id]) }}">Pengobatan...</a></p>
+                                    <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->id]) }}">Pengobatan...</a></p>
                                     @if(Auth::user()->jabatan_id ==4)
                                         <hr>
-                                        <a href="{{ route('perjalanan_penyakit.edit', [$pasien->id, $perjalanan->id]) }}" class="btn btn-warning float-right">Ubah</a>
+                                        <a href="{{ route('perjalanan_penyakit.edit', [$ranap->id, $perjalanan->id]) }}" class="btn btn-warning float-right">Ubah</a>
                                         @endif
                                 </td>
                             </tr>
