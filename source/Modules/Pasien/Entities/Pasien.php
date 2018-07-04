@@ -23,9 +23,4 @@ class Pasien extends Model
     {
         return $this->hasMany(RawatInap::class, 'id_pasien', 'ktp');
     }
-
-    public function perjalanan_penyakit()
-    {
-        return $this->hasMany(PerjalananPenyakit::class, 'id_pasien', 'id');
-    }
 }
