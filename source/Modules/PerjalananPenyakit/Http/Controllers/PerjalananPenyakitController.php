@@ -76,11 +76,11 @@ class PerjalananPenyakitController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function showDetailPerjalananPenyakitPasien($id_perjalanan_penyakit)
+    public function showDetailPerjalananPenyakitPasien($id_rawat_inap, $id_perjalanan_penyakit)
     {
         $perjalanan = PerjalananPenyakit::where('id', '=', $id_perjalanan_penyakit)->first();
 
-        $ranap = RawatInap::with('pasien')->where('id', '=', $perjalanan->id_ranap)->first();
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_rawat_inap)->first();
 
         return view('perjalananpenyakit::show')
             ->with('perjalanan', $perjalanan)
