@@ -10,7 +10,7 @@ class PerintahDokterDanPengobatan extends Model
     protected $table = 'perintah_dokter_dan_pengobatan';
 
     protected $fillable = [
-        'id_pasien', 'tanggal_keterangan', 'id_perjalanan_penyakit', 'catatan_perawat', 'id_petugas'
+        'tanggal_keterangan', 'id_perjalanan_penyakit', 'catatan_perawat', 'id_petugas'
     ];
 
     public function perjalanan_penyakit()
