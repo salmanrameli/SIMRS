@@ -15,7 +15,7 @@ class CreateCatatanHarianPerawatanTable extends Migration
     {
         Schema::create('catatan_harian_perawatan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_pasien');
+            $table->string('id_ranap');
             $table->date('tanggal_keterangan');
             $table->string('jam');
             $table->text('asuhan_keperawatan_soap');
