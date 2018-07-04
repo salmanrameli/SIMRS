@@ -15,9 +15,8 @@ class CreatePerintahDokterDanPengobatanTable extends Migration
     {
         Schema::create('perintah_dokter_dan_pengobatan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_pasien');
-            $table->date('tanggal_keterangan');
             $table->string('id_perjalanan_penyakit');
+            $table->date('tanggal_keterangan');
             $table->text('catatan_perawat')->nullable();
             $table->string('id_petugas')->nullable();
             $table->timestamps();
