@@ -10,27 +10,27 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs small">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $pasien->id) }}">Perjalanan Penyakit</a>
+                        <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}">Perjalanan Penyakit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('perintah_dokter_dan_pengobatan.index', $pasien->id) }}">Perintah Dokter dan Pengobatan</a>
+                        <a class="nav-link active" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}">Perintah Dokter dan Pengobatan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $pasien->id) }}">Catatan Harian dan Perawatan</a>
+                        <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}">Catatan Harian dan Perawatan</a>
                     </li>
                 </ul>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h4>Perintah Dokter dan Pengobatan: {{ $pasien->nama }}</h4>
+                        <h4>Perintah Dokter dan Pengobatan: {{ $ranap->pasien->nama }}</h4>
                         <hr>
                         <div class="col-md-12">
                             <table>
                                 <tbody class="small">
                                 <tr>
                                     <th>Jenis Kelamin</th>
-                                    <td style="padding-left: 10px">: {{ ucfirst($pasien->jenkel) }}</td>
+                                    <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Umur</th>
@@ -38,16 +38,16 @@
                                 </tr>
                                 <tr>
                                     <th>Tanggal Masuk</th>
-                                    <td style="padding-left: 10px">: {{ date("d F Y", strtotime($tanggal_masuk)) }}</td>
+                                    <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Diagnosa Awal</th>
-                                    <td style="padding-left: 10px">: {{ ucfirst($diagnosa_awal) }}</td>
+                                    <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
                                 </tr>
                                 </tbody>
                             </table>
                             <br>
-                            <p id="tanggal_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
+                            <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
                     <table class="table table-striped small">
@@ -62,25 +62,35 @@
                             <tr>
                                 <td class="text-justify w-50">
                                     <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
-                                    @if(date("d F Y", strtotime($perintah->tanggal_keterangan)) == date("d F Y", strtotime($perintah->updated_at)))
+                                    @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
                                         <b>Diubah tanggal: –</b>
                                     @else
                                         <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                                     @endif
                                     <hr>
-                                    <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$pasien->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
+
+                                    <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">
+                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
+                                    @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
+                                        <b>Diubah tanggal: –</b>
+                                    @else
+                                        <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
+                                    @endif
+                                    <hr>
+
                                     {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
+
                                     @if(Auth::user()->jabatan_id == 3)
                                         @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
                                             <br><hr>
                                             <div class="btn-group float-right">
-                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$perintah->id_pasien, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
                                             </div>
                                         @else
                                             <div class="btn-group float-left">
-                                                <a href="{{ route('perintah_dokter_dan_pengobatan.create', ['id' => $perintah->id_pasien, 'perintah' => $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.create', [$ranap->id, $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
                                             </div>
                                         @endif
                                     @endif

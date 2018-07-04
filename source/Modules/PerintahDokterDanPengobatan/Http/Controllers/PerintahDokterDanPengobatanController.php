@@ -9,7 +9,6 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Modules\Pasien\Entities\Pasien;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
@@ -27,36 +26,30 @@ class PerintahDokterDanPengobatanController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function showAllPerintahDokterDanPengobatanPasien($id)
+    public function showAllPerintahDokterDanPengobatanPasien($id_ranap)
     {
-        $pasien = Pasien::where('id', $id)->first();
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
-        $perintah_dokter = PerjalananPenyakit::with('perintah_dokter_dan_pengobatan')->where('id_pasien', '=', $id)->orderBy('created_at', 'desc')->get();
-
-        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
-
-        $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
+        $perintah_dokter = PerjalananPenyakit::with('perintah_dokter_dan_pengobatan')->where('id_ranap', '=', $id_ranap)->orderBy('created_at', 'desc')->get();
 
         return view('perintahdokterdanpengobatan::index')
-            ->with('pasien', $pasien)
-            ->with('perintahs', $perintah_dokter)
-            ->with('tanggal_masuk', $tanggal_masuk)
-            ->with('diagnosa_awal', $diagnosa_awal);
+            ->with('ranap', $ranap)
+            ->with('perintahs', $perintah_dokter);
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function createPerintahDokterDanPengobatanPasien($id, $perintah)
+    public function createPerintahDokterDanPengobatanPasien($id_ranap, $id_perintah)
     {
-        $perintah = PerjalananPenyakit::findorFail($perintah);
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
-        $pasien = Pasien::findorFail($id);
+        $perintah = PerjalananPenyakit::findorFail($id_perintah);
 
         return view('perintahdokterdanpengobatan::create')
             ->with('perintah', $perintah)
-            ->with('pasien', $pasien);
+            ->with('ranap', $ranap);
     }
 
     /**
@@ -64,7 +57,7 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function savePerintahDokterDanPengobatanPasien(Request $request)
+    public function savePerintahDokterDanPengobatanPasien(Request $request, $id_ranap)
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
@@ -72,23 +65,22 @@ class PerintahDokterDanPengobatanController extends Controller
         ]);
 
         $perintah_dokter = new PerintahDokterDanPengobatan();
-        $perintah_dokter->id_pasien =  $request->id_pasien;
-        $perintah_dokter->tanggal_keterangan = Carbon::now();
         $perintah_dokter->id_perjalanan_penyakit = $request->id_perintah;
+        $perintah_dokter->tanggal_keterangan = Carbon::now();
         $perintah_dokter->catatan_perawat = $request->catatan_perawat;
         $perintah_dokter->id_petugas = Auth::id();
         $perintah_dokter->save();
 
         Session::flash('message', 'Catatan berhasil disimpan');
 
-        return redirect()->route('perintah_dokter_dan_pengobatan.index', $request->id_pasien);
+        return redirect()->route('perintah_dokter_dan_pengobatan.index', $id_ranap);
     }
 
     /**
      * Show the specified resource.
      * @return Response
      */
-    public function showDetailPerintahDokterDanPengobatanPasien($id, $id_perjalanan_penyakit)
+    public function showDetailPerintahDokterDanPengobatanPasien($id_ranap, $id_perjalanan_penyakit)
     {
         if(!PerintahDokterDanPengobatan::where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->exists())
         {
@@ -97,28 +89,24 @@ class PerintahDokterDanPengobatanController extends Controller
             return redirect()->back();
         }
 
-        $pasien = Pasien::where('id', $id)->first();
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
 
-        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
-
-        $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
-
         return view('perintahdokterdanpengobatan::show')
             ->with('perintah', $perintah)
-            ->with('pasien', $pasien)
-            ->with('tanggal_masuk', $tanggal_masuk)
-            ->with('diagnosa_awal', $diagnosa_awal);
+            ->with('ranap', $ranap);
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function editPerintahDokterDanPengobatanPasien($id, $perintah)
+    public function editPerintahDokterDanPengobatanPasien($id_ranap, $id_perintah)
     {
-        $perintah = PerintahDokterDanPengobatan::findorFail($perintah);
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $perintah = PerintahDokterDanPengobatan::findorFail($id_perintah);
 
         if($perintah->catatan_perawat == null)
         {
@@ -127,11 +115,9 @@ class PerintahDokterDanPengobatanController extends Controller
             return redirect()->back();
         }
 
-        $pasien = Pasien::findorFail($id);
-
         return view('perintahdokterdanpengobatan::edit')
             ->with('perintah', $perintah)
-            ->with('pasien', $pasien);
+            ->with('ranap', $ranap);
     }
 
     /**
@@ -139,21 +125,21 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function updatePerintahDokterDanPengobatanPasien(Request $request, $id_pasien, $perintah)
+    public function updatePerintahDokterDanPengobatanPasien(Request $request, $id_ranap, $id_perintah)
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
             'id_petugas' => 'required'
         ]);
 
-        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->id_perintah);
+        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($id_perintah);
         $perintah_dokter->catatan_perawat = $request->catatan_perawat;
         $perintah_dokter->id_petugas = Auth::id();
         $perintah_dokter->save();
 
         Session::flash('message', 'Perubahan berhasil disimpan');
 
-        return redirect()->route('perintah_dokter_dan_pengobatan.index', $id_pasien);
+        return redirect()->route('perintah_dokter_dan_pengobatan.index', $id_ranap);
     }
 
     /**
