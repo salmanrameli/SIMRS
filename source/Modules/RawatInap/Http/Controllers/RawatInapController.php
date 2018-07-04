@@ -37,7 +37,7 @@ class RawatInapController extends Controller
         {
             $nama = Auth::user()->nama;
 
-            $pasien_ranap = RawatInap::with('pasien')
+            $ranap = RawatInap::with('pasien')
                 ->select('*')
                 ->where('id_dokter_pj', '=', Auth::id())
                 ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
@@ -45,7 +45,7 @@ class RawatInapController extends Controller
 
             return view('rawatinap::index')
                 ->with('nama', $nama)
-                ->with('pasiens', $pasien_ranap);
+                ->with('ranaps', $ranap);
         }
         
         $nama = Auth::user()->nama;
