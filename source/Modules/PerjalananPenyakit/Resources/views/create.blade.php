@@ -15,7 +15,7 @@
 
                 {{ Form::open(['route' => ['perjalanan_penyakit.store', $ranap->id], 'method' => 'POST']) }}
                 <div hidden>
-                    {{ Form::text('id_pasien', $pasien->id) }}
+                    {{ Form::text('id_pasien', $ranap->pasien->id) }}
                     {{ Form::text('id_ranap', $ranap->id) }}
                 </div>
 
