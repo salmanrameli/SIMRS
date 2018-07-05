@@ -48,16 +48,23 @@ class RawatInapController extends Controller
                 ->with('ranaps', $ranap);
         }
         
-        $nama = Auth::user()->nama;
+        if(Auth::user()->jabatan_id != 1)
+        {
+            $nama = Auth::user()->nama;
 
-        $ranap = RawatInap::with('pasien')
-            ->select('*')
-            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
-            ->get();
+            $ranap = RawatInap::with('pasien')
+                ->select('*')
+                ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+                ->get();
 
-        return view('rawatinap::index')
-            ->with('nama', $nama)
-            ->with('ranaps', $ranap);
+            return view('rawatinap::index')
+                ->with('nama', $nama)
+                ->with('ranaps', $ranap);
+        }
+
+        Session::flash('warning', 'Anda tidak memiliki hak akses.');
+
+        return redirect()->back();
     }
 
     public function indexKamar()
@@ -209,9 +216,16 @@ class RawatInapController extends Controller
      */
     public function showDetailRawatInap($id)
     {
-        $ranap = RawatInap::findorFail($id);
+        if(Auth::user()->jabatan_id != 1)
+        {
+            $ranap = RawatInap::findorFail($id);
 
-        return view('rawatinap::show')->with('ranap', $ranap);
+            return view('rawatinap::show')->with('ranap', $ranap);
+        }
+
+        Session::flash('warning', 'Anda tidak memiliki hak akses.');
+
+        return redirect()->back();
     }
 
     /**
