@@ -17,6 +17,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\CatatanHarianPerawa
         'uses' => 'CatatanHarianPerawatanController@storeCatatanHarianDanPerawatan'
     ]);
 
+    Route::get('ranap/{id}/catatan_harian_perawatan/{catatan_harian_perawatan}', [
+        'as' => 'catatan_harian_perawatan.show',
+        'uses' => 'CatatanHarianPerawatanController@show'
+    ]);
+
     Route::get('ranap/{id}/catatan_harian_perawatan/{catatan_harian_perawatan}/edit', [
         'as' => 'catatan_harian_perawatan.edit',
         'uses' => 'CatatanHarianPerawatanController@editCatatanHarianDanPerawatan'

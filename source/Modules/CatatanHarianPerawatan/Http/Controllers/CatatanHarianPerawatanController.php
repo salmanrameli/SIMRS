@@ -8,7 +8,6 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
-use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\RawatInap;
 
 class CatatanHarianPerawatanController extends Controller
@@ -81,7 +80,7 @@ class CatatanHarianPerawatanController extends Controller
      */
     public function show()
     {
-        return view('rawatinap::show');
+        return redirect()->back();
     }
 
     /**
