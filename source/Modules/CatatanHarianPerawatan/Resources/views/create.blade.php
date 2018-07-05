@@ -9,13 +9,13 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Buat Catatan Harian dan Perawatan Pasien: {{ $pasien->nama }}</h4>
+                    <h4>Buat Catatan Harian dan Perawatan Pasien: {{ $ranap->pasien->nama }}</h4>
                     <br>
                 </div>
 
-                {{ Form::open(['route' => ['catatan_harian_perawatan.store', $pasien->id], 'method' => 'POST']) }}
+                {{ Form::open(['route' => ['catatan_harian_perawatan.store', $ranap->id], 'method' => 'POST']) }}
                 <div hidden>
-                    {{ Form::text('id_pasien', $pasien->id) }}
+                    {{ Form::text('id_ranap', $ranap->id) }}
                 </div>
 
                 <div class="form-group">

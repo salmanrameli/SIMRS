@@ -9,14 +9,11 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Ubah Catatan Harian dan Perawatan Pasien: {{ $pasien->nama }}</h4>
+                    <h4>Ubah Catatan Harian dan Perawatan Pasien: {{ $ranap->pasien->nama }}</h4>
                     <br>
                 </div>
 
-                {{ Form::model($catatan, ['method' => 'PATCH', 'route' => ['catatan_harian_perawatan.update', $catatan->id_pasien, $catatan->id]]) }}
-                <div hidden>
-                    {{ Form::text('id_pasien', $pasien->id) }}
-                </div>
+                {{ Form::model($catatan, ['method' => 'PATCH', 'route' => ['catatan_harian_perawatan.update', $ranap->id, $catatan->id]]) }}
 
                 <div class="form-group">
                     {{ Form::label('tanggal_keterangan', 'Tanggal', ['class' => 'control-label']) }}

@@ -24,32 +24,31 @@ class CatatanHarianPerawatanController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function showAllCatatanHarianDanPerawatan($id)
+    public function showAllCatatanHarianDanPerawatan($id_ranap)
     {
-        $pasien = Pasien::where('id', $id)->first();
+        $catatan = CatatanHarianPerawatan::where('id_ranap', '=', $id_ranap)->orderBy('created_at', 'desc')->get();
 
-        $catatan = CatatanHarianPerawatan::where('id_pasien', $id)->orderBy('created_at', 'desc')->get();
+        if(!$catatan)
+        {
+            $catatan = null;
+        }
 
-        $tanggal_masuk = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('tanggal_masuk');
-
-        $diagnosa_awal = RawatInap::where('id_pasien', '=', $pasien->ktp)->value('diagnosa_awal');
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         return view('catatanharianperawatan::index')
-            ->with('pasien', $pasien)
-            ->with('catatans', $catatan)
-            ->with('tanggal_masuk', $tanggal_masuk)
-            ->with('diagnosa_awal', $diagnosa_awal);
+            ->with('ranap', $ranap)
+            ->with('catatans', $catatan);
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function createNewCatatanHarianDanPerawatan($id)
+    public function createNewCatatanHarianDanPerawatan($id_ranap)
     {
-        $pasien = Pasien::findorFail($id);
+        $ranap = RawatInap::findorFail($id_ranap);
 
-        return view('catatanharianperawatan::create')->with('pasien', $pasien);
+        return view('catatanharianperawatan::create')->with('ranap', $ranap);
     }
 
     /**
@@ -57,10 +56,10 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function storeCatatanHarianDanPerawatan(Request $request)
+    public function storeCatatanHarianDanPerawatan(Request $request, $id_ranap)
     {
         $this->validate($request, [
-            'id_pasien' => 'required',
+            'id_ranap' => 'required',
             'tanggal_keterangan' => 'required',
             'jam' => 'required|date_format:H:i',
             'asuhan_keperawatan_soap' => 'required',
@@ -73,7 +72,7 @@ class CatatanHarianPerawatanController extends Controller
 
         Session::flash('message', 'Catatan harian dan perawatan berhasil disimpan');
 
-        return redirect()->route('catatan_harian_perawatan.index', $request->id_pasien);
+        return redirect()->route('catatan_harian_perawatan.index', $id_ranap);
     }
 
     /**
@@ -89,15 +88,15 @@ class CatatanHarianPerawatanController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function editCatatanHarianDanPerawatan($id, $catatan)
+    public function editCatatanHarianDanPerawatan($id_ranap, $catatan_harian)
     {
-        $catatan = CatatanHarianPerawatan::findorFail($catatan);
+        $catatan = CatatanHarianPerawatan::findorFail($catatan_harian);
 
-        $pasien = Pasien::findorFail($id);
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         return view('catatanharianperawatan::edit')
             ->with('catatan', $catatan)
-            ->with('pasien', $pasien);
+            ->with('ranap', $ranap);
     }
 
     /**
@@ -105,12 +104,11 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function updateCatatanHarianDanPerawatan(Request $request, $id_pasien, $catatan)
+    public function updateCatatanHarianDanPerawatan(Request $request, $id_ranap, $catatan_harian)
     {
-        $catatan = CatatanHarianPerawatan::findorFail($catatan);
+        $catatan = CatatanHarianPerawatan::findorFail($catatan_harian);
 
         $this->validate($request, [
-            'id_pasien' => 'required',
             'tanggal_keterangan' => 'required',
             'jam' => 'required|date_format:H:i',
             'asuhan_keperawatan_soap' => 'required',
@@ -123,7 +121,7 @@ class CatatanHarianPerawatanController extends Controller
 
         Session::flash('message', 'Catatan harian dan perawatan berhasil diubah');
 
-        return redirect()->route('catatan_harian_perawatan.index', $id_pasien);
+        return redirect()->route('catatan_harian_perawatan.index', $id_ranap);
     }
 
     /**
