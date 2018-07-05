@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
+use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class User extends Authenticatable
@@ -35,6 +36,11 @@ class User extends Authenticatable
     public function petugas_penerima()
     {
         return $this->hasMany(RawatInap::class, 'id_petugas_penerima', 'id');
+    }
+
+    public function perintah_dokter_dan_pengobatan()
+    {
+        return $this->hasMany(PerintahDokterDanPengobatan::class, 'id_petugas', 'id');
     }
 
     public function catatan_harian_perawatan()
