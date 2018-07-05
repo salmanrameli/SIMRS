@@ -20,6 +20,8 @@ class PerintahDokterDanPengobatanController extends Controller
     public function __construct()
     {
         $this->middleware('checkRole:3')->except(['showAllPerintahDokterDanPengobatanPasien', 'showDetailPerintahDokterDanPengobatanPasien']);
+
+        $this->middleware('checkIfAuthorized');
     }
 
     /**

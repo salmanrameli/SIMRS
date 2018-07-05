@@ -24,6 +24,8 @@ class RawatInapController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('checkIfAuthorized')->except(['showAllRawatInap']);
+
         $this->middleware('checkRole:1,2')->except(['showAllRawatInap', 'showDetailRawatInap']);
     }
 

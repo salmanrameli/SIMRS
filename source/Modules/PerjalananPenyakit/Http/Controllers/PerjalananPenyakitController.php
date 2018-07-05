@@ -17,6 +17,8 @@ class PerjalananPenyakitController extends Controller
     public function __construct()
     {
         $this->middleware('checkRole:4')->except(['showAllPerjalananPenyakitPasien', 'showDetailPerjalananPenyakitPasien']);
+
+        $this->middleware('checkIfAuthorized');
     }
 
     /**
