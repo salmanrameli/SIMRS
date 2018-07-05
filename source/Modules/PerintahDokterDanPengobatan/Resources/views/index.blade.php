@@ -88,7 +88,7 @@
                                         @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
                                             <br><hr>
                                             <div class="btn-group float-right">
-                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-sm btn-warning">Ubah</a>
                                             </div>
                                         @else
                                             <div class="btn-group float-left">

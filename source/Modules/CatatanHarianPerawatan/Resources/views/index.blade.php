@@ -75,7 +75,7 @@
                                         <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                                         <hr>
                                         @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
-                                            <a href="{{ route('catatan_harian_perawatan.edit', [$ranap->id, $catatan->id]) }}" class="btn btn-warning float-right">Ubah</a>
+                                            <a href="{{ route('catatan_harian_perawatan.edit', [$ranap->id, $catatan->id]) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
                                             @endif
                                     </td>
                                     <td class="text-justify">{{ $catatan->user->nama }}</td>

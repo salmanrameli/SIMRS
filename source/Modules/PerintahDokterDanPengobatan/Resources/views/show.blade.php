@@ -85,7 +85,7 @@
                                         @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
                                             <hr>
                                             <div class="btn-group float-right">
-                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-warning">Ubah</a>
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-sm btn-warning">Ubah</a>
                                             </div>
                                         @else
                                             <div class="btn-group float-right">
