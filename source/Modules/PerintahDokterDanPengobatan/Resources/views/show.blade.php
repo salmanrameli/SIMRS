@@ -71,7 +71,7 @@
                                     <p>{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                                 </td>
                                 <td class="text-justify">
-                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
+                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->user->nama }}</b><br>
                                     @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
                                         <b>Diubah tanggal: –</b>
                                     @else
