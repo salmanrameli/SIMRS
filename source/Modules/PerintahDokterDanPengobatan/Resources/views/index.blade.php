@@ -73,7 +73,7 @@
                                 </td>
                                 <td class="text-justify">
                                     @if(!empty($perintah->perintah_dokter_dan_pengobatan))
-                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b><br>
+                                        <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b><br>
                                         @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
                                             <b>Diubah tanggal: –</b>
                                         @else
