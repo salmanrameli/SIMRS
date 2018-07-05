@@ -82,7 +82,7 @@
                                 </td>
                                 <td class="text-justify">
                                     <label><b>Planning</b></label>
-                                    <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->perintah_dokter_dan_pengobatan->id]) }}">Pengobatan...</a></p>
+                                    <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->id]) }}">Pengobatan...</a></p>
                                     @if(Auth::user()->jabatan_id == 4)
                                         <hr>
                                         <a href="{{ route('perjalanan_penyakit.edit', [$ranap->id, $perjalanan->id]) }}" class="btn btn-warning float-right">Ubah</a>
