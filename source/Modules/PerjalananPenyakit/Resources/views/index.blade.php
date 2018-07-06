@@ -65,7 +65,7 @@
                         <tbody>
                         @foreach($perjalanans as $perjalanan)
                             <tr>
-                                <td class="text-justify">
+                                <td class="text-justify w-50">
                                     <b>Dibuat tanggal: {{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</b><br>
                                     @if(strtotime($perjalanan->created_at) == strtotime($perjalanan->updated_at))
                                         <b>Diubah tanggal: –</b>

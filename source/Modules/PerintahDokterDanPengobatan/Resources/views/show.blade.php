@@ -60,7 +60,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="text-justify">
+                                <td class="text-justify w-50">
                                     <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
                                     @if(strtotime($perintah->perjalanan_penyakit->tanggal_keterangan) == strtotime($perintah->perjalanan_penyakit->updated_at))
                                         <b>Diubah tanggal: –</b>
