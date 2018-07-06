@@ -93,7 +93,7 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
-        $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->where('id', '=', $id_perjalanan_penyakit)->first();
+        $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
 
         return view('perintahdokterdanpengobatan::show')
             ->with('perintah', $perintah)
