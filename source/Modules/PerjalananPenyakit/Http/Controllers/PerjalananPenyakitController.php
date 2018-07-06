@@ -78,30 +78,25 @@ class PerjalananPenyakitController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function showDetailPerjalananPenyakitPasien($id_rawat_inap, $id_perjalanan_penyakit)
+    public function showDetailPerjalananPenyakitPasien($id_ranap, $id_perjalanan_penyakit)
     {
         $perjalanan = PerjalananPenyakit::where('id', '=', $id_perjalanan_penyakit)->first();
 
-        $ranap = RawatInap::with('pasien')->where('id', '=', $id_rawat_inap)->first();
-
         return view('perjalananpenyakit::show')
             ->with('perjalanan', $perjalanan)
-            ->with('ranap', $ranap);
+            ->with('id_ranap', $id_ranap);
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function editPerjalananPenyakitPasien($id_perjalanan_penyakit)
+    public function editPerjalananPenyakitPasien($id_ranap, $id_perjalanan_penyakit)
     {
-        $perjalanan = PerjalananPenyakit::findorFail($id_perjalanan_penyakit);
-
-        $ranap = RawatInap::with('pasien')->where('id', '=', $perjalanan->id_ranap)->first();
+        $perjalanan = PerjalananPenyakit::with('rawat_inap')->findorFail($id_perjalanan_penyakit);
 
         return view('perjalananpenyakit::edit')
-            ->with('perjalanan', $perjalanan)
-            ->with('ranap', $ranap);
+            ->with('perjalanan', $perjalanan);
     }
 
     /**

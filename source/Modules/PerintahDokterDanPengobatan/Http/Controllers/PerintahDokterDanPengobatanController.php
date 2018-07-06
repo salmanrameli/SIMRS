@@ -45,13 +45,11 @@ class PerintahDokterDanPengobatanController extends Controller
      */
     public function createPerintahDokterDanPengobatanPasien($id_ranap, $id_perintah)
     {
-        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
-
-        $perintah = PerjalananPenyakit::findorFail($id_perintah);
+        $perintah = PerjalananPenyakit::with('rawat_inap')->findorFail($id_perintah);
 
         return view('perintahdokterdanpengobatan::create')
             ->with('perintah', $perintah)
-            ->with('ranap', $ranap);
+            ->with('id_ranap', $id_ranap);
     }
 
     /**
@@ -63,7 +61,6 @@ class PerintahDokterDanPengobatanController extends Controller
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
-            'id_petugas' => 'required'
         ]);
 
         $perintah_dokter = new PerintahDokterDanPengobatan();
@@ -91,13 +88,11 @@ class PerintahDokterDanPengobatanController extends Controller
             return redirect()->back();
         }
 
-        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
-
         $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
 
         return view('perintahdokterdanpengobatan::show')
             ->with('perintah', $perintah)
-            ->with('ranap', $ranap);
+            ->with('id_ranap', $id_ranap);
     }
 
     /**
@@ -106,9 +101,7 @@ class PerintahDokterDanPengobatanController extends Controller
      */
     public function editPerintahDokterDanPengobatanPasien($id_ranap, $id_perintah)
     {
-        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
-
-        $perintah = PerintahDokterDanPengobatan::findorFail($id_perintah);
+        $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->findorFail($id_perintah);
 
         if($perintah->catatan_perawat == null)
         {
@@ -119,7 +112,7 @@ class PerintahDokterDanPengobatanController extends Controller
 
         return view('perintahdokterdanpengobatan::edit')
             ->with('perintah', $perintah)
-            ->with('ranap', $ranap);
+            ->with('id_ranap', $id_ranap);
     }
 
     /**
@@ -131,7 +124,6 @@ class PerintahDokterDanPengobatanController extends Controller
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
-            'id_petugas' => 'required'
         ]);
 
         $perintah_dokter = PerintahDokterDanPengobatan::findorFail($id_perintah);
