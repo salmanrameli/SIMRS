@@ -4,6 +4,7 @@ namespace Modules\RawatInap\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Pasien\Entities\Pasien;
+use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\User\Entities\User;
 
 class RawatInap extends Model
@@ -27,6 +28,11 @@ class RawatInap extends Model
     public function petugas()
     {
         return $this->belongsTo(User::class,'id_petugas_penerima', 'id');
+    }
+
+    public function perjalanan_penyakit()
+    {
+        return $this->hasMany(PerjalananPenyakit::class, 'id_ranap', 'id');
     }
 
     public function tanggal_keluar()

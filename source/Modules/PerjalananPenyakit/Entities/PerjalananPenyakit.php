@@ -3,8 +3,8 @@
 namespace Modules\PerjalananPenyakit\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Pasien\Entities\Pasien;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
+use Modules\RawatInap\Entities\RawatInap;
 
 class PerjalananPenyakit extends Model
 {
@@ -13,6 +13,11 @@ class PerjalananPenyakit extends Model
     protected $fillable = [
         'id_ranap', 'tanggal_keterangan', 'subjektif', 'objektif', 'assessment', 'planning_perintah_dokter_dan_pengobatan', 'id_petugas'
     ];
+
+    public function rawat_inap()
+    {
+        return $this->belongsTo(RawatInap::class, 'id_ranap', 'id');
+    }
 
     public function perintah_dokter_dan_pengobatan()
     {
