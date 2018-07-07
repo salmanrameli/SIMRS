@@ -96,18 +96,8 @@ class RawatInapController extends Controller
             ->with('terisis', $terisi_sekarang);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function createNewRawatInap()
+    function getKamarKosong($kamars)
     {
-        $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
-
-        $petugass = User::where('jabatan_id', '=', '2')->orWhere('jabatan_id', '=', '3')->orderBy('nama')->get();
-
-        $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
-
         $terisi_sekarang = DB::table('rawat_inap')
             ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
             ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
@@ -135,6 +125,23 @@ class RawatInapController extends Controller
         {
             array_push($kamar_tersedia, $kamar->nama_kamar);
         }
+
+        return $kamar_tersedia;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * @return Response
+     */
+    public function createNewRawatInap()
+    {
+        $dokter = User::where('jabatan_id', '=', '4')->orderBy('nama')->get();
+
+        $petugass = User::where('jabatan_id', '=', '2')->orWhere('jabatan_id', '=', '3')->orderBy('nama')->get();
+
+        $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
+
+        $kamar_tersedia = $this->getKamarKosong($kamars);
 
         return view('rawatinap::create')
             ->with('dokters', $dokter)
@@ -244,33 +251,7 @@ class RawatInapController extends Controller
 
         $kamars = Kamar::select('nama_kamar', 'jumlah_maks_pasien')->get();
 
-        $terisi_sekarang = DB::table('rawat_inap')
-            ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
-            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
-            ->groupBy('nama_kamar')
-            ->get();
-
-        $kamar_kosong = Kamar::select('nama_kamar')
-            ->whereNotIn('nama_kamar', RawatInap::select('nama_kamar')->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())->groupBy('nama_kamar')->get()->toArray())
-            ->get();
-
-        $kamar_tersedia = [];
-
-        foreach ($kamars as $kamar)
-        {
-            foreach ($terisi_sekarang as $terisi)
-            {
-                if(($kamar->nama_kamar == $terisi->nama_kamar) && ($kamar->jumlah_maks_pasien > $terisi->pasien_inap))
-                {
-                    array_push($kamar_tersedia, $kamar->nama_kamar);
-                }
-            }
-        }
-
-        foreach ($kamar_kosong as $kamar)
-        {
-            array_push($kamar_tersedia, $kamar->nama_kamar);
-        }
+        $kamar_tersedia = $this->getKamarKosong($kamars);
 
         array_push($kamar_tersedia, $ranap->nama_kamar);
 
