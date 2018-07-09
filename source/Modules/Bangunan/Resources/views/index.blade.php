@@ -5,6 +5,7 @@
     @endsection
 
 @section('content')
+    @if(Auth::user()->jabatan_id == 1)
     <div class="page-header">
         <h3>Manajemen Bangunan</h3>
         <br>
@@ -21,6 +22,7 @@
             </div>
         </div>
     </div>
+    @endif
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-12">
@@ -29,13 +31,15 @@
                         <div class="card-header">
                             <h5>
                                 Lantai {{ $lantai->nomor_lantai }}
-                                <div class="row float-right">
-                                    <a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
+                                @if(Auth::user()->jabatan_id == 1)
+                                    <div class="row float-right">
+                                        <a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
 
-                                    {{ Form::open(['route' => ['lantai.delete', $lantai->id], 'method' => 'delete']) }}
-                                    <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menghapus lantai ini?')">Hapus</button>
-                                    {{ Form::close() }}
-                                </div>
+                                        {{ Form::open(['route' => ['lantai.delete', $lantai->id], 'method' => 'delete']) }}
+                                        <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menghapus lantai ini?')">Hapus</button>
+                                        {{ Form::close() }}
+                                    </div>
+                                @endif
                             </h5>
                         </div>
                         <div class="card-body row align-items-center justify-content-center">
