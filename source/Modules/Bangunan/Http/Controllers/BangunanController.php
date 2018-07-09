@@ -21,7 +21,7 @@ class BangunanController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1');
+        $this->middleware('checkRole:1')->except('showAllLantai');
     }
 
     /**
