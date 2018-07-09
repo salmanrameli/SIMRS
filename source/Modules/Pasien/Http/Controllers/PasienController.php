@@ -36,11 +36,6 @@ class PasienController extends Controller
      */
     public function createNewPasien()
     {
-        if(Auth::user()->jabatan_id == 1)
-        {
-            return view('pasien::administrator.create');
-        }
-
         return view('pasien::create');
     }
 
