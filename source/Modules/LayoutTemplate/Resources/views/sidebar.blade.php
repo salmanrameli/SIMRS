@@ -84,7 +84,7 @@
         </div>
     </li>
     <li class="nav-item">
-        <a href="{{ route('ranap.kamar') }}" class="nav-link" id="denah_ruangan">Ruangan</a>
+        <a href="{{ route('bangunan.index') }}" class="nav-link" id="denah_ruangan">Ruangan</a>
     </li>
     @endif
 
