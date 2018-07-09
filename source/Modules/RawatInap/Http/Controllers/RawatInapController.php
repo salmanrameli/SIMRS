@@ -202,7 +202,7 @@ class RawatInapController extends Controller
 
         $ranap = new RawatInap();
         $ranap->id_rm = $request->id_rm;
-        $ranap->id_pasien = $request->id_pasien;
+        $ranap->id_pasien = Pasien::where('ktp', '=', $request->id_pasien)->value('id');
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
         $ranap->dokter_pengirim = $request->dokter_pengirim;
@@ -284,7 +284,7 @@ class RawatInapController extends Controller
         ]);
 
         $ranap->id_rm = $request->id_rm;
-        $ranap->id_pasien = $request->id_pasien;
+        $ranap->id_pasien = Pasien::where('ktp', '=', $request->id_pasien)->value('id');
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
         $ranap->dokter_pengirim = $request->dokter_pengirim;
@@ -316,10 +316,5 @@ class RawatInapController extends Controller
         return view('rawatinap::showKamar')
             ->with('pasiens', $pasien)
             ->with('kamar', $id);
-    }
-
-    public function back()
-    {
-        return redirect()->route('ranap.index');
     }
 }

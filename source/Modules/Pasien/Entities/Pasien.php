@@ -4,7 +4,6 @@ namespace Modules\Pasien\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\RawatInap\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
 
 class Pasien extends Model
@@ -21,6 +20,6 @@ class Pasien extends Model
 
     public function rawat_inap()
     {
-        return $this->hasMany(RawatInap::class, 'id_pasien', 'ktp');
+        return $this->hasMany(RawatInap::class, 'id_pasien', 'id');
     }
 }
