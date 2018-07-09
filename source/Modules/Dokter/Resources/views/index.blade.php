@@ -19,7 +19,7 @@
                             &nbsp;&nbsp;
                             <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
                             &nbsp;
-                            <button type="submit" class="btn btn-primary">Cari</button>
+                            <button type="submit" class="btn btn-primary">Cari Dokter</button>
                         </form>
                     </div>
                 </div>

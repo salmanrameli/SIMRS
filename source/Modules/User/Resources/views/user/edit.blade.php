@@ -34,7 +34,7 @@
         @endforeach
         <br>
 
-        {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-primary']) }}
+        {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
         {{ Form::close() }}
     </div>
     @endsection

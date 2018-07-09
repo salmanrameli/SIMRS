@@ -5,10 +5,12 @@
 @endsection
 
 @section('content')
+    @if(Auth::user()->jabatan_id == 1)
     <div class="page-header">
         <h3>Manajemen Pasien</h3>
         <br>
     </div>
+    @endif
     <div class="col-md-12">
         <div class="row">
             <div class="card card-body">
@@ -19,7 +21,7 @@
                             &nbsp;&nbsp;
                             <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
                             &nbsp;
-                            <button type="submit" class="btn btn-primary">Cari</button>
+                            <button type="submit" class="btn btn-primary">Cari Pasien</button>
                         </form>
                     </div>
                 </div>
@@ -53,7 +55,7 @@
                                     <td>{{ $pasien->telepon }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Detail...</a>
+                                            <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Rincian Pasien</a>
                                             <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
@@ -78,5 +80,9 @@
 @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.pasien')
+    @if(Auth::user()->jabatan_id == 1)
+        @include('layouttemplate::attributes.pasien')
+    @else
+        @include('layouttemplate::attributes.pasien_ranap')
+    @endif
 @endsection

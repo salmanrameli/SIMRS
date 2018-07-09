@@ -59,7 +59,11 @@
 @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.pasien')
+    @if(Auth::user()->jabatan_id == 1)
+        @include('layouttemplate::attributes.pasien')
+    @else
+        @include('layouttemplate::attributes.pasien_ranap')
+    @endif
     <script>
         var lahir = new Date($('#table').find('#tanggal_lahir').text());
         var sekarang = new Date();

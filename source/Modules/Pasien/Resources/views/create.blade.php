@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages-alt')
+@extends('layouttemplate::master')
 
 @section('title')
     Registrasi Pasien
@@ -92,12 +92,16 @@
 
             <br>
 
-            {{ Form::submit('Simpan Data Pasien', ['class' => 'btn btn-outline-success']) }}
+            {{ Form::submit('Simpan Pasien', ['class' => 'btn btn-outline-success']) }}
             {{ Form::close() }}
         </div>
     </div>
     @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.pasien')
+    @if(Auth::user()->jabatan_id == 1)
+        @include('layouttemplate::attributes.pasien')
+    @else
+        @include('layouttemplate::attributes.pasien_ranap')
+    @endif
 @endsection

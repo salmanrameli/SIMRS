@@ -29,7 +29,7 @@
                     {{ Form::text('jumlah_maks_pasien', null, ['class' => 'form-control']) }}
                 </div>
 
-                {{ Form::submit('Simpan Kamar', ['class' => 'btn btn-outline-success']) }}
+                {{ Form::submit('Tambahkan Kamar', ['class' => 'btn btn-outline-success']) }}
 
                 {{ Form::close() }}
             </div>

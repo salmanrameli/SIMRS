@@ -25,7 +25,7 @@
                     <div class="page-header">
 
                         @if(Auth::user()->jabatan_id == 4)
-                            <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $ranap->pasien->id) }}" class="btn btn-outline-primary">Tambah Catatan Baru</a></div>
+                            <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $ranap->pasien->id) }}" class="btn btn-outline-primary">Buat Catatan Perjalanan Penyakit Baru</a></div>
                         @endif
 
                         <h4>Perjalanan Penyakit: {{ $ranap->pasien->nama }}</h4>

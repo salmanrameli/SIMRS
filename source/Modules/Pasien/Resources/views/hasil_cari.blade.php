@@ -47,7 +47,7 @@
                             <td>{{ ucwords($result->telepon) }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{ route('pasien.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Detail...</a>
+                                    <a href="{{ route('pasien.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Rincian Pasien</a>
                                     <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>

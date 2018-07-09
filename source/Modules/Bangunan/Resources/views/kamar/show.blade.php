@@ -12,7 +12,7 @@
                     <div class="col-md-12">
                         <div class="page-header">
                             <div class="row float-right">
-                                <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-warning float-right">Ubah Detail Ruang</a>
+                                <a href="{{ route('kamar.edit', ['id' => $kamar->id]) }}" class="btn btn-warning float-right">Ubah</a>
 
                                 {{ Form::open(['route' => ['kamar.delete', $kamar->id], 'method' => 'delete']) }}
                                     <button type="submit" class="btn btn-danger" style="margin-left: 10px; margin-right: 10px" onclick="return confirm('Apakah anda yakin menghapus kamar ini?')">Hapus</button>
