@@ -2,11 +2,6 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Controllers'], function()
 {
-    Route::get('kamar', [
-        'as' => 'ranap.kamar',
-        'uses' => 'RawatInapController@indexKamar'
-    ]);
-
     Route::get('/ranap', [
         'as' => 'ranap.index',
         'uses' => 'RawatInapController@showAllRawatInap'
@@ -35,11 +30,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\RawatInap\Http\Cont
     Route::patch('/ranap/{id}', [
         'as' => 'ranap.update',
         'uses' => 'RawatInapController@updateRawatInap'
-    ]);
-
-    Route::get('/ranap/kamar/{id}', [
-        'as' => 'ranap.kamar.show',
-        'uses' => 'RawatInapController@showKamar'
     ]);
 });
 

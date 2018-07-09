@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
-use Modules\Bangunan\Entities\Lantai;
 use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\RawatInap;
 use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
@@ -67,33 +66,6 @@ class RawatInapController extends Controller
         Session::flash('warning', 'Anda tidak memiliki hak akses.');
 
         return redirect()->back();
-    }
-
-    public function indexKamar()
-    {
-        $nama = Auth::user()->nama;
-
-        $pasien_ranap = RawatInap::with('pasien')
-            ->select('*')
-            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
-            ->get();
-
-        $lantai = Lantai::select('nomor_lantai')->orderBy('lantai.id', 'desc')->pluck('nomor_lantai');
-
-        $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
-
-        $terisi_sekarang = DB::table('rawat_inap')
-            ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
-            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
-            ->groupBy('nama_kamar')
-            ->get();
-
-        return view('rawatinap::index-ruangan')
-            ->with('nama', $nama)
-            ->with('pasiens', $pasien_ranap)
-            ->with('lantais', $lantai)
-            ->with('kamars', $kamar)
-            ->with('terisis', $terisi_sekarang);
     }
 
     function getKamarKosong($kamars)
@@ -307,14 +279,5 @@ class RawatInapController extends Controller
      */
     public function destroy()
     {
-    }
-
-    public function showKamar($id)
-    {
-        $pasien = RawatInap::where('nama_kamar', '=', $id)->get();
-
-        return view('rawatinap::showKamar')
-            ->with('pasiens', $pasien)
-            ->with('kamar', $id);
     }
 }
