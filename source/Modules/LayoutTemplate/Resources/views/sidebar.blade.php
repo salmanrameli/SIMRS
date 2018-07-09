@@ -38,7 +38,7 @@
             <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropright</span>
             </button>
-            <a href="{{ route('bangunan.index') }}" class="nav-link" id="pengaturan_rumah_sakit" style="min-width: 200px">Manajemen Bangunan</a>
+            <a href="{{ route('bangunan.index') }}" class="nav-link" id="denah_ruangan" style="min-width: 200px">Manajemen Bangunan</a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="{{ route('lantai.create') }}" class="nav-link small">Tambah Lantai Baru</a>
                 <a href="{{ route('kamar.create') }}" class="nav-link small">Tambah Kamar Baru</a>
