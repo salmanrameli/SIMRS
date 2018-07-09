@@ -66,15 +66,17 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
-                                                    <div class="btn-group">
-                                                        <a href="{{ route('kamar.show', $kamar->id) }}" class="btn btn-outline-info">Detail...</a>
-                                                        <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="{{ route('kamar.edit', $kamar->id) }}">Ubah</a>
+                                                    @if(Auth::user()->jabatan_id == 1)
+                                                        <div class="btn-group">
+                                                            <a href="{{ route('kamar.show', $kamar->id) }}" class="btn btn-outline-info">Detail...</a>
+                                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{{ route('kamar.edit', $kamar->id) }}">Ubah</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        @endif
                                                 </div>
                                             </div>
                                         @endif
