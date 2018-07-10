@@ -20,9 +20,11 @@ class CreateKonsumsiObatTable extends Migration
             $table->string('hari_perawatan');
             $table->string('id_obat');
             $table->string('dosis');
+            $table->integer('jumlah');
             $table->string('waktu');
             $table->string('tinggi_badan');
             $table->string('berat_badan');
+            $table->string('id_petugas');
             $table->timestamps();
         });
     }
