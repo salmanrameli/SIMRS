@@ -1,0 +1,16 @@
+{
+    "name": "KonsumsiObat",
+    "alias": "konsumsiobat",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\KonsumsiObat\\Providers\\KonsumsiObatServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
