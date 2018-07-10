@@ -20,6 +20,10 @@
                             <td>{{ ucfirst($obat->nama) }}</td>
                         </tr>
                         <tr>
+                            <th>Tipe</th>
+                            <td>{{ ucfirst($obat->tipe_obat) }}</td>
+                        </tr>
+                        <tr>
                             <th>Harga</th>
                             <td>{{ $obat->harga }}</td>
                         </tr>

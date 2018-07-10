@@ -47,12 +47,15 @@ class ObatController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'harga' => 'required'
+            'harga' => 'required',
+            'jenis' => 'required'
         ]);
 
-        $input = $request->all();
-
-        Obat::create($input);
+        $obat = new Obat();
+        $obat->nama = $request->nama;
+        $obat->harga = $request->harga;
+        $obat->tipe_obat = $request->jenis;
+        $obat->save();
 
         Session::flash('message', 'Obat berhasil dimasukkan');
 
@@ -90,14 +93,15 @@ class ObatController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'harga' => 'required'
+            'harga' => 'required',
+            'jenis' => 'required'
         ]);
 
-        $input = $request->all();
-
         $obat = Obat::findorFail($id);
-
-        $obat->fill($input)->save();
+        $obat->nama = $request->nama;
+        $obat->harga = $request->harga;
+        $obat->tipe_obat = $request->jenis;
+        $obat->save();
 
         Session::flash('message', 'Obat berhasil diubah');
 

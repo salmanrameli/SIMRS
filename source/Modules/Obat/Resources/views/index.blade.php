@@ -20,6 +20,7 @@
                             <thead>
                             <tr>
                                 <th>Nama</th>
+                                <th>Tipe</th>
                                 <th>Harga</th>
                                 <th></th>
                             </tr>
@@ -28,6 +29,7 @@
                             @foreach($obats as $obat)
                                 <tr>
                                     <td>{{ ucfirst($obat->nama) }}</td>
+                                    <td>{{ ucfirst($obat->tipe_obat) }}</td>
                                     <td>{{ $obat->harga }}</td>
                                     <td>
                                         <div class="btn-group">
