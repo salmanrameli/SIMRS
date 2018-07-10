@@ -49,6 +49,8 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
 
+                                            <a href="{{ route('konsumsi_obat.index', $ranap->id) }}" class="dropdown-item">Konsumsi Obat</a>
+
                                             @if(Auth::user()->jabatan_id == 2)
                                                 <a href="{{ route('ranap.edit', $ranap->id) }}" class="dropdown-item">Ubah</a>
                                             @else
