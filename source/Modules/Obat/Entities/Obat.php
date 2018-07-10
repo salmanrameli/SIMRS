@@ -9,6 +9,6 @@ class Obat extends Model
     protected $table = 'obat';
 
     protected $fillable = [
-        'nama', 'harga'
+        'nama', 'harga', 'tipe_obat'
     ];
 }
