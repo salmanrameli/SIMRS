@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="page-header">
                 @if(Auth::user()->jabatan_id == 3)
-                    <div class="float-right"><a href="{{ route('catatan_harian_perawatan.create', $ranap->id) }}" class="btn btn-outline-primary">Buat Catatan Harian dan Perawatan Baru</a></div>
+                    <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
                 @endif
                 <h4>Catatan Harian Perawatan: {{ $ranap->pasien->nama }}</h4>
                 <hr>
@@ -42,7 +42,6 @@
                 <thead>
                 <tr>
                     <th>Asuhan Keperawatan (SOAP)</th>
-                    <th>Pengisi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,6 +55,7 @@
                                 @else
                                     <b>Diubah tanggal: {{ date("d F Y", strtotime($catatan->updated_at)) }}</b>
                                 @endif
+                                <br><b>Ditulis oleh: {{ $catatan->user->nama }}</b>
                                 <hr>
                                 <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                                 <hr>
@@ -63,7 +63,6 @@
                                     <a href="{{ route('catatan_harian_perawatan.edit', [$ranap->id, $catatan->id]) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
                                 @endif
                             </td>
-                            <td class="text-justify">{{ $catatan->user->nama }}</td>
                         </tr>
                     @endforeach
                 @endif
@@ -71,9 +70,67 @@
             </table>
         </div>
     </div>
+
+    <div class="modal fade" id="modalBuatCatatanHarian" tabindex="-1" role="dialog" aria-labelledby="modalBuatCatatanHarian" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'POST', 'route' => ['catatan_harian_perawatan.store']]) }}
+                <div class="modal-body">
+                    <div hidden>
+                        {{ Form::text('id_ranap', $ranap->id) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datepicker" id="tanggal_keterangan" class="control-label">Tanggal</label>
+                        <input type="text" id="datepicker" name="tanggal_keterangan" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+
+                    <div class="bootstrap-timepicker">
+                        <label for="timepicker">Jam (HH:MM)</label>
+                        <input id="timepicker" type="text" class="input-small form-control" name="jam">
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('asuhan_keperawatan_soap', 'Asuhan Keperawatan', ['class' => 'control-label']) }}
+                        {!! Form::textarea('asuhan_keperawatan_soap', null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('#modalBuatCatatanHarian').on('shown.bs.modal', function () {
+                $("#asuhan_keperawatan_soap").htmlarea();
+            })
+        });
+
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+
+        $('#timepicker').timepicker({
+            template: false,
+            showInputs: false,
+            minuteStep: 1,
+            showMeridian: false
+        });
+    </script>
     <script>
         var lahir = new Date($('#tanggal_lahir').text());
         var sekarang = new Date();

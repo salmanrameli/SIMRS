@@ -6,6 +6,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
@@ -57,23 +58,26 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function storeCatatanHarianDanPerawatan(Request $request, $id_ranap)
+    public function storeCatatanHarianDanPerawatan(Request $request)
     {
         $this->validate($request, [
             'id_ranap' => 'required',
             'tanggal_keterangan' => 'required',
             'jam' => 'required|date_format:H:i',
             'asuhan_keperawatan_soap' => 'required',
-            'id_petugas' => 'required'
         ]);
 
-        $input = $request->all();
-
-        CatatanHarianPerawatan::create($input);
+        $catatan = new CatatanHarianPerawatan();
+        $catatan->id_ranap = $request->get('id_ranap');
+        $catatan->tanggal_keterangan = $request->get('tanggal_keterangan');
+        $catatan->jam = $request->get('jam');
+        $catatan->asuhan_keperawatan_soap = $request->get('asuhan_keperawatan_soap');
+        $catatan->id_petugas = Auth::id();
+        $catatan->save();
 
         Session::flash('message', 'Catatan harian dan perawatan berhasil disimpan');
 
-        return redirect()->route('catatan_harian_perawatan.index', $id_ranap);
+        return redirect()->route('catatan_harian_perawatan.index', $request->get('id_ranap'));
     }
 
     /**
