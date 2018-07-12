@@ -8,7 +8,9 @@
     <div class="card-body">
         <div class="col-md-12">
             <div class="page-header">
+                @if(Auth::user()->jabatan_id == 3)
                 <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalTambahKonsumsiObat">Tambah Konsumsi Obat</button>
+                @endif
                 <h4>Konsumsi Obat: {{ $ranap->pasien->nama }}</h4>
                 <hr>
                 <div class="col-md-12">
@@ -61,28 +63,36 @@
                             <td class="text-center">{{ $obat->dosis }}</td>
                             <td class="text-center">
                                 @if(empty($obat->konsumsi_obat_pagi->jumlah))
+                                    @if(Auth::user()->jabatan_id == 3)
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                    @endif
                                 @else
                                     {{ $obat->konsumsi_obat_pagi->jumlah }}
                                 @endif
                             </td>
                             <td class="text-center">
                                 @if(empty($obat->konsumsi_obat_siang->jumlah))
+                                    @if(Auth::user()->jabatan_id == 3)
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                    @endif
                                 @else
                                     {{ $obat->konsumsi_obat_siang->jumlah }}
                                 @endif
                             </td>
                             <td class="text-center">
                                 @if(empty($obat->konsumsi_obat_sore->jumlah))
+                                    @if(Auth::user()->jabatan_id == 3)
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                    @endif
                                 @else
                                     {{ $obat->konsumsi_obat_sore->jumlah }}
                                 @endif
                             </td>
                             <td class="text-center">
                                 @if(empty($obat->konsumsi_obat_malam->jumlah))
+                                    @if(Auth::user()->jabatan_id == 3)
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                    @endif
                                 @else
                                     {{ $obat->konsumsi_obat_malam->jumlah }}
                                 @endif

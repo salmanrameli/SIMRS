@@ -49,8 +49,6 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
 
-                                            <a href="{{ route('konsumsi_obat.index', $ranap->id) }}" class="dropdown-item">Konsumsi Obat</a>
-
                                             @if(Auth::user()->jabatan_id == 2)
                                                 <a href="{{ route('ranap.edit', $ranap->id) }}" class="dropdown-item">Ubah</a>
                                             @else
@@ -68,6 +66,9 @@
                                                 @if(Auth::user()->jabatan_id == 3)
                                                     <a href="{{ route('catatan_harian_perawatan.create', $ranap->id) }}" class="dropdown-item">Buat Catatan Harian dan Perawatan Baru</a>
                                                 @endif
+
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{{ route('konsumsi_obat.index', $ranap->id) }}" class="dropdown-item">Konsumsi Obat</a>
                                             @endif
 
                                         </div>
