@@ -81,39 +81,39 @@
                                     <td class="text-center">{{ $obat->dosis }}</td>
                                     <td class="text-center">
                                         @if(empty($obat->konsumsi_obat_pagi->jumlah))
-                                            <a href="{{ route('konsumsi_obat_pagi.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiPagi">+</button>
                                         @else
                                             {{ $obat->konsumsi_obat_pagi->jumlah }}
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         @if(empty($obat->konsumsi_obat_siang->jumlah))
-                                            <a href="{{ route('konsumsi_obat_siang.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiSiang">+</button>
                                         @else
                                             {{ $obat->konsumsi_obat_siang->jumlah }}
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         @if(empty($obat->konsumsi_obat_sore->jumlah))
-                                            <a href="{{ route('konsumsi_obat_sore.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiSore">+</button>
                                         @else
                                             {{ $obat->konsumsi_obat_sore->jumlah }}
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         @if(empty($obat->konsumsi_obat_malam->jumlah))
-                                            <a href="{{ route('konsumsi_obat_malam.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-id-ranap="{{ $ranap->id }}" data-target="#modalKonsumsiMalam">+</button>
                                         @else
                                             {{ $obat->konsumsi_obat_malam->jumlah }}
                                         @endif
                                     </td>
                                 </tr>
-                                @if($loop->last)
-                                   <tr>
-                                       <td colspan="6"><br></td>
-                                   </tr>
-                                    @endif
-                                @endforeach
+                                    @if($loop->last)
+                                       <tr>
+                                           <td colspan="6"><br></td>
+                                       </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                         </tbody>
                     </table>
@@ -121,9 +121,174 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalKonsumsiPagi" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiPagi">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rincian Konsumsi Obat Pagi</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
+                        <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
+                        <input type="text" name="id_ranap" id="id_ranap" hidden>
+
+                        <label for="id_obat" class="control-label" hidden>ID Obat:</label>
+                        <input type="text" name="id_obat" id="id_obat" hidden>
+
+                        <label for="waktu" class="control-label" hidden>Waktu:</label>
+                        <input type="text" name="waktu" id="waktu" value="pagi" hidden>
+
+                        <label for="jumlah" class="control-label">Jumlah:</label>
+                        <input type="number" name="jumlah" id="jumlah" class="form-control">
+
+                        <div hidden>
+                            {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
+                        </div>
+
+                        <br>
+
+                        {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+
+                        {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalKonsumsiSiang" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiSiang">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rincian Konsumsi Obat Siang</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
+                    <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
+                    <input type="text" name="id_ranap" id="id_ranap" hidden>
+
+                    <label for="id_obat" class="control-label" hidden>ID Obat:</label>
+                    <input type="text" name="id_obat" id="id_obat" hidden>
+
+                    <label for="waktu" class="control-label" hidden>Waktu:</label>
+                    <input type="text" name="waktu" id="waktu" value="siang" hidden>
+
+                    <label for="jumlah" class="control-label">Jumlah:</label>
+                    <input type="number" name="jumlah" id="jumlah" class="form-control">
+
+                    <div hidden>
+                        {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
+                    </div>
+
+                    <br>
+
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+
+                    {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalKonsumsiSore" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiSore">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rincian Konsumsi Obat Sore</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
+                    <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
+                    <input type="text" name="id_ranap" id="id_ranap" hidden>
+
+                    <label for="id_obat" class="control-label" hidden>ID Obat:</label>
+                    <input type="text" name="id_obat" id="id_obat" hidden>
+
+                    <label for="waktu" class="control-label" hidden>Waktu:</label>
+                    <input type="text" name="waktu" id="waktu" value="sore" hidden>
+
+                    <label for="jumlah" class="control-label">Jumlah:</label>
+                    <input type="number" name="jumlah" id="jumlah" class="form-control">
+
+                    <div hidden>
+                        {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
+                    </div>
+
+                    <br>
+                    {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+
+                    {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalKonsumsiMalam" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiMalam">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rincian Konsumsi Obat Malam</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
+                    <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
+                    <input type="text" name="id_ranap" id="id_ranap" hidden>
+
+                    <label for="id_obat" class="control-label" hidden>ID Obat:</label>
+                    <input type="text" name="id_obat" id="id_obat" hidden>
+
+                    <label for="waktu" class="control-label" hidden>Waktu:</label>
+                    <input type="text" name="waktu" id="waktu" value="malam" hidden>
+
+                    <label for="jumlah" class="control-label">Jumlah:</label>
+                    <input type="number" name="jumlah" id="jumlah" class="form-control">
+
+                    <div hidden>
+                        {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
+                    </div>
+
+                    <br>
+
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+
+                    {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
+    <script>
+        $(function() {
+            $('#modalKonsumsiPagi').on("show.bs.modal", function (e) {
+                $("#modalKonsumsiPagi").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalKonsumsiPagi").find('#id_obat').val($(e.relatedTarget).data('id-obat'));
+            });
+
+            $('#modalKonsumsiSiang').on("show.bs.modal", function (e) {
+                $("#modalKonsumsiSiang").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalKonsumsiSiang").find('#id_obat').val($(e.relatedTarget).data('id-obat'));
+            });
+
+            $('#modalKonsumsiSore').on("show.bs.modal", function (e) {
+                $("#modalKonsumsiSore").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalKonsumsiSore").find('#id_obat').val($(e.relatedTarget).data('id-obat'));
+            });
+
+            $('#modalKonsumsiMalam').on("show.bs.modal", function (e) {
+                $("#modalKonsumsiMalam").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalKonsumsiMalam").find('#id_obat').val($(e.relatedTarget).data('id-obat'));
+            });
+        });
+    </script>
     <script>
         var lahir = new Date($('#tanggal_lahir').text());
         var sekarang = new Date();
