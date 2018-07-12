@@ -30,9 +30,12 @@ class KonsumsiObatController extends Controller
 
         $obat = KonsumsiObat::with(['obat', 'konsumsi_obat_pagi', 'konsumsi_obat_siang', 'konsumsi_obat_sore', 'konsumsi_obat_malam'])->where('id_ranap', '=', $id_ranap)->get();
 
+        $daftar_obat = Obat::all();
+
         return view('konsumsiobat::index')
             ->with('ranap', $ranap)
-            ->with('obats', $obat);
+            ->with('obats', $obat)
+            ->with('daftars', $daftar_obat);
     }
 
     /**
@@ -145,7 +148,7 @@ class KonsumsiObatController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function storeKonsumsiObat(Request $request, $id_ranap)
+    public function storeKonsumsiObat(Request $request)
     {
         $this->validate($request, [
             'tanggal' => 'required',
@@ -156,13 +159,19 @@ class KonsumsiObatController extends Controller
             'berat_badan' => 'required|integer'
         ]);
 
-        $input = $request->all();
-
-        KonsumsiObat::create($input);
+        $konsumsi_obat = new KonsumsiObat();
+        $konsumsi_obat->tanggal = $request->get('tanggal');
+        $konsumsi_obat->id_ranap = $request->get('id_ranap');
+        $konsumsi_obat->hari_perawatan = $request->get('hari_perawatan');
+        $konsumsi_obat->id_obat = $request->get('id_obat');
+        $konsumsi_obat->dosis = $request->get('dosis');
+        $konsumsi_obat->tinggi_badan = $request->get('tinggi_badan');
+        $konsumsi_obat->berat_badan = $request->get('berat_badan');
+        $konsumsi_obat->save();
 
         Session::flash('message', 'Konsumsi obat berhasil disimpan');
 
-        return redirect()->route('konsumsi_obat.index', $id_ranap);
+        return redirect()->route('konsumsi_obat.index', $request->get('id_ranap'));
     }
 
     /**
