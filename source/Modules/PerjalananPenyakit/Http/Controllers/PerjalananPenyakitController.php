@@ -6,6 +6,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
@@ -52,26 +53,30 @@ class PerjalananPenyakitController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function saveNewPerjalananPenyakitPasien(Request $request, $id_ranap)
+    public function saveNewPerjalananPenyakitPasien(Request $request)
     {
         $this->validate($request, [
-            'id_pasien' => 'required',
             'id_ranap' => 'required',
             'tanggal_keterangan' => 'required',
             'subjektif' => 'required',
             'objektif' => 'required',
             'assessment' => 'required',
             'planning_perintah_dokter_dan_pengobatan' => 'required',
-            'id_petugas' => 'required'
         ]);
 
-        $input = $request->all();
+        $perjalanan_penyakit = new PerjalananPenyakit();
+        $perjalanan_penyakit->id_ranap = $request->get('id_ranap');
+        $perjalanan_penyakit->tanggal_keterangan = $request->get('tanggal_keterangan');
+        $perjalanan_penyakit->subjektif = $request->get('subjektif');
+        $perjalanan_penyakit->objektif = $request->get('objektif');
+        $perjalanan_penyakit->assessment = $request->get('assessment');
+        $perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan = $request->get('planning_perintah_dokter_dan_pengobatan');
+        $perjalanan_penyakit->id_petugas = Auth::id();
+        $perjalanan_penyakit->save();
 
-        PerjalananPenyakit::create($input);
+        Session::flash('message', 'Catatan perjalanan penyakit pasien berhasil disimpan.');
 
-        Session::flash('message', 'Catatan berhasil disimpan');
-
-        return redirect()->route('perjalanan_penyakit.index', $id_ranap);
+        return redirect()->route('perjalanan_penyakit.index', $request->get('id_ranap'));
     }
 
     /**

@@ -10,7 +10,7 @@
             <div class="page-header">
 
                 @if(Auth::user()->jabatan_id == 4)
-                    <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $ranap->pasien->id) }}" class="btn btn-outline-primary">Buat Catatan Perjalanan Penyakit Baru</a></div>
+                    <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatPerjalananPenyakit">Buat Catatan Perjalanan Penyakit Baru</button>
                 @endif
 
                 <h4>Perjalanan Penyakit: {{ $ranap->pasien->nama }}</h4>
@@ -79,9 +79,78 @@
             </table>
         </div>
     </div>
-    @endsection
+
+    <div class="modal fade" id="modalBuatPerjalananPenyakit" tabindex="-1" role="dialog" aria-labelledby="modalBuatPerjalananPenyakit" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBuatPerjalananPenyakit">Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'POST', 'route' => ['perjalanan_penyakit.store', $ranap->id]]) }}
+                <div class="modal-body">
+                    <div hidden>
+                        {{ Form::text('id_ranap', $ranap->id) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datepicker" id="tanggal_keterangan" class="control-label">Tanggal</label>
+                        <input type="text" id="datepicker" name="tanggal_keterangan" class="form-control" placeholder="yyyy-mm-dd">
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('subjektif', 'Subjektif', ['class' => 'control-label']) }}
+                        {{ Form::textarea('subjektif', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('objektif', 'Objektif', ['class' => 'control-label']) }}
+                        {{ Form::textarea('objektif', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('assessment', 'Assessment', ['class' => 'control-label']) }}
+                        {{ Form::textarea('assessment', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('planning_perintah_dokter_dan_pengobatan', 'Planning / Perintah Dokter dan Pengobatan', ['class' => 'control-label']) }}
+                        {{ Form::textarea('planning_perintah_dokter_dan_pengobatan', null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+
+            </div>
+        </div>
+    </div>
+
+@endsection
 
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('#modalBuatPerjalananPenyakit').on('shown.bs.modal', function () {
+                $("#subjektif").htmlarea();
+                $("#objektif").htmlarea();
+                $("#assessment").htmlarea();
+                $("#planning_perintah_dokter_dan_pengobatan").htmlarea();
+            })
+        });
+
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+
+        // $(function(){
+        //     $("textarea").htmlarea();
+        // });
+    </script>
     <script>
         var lahir = new Date($('#tanggal_lahir').text());
         var sekarang = new Date();

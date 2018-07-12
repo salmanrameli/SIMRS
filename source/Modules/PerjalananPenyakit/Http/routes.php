@@ -12,7 +12,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerjalananPenyakit\
         'uses' => 'PerjalananPenyakitController@createNewPerjalananPenyakitPasien'
     ]);
 
-    Route::post('/ranap/{id}/perjalanan_penyakit', [
+    Route::post('/ranap/{id}/simpan_perjalanan_penyakit', [
         'as' => 'perjalanan_penyakit.store',
         'uses' => 'PerjalananPenyakitController@saveNewPerjalananPenyakitPasien'
     ]);
