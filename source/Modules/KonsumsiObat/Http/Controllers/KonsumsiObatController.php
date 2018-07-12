@@ -94,7 +94,7 @@ class KonsumsiObatController extends Controller
             ->with('ranap', $ranap);
     }
 
-    public function storeRincianKonsumsiObat(Request $request, $id_ranap, $id_konsumsi_obat)
+    public function storeRincianKonsumsiObat(Request $request)
     {
         $this->validate($request, [
             'jumlah' => 'required'
@@ -105,39 +105,39 @@ class KonsumsiObatController extends Controller
         if($waktu == 'pagi')
         {
             $obat = new KonsumsiObatPagi();
-            $obat->id_konsumsi_obat = $id_konsumsi_obat;
-            $obat->jumlah = $request->jumlah;
+            $obat->id_konsumsi_obat = $request->get('id_obat');
+            $obat->jumlah = $request->get('jumlah');
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
         elseif ($waktu == 'siang')
         {
             $obat = new KonsumsiObatSiang();
-            $obat->id_konsumsi_obat = $id_konsumsi_obat;
-            $obat->jumlah = $request->jumlah;
+            $obat->id_konsumsi_obat = $request->get('id_obat');
+            $obat->jumlah = $request->get('jumlah');
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
         elseif ($waktu == 'sore')
         {
             $obat = new KonsumsiObatSore();
-            $obat->id_konsumsi_obat = $id_konsumsi_obat;
-            $obat->jumlah = $request->jumlah;
+            $obat->id_konsumsi_obat = $request->get('id_obat');
+            $obat->jumlah = $request->get('jumlah');
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
         elseif ($waktu == 'malam')
         {
             $obat = new KonsumsiObatMalam();
-            $obat->id_konsumsi_obat = $id_konsumsi_obat;
-            $obat->jumlah = $request->jumlah;
+            $obat->id_konsumsi_obat = $request->get('id_obat');
+            $obat->jumlah = $request->get('jumlah');
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
 
         Session::flash('message', 'Rincian konsumsi obat berhasil disimpan');
 
-        return redirect()->route('konsumsi_obat.index', $id_ranap);
+        return redirect()->route('konsumsi_obat.index', $request->get('id_ranap'));
     }
 
     /**

@@ -37,7 +37,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\KonsumsiObat\Http\C
         'uses' => 'KonsumsiObatController@createNewKonsumsiObatMalam'
     ]);
 
-    Route::post('ranap/{id}/konsumsi_obat/{id_konsumsi_obat}', [
+    Route::post('ranap/simpan_rincian_konsumsi_obat', [
         'as' => 'rincian_konsumsi_obat.store',
         'uses' => 'KonsumsiObatController@storeRincianKonsumsiObat'
     ]);
