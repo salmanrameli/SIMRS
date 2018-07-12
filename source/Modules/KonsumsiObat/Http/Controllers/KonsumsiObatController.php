@@ -2,15 +2,24 @@
 
 namespace Modules\KonsumsiObat\Http\Controllers;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\KonsumsiObat\Entities\KonsumsiObat;
+use Modules\KonsumsiObat\Entities\KonsumsiObatMalam;
+use Modules\KonsumsiObat\Entities\KonsumsiObatPagi;
+use Modules\KonsumsiObat\Entities\KonsumsiObatSiang;
+use Modules\KonsumsiObat\Entities\KonsumsiObatSore;
+use Modules\Obat\Entities\Obat;
 use Modules\RawatInap\Entities\RawatInap;
 
 class KonsumsiObatController extends Controller
 {
+    use ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -19,7 +28,7 @@ class KonsumsiObatController extends Controller
     {
         $ranap = RawatInap::where('id', '=', $id_ranap)->first();
 
-        $obat = KonsumsiObat::where('id_ranap', '=', $id_ranap)->get();
+        $obat = KonsumsiObat::with(['obat', 'konsumsi_obat_pagi', 'konsumsi_obat_siang', 'konsumsi_obat_sore', 'konsumsi_obat_malam'])->where('id_ranap', '=', $id_ranap)->get();
 
         return view('konsumsiobat::index')
             ->with('ranap', $ranap)
@@ -32,7 +41,103 @@ class KonsumsiObatController extends Controller
      */
     public function createNewKonsumsiObat($id_ranap)
     {
-        return view('konsumsiobat::create');
+        $ranap = RawatInap::where('id', '=', $id_ranap)->first();
+
+        $obat = Obat::all();
+
+        return view('konsumsiobat::create')
+            ->with('ranap', $ranap)
+            ->with('obats', $obat);
+    }
+
+    public function createNewKonsumsiObatPagi($id_ranap, $id_konsumsi_obat)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $obat = KonsumsiObat::where('id', '=', $id_konsumsi_obat)->first();
+
+        return view('konsumsiobat::create_konsumsi_obat_pagi')
+            ->with('obat', $obat)
+            ->with('ranap', $ranap);
+    }
+
+    public function createNewKonsumsiObatSiang($id_ranap, $id_konsumsi_obat)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $obat = KonsumsiObat::where('id', '=', $id_konsumsi_obat)->first();
+
+        return view('konsumsiobat::create_konsumsi_obat_siang')
+            ->with('obat', $obat)
+            ->with('ranap', $ranap);
+    }
+
+    public function createNewKonsumsiObatSore($id_ranap, $id_konsumsi_obat)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $obat = KonsumsiObat::where('id', '=', $id_konsumsi_obat)->first();
+
+        return view('konsumsiobat::create_konsumsi_obat_sore')
+            ->with('obat', $obat)
+            ->with('ranap', $ranap);
+    }
+
+    public function createNewKonsumsiObatMalam($id_ranap, $id_konsumsi_obat)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $obat = KonsumsiObat::where('id', '=', $id_konsumsi_obat)->first();
+
+        return view('konsumsiobat::create_konsumsi_obat_malam')
+            ->with('obat', $obat)
+            ->with('ranap', $ranap);
+    }
+
+    public function storeRincianKonsumsiObat(Request $request, $id_ranap, $id_konsumsi_obat)
+    {
+        $this->validate($request, [
+            'jumlah' => 'required'
+        ]);
+
+        $waktu = $request->waktu;
+
+        if($waktu == 'pagi')
+        {
+            $obat = new KonsumsiObatPagi();
+            $obat->id_konsumsi_obat = $id_konsumsi_obat;
+            $obat->jumlah = $request->jumlah;
+            $obat->id_petugas = Auth::id();
+            $obat->save();
+        }
+        elseif ($waktu == 'siang')
+        {
+            $obat = new KonsumsiObatSiang();
+            $obat->id_konsumsi_obat = $id_konsumsi_obat;
+            $obat->jumlah = $request->jumlah;
+            $obat->id_petugas = Auth::id();
+            $obat->save();
+        }
+        elseif ($waktu == 'sore')
+        {
+            $obat = new KonsumsiObatSore();
+            $obat->id_konsumsi_obat = $id_konsumsi_obat;
+            $obat->jumlah = $request->jumlah;
+            $obat->id_petugas = Auth::id();
+            $obat->save();
+        }
+        elseif ($waktu == 'malam')
+        {
+            $obat = new KonsumsiObatMalam();
+            $obat->id_konsumsi_obat = $id_konsumsi_obat;
+            $obat->jumlah = $request->jumlah;
+            $obat->id_petugas = Auth::id();
+            $obat->save();
+        }
+
+        Session::flash('message', 'Rincian konsumsi obat berhasil disimpan');
+
+        return redirect()->route('konsumsi_obat.index', $id_ranap);
     }
 
     /**
@@ -42,6 +147,22 @@ class KonsumsiObatController extends Controller
      */
     public function storeKonsumsiObat(Request $request, $id_ranap)
     {
+        $this->validate($request, [
+            'tanggal' => 'required',
+            'hari_perawatan' => 'required',
+            'id_obat' => 'required',
+            'dosis' => 'required',
+            'tinggi_badan' => 'required|integer',
+            'berat_badan' => 'required|integer'
+        ]);
+
+        $input = $request->all();
+
+        KonsumsiObat::create($input);
+
+        Session::flash('message', 'Konsumsi obat berhasil disimpan');
+
+        return redirect()->route('konsumsi_obat.index', $id_ranap);
     }
 
     /**

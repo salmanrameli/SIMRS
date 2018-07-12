@@ -17,6 +17,31 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\KonsumsiObat\Http\C
         'uses' => 'KonsumsiObatController@storeKonsumsiObat'
     ]);
 
+    Route::get('ranap/{id}/konsumsi_obat/{id_konsumsi_obat}/create_pagi', [
+        'as' => 'konsumsi_obat_pagi.create',
+        'uses' => 'KonsumsiObatController@createNewKonsumsiObatPagi'
+    ]);
+
+    Route::get('ranap/{id}/konsumsi_obat/{id_konsumsi_obat}/create_siang', [
+        'as' => 'konsumsi_obat_siang.create',
+        'uses' => 'KonsumsiObatController@createNewKonsumsiObatSiang'
+    ]);
+
+    Route::get('ranap/{id}/konsumsi_obat/{id_konsumsi_obat}/create_sore', [
+        'as' => 'konsumsi_obat_sore.create',
+        'uses' => 'KonsumsiObatController@createNewKonsumsiObatSore'
+    ]);
+
+    Route::get('ranap/{id}/konsumsi_obat/{id_konsumsi_obat}/create_malam', [
+        'as' => 'konsumsi_obat_malam.create',
+        'uses' => 'KonsumsiObatController@createNewKonsumsiObatMalam'
+    ]);
+
+    Route::post('ranap/{id}/konsumsi_obat/{id_konsumsi_obat}', [
+        'as' => 'rincian_konsumsi_obat.store',
+        'uses' => 'KonsumsiObatController@storeRincianKonsumsiObat'
+    ]);
+
     Route::get('ranap/{id}/konsumsi_obat/{konsumsi_obat}', [
         'as' => 'konsumsi_obat.show',
         'uses' => 'KonsumsiObatController@showKonsumsiObat'

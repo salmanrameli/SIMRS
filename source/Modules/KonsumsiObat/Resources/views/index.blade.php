@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <div class="page-header">
 
-                        <div class="float-right"><a href="{{ route('perjalanan_penyakit.create', $ranap->pasien->id) }}" class="btn btn-outline-primary">Buat Catatan Perjalanan Penyakit Baru</a></div>
+                        <div class="float-right"><a href="{{ route('konsumsi_obat.create', $ranap->id) }}" class="btn btn-outline-primary">Tambah Konsumsi Obat</a></div>
 
                         <h4>Konsumsi Obat: {{ $ranap->pasien->nama }}</h4>
                         <hr>
@@ -56,16 +56,65 @@
                             <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
                         </div>
                     </div>
-                    <table class="table table-striped small">
-                        <thead>
-                            <tr>
-
-                            </tr>
-                        </thead>
+                    <table class="table table-bordered table-sm">
                         <tbody>
-                            <td>
-
-                            </td>
+                            @foreach($obats->groupBy('tanggal') as $obats)
+                                <tr class="table-info">
+                                    <th colspan="2" class="text-center">Tanggal</th>
+                                    <td colspan="4" class="text-center">{{ date("d F Y", strtotime($obats[0]['tanggal'])) }}</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" class="text-center">Hari Perawatan</th>
+                                    <td colspan="4" class="text-center">{{ $obats[0]['hari_perawatan'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Nama Obat</th>
+                                    <th class="text-center">Dosis</th>
+                                    <th class="text-center">Pagi</th>
+                                    <th class="text-center">Siang</th>
+                                    <th class="text-center">Sore</th>
+                                    <th class="text-center">Malam</th>
+                                </tr>
+                                @foreach($obats as $obat)
+                                <tr>
+                                    <td class="text-center">{{ $obat->obat->nama }}</td>
+                                    <td class="text-center">{{ $obat->dosis }}</td>
+                                    <td class="text-center">
+                                        @if(empty($obat->konsumsi_obat_pagi->jumlah))
+                                            <a href="{{ route('konsumsi_obat_pagi.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                        @else
+                                            {{ $obat->konsumsi_obat_pagi->jumlah }}
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if(empty($obat->konsumsi_obat_siang->jumlah))
+                                            <a href="{{ route('konsumsi_obat_siang.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                        @else
+                                            {{ $obat->konsumsi_obat_siang->jumlah }}
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if(empty($obat->konsumsi_obat_sore->jumlah))
+                                            <a href="{{ route('konsumsi_obat_sore.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                        @else
+                                            {{ $obat->konsumsi_obat_sore->jumlah }}
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if(empty($obat->konsumsi_obat_malam->jumlah))
+                                            <a href="{{ route('konsumsi_obat_malam.create', [$ranap->id, $obat->id]) }}" class="btn btn-default btn-sm" style="width: 100%"> + </a>
+                                        @else
+                                            {{ $obat->konsumsi_obat_malam->jumlah }}
+                                        @endif
+                                    </td>
+                                </tr>
+                                @if($loop->last)
+                                   <tr>
+                                       <td colspan="6"><br></td>
+                                   </tr>
+                                    @endif
+                                @endforeach
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
