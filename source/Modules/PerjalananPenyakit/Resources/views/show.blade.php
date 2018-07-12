@@ -153,5 +153,5 @@
         var umur = tahun_sekarang - tahun_lahir;
         $('#umur').append(": " + umur + " Tahun");
     </script>
-    @include('layouttemplate::attributes.pasien_ranap')
+    @include('layouttemplate::attributes.perjalanan_penyakit')
 @endsection
