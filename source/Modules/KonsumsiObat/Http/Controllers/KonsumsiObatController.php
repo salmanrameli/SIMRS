@@ -20,6 +20,13 @@ class KonsumsiObatController extends Controller
 {
     use ValidatesRequests;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('checkRole:3')->except(['showAllKonsmsiObat']);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
