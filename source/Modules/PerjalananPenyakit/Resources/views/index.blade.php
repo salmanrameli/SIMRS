@@ -70,7 +70,7 @@
                             <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->id]) }}">Pengobatan...</a></p>
                             @if(Auth::user()->jabatan_id == 4)
                                 <hr>
-                                <a href="{{ route('perjalanan_penyakit.edit', [$ranap->id, $perjalanan->id]) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
+                                <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-perjalanan="{{ $perjalanan->id }}" data-subjektif="{{ $perjalanan->subjektif }}" data-objektif="{{ $perjalanan->objektif }}" data-assessment="{{ $perjalanan->assessment }}" data-planning="{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}" data-target="#modalUbahPerjalananPenyakit">Ubah</button>
                             @endif
                         </td>
                     </tr>
@@ -88,7 +88,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
-                {{ Form::open(['method' => 'POST', 'route' => ['perjalanan_penyakit.store', $ranap->id]]) }}
+                {{ Form::open(['method' => 'POST', 'route' => ['perjalanan_penyakit.store']]) }}
                 <div class="modal-body">
                     <div hidden>
                         {{ Form::text('id_ranap', $ranap->id) }}
@@ -128,6 +128,56 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalUbahPerjalananPenyakit" tabindex="-1" role="dialog" aria-labelledby="modalUbahPerjalananPenyakit" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahPerjalananPenyakit">Ubah Rincian Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'PATCH', 'route' => ['perjalanan_penyakit.update']]) }}
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        {{ Form::label('perjalanan', 'ID Perjalanan', ['class' => 'control-label']) }}
+                        {{ Form::textarea('perjalanan', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group" hidden>
+                        {{ Form::label('id_ranap', 'ID Ranap', ['class' => 'control-label']) }}
+                        {{ Form::text('id_ranap', $ranap->id, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('subjektif_edit', 'Subjektif', ['class' => 'control-label']) }}
+                        {{ Form::textarea('subjektif_edit', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('objektif_edit', 'Objektif', ['class' => 'control-label']) }}
+                        {{ Form::textarea('objektif_edit', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('assessment_edit', 'Assessment', ['class' => 'control-label']) }}
+                        {{ Form::textarea('assessment_edit', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('planning_perintah_dokter_dan_pengobatan_edit', 'Planning / Perintah Dokter dan Pengobatan', ['class' => 'control-label']) }}
+                        {{ Form::textarea('planning_perintah_dokter_dan_pengobatan_edit', null, ['class' => 'form-control']) }}
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
@@ -138,7 +188,15 @@
                 $("#objektif").htmlarea();
                 $("#assessment").htmlarea();
                 $("#planning_perintah_dokter_dan_pengobatan").htmlarea();
-            })
+            });
+
+            $('#modalUbahPerjalananPenyakit').on("shown.bs.modal", function (e) {
+                $("#perjalanan").htmlarea('html', $(e.relatedTarget).data('perjalanan'));
+                $("#subjektif_edit").htmlarea('html', $(e.relatedTarget).data('subjektif') );
+                $("#objektif_edit").htmlarea('html', $(e.relatedTarget).data('objektif'));
+                $("#assessment_edit").htmlarea('html', $(e.relatedTarget).data('assessment'));
+                $("#planning_perintah_dokter_dan_pengobatan_edit").htmlarea('html', $(e.relatedTarget).data('planning'));
+            });
         });
 
         $(function () {
@@ -146,10 +204,6 @@
                 dateFormat: 'yy-mm-dd'
             });
         });
-
-        // $(function(){
-        //     $("textarea").htmlarea();
-        // });
     </script>
     <script>
         var lahir = new Date($('#tanggal_lahir').text());
