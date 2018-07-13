@@ -18,7 +18,15 @@ class checkIfAuthorized
      */
     public function handle($request, Closure $next)
     {
-        $id_ranap = $request->route()->parameter('id');
+
+        if($request->route()->parameter('id') != null)
+        {
+            $id_ranap = $request->route()->parameter('id');
+        }
+        else
+        {
+            $id_ranap = $request->get('id_ranap');
+        }
 
         $id_dokter_pj = RawatInap::where('id', '=', $id_ranap)->value('id_dokter_pj');
 
