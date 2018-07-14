@@ -7,11 +7,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerjalananPenyakit\
         'uses' => 'PerjalananPenyakitController@showAllPerjalananPenyakitPasien'
     ]);
 
-    Route::get('/ranap/{id}/perjalanan_penyakit/create', [
-        'as' => 'perjalanan_penyakit.create',
-        'uses' => 'PerjalananPenyakitController@createNewPerjalananPenyakitPasien'
-    ]);
-
     Route::post('/ranap/simpan_perjalanan_penyakit', [
         'as' => 'perjalanan_penyakit.store',
         'uses' => 'PerjalananPenyakitController@saveNewPerjalananPenyakitPasien'
@@ -20,11 +15,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerjalananPenyakit\
     Route::get('/ranap/{id}/perjalanan_penyakit/{perjalanan_penyakit}', [
         'as' => 'perjalanan_penyakit.show',
         'uses' => 'PerjalananPenyakitController@showDetailPerjalananPenyakitPasien'
-    ]);
-
-    Route::get('/ranap/{id}/perjalanan_penyakit/{perjalanan_penyakit}/edit', [
-        'as' => 'perjalanan_penyakit.edit',
-        'uses' => 'PerjalananPenyakitController@editPerjalananPenyakitPasien'
     ]);
 
     Route::patch('/ranap/update_perjalanan_penyakit', [

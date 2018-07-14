@@ -38,17 +38,6 @@ class PerjalananPenyakitController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function createNewPerjalananPenyakitPasien($id_ranap)
-    {
-        $ranap = RawatInap::where('id', '=', $id_ranap)->first();
-
-        return view('perjalananpenyakit::create')->with('ranap', $ranap);
-    }
-
-    /**
      * Store a newly created resource in storage.
      * @param  Request $request
      * @return Response
@@ -92,18 +81,6 @@ class PerjalananPenyakitController extends Controller
         return view('perjalananpenyakit::show')
             ->with('perjalanan', $perjalanan)
             ->with('ranap', $ranap);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editPerjalananPenyakitPasien($id_ranap, $id_perjalanan_penyakit)
-    {
-        $perjalanan = PerjalananPenyakit::with('rawat_inap')->findorFail($id_perjalanan_penyakit);
-
-        return view('perjalananpenyakit::edit')
-            ->with('perjalanan', $perjalanan);
     }
 
     /**
