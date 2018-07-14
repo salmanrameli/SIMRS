@@ -12,7 +12,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerintahDokterDanPe
         'uses' => 'PerintahDokterDanPengobatanController@createPerintahDokterDanPengobatanPasien'
     ]);
 
-    Route::post('/ranap/{id}/perintah_dokter_dan_pengobatan', [
+    Route::post('/ranap/simpan_perintah_dokter_dan_pengobatan', [
         'as' => 'perintah_dokter_dan_pengobatan.store',
         'uses' => 'PerintahDokterDanPengobatanController@savePerintahDokterDanPengobatanPasien'
     ]);

@@ -77,7 +77,7 @@
                                     </div>
                                 @else
                                     <div class="btn-group float-left">
-                                        <a href="{{ route('perintah_dokter_dan_pengobatan.create', [$ranap->id, $perintah->id]) }}" class="btn btn-outline-primary">Catatan Baru</a>
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-target="#modalBuatCatatanBaru">Catatan Baru</button>
                                     </div>
                                 @endif
                             @endif
@@ -88,9 +88,63 @@
             </table>
         </div>
     </div>
+
+    <div class="modal fade" id="modalBuatCatatanBaru" tabindex="-1" role="dialog" aria-labelledby="modalBuatCatatanBaru" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalBuatCatatanBaru">Buat Catatan Perintah Dokter dan Pengobatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{ Form::open(['method' => 'POST', 'route' => ['perintah_dokter_dan_pengobatan.store']]) }}
+                <div class="modal-body">
+                    <div hidden>
+                        <label for="id_ranap" class="control-label">ID Ranap:</label>
+                        <input type="text" name="id_ranap" id="id_ranap">
+                    </div>
+
+                    <div hidden>
+                        <label for="id_perintah" class="control-label">ID Perintah:</label>
+                        <input type="text" name="id_perintah" id="id_perintah">
+                    </div>
+
+                    <label><b>Terapi dan Rencana Tindakan:</b></label>
+                    <p id="perintah"></p>
+                    <hr>
+
+                    <div class="form-group">
+                        {{ Form::label('catatan_perawat', 'Catatan Perawat', ['class' => 'control-label']) }}
+                        {{ Form::textarea('catatan_perawat', null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('#modalBuatCatatanBaru').on('shown.bs.modal', function (e) {
+                $("#modalBuatCatatanBaru").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalBuatCatatanBaru").find('#id_perintah').val($(e.relatedTarget).data('id-perintah'));
+                $("#modalBuatCatatanBaru").find('#perintah').html($("<span />", { html: $(e.relatedTarget).data('perintah')}).text());
+                $("#catatan_perawat").htmlarea();
+            });
+        });
+
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
     <script>
         var lahir = new Date($('#tanggal_lahir').text());
         var sekarang = new Date();

@@ -57,22 +57,22 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function savePerintahDokterDanPengobatanPasien(Request $request, $id_ranap)
+    public function savePerintahDokterDanPengobatanPasien(Request $request)
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
         ]);
 
         $perintah_dokter = new PerintahDokterDanPengobatan();
-        $perintah_dokter->id_perjalanan_penyakit = $request->id_perintah;
+        $perintah_dokter->id_perjalanan_penyakit = $request->get('id_perintah');
         $perintah_dokter->tanggal_keterangan = Carbon::now();
-        $perintah_dokter->catatan_perawat = $request->catatan_perawat;
+        $perintah_dokter->catatan_perawat = $request->get('catatan_perawat');
         $perintah_dokter->id_petugas = Auth::id();
         $perintah_dokter->save();
 
-        Session::flash('message', 'Catatan berhasil disimpan');
+        Session::flash('message', 'Catatan berhasil disimpan.');
 
-        return redirect()->route('perintah_dokter_dan_pengobatan.index', $id_ranap);
+        return redirect()->route('perintah_dokter_dan_pengobatan.index', $request->get('id_ranap'));
     }
 
     /**
