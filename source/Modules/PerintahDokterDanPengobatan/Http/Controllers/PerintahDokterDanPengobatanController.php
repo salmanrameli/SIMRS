@@ -120,20 +120,19 @@ class PerintahDokterDanPengobatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function updatePerintahDokterDanPengobatanPasien(Request $request, $id_ranap, $id_perintah)
+    public function updatePerintahDokterDanPengobatanPasien(Request $request)
     {
         $this->validate($request, [
             'catatan_perawat' => 'required',
         ]);
 
-        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($id_perintah);
-        $perintah_dokter->catatan_perawat = $request->catatan_perawat;
-        $perintah_dokter->id_petugas = Auth::id();
+        $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->get('id'));
+        $perintah_dokter->catatan_perawat = $request->get('catatan_perawat');
         $perintah_dokter->save();
 
-        Session::flash('message', 'Perubahan berhasil disimpan');
+        Session::flash('message', 'Perubahan berhasil disimpan.');
 
-        return redirect()->route('perintah_dokter_dan_pengobatan.index', $id_ranap);
+        return redirect()->route('perintah_dokter_dan_pengobatan.index', $request->get('id_ranap'));
     }
 
     /**

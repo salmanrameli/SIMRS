@@ -27,7 +27,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerintahDokterDanPe
         'uses' => 'PerintahDokterDanPengobatanController@editPerintahDokterDanPengobatanPasien'
     ]);
 
-    Route::patch('/ranap/{id}/perintah_dokter_dan_pengobatan/{perintah_dokter_dan_pengobatan}', [
+    Route::patch('/ranap/update_perintah_dokter_dan_pengobatan', [
         'as' => 'perintah_dokter_dan_pengobatan.update',
         'uses' => 'PerintahDokterDanPengobatanController@updatePerintahDokterDanPengobatanPasien'
     ]);

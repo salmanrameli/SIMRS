@@ -73,7 +73,7 @@
                                 @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
                                     <br><hr>
                                     <div class="btn-group float-right">
-                                        <a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-sm btn-warning">Ubah</a>
+                                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
                                     </div>
                                 @else
                                     <div class="btn-group float-left">
@@ -126,6 +126,45 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalUbahCatatanPerintah" tabindex="-1" role="dialog" aria-labelledby="modalUbahCatatanPerintah" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahCatatanPerintah">Ubah Rincian Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'PATCH', 'route' => ['perintah_dokter_dan_pengobatan.update']]) }}
+                <div class="modal-body">
+                    <div hidden>
+                        <label for="id_ranap" class="control-label">ID Ranap:</label>
+                        <input type="text" name="id_ranap" id="id_ranap">
+                    </div>
+
+                    <div hidden>
+                        <label for="id" class="control-label">ID Perintah:</label>
+                        <input type="text" name="id" id="id">
+                    </div>
+
+                    <label><b>Terapi dan Rencana Tindakan:</b></label>
+                    <p id="perintah"></p>
+                    <hr>
+
+                    <div class="form-group">
+                        {{ Form::label('catatan_perawat', 'Catatan Perawat', ['class' => 'control-label']) }}
+                        {{ Form::textarea('catatan_perawat', null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
@@ -136,6 +175,13 @@
                 $("#modalBuatCatatanBaru").find('#id_perintah').val($(e.relatedTarget).data('id-perintah'));
                 $("#modalBuatCatatanBaru").find('#perintah').html($("<span />", { html: $(e.relatedTarget).data('perintah')}).text());
                 $("#catatan_perawat").htmlarea();
+            });
+
+            $('#modalUbahCatatanPerintah').on("shown.bs.modal", function (e) {
+                $("#modalUbahCatatanPerintah").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalUbahCatatanPerintah").find('#id').val($(e.relatedTarget).data('id-perintah'));
+                $("#modalUbahCatatanPerintah").find('#perintah').html($("<span />", { html: $(e.relatedTarget).data('perintah')}).text());
+                $("#modalUbahCatatanPerintah").find('#catatan_perawat').htmlarea('html', $(e.relatedTarget).data('catatan'));
             });
         });
 
