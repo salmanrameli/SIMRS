@@ -43,6 +43,17 @@ class CatatanHarianPerawatanController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     * @return Response
+     */
+    public function createNewCatatanHarianDanPerawatan($id_ranap)
+    {
+        $ranap = RawatInap::findorFail($id_ranap);
+        return view('catatanharianperawatan::create')->with('ranap', $ranap);
+    }
+
+
+    /**
      * Store a newly created resource in storage.
      * @param  Request $request
      * @return Response
