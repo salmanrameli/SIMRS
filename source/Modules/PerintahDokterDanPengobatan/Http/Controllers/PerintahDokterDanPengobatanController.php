@@ -90,9 +90,11 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->first();
 
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
         return view('perintahdokterdanpengobatan::show')
             ->with('perintah', $perintah)
-            ->with('id_ranap', $id_ranap);
+            ->with('ranap', $ranap);
     }
 
     /**
