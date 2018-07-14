@@ -25,6 +25,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
+
+                        <div class="col-md-12">
+                            @include('layouttemplate::alert')
+                        </div>
+
                         <div class="card card-body">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
