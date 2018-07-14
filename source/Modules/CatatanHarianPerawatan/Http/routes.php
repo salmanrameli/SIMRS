@@ -27,7 +27,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\CatatanHarianPerawa
         'uses' => 'CatatanHarianPerawatanController@editCatatanHarianDanPerawatan'
     ]);
 
-    Route::patch('ranap/{id}/catatan_harian_perawatan/{catatan_harian_perawatan}', [
+    Route::patch('ranap/update_catatan_harian_perawatan', [
         'as' => 'catatan_harian_perawatan.update',
         'uses' => 'CatatanHarianPerawatanController@updateCatatanHarianDanPerawatan'
     ]);

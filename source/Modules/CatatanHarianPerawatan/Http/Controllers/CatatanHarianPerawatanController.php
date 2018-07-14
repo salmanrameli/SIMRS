@@ -75,7 +75,7 @@ class CatatanHarianPerawatanController extends Controller
         $catatan->id_petugas = Auth::id();
         $catatan->save();
 
-        Session::flash('message', 'Catatan harian dan perawatan berhasil disimpan');
+        Session::flash('message', 'Catatan harian dan perawatan berhasil disimpan.');
 
         return redirect()->route('catatan_harian_perawatan.index', $request->get('id_ranap'));
     }
@@ -109,24 +109,19 @@ class CatatanHarianPerawatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function updateCatatanHarianDanPerawatan(Request $request, $id_ranap, $catatan_harian)
+    public function updateCatatanHarianDanPerawatan(Request $request)
     {
-        $catatan = CatatanHarianPerawatan::findorFail($catatan_harian);
-
         $this->validate($request, [
-            'tanggal_keterangan' => 'required',
-            'jam' => 'required|date_format:H:i',
             'asuhan_keperawatan_soap' => 'required',
-            'id_petugas' => 'required'
         ]);
 
-        $input = $request->all();
+        $catatan = CatatanHarianPerawatan::findorFail($request->get('id_catatan_harian'));
+        $catatan->asuhan_keperawatan_soap = $request->get('asuhan_keperawatan_soap');
+        $catatan->save();
 
-        $catatan->fill($input)->save();
+        Session::flash('message', 'Perubahan berhasil disimpan.');
 
-        Session::flash('message', 'Catatan harian dan perawatan berhasil diubah');
-
-        return redirect()->route('catatan_harian_perawatan.index', $id_ranap);
+        return redirect()->route('catatan_harian_perawatan.index', $request->get('id_ranap'));
     }
 
     /**

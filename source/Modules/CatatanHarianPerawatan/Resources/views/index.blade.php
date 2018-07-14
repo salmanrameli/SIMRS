@@ -60,7 +60,7 @@
                                 <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                                 <hr>
                                 @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
-                                    <a href="{{ route('catatan_harian_perawatan.edit', [$ranap->id, $catatan->id]) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
+                                    <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
                                 @endif
                             </td>
                         </tr>
@@ -108,6 +108,40 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalUbahCatatanHarian" tabindex="-1" role="dialog" aria-labelledby="modalUbahCatatanHarian" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahCatatanHarian">Ubah Rincian Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'PATCH', 'route' => ['catatan_harian_perawatan.update']]) }}
+                <div class="modal-body">
+                    <div hidden>
+                        <label for="id_ranap" class="control-label">ID Ranap:</label>
+                        <input type="text" name="id_ranap" id="id_ranap">
+                    </div>
+
+                    <div class="form-group" hidden>
+                        {{ Form::label('id_catatan_harian', 'ID Catatan Harian', ['class' => 'control-label']) }}
+                        {{ Form::text('id_catatan_harian', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('asuhan_keperawatan_soap', 'Asuhan Keperawatan', ['class' => 'control-label']) }}
+                        {!! Form::textarea('asuhan_keperawatan_soap', null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
@@ -115,7 +149,13 @@
         $(document).ready(function () {
             $('#modalBuatCatatanHarian').on('shown.bs.modal', function () {
                 $("#asuhan_keperawatan_soap").htmlarea();
-            })
+            });
+
+            $('#modalUbahCatatanHarian').on("shown.bs.modal", function (e) {
+                $("#modalUbahCatatanHarian").find('#id_ranap').val($(e.relatedTarget).data('id-ranap'));
+                $("#modalUbahCatatanHarian").find('#id_catatan_harian').val($(e.relatedTarget).data('id-catatan-harian'));
+                $("#modalUbahCatatanHarian").find("#asuhan_keperawatan_soap").htmlarea('html', $(e.relatedTarget).data('asuhan-keperawatan'));
+            });
         });
 
         $(function () {
