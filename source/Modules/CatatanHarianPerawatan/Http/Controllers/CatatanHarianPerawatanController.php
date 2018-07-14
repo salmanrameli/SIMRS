@@ -43,17 +43,6 @@ class CatatanHarianPerawatanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function createNewCatatanHarianDanPerawatan($id_ranap)
-    {
-        $ranap = RawatInap::findorFail($id_ranap);
-
-        return view('catatanharianperawatan::create')->with('ranap', $ranap);
-    }
-
-    /**
      * Store a newly created resource in storage.
      * @param  Request $request
      * @return Response
@@ -78,30 +67,6 @@ class CatatanHarianPerawatanController extends Controller
         Session::flash('message', 'Catatan harian dan perawatan berhasil disimpan.');
 
         return redirect()->route('catatan_harian_perawatan.index', $request->get('id_ranap'));
-    }
-
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-        return redirect()->back();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editCatatanHarianDanPerawatan($id_ranap, $catatan_harian)
-    {
-        $catatan = CatatanHarianPerawatan::findorFail($catatan_harian);
-
-        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
-
-        return view('catatanharianperawatan::edit')
-            ->with('catatan', $catatan)
-            ->with('ranap', $ranap);
     }
 
     /**
