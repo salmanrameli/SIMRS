@@ -23,6 +23,17 @@ class PerjalananPenyakitController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     * @return Response
+     */
+    public function createNewPerjalananPenyakitPasien($id_ranap)
+    {
+        $ranap = RawatInap::where('id', '=', $id_ranap)->first();
+        
+        return view('perjalananpenyakit::create')->with('ranap', $ranap);
+    }
+
+    /**
      * Display a listing of the resource.
      * @return Response
      */
