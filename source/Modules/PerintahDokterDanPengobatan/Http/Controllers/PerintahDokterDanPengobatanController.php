@@ -40,19 +40,6 @@ class PerintahDokterDanPengobatanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function createPerintahDokterDanPengobatanPasien($id_ranap, $id_perintah)
-    {
-        $perintah = PerjalananPenyakit::with('rawat_inap')->findorFail($id_perintah);
-
-        return view('perintahdokterdanpengobatan::create')
-            ->with('perintah', $perintah)
-            ->with('id_ranap', $id_ranap);
-    }
-
-    /**
      * Store a newly created resource in storage.
      * @param  Request $request
      * @return Response
@@ -95,26 +82,6 @@ class PerintahDokterDanPengobatanController extends Controller
         return view('perintahdokterdanpengobatan::show')
             ->with('perintah', $perintah)
             ->with('ranap', $ranap);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editPerintahDokterDanPengobatanPasien($id_ranap, $id_perintah)
-    {
-        $perintah = PerintahDokterDanPengobatan::with('perjalanan_penyakit')->findorFail($id_perintah);
-
-        if($perintah->catatan_perawat == null)
-        {
-            Session::flash('warning', 'Catatan perawat masih belum terisi');
-
-            return redirect()->back();
-        }
-
-        return view('perintahdokterdanpengobatan::edit')
-            ->with('perintah', $perintah)
-            ->with('id_ranap', $id_ranap);
     }
 
     /**
