@@ -24,13 +24,11 @@
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
-    <body>
-        <div class="col-md-12">
-            <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
-                <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
-                <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
-            </div>
+    <body style="background-image: url({{ asset('img/grey.png') }})">
+        <div class="container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 15px; border-bottom: 1px solid lightgrey;">
+            <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
+            <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
         </div>
         <div class="container-fluid">
             <div class="col-md-12">
@@ -44,7 +42,7 @@
                             @include('layouttemplate::sidebar')
                         </ul>
                         <div class="tab-content">
-                            <div class="row pre-scrollable" style="padding: 10px 25px 0 10px; max-height: 82vh; min-width: 100%">
+                            <div class="row pre-scrollable" style="padding: 10px 25px 0 10px; max-height: 85vh; min-width: 100%">
                                 <table>
                                     <tbody>
                                         <tr>

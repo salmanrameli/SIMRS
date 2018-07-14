@@ -17,8 +17,7 @@
                     <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
                     <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary">Daftarkan Rawat Inap Baru</a>
 	                <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
-	                <br>
-                	<br>
+                    <div style="padding-bottom: 15px"></div>
                 @endif
                 
                 <div style="min-height: 60vh;">

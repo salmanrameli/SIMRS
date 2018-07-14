@@ -24,14 +24,12 @@
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
-    <body>
-        <div class="col-md-12">
-            <div class="container-fluid" style="padding: 1.5% 10px 1% 10px; background-color: white; border-bottom: 2px solid whitesmoke;">
-                <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
-                <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
-            </div>
-        </div>
+    <body style="background-image: url({{ asset('img/grey.png') }})">
+    <div class="container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 5px; border-bottom: 2px solid whitesmoke;">
+        <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+        <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px">Pengaturan Akun</a>
+        <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
+    </div>
         <div class="container-fluid" style="padding-top: 15px">
             <div class="col-md-12">
                 <div class="row">

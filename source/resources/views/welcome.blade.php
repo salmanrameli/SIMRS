@@ -14,7 +14,7 @@
         <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
-    <body>
+    <body style="background-image: url({{ asset('img/grey.png') }})">
         <div id="app">
             <div class="col-md-12">
                 <div class="container-fluid" style="padding: 1.5% 10px 1.5% 10px">
@@ -24,7 +24,7 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10 offset-md-1">
+                    <div class="col-md-8 offset-md-2">
 
                         <div class="col-md-12">
                             @include('layouttemplate::alert')
@@ -65,10 +65,7 @@
                                 <br>
                                 <div class="form-group">
                                     <div class="col-md-10 offset-md-1">
-                                        <button type="submit" class="btn btn-lg btn-outline-primary">
-                                            Login
-                                        </button>
-
+                                        <button type="submit" class="btn btn-outline-success float-right">Login</button>
                                     </div>
                                 </div>
                             </form>
