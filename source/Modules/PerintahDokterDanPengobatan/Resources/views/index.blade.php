@@ -131,7 +131,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalUbahCatatanPerintah">Ubah Rincian Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="modalUbahCatatanPerintah">Ubah Rincian Perintah Dokter dan Pengobatan Pasien: {{ $ranap->pasien->nama }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset"><span aria-hidden="true">&times;</span></button>
                 </div>
 
