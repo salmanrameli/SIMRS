@@ -63,11 +63,11 @@ class BangunanController extends Controller
             'nomor_lantai' => 'required'
         ]);
 
-        $input = $request->all();
+        $lantai = new Lantai();
+        $lantai->nomor_lantai = $request->get('nomor_lantai');
+        $lantai->save();
 
-        Lantai::create($input);
-
-        Session::flash('message', 'Lantai berhasil ditambahkan');
+        Session::flash('message', 'Lantai berhasil ditambahkan.');
 
         return redirect()->route('bangunan.index');
     }
