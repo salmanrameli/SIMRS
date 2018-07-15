@@ -72,26 +72,17 @@ class BangunanController extends Controller
         return redirect()->route('bangunan.index');
     }
 
-    public function editLantai($id)
+    public function updateLantai(Request $request)
     {
-        $lantai = Lantai::findorFail($id);
-
-        return view('bangunan::lantai.edit')->with('lantai', $lantai);
-    }
-
-    public function updateLantai(Request $request, $id)
-    {
-        $lantai = Lantai::findorFail($id);
-
         $this->validate($request, [
             'nomor_lantai' => 'required'
         ]);
 
-        $input = $request->all();
+        $lantai = Lantai::findorFail($request->get('id_lantai'));
+        $lantai->nomor_lantai = $request->get('nomor_lantai');
+        $lantai->save();
 
-        $lantai->fill($input)->save();
-
-        Session::flash('message', 'Nomor lantai berhasil diubah');
+        Session::flash('message', 'Nomor lantai berhasil diubah.');
 
         return redirect()->route('bangunan.index');
     }

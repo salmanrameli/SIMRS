@@ -2,14 +2,10 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Controllers'], function()
 {
-    //Route::resource('bangunan', 'BangunanController');
-
     Route::get('/bangunan', [
         'as' => 'bangunan.index',
         'uses' => 'BangunanController@showAllLantai'
     ]);
-
-    //Route::resource('bangunan/lantai', 'LantaiController');
 
     Route::get('/bangunan/lantai/create', [
         'as' => 'lantai.create',
@@ -21,12 +17,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Contr
         'uses' => 'BangunanController@saveNewLantai'
     ]);
 
-    Route::get('/bangunan/lantai/{lantai}/edit', [
-        'as' => 'lantai.edit',
-        'uses' => 'BangunanController@editLantai'
-    ]);
-
-    Route::patch('/bangunan/lantai/{lantai}', [
+    Route::patch('/bangunan/simpan_perubahan_lantai', [
         'as' => 'lantai.update',
         'uses' => 'BangunanController@updateLantai'
     ]);
@@ -35,8 +26,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Contr
         'as' => 'lantai.delete',
         'uses' => 'BangunanController@deleteLantai'
     ]);
-
-    //Route::resource('bangunan/lantai/kamar', 'KamarController');
 
     Route::get('/bangunan/lantai/kamar/create', [
         'as' => 'kamar.create',

@@ -15,7 +15,6 @@
             <div class="card card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        {{--<a href="{{ route('lantai.create') }}" class="btn btn-outline-primary">Tambah Lantai Baru</a>--}}
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahLantai">Tambah Lantai Baru</button>
                         <a href="{{ route('kamar.create') }}" class="btn btn-outline-primary">Tambah Kamar Baru</a>
                     </div>
@@ -34,7 +33,7 @@
                                 Lantai {{ $lantai->nomor_lantai }}
                                 @if(Auth::user()->jabatan_id == 1)
                                     <div class="row float-right">
-                                        <a href="{{ route('lantai.edit', $lantai->id) }}" class="btn btn-sm btn-warning float-right">Ubah</a>
+                                        <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-lantai="{{ $lantai->id }}" data-nomor="{{ $lantai->nomor_lantai }}" data-target="#modalUbahLantai">Ubah</button>
 
                                         {{ Form::open(['route' => ['lantai.delete', $lantai->id], 'method' => 'delete']) }}
                                         <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menghapus lantai ini?')">Hapus</button>
@@ -115,8 +114,45 @@
         </div>
     </div>
 
-    @endsection
+    <div class="modal fade" id="modalUbahLantai" tabindex="-1" role="dialog" aria-labelledby="modalUbahLantai" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahLantai">Ubah Nomor Lantai</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{ Form::open(['method' => 'PATCH', 'route' => 'lantai.update']) }}
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        {{ Form::label('id_lantai', 'ID Lantai', ['class' => 'control-label']) }}
+                        {{ Form::text('id_lantai', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('nomor_lantai', 'Nomor Lantai', ['class' => 'control-label']) }}
+                        {{ Form::text('nomor_lantai', null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+
+@endsection
 
 @section('script')
+    <script>
+        $(function() {
+            $('#modalUbahLantai').on("show.bs.modal", function (e) {
+                $("#modalUbahLantai").find('#id_lantai').val($(e.relatedTarget).data('id-lantai'));
+                $("#modalUbahLantai").find('#nomor_lantai').val($(e.relatedTarget).data('nomor'));
+            });
+        });
+    </script>
     @include('layouttemplate::attributes.bangunan')
     @endsection
