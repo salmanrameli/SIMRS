@@ -61,28 +61,6 @@ class AlatKesehatanController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function showDetailAlatKesehatan($id)
-    {
-        $alkes = AlatKesehatan::findOrFail($id);
-
-        return view('alatkesehatan::show')->with('alkes', $alkes);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editAlatKesehatan($id)
-    {
-        $alkes = AlatKesehatan::findOrFail($id);
-
-        return view('alatkesehatan::edit')->with('alkes', $alkes);
-    }
-
-    /**
      * Update the specified resource in storage.
      * @param  Request $request
      * @return Response

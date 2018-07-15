@@ -21,25 +21,13 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Harga</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($alkess as $alkes)
                                 <tr>
                                     <td class="w-50">{{ ucfirst($alkes->nama) }}</td>
-                                    <td class="w-50">{{ $alkes->harga }}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('alat_kesehatan.show', ['id' => $alkes->id]) }}" class="btn btn-outline-info">Detail...</a>
-                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <button class="dropdown-item" data-toggle="modal" data-id-alat="{{ $alkes->id }}" data-nama="{{ $alkes->nama }}" data-harga="{{ $alkes->harga }}" data-target="#modalUbahAlatKesehatan">Ubah</button>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td class="w-50">{{ $alkes->harga }} <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-alat="{{ $alkes->id }}" data-nama="{{ $alkes->nama }}" data-harga="{{ $alkes->harga }}" data-target="#modalUbahAlatKesehatan">Ubah</button></td>
                                 </tr>
                             @endforeach
                             </tbody>
