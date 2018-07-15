@@ -36,7 +36,7 @@
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="{{ route('alat_kesehatan.edit', ['id' => $alkes->id]) }}">Ubah</a>
+                                                <button class="dropdown-item" data-toggle="modal" data-id-alat="{{ $alkes->id }}" data-nama="{{ $alkes->nama }}" data-harga="{{ $alkes->harga }}" data-target="#modalUbahAlatKesehatan">Ubah</button>
                                             </div>
                                         </div>
                                     </td>
@@ -76,8 +76,49 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalUbahAlatKesehatan" tabindex="-1" role="dialog" aria-labelledby="modalUbahAlatKesehatan" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahAlatKesehatan">Ubah Rincian Alat Kesehatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                {{ Form::open(['method' => 'PATCH', 'route' => 'alat_kesehatan.update']) }}
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        {{ Form::label('id_alat_kesehatan', 'ID Alat Kesehatan', ['class' => 'control-label']) }}
+                        {{ Form::text('id_alat_kesehatan', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('nama', 'Nama Alat Kesehatan', ['class' => 'control-label']) }}
+                        {{ Form::text('nama', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('harga', 'Harga', ['class' => 'control-label']) }}
+                        {{ Form::number('harga', null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success float-right']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
+    <script>
+        $(function() {
+            $('#modalUbahAlatKesehatan').on("show.bs.modal", function (e) {
+                $("#modalUbahAlatKesehatan").find('#id_alat_kesehatan').val($(e.relatedTarget).data('id-alat'));
+                $("#modalUbahAlatKesehatan").find('#nama').val($(e.relatedTarget).data('nama'));
+                $("#modalUbahAlatKesehatan").find('#harga').val($(e.relatedTarget).data('harga'));
+            });
+        });
+    </script>
     @include('layouttemplate::attributes.alkes')
 @endsection

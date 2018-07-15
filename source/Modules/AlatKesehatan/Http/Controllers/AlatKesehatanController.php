@@ -87,20 +87,19 @@ class AlatKesehatanController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function updateAlatKesehatan(Request $request, $id)
+    public function updateAlatKesehatan(Request $request)
     {
         $this->validate($request, [
             'nama' => 'required',
             'harga' => 'required'
         ]);
 
-        $input = $request->all();
+        $alat_kesehatan = AlatKesehatan::findorFail($request->get('id_alat_kesehatan'));
+        $alat_kesehatan->nama = $request->get('nama');
+        $alat_kesehatan->harga = $request->get('harga');
+        $alat_kesehatan->save();
 
-        $alkes = AlatKesehatan::findOrFail($id);
-
-        $alkes->fill($input)->save();
-
-        Session::flash('message', 'Perubahan berhasil dilakukan');
+        Session::flash('message', 'Perubahan rincian alat kesehatan berhasil dilakukan.');
 
         return redirect()->route('alat_kesehatan.index');
     }

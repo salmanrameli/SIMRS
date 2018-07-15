@@ -29,7 +29,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\AlatKesehatan\Http\
         'uses' => 'AlatKesehatanController@editAlatKesehatan'
     ]);
 
-    Route::patch('/alat_kesehatan/{id}', [
+    Route::patch('/alat_kesehatan/simpan_perubahan_alat_kesehatan', [
         'as' => 'alat_kesehatan.update',
         'uses' => 'AlatKesehatanController@updateAlatKesehatan'
     ]);
