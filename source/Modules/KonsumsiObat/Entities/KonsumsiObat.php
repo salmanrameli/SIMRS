@@ -10,8 +10,13 @@ class KonsumsiObat extends Model
     protected $table = 'konsumsi_obat';
 
     protected $fillable = [
-        'id_ranap', 'tanggal', 'hari_perawatan', 'id_obat', 'dosis', 'tinggi_badan', 'berat_badan'
+        'id_ranap', 'id_hari_perawatan', 'id_obat', 'dosis', 'id_petugas'
     ];
+
+    public function hari_perawatan()
+    {
+        return $this->belongsTo(HariPerawatan::class, 'id_hari_perawatan', 'id');
+    }
 
     public function obat()
     {
