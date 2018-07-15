@@ -191,13 +191,5 @@
             });
         });
     </script>
-    <script>
-        var lahir = new Date($('#tanggal_lahir').text());
-        var sekarang = new Date();
-        var tahun_sekarang = sekarang.getFullYear();
-        var tahun_lahir = lahir.getFullYear();
-        var umur = tahun_sekarang - tahun_lahir;
-        $('#umur').append(": " + umur + " Tahun");
-    </script>
     @include('layouttemplate::attributes.perintah_dokter')
 @endsection
