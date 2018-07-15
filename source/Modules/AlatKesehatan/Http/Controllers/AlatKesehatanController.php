@@ -50,11 +50,12 @@ class AlatKesehatanController extends Controller
             'harga' => 'required'
         ]);
 
-        $input = $request->all();
+        $alat = new AlatKesehatan();
+        $alat->nama = $request->get('nama');
+        $alat->harga = $request->get('harga');
+        $alat->save();
 
-        AlatKesehatan::create($input);
-
-        Session::flash('message', 'Alat kesehatan berhasil disimpan');
+        Session::flash('message', 'Alat kesehatan berhasil disimpan.');
 
         return redirect()->route('alat_kesehatan.index');
     }
