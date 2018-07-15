@@ -52,12 +52,12 @@ class ObatController extends Controller
         ]);
 
         $obat = new Obat();
-        $obat->nama = $request->nama;
-        $obat->harga = $request->harga;
-        $obat->tipe_obat = $request->jenis;
+        $obat->nama = $request->get('nama');
+        $obat->harga = $request->get('harga');
+        $obat->tipe_obat = $request->get('jenis');
         $obat->save();
 
-        Session::flash('message', 'Obat berhasil dimasukkan');
+        Session::flash('message', 'Obat berhasil disimpan.');
 
         return redirect()->route('obat.index');
     }

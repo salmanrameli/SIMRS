@@ -14,7 +14,7 @@
             <div class="card card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('obat.create') }}" class="btn btn-outline-primary">Daftarkan Obat Baru</a>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahObat">Daftarkan Obat Baru</button>
                         <br><br>
                         <table class="table">
                             <thead>
@@ -51,7 +51,40 @@
             </div>
         </div>
     </div>
-@stop
+
+    <div class="modal fade" id="modalTambahObat" tabindex="-1" role="dialog" aria-labelledby="modalTambahObat" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahObat">Masukkan Obat Baru</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                {{ Form::open(['route' => 'obat.store']) }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        {{ Form::label('nama', 'Nama Obat', ['class' => 'control-label']) }}
+                        {{ Form::text('nama', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('harga', 'Harga', ['class' => 'control-label']) }}
+                        {{ Form::number('harga', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('jenis', 'Jenis Obat', ['class' => 'control-label']) }}
+                        {{ Form::select('jenis', ['injeksi' => 'Injeksi', 'oral' => 'Oral', 'kompress' => 'Kompress', 'suppositoria' => 'Suppositoria'], null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success float-right']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+
+@endsection
 
 @section('script')
     @include('layouttemplate::attributes.obat')
