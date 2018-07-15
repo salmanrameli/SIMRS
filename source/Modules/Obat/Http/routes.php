@@ -2,8 +2,6 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\Obat\Http\Controllers'], function()
 {
-    //Route::resource('/obat', 'ObatController');
-
     Route::get('/obat', [
         'as' => 'obat.index',
         'uses' => 'ObatController@showAllObat'
@@ -19,17 +17,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Obat\Http\Controlle
         'uses' => 'ObatController@saveNewObat'
     ]);
 
-    Route::get('/obat/{id}', [
-        'as' => 'obat.show',
-        'uses' => 'ObatController@showDetailObat'
-    ]);
-
-    Route::get('/obat/{id}/edit', [
-        'as' => 'obat.edit',
-        'uses' => 'ObatController@editObat'
-    ]);
-
-    Route::patch('/obat/{id}', [
+    Route::patch('/obat/simpan_perubahan_obat', [
         'as' => 'obat.update',
         'uses' => 'ObatController@updateObat'
     ]);

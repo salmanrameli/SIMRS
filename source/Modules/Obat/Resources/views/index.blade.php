@@ -22,7 +22,6 @@
                                 <th>Nama</th>
                                 <th>Tipe</th>
                                 <th>Harga</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,17 +29,9 @@
                                 <tr>
                                     <td>{{ ucfirst($obat->nama) }}</td>
                                     <td>{{ ucfirst($obat->tipe_obat) }}</td>
-                                    <td>{{ $obat->harga }}</td>
                                     <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('obat.show', ['id' => $obat->id]) }}" class="btn btn-outline-info">Detail...</a>
-                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="sr-only">Toggle Dropdown</span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="{{ route('obat.edit', ['id' => $obat->id]) }}">Ubah</a>
-                                            </div>
-                                        </div>
+                                        {{ $obat->harga }}
+                                        <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-nama="{{ $obat->nama }}" data-harga="{{ $obat->harga }}" data-tipe="{{ $obat->tipe_obat }}" data-target="#modalUbahObat">Ubah</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -84,8 +75,55 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalUbahObat" tabindex="-1" role="dialog" aria-labelledby="modalUbahObat" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahObat">Ubah Rincian Obat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                {{ Form::open(['method' => 'PATCH', 'route' => 'obat.update']) }}
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        {{ Form::label('id', 'ID Obat', ['class' => 'control-label']) }}
+                        {{ Form::text('id', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('nama', 'Nama Obat', ['class' => 'control-label']) }}
+                        {{ Form::text('nama', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('harga', 'Harga', ['class' => 'control-label']) }}
+                        {{ Form::number('harga', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('jenis', 'Jenis Obat', ['class' => 'control-label']) }}
+                        {{ Form::select('jenis', ['injeksi' => 'Injeksi', 'oral' => 'Oral', 'kompress' => 'Kompress', 'suppositoria' => 'Suppositoria'], null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success float-right']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
+    <script>
+        $(function() {
+            $('#modalUbahObat').on("show.bs.modal", function (e) {
+                $("#modalUbahObat").find('#id').val($(e.relatedTarget).data('id-obat'));
+                $("#modalUbahObat").find('#nama').val($(e.relatedTarget).data('nama'));
+                $("#modalUbahObat").find('#harga').val($(e.relatedTarget).data('harga'));
+                $("#modalUbahObat").find('#jenis').val($(e.relatedTarget).data('tipe')).change();
+            });
+        });
+    </script>
     @include('layouttemplate::attributes.obat')
     @endsection

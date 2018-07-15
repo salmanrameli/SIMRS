@@ -63,33 +63,11 @@ class ObatController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function showDetailObat($id)
-    {
-        $obat = Obat::findorFail($id);
-
-        return view('obat::show')->with('obat', $obat);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editObat($id)
-    {
-        $obat = Obat::findorFail($id);
-
-        return view('obat::edit')->with('obat', $obat);
-    }
-
-    /**
      * Update the specified resource in storage.
      * @param  Request $request
      * @return Response
      */
-    public function updateObat(Request $request, $id)
+    public function updateObat(Request $request)
     {
         $this->validate($request, [
             'nama' => 'required',
@@ -97,13 +75,13 @@ class ObatController extends Controller
             'jenis' => 'required'
         ]);
 
-        $obat = Obat::findorFail($id);
-        $obat->nama = $request->nama;
-        $obat->harga = $request->harga;
-        $obat->tipe_obat = $request->jenis;
+        $obat = Obat::findorFail($request->get('id'));
+        $obat->nama = $request->get('nama');
+        $obat->harga = $request->get('harga');
+        $obat->tipe_obat = $request->get('jenis');
         $obat->save();
 
-        Session::flash('message', 'Obat berhasil diubah');
+        Session::flash('message', 'Perubahan rincian obat berhasil disimpan.');
 
         return redirect()->route('obat.index');
     }
