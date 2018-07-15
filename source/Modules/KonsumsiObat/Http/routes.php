@@ -36,4 +36,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\KonsumsiObat\Http\C
         'as' => 'konsumsi_obat.update',
         'uses' => 'KonsumsiObatController@updateKonsumsiObat'
     ]);
+
+    Route::post('ranap/simpan_hari_perawatan', [
+        'as' => 'hari_perawatan.store',
+        'uses' => 'HariPerawatanController@storeRincianHariPerawatan'
+    ]);
 });
