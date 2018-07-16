@@ -108,12 +108,12 @@ class BangunanController extends Controller
         ]);
 
         $kamar = new Kamar();
-        $kamar->nomor_lantai = $request->nomor_lantai;
-        $kamar->nama_kamar = $request->nama_kamar;
-        $kamar->jumlah_maks_pasien = $request->jumlah_maks_pasien;
+        $kamar->nomor_lantai = $request->get('nomor_lantai');
+        $kamar->nama_kamar = $request->get('nama_kamar');
+        $kamar->jumlah_maks_pasien = $request->get('jumlah_maks_pasien');
         $kamar->save();
 
-        Session::flash('message', 'Kamar Berhasil Disimpan');
+        Session::flash('message', 'Kamar berhasil disimpan.');
 
         return redirect()->route('bangunan.index');
     }

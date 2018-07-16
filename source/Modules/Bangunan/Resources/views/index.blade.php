@@ -12,11 +12,12 @@
     </div>
     <div class="col-md-12">
         <div class="row">
-            <div class="card card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahLantai">Tambah Lantai Baru</button>
-                        <a href="{{ route('kamar.create') }}" class="btn btn-outline-primary">Tambah Kamar Baru</a>
+            <div class="col-md-12">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahLantai">Tambah Lantai Baru</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,6 +33,8 @@
                             <h5>
                                 Lantai {{ $lantai->nomor_lantai }}
                                 @if(Auth::user()->jabatan_id == 1)
+                                    <button type="button" class="btn btn-sm btn-outline-primary" style="margin-left: 15px" data-toggle="modal" data-nomor="{{ $lantai->nomor_lantai }}" data-target="#modalTambahKamar">Tambah Kamar Baru</button>
+
                                     <div class="row float-right">
                                         <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-lantai="{{ $lantai->id }}" data-nomor="{{ $lantai->nomor_lantai }}" data-target="#modalUbahLantai">Ubah</button>
 
@@ -143,6 +146,40 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalTambahKamar" tabindex="-1" role="dialog" aria-labelledby="modalTambahKamar" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahKamar">Tambah Kamar Baru</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{ Form::open(['route' => 'kamar.store']) }}
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        {{ Form::label('nomor_lantai', 'Nomor Lantai', ['class' => 'control-label']) }}
+                        {{ Form::text('nomor_lantai', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('nama_kamar', 'Nama Kamar', ['class' => 'control-label']) }}
+                        {{ Form::text('nama_kamar', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('jumlah_maks_pasien', 'Jumlah Maksimal Pasien', ['class' => 'control-label']) }}
+                        {{ Form::number('jumlah_maks_pasien', null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Tambahkan Kamar', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
@@ -151,6 +188,12 @@
             $('#modalUbahLantai').on("show.bs.modal", function (e) {
                 $("#modalUbahLantai").find('#id_lantai').val($(e.relatedTarget).data('id-lantai'));
                 $("#modalUbahLantai").find('#nomor_lantai').val($(e.relatedTarget).data('nomor'));
+            });
+
+            $('#modalTambahKamar').on("show.bs.modal", function (e) {
+                $("#modalTambahKamar").find('#nomor_lantai').val($(e.relatedTarget).data('nomor'));
+                $("#modalTambahKamar").find('#nama_kamar').val('');
+                $("#modalTambahKamar").find('#jumlah_maks_pasien').val('');
             });
         });
     </script>
