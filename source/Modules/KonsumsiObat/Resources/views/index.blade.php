@@ -82,7 +82,7 @@
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    OK
+                                    <i class="fa fa-check"></i>
                                 @endif
                             </td>
                             <td class="text-center">
@@ -91,7 +91,7 @@
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    OK
+                                    <i class="fa fa-check"></i>
                                 @endif
                             </td>
                             <td class="text-center">
@@ -100,7 +100,7 @@
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    OK
+                                    <i class="fa fa-check"></i>
                                 @endif
                             </td>
                             <td class="text-center">
@@ -109,7 +109,7 @@
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    OK
+                                    <i class="fa fa-check"></i>
                                 @endif
                             </td>
                             <td class="text-center">
