@@ -132,30 +132,24 @@ class KonsumsiObatController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function showKonsumsiObat($id_ranap, $id_konsumsi)
-    {
-        return view('konsumsiobat::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editKonsumsiObat($id_ranap, $id_konsumsi)
-    {
-        return view('konsumsiobat::edit');
-    }
-
-    /**
      * Update the specified resource in storage.
      * @param  Request $request
      * @return Response
      */
-    public function updateKonsumsiObat(Request $request, $id_ranap)
+    public function ubahKeteranganObat(Request $request)
     {
+        $this->validate($request, [
+            'id_konsumsi_obat' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        $konsumsi_obat = KonsumsiObat::findorFail($request->get('id_konsumsi_obat'));
+        $konsumsi_obat->keterangan = $request->get('keterangan');
+        $konsumsi_obat->save();
+
+        Session::flash('message', 'Keterangan berhasil disimpan.');
+
+        return redirect()->route('konsumsi_obat.index', $request->get('id_ranap'));
     }
 
     /**

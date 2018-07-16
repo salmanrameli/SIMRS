@@ -117,7 +117,7 @@
                                     {{ ucfirst($obat->keterangan) }}
                                 @else
                                     @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-default">+</button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-target="#modalTambahKeteranganObat" style="width: 100%"><i class="fa fa-plus"></i></button>
                                         @else
                                         -
                                     @endif
@@ -178,6 +178,42 @@
 
                         <div hidden>
                             {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTambahKeteranganObat" tabindex="-1" role="dialog" aria-labelledby="modalTambahKeteranganObat" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahKeteranganObat">Tambah Keterangan Konsumsi Obat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{ Form::open(['method' => 'PATCH', 'route' => 'konsumsi_obat.update_keterangan']) }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-group" hidden>
+                            <label for="id_ranap" class="control-label">ID Ranap:</label>
+                            <input type="text" name="id_ranap" id="id_ranap" value="{{ $ranap->id }}">
+                        </div>
+
+                        <div class="form-group" hidden>
+                            <label for="id_konsumsi_obat" class="control-label">ID Konsumsi Obat:</label>
+                            <input type="text" name="id_konsumsi_obat" id="id_konsumsi_obat">
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('keterangan', 'Keterangan', ['class' => 'control-label']) }}
+                            {{ Form::text('keterangan', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
                 </div>
@@ -351,6 +387,11 @@
         $(function() {
             $('#modalTambahKonsumsiObat').on("show.bs.modal", function (e) {
                 $("#modalTambahKonsumsiObat").find('#id_hari_perawatan').val($(e.relatedTarget).data('id-hari-perawatan'));
+            });
+
+            $('#modalTambahKeteranganObat').on("show.bs.modal", function (e) {
+                $("#modalTambahKeteranganObat").find('#id_konsumsi_obat').val($(e.relatedTarget).data('id-keterangan'));
+                $("#modalTambahKeteranganObat").find('#keterangan').val($(e.relatedTarget).data('keterangan'));
             });
 
             $('#modalKonsumsiPagi').on("show.bs.modal", function (e) {
