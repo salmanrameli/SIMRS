@@ -16,22 +16,26 @@
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
-                        <tr>
-                            <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Umur</th>
-                            <td id="umur" style="padding-left: 10px"></td>
-                        </tr>
-                        <tr>
-                            <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                        </tr>
+                            <tr>
+                                <th>Jenis Kelamin</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Umur</th>
+                                <td id="umur" style="padding-left: 10px"></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Masuk</th>
+                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Diagnosa Awal</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                            </tr>
+                            <tr>
+                                <th>DPJP</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($ranap->user->nama) }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <br>
