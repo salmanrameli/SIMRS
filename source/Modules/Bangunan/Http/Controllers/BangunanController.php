@@ -134,22 +134,22 @@ class BangunanController extends Controller
             ->with('kamar', $kamar);
     }
 
-    public function updateKamar(Request $request, $id)
+    public function updateKamar(Request $request)
     {
-        $kamar = Kamar::findorFail($id);
-
         $this->validate($request, [
+            'id_kamar' => 'required',
             'nama_kamar' => 'required',
             'jumlah_maks_pasien' => 'required'
         ]);
 
-        $input = $request->all();
+        $kamar = Kamar::findorFail($request->get('id_kamar'));
+        $kamar->nama_kamar = $request->get('nama_kamar');
+        $kamar->jumlah_maks_pasien = $request->get('jumlah_maks_pasien');
+        $kamar->save();
 
-        $kamar->fill($input)->save();
+        Session::flash('message', 'Rincian kamar berhasil diubah.');
 
-        Session::flash('message', 'Detail kamar berhasil diubah');
-
-        return redirect()->route('kamar.show', $id);
+        return redirect()->route('bangunan.index');
     }
 
     public function deleteKamar($id)

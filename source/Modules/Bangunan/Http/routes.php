@@ -47,7 +47,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Contr
         'uses' => 'BangunanController@editKamar'
     ]);
 
-    Route::patch('/bangunan/lantai/kamar/{kamar}', [
+    Route::patch('/bangunan/lantai/kamar/simpan_perubahan_kamar', [
         'as' => 'kamar.update',
         'uses' => 'BangunanController@updateKamar'
     ]);
