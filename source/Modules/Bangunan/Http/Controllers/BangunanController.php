@@ -87,11 +87,6 @@ class BangunanController extends Controller
         return redirect()->route('bangunan.index');
     }
 
-    public function getAllKamar()
-    {
-
-    }
-
     public function addNewKamar()
     {
         $lantai = Lantai::pluck('nomor_lantai');
@@ -116,22 +111,6 @@ class BangunanController extends Controller
         Session::flash('message', 'Kamar berhasil disimpan.');
 
         return redirect()->route('bangunan.index');
-    }
-
-    public function showDetailKamar($id)
-    {
-        $kamar = Kamar::findorFail($id);
-
-        return view('bangunan::kamar.show')
-            ->with('kamar', $kamar);
-    }
-
-    public function editKamar($id)
-    {
-        $kamar = Kamar::findorFail($id);
-
-        return view('bangunan::kamar.edit')
-            ->with('kamar', $kamar);
     }
 
     public function updateKamar(Request $request)

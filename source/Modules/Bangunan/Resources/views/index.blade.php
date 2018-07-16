@@ -69,15 +69,7 @@
                                                         </tbody>
                                                     </table>
                                                     @if(Auth::user()->jabatan_id == 1)
-                                                        <div class="btn-group">
-                                                            <a href="{{ route('kamar.show', $kamar->id) }}" class="btn btn-outline-info">Detail...</a>
-                                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <span class="sr-only">Toggle Dropdown</span>
-                                                            </button>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <button class="dropdown-item" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar">Ubah</button>
-                                                            </div>
-                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar">Ubah</button>
                                                         @endif
                                                 </div>
                                             </div>

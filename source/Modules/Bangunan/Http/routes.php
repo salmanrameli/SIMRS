@@ -37,11 +37,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Bangunan\Http\Contr
         'uses' => 'BangunanController@saveKamar'
     ]);
 
-    Route::get('/bangunan/lantai/kamar/{kamar}', [
-        'as' => 'kamar.show',
-        'uses' => 'BangunanController@showDetailKamar'
-    ]);
-
     Route::get('/bangunan/lantai/kamar/{kamar}/edit', [
         'as' => 'kamar.edit',
         'uses' => 'BangunanController@editKamar'
