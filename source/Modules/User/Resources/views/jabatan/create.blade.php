@@ -15,7 +15,7 @@
                     {{ Form::text('nama', null, ['class' => 'form-control']) }}
                 </div>
 
-                {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success float-right']) }}
 
                 {{ Form::close() }}
             </div>

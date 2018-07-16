@@ -92,7 +92,7 @@
 
             <br>
 
-            {{ Form::submit('Simpan Pasien', ['class' => 'btn btn-outline-success']) }}
+            {{ Form::submit('Simpan Pasien', ['class' => 'btn btn-outline-success float-right']) }}
             {{ Form::close() }}
         </div>
     </div>

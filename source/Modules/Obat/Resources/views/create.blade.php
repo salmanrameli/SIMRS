@@ -25,7 +25,7 @@
             {{ Form::select('jenis', ['injeksi' => 'Injeksi', 'oral' => 'Oral', 'kompress' => 'Kompress', 'suppositoria' => 'Suppositoria'], null, ['class' => 'form-control']) }}
         </div>
         <br>
-        {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+        {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success float-right']) }}
 
         {{ Form::close() }}
     </div>

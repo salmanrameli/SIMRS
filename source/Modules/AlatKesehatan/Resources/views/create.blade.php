@@ -20,7 +20,7 @@
             {{ Form::text('harga', null, ['class' => 'form-control']) }}
         </div>
         <br>
-        {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+        {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success float-right']) }}
 
         {{ Form::close() }}
     </div>

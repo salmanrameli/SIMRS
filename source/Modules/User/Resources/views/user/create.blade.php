@@ -41,7 +41,7 @@
 
     <br>
 
-    {{ Form::submit('Buat Akun', ['class' => 'btn btn-outline-success']) }}
+    {{ Form::submit('Buat Akun', ['class' => 'btn btn-outline-success float-right']) }}
 
     {{ Form::close() }}
 </div>

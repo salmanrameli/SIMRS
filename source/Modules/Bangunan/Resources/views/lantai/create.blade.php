@@ -15,7 +15,7 @@
                     {{ Form::text('nomor_lantai', null, ['class' => 'form-control']) }}
                 </div>
 
-                {{ Form::submit('Tambahkan Lantai', ['class' => 'btn btn-outline-success']) }}
+                {{ Form::submit('Tambahkan Lantai', ['class' => 'btn btn-outline-success float-right']) }}
 
                 {{ Form::close() }}
             </div>

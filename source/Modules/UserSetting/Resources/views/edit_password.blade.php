@@ -55,7 +55,7 @@
                 </div>
 
                 <br>
-                <button type="submit" class="btn btn-outline-success">Simpan Perubahan</button>
+                <button type="submit" class="btn btn-outline-success float-right">Simpan Perubahan</button>
 
             </form>
         </div>

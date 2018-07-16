@@ -48,7 +48,7 @@
                     {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
                 </div>
 
-                {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success float-right']) }}
 
                 {{ Form::close() }}
             </div>

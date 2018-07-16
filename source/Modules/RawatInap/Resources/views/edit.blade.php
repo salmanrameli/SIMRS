@@ -82,7 +82,7 @@
 
                     <br>
 
-                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success float-right']) }}
 
                     {{ Form::close() }}
                 </div>
