@@ -49,11 +49,11 @@ class JabatanController extends Controller
             'nama' => 'required|unique:jabatan'
         ]);
 
-        $input = $request->all();
+        $jabatan = new Jabatan();
+        $jabatan->nama = $request->get('nama');
+        $jabatan->save();
 
-        Jabatan::create($input);
-
-        Session::flash('message', 'Jabatan berhasil disimpan');
+        Session::flash('message', 'Jabatan berhasil disimpan.');
 
         return redirect()->route('user.index');
     }

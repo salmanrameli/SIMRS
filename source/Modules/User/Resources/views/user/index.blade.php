@@ -85,7 +85,8 @@
                     <div class="tab-pane fade" id="nav-jabatan" role="tabpanel" aria-labelledby="nav-jabatan-tab">
                         <div class="card card-body">
                             <div class="col-md-12">
-                                <a class="btn btn-outline-primary" href="{{ route('jabatan.create') }}">Daftarkan Jabatan Baru</a>
+                                {{--<a class="btn btn-outline-primary" href="{{ route('jabatan.create') }}">Daftarkan Jabatan Baru</a>--}}
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJabatan">Daftarkan Jabatan Baru</button>
                                 <br><br>
                                 <table class="table">
                                     <thead>
@@ -112,6 +113,31 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalTambahJabatan" tabindex="-1" role="dialog" aria-labelledby="modalTambahJabatan" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahJabatan">Buat Jabatan Baru</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'POST', 'route' => ['jabatan.store']]) }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        {{ Form::label('nama', 'Nama Jabatan', ['class' => 'control-label']) }}
+                        {!! Form::text('nama', null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
+
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
