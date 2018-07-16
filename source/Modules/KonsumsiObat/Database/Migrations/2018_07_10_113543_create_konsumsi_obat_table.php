@@ -20,6 +20,7 @@ class CreateKonsumsiObatTable extends Migration
             $table->integer('id_obat');
             $table->integer('dosis');
             $table->string('id_petugas');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

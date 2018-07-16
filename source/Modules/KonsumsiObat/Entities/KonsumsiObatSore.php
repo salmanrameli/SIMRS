@@ -9,7 +9,7 @@ class KonsumsiObatSore extends Model
     protected $table = 'konsumsi_obat_sore';
 
     protected $fillable = [
-        'id_konsumsi_obat', 'jumlah', 'id_petugas'
+        'id_konsumsi_obat', 'sudah', 'id_petugas'
     ];
 
     public function konsumsi_obat()

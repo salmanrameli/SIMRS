@@ -10,7 +10,7 @@ class KonsumsiObat extends Model
     protected $table = 'konsumsi_obat';
 
     protected $fillable = [
-        'id_ranap', 'id_hari_perawatan', 'id_obat', 'dosis', 'id_petugas'
+        'id_ranap', 'id_hari_perawatan', 'id_obat', 'dosis', 'id_petugas', 'keterangan'
     ];
 
     public function hari_perawatan()

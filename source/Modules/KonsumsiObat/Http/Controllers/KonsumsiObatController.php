@@ -63,17 +63,13 @@ class KonsumsiObatController extends Controller
 
     public function storeRincianKonsumsiObat(Request $request)
     {
-        $this->validate($request, [
-            'jumlah' => 'required'
-        ]);
-
         $waktu = $request->waktu;
 
         if($waktu == 'pagi')
         {
             $obat = new KonsumsiObatPagi();
             $obat->id_konsumsi_obat = $request->get('id_obat');
-            $obat->jumlah = $request->get('jumlah');
+            $obat->sudah = true;
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
@@ -81,7 +77,7 @@ class KonsumsiObatController extends Controller
         {
             $obat = new KonsumsiObatSiang();
             $obat->id_konsumsi_obat = $request->get('id_obat');
-            $obat->jumlah = $request->get('jumlah');
+            $obat->sudah = true;
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
@@ -89,7 +85,7 @@ class KonsumsiObatController extends Controller
         {
             $obat = new KonsumsiObatSore();
             $obat->id_konsumsi_obat = $request->get('id_obat');
-            $obat->jumlah = $request->get('jumlah');
+            $obat->sudah = true;
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
@@ -97,7 +93,7 @@ class KonsumsiObatController extends Controller
         {
             $obat = new KonsumsiObatMalam();
             $obat->id_konsumsi_obat = $request->get('id_obat');
-            $obat->jumlah = $request->get('jumlah');
+            $obat->sudah = true;
             $obat->id_petugas = Auth::id();
             $obat->save();
         }
@@ -126,6 +122,7 @@ class KonsumsiObatController extends Controller
         $konsumsi_obat->id_hari_perawatan = $request->get('id_hari_perawatan');
         $konsumsi_obat->id_obat = $request->get('id_obat');
         $konsumsi_obat->dosis = $request->get('dosis');
+        $konsumsi_obat->keterangan = $request->get('keterangan');
         $konsumsi_obat->id_petugas = Auth::id();
         $konsumsi_obat->save();
 

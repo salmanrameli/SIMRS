@@ -16,7 +16,7 @@ class CreateKonsumsiObatSiangTable extends Migration
         Schema::create('konsumsi_obat_siang', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_konsumsi_obat');
-            $table->integer('jumlah');
+            $table->boolean('sudah');
             $table->string('id_petugas');
             $table->timestamps();
         });

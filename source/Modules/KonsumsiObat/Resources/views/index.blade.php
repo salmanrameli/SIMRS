@@ -11,27 +11,31 @@
                 @if(Auth::user()->jabatan_id == 3)
                 <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Catatan Hari Perawatan Baru</button>
                 @endif
-                <h4>Konsumsi Obat: {{ $ranap->pasien->nama }}</h4>
+                <h4>Terapi / Penatalaksanaan Pasien: {{ $ranap->pasien->nama }}</h4>
                 <hr>
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
-                        <tr>
-                            <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Umur</th>
-                            <td id="umur" style="padding-left: 10px"></td>
-                        </tr>
-                        <tr>
-                            <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                        </tr>
+                            <tr>
+                                <th>Jenis Kelamin</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Umur</th>
+                                <td id="umur" style="padding-left: 10px"></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Masuk</th>
+                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Diagnosa Awal</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                            </tr>
+                            <tr>
+                                <th>DPJP</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($ranap->user->nama) }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <br>
@@ -41,24 +45,26 @@
             <table class="table table-bordered table-sm">
                 <tbody>
                 @foreach($haris as $hari)
-                    <tr class="table-info">
-                        <th colspan="2" class="text-center">Tanggal</th>
-                        <td colspan="4" class="text-center">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
+                    <tr>
+                        <th colspan="3" class="text-center table-info">Tanggal</th>
+                        <td colspan="4" class="text-center table-info">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
+                        <th rowspan="5" class="align-middle text-center">Keterangan</th>
                     </tr>
                     <tr>
-                        <th colspan="2" class="text-center">Hari Perawatan</th>
+                        <th colspan="3" class="text-center">Hari Perawatan</th>
                         <td colspan="4" class="text-center">{{ $hari->hari_perawatan }}</td>
                     </tr>
                     <tr>
-                        <th colspan="2" class="text-center">Tinggi Badan</th>
+                        <th colspan="3" class="text-center">Tinggi Badan</th>
                         <td colspan="4" class="text-center">{{ $hari->tinggi_badan }} cm</td>
                     </tr>
                     <tr>
-                        <th colspan="2" class="text-center">Berat Badan</th>
+                        <th colspan="3" class="text-center">Berat Badan</th>
                         <td colspan="4" class="text-center">{{ $hari->berat_badan }} kg</td>
                     </tr>
                     <tr>
                         <th class="text-center">Nama Obat</th>
+                        <th class="text-center">Pemberian</th>
                         <th class="text-center">Dosis</th>
                         <th class="text-center">Pagi</th>
                         <th class="text-center">Siang</th>
@@ -67,52 +73,64 @@
                     </tr>
                     @foreach($hari->konsumsi_obat as $obat)
                         <tr>
-                            <td class="text-center">{{ $obat->obat->nama }}</td>
-                            <td class="text-center">{{ $obat->dosis }}</td>
+                            <td class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
+                            <td class="text-center">{{ ucfirst($obat->obat->tipe_obat) }}</td>
+                            <td class="text-center">{{ $obat->dosis }} mg</td>
                             <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_pagi->jumlah))
+                                @if(empty($obat->konsumsi_obat_pagi->sudah))
                                     @if(Auth::user()->jabatan_id == 3)
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    {{ $obat->konsumsi_obat_pagi->jumlah }}
+                                    OK
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_siang->jumlah))
+                                @if(empty($obat->konsumsi_obat_siang->sudah))
                                     @if(Auth::user()->jabatan_id == 3)
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    {{ $obat->konsumsi_obat_siang->jumlah }}
+                                    OK
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_sore->jumlah))
+                                @if(empty($obat->konsumsi_obat_sore->sudah))
                                     @if(Auth::user()->jabatan_id == 3)
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    {{ $obat->konsumsi_obat_sore->jumlah }}
+                                    OK
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_malam->jumlah))
+                                @if(empty($obat->konsumsi_obat_malam->sudah))
                                     @if(Auth::user()->jabatan_id == 3)
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
                                     @endif
                                 @else
-                                    {{ $obat->konsumsi_obat_malam->jumlah }}
+                                    OK
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if($obat->keterangan)
+                                    {{ ucfirst($obat->keterangan) }}
+                                @else
+                                    @if(Auth::user()->jabatan_id == 3)
+                                        <button type="button" class="btn btn-default">+</button>
+                                        @else
+                                        -
+                                    @endif
                                 @endif
                             </td>
                         </tr>
                     @endforeach
                     <tr>
                         <td><button type="button" class="btn btn-default" style="width: 100%" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
-                        <td colspan="5"></td>
+                        <td colspan="7"></td>
                     </tr>
                     <tr>
-                        <td colspan="6"><br></td>
+                        <td colspan="8"><br></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -207,6 +225,11 @@
                             {{ Form::label('dosis', 'Dosis', ['class' => 'control-label']) }}
                             {{ Form::number('dosis', null, ['class' => 'form-control']) }}
                         </div>
+
+                        <div class="form-group">
+                            {{ Form::label('keterangan', 'Keterangan', ['class' => 'control-label']) }}
+                            {{ Form::text('keterangan', null, ['class' => 'form-control']) }}
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -218,14 +241,14 @@
     </div>
 
     <div class="modal fade" id="modalKonsumsiPagi" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiPagi">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Rincian Konsumsi Obat Pagi</h4>
+                    <h4 class="modal-title">Terima konsumsi obat pagi pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
-                <div class="modal-body">
+                <div class="modal-body" hidden>
                     <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
                     <input type="text" name="id_ranap" id="id_ranap" value="{{ $ranap->id }}" hidden>
 
@@ -234,12 +257,9 @@
 
                     <label for="waktu" class="control-label" hidden>Waktu:</label>
                     <input type="text" name="waktu" id="waktu" value="pagi" hidden>
-
-                    <label for="jumlah" class="control-label">Jumlah:</label>
-                    <input type="number" name="jumlah" id="jumlah" class="form-control">
                 </div>
                 <div class="modal-footer">
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                    {{ Form::submit('Ya', ['class' => 'btn btn-outline-success']) }}
                 </div>
                 {{ Form::close() }}
             </div>
@@ -247,14 +267,14 @@
     </div>
 
     <div class="modal fade" id="modalKonsumsiSiang" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiSiang">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Rincian Konsumsi Obat Siang</h4>
+                    <h4 class="modal-title">Terima konsumsi obat siang pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
-                <div class="modal-body">
+                <div class="modal-body" hidden>
                     <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
                     <input type="text" name="id_ranap" id="id_ranap" value="{{ $ranap->id }}" hidden>
 
@@ -263,12 +283,9 @@
 
                     <label for="waktu" class="control-label" hidden>Waktu:</label>
                     <input type="text" name="waktu" id="waktu" value="siang" hidden>
-
-                    <label for="jumlah" class="control-label">Jumlah:</label>
-                    <input type="number" name="jumlah" id="jumlah" class="form-control">
                 </div>
                 <div class="modal-footer">
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                    {{ Form::submit('Ya', ['class' => 'btn btn-outline-success']) }}
                 </div>
                 {{ Form::close() }}
             </div>
@@ -276,14 +293,14 @@
     </div>
 
     <div class="modal fade" id="modalKonsumsiSore" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiSore">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Rincian Konsumsi Obat Sore</h4>
+                    <h4 class="modal-title">Terima konsumsi obat sore pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
-                <div class="modal-body">
+                <div class="modal-body" hidden>
                     <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
                     <input type="text" name="id_ranap" id="id_ranap" value="{{ $ranap->id }}" hidden>
 
@@ -292,12 +309,9 @@
 
                     <label for="waktu" class="control-label" hidden>Waktu:</label>
                     <input type="text" name="waktu" id="waktu" value="sore" hidden>
-
-                    <label for="jumlah" class="control-label">Jumlah:</label>
-                    <input type="number" name="jumlah" id="jumlah" class="form-control">
                 </div>
                 <div class="modal-footer">
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                    {{ Form::submit('Ya', ['class' => 'btn btn-outline-success']) }}
                 </div>
                 {{ Form::close() }}
             </div>
@@ -305,14 +319,14 @@
     </div>
 
     <div class="modal fade" id="modalKonsumsiMalam" tabindex="-1" role="dialog" aria-labelledby="modalKonsumsiMalam">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Rincian Konsumsi Obat Malam</h4>
+                    <h4 class="modal-title">Terima konsumsi obat malam pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
-                <div class="modal-body">
+                <div class="modal-body" hidden>
                     <label for="id_ranap" class="control-label" hidden>ID Ranap:</label>
                     <input type="text" name="id_ranap" id="id_ranap" value="{{ $ranap->id }}" hidden>
 
@@ -321,12 +335,9 @@
 
                     <label for="waktu" class="control-label" hidden>Waktu:</label>
                     <input type="text" name="waktu" id="waktu" value="malam" hidden>
-
-                    <label for="jumlah" class="control-label">Jumlah:</label>
-                    <input type="number" name="jumlah" id="jumlah" class="form-control">
                 </div>
                 <div class="modal-footer">
-                    {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
+                    {{ Form::submit('Ya', ['class' => 'btn btn-outline-success']) }}
                 </div>
                 {{ Form::close() }}
             </div>
