@@ -11,16 +11,18 @@
     </div>
     <div class="col-md-12">
         <div class="row">
-            <div class="card card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <form class="form-inline" action="{{ route('user.cari') }}" method="get">
-                            <label for="cari" class="control-label">Cari Staff: </label>
-                            &nbsp;&nbsp;
-                            <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
-                            &nbsp;
-                            <button type="submit" class="btn btn-primary">Cari</button>
-                        </form>
+            <div class="col-md-12">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-inline" action="{{ route('user.cari') }}" method="get">
+                                <label for="cari" class="control-label">Cari Staff: </label>
+                                &nbsp;&nbsp;
+                                <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary">Cari</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
