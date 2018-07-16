@@ -59,43 +59,21 @@ class JabatanController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-        return view('user::jabatan.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function editJabatan($id)
-    {
-        $jabatan = Jabatan::findorFail($id);
-
-        return view('user::jabatan.edit')->with('jabatan', $jabatan);
-    }
-
-    /**
      * Update the specified resource in storage.
      * @param  Request $request
      * @return Response
      */
-    public function updateJabatan(Request $request, $id)
+    public function updateJabatan(Request $request)
     {
-        $jabatan = Jabatan::findorFail($id);
-
         $this->validate($request, [
-            'nama' => 'required|unique:jabatan'
+            'nama_jabatan' => 'required|unique:jabatan'
         ]);
 
-        $input = $request->all();
+        $jabatan = Jabatan::findorFail($request->get('id'));
+        $jabatan->nama = $request->get('nama_jabatan');
+        $jabatan->save();
 
-        $jabatan->fill($input)->save();
-
-        Session::flash('message', 'Perubahan rincian jabatan berhasil disimpan');
+        Session::flash('message', 'Perubahan rincian jabatan berhasil disimpan.');
 
         return redirect()->route('user.index');
     }

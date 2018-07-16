@@ -85,7 +85,6 @@
                     <div class="tab-pane fade" id="nav-jabatan" role="tabpanel" aria-labelledby="nav-jabatan-tab">
                         <div class="card card-body">
                             <div class="col-md-12">
-                                {{--<a class="btn btn-outline-primary" href="{{ route('jabatan.create') }}">Daftarkan Jabatan Baru</a>--}}
                                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJabatan">Daftarkan Jabatan Baru</button>
                                 <br><br>
                                 <table class="table">
@@ -100,7 +99,7 @@
                                             <tr>
                                                 <td>{{ ucfirst($jabatan->nama) }}</td>
                                                 <td>
-                                                    <a class="btn btn-warning" href="{{ route('jabatan.edit', ['id' => $jabatan->id]) }}">Ubah</a>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-id-jabatan="{{ $jabatan->id }}" data-nama-jabatan="{{ $jabatan->nama }}" data-target="#modalUbahJabatan">Ubah</button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -133,7 +132,34 @@
                     {{ Form::submit('Simpan', ['class' => 'btn btn-outline-success']) }}
                 </div>
                 {{ Form::close() }}
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="modalUbahJabatan" tabindex="-1" role="dialog" aria-labelledby="modalUbahJabatan" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUbahJabatan">Ubah Rincian Jabatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                {{ Form::open(['method' => 'PATCH', 'route' => ['jabatan.update']]) }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        {{ Form::label('id_jabatan', 'ID Jabatan', ['class' => 'control-label']) }}
+                        {!! Form::text('id_jabatan', null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('nama_jabatan', 'Nama Jabatan', ['class' => 'control-label']) }}
+                        {!! Form::text('nama_jabatan', null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
+                </div>
+                {{ Form::close() }}
             </div>
         </div>
     </div>
@@ -141,5 +167,13 @@
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('#modalUbahJabatan').on("shown.bs.modal", function (e) {
+                $("#modalUbahJabatan").find('#id_jabatan').val($(e.relatedTarget).data('id-jabatan'));
+                $("#modalUbahJabatan").find('#nama_jabatan').val($(e.relatedTarget).data('nama-jabatan'));
+            });
+        });
+    </script>
     @include('layouttemplate::attributes.user')
 @endsection

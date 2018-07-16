@@ -52,12 +52,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
         'uses' => 'JabatanController@saveNewJabatan'
     ]);
 
-    Route::get('/jabatan/{id}/edit', [
-        'as' => 'jabatan.edit',
-        'uses' => 'JabatanController@editJabatan'
-    ]);
-
-    Route::patch('/jabatan/{id}', [
+    Route::patch('/jabatan/simpan_perubahan_jabatan', [
         'as' => 'jabatan.update',
         'uses' => 'JabatanController@updateJabatan'
     ]);
