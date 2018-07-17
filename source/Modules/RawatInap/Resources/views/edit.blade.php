@@ -37,7 +37,7 @@
                         {{ Form::label('id_petugas_penerima', 'Petugas Penerima', ['class' => 'control-label']) }}
                         <select class="form-control" name="id_petugas_penerima">
                             @foreach($petugass as $petugas)
-                                <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}" {{ $ranap->id_petugas_penerima == $petugas->id ? 'selected' : '' }}>{{ $petugas->nama }}</option>
+                                <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}" {{ $ranap->id_petugas_penerima == $petugas->id ? 'selected' : '' }}>{{ ucwords($petugas->nama) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                         {{ Form::label('id_dokter_pj', 'Dokter Penanggung Jawab', ['class' => 'control-label']) }}
                         <select class="form-control" name="id_dokter_pj">
                             @foreach($dokters as $dokter)
-                                <option value="{{ $dokter->id }}" id="id_dokter_pj" name="{{ $dokter->id }}" {{ $ranap->id_dokter_pj == $dokter->id ? 'selected' : '' }}>{{ $dokter->nama }}</option>
+                                <option value="{{ $dokter->id }}" id="id_dokter_pj" name="{{ $dokter->id }}" {{ $ranap->id_dokter_pj == $dokter->id ? 'selected' : '' }}>{{ ucwords($dokter->nama) }}</option>
                             @endforeach
                         </select>
                     </div>
