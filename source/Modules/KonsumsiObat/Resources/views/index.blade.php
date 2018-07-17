@@ -322,7 +322,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Terima konsumsi obat pagi pasien?</h4>
+                    <h4 class="modal-title">Konfirmasi konsumsi obat pagi pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
@@ -348,7 +348,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Terima konsumsi obat siang pasien?</h4>
+                    <h4 class="modal-title">Konfirmasi konsumsi obat siang pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
@@ -374,7 +374,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Terima konsumsi obat sore pasien?</h4>
+                    <h4 class="modal-title">Konfirmasi konsumsi obat sore pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
@@ -400,7 +400,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Terima konsumsi obat malam pasien?</h4>
+                    <h4 class="modal-title">Konfirmasi konsumsi obat malam pasien?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 {{ Form::open(['method' => 'POST', 'route' => 'rincian_konsumsi_obat.store']) }}
