@@ -27,7 +27,7 @@
                             <tbody>
                             @foreach($obats as $obat)
                                 <tr>
-                                    <td>{{ ucfirst($obat->nama) }}</td>
+                                    <td>{{ ucwords($obat->nama) }}</td>
                                     <td>{{ ucfirst($obat->tipe_obat) }}</td>
                                     <td>
                                         {{ $obat->harga }}

@@ -11,14 +11,14 @@
                 @if(Auth::user()->jabatan_id == 3)
                     <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
                 @endif
-                <h4>Terapi / Penatalaksanaan Pasien: {{ $ranap->pasien->nama }}</h4>
+                <h4>Terapi / Penatalaksanaan Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
                 <hr>
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
                             <tr>
                                 <th>Jenis Kelamin</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                             </tr>
                             <tr>
                                 <th>Umur</th>
@@ -34,7 +34,7 @@
                             </tr>
                             <tr>
                                 <th>DPJP</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->user->nama) }}</td>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -75,7 +75,7 @@
                         <tr>
                             <td class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
                             <td class="text-center">{{ ucfirst($obat->obat->tipe_obat) }}</td>
-                            <td class="text-center">{{ $obat->dosis }} mg</td>
+                            <td class="text-center">{{ $obat->dosis }}</td>
                             <td class="text-center">
                                 @if(empty($obat->konsumsi_obat_pagi->sudah))
                                     @if(Auth::user()->jabatan_id == 3)
@@ -271,7 +271,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Konsumsi Obat Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Konsumsi Obat Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -294,7 +294,7 @@
                             {{ Form::label('id_obat', 'Obat', ['class' => 'control-label']) }}
                             <select class="form-control" name="id_obat">
                                 @foreach($daftars as $obat)
-                                    <option value="{{ $obat->id }}" id="id_obat" name="{{ $obat->id }}">{{ ucfirst($obat->nama) }}</option>
+                                    <option value="{{ $obat->id }}" id="id_obat" name="{{ $obat->id }}">{{ ucwords($obat->nama) }}</option>
                                 @endforeach
                             </select>
                         </div>

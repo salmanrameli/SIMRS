@@ -11,14 +11,14 @@
                 @if(Auth::user()->jabatan_id == 3)
                     <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
                 @endif
-                <h4>Catatan Harian Perawatan: {{ $ranap->pasien->nama }}</h4>
+                <h4>Catatan Harian Perawatan: {{ ucwords($ranap->pasien->nama) }}</h4>
                 <hr>
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
                             <tr>
                                 <th>Jenis Kelamin</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                             </tr>
                             <tr>
                                 <th>Umur</th>
@@ -34,7 +34,7 @@
                             </tr>
                             <tr>
                                 <th>DPJP</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->user->nama) }}</td>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -59,7 +59,7 @@
                                 @else
                                     <b>Diubah tanggal: {{ date("d F Y", strtotime($catatan->updated_at)) }}</b>
                                 @endif
-                                <br><b>Ditulis oleh: {{ $catatan->user->nama }}</b>
+                                <br><b>Ditulis oleh: {{ ucwords($catatan->user->nama) }}</b>
                                 <hr>
                                 <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                                 <hr>
@@ -79,7 +79,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Catatan Harian Perawatan Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
@@ -116,7 +116,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalUbahCatatanHarian">Ubah Rincian Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="modalUbahCatatanHarian">Ubah Rincian Catatan Harian Perawatan Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 

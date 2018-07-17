@@ -35,10 +35,10 @@
                         <tbody>
                         @foreach($ranaps as $ranap)
                             <tr>
-                                <td>{{ $ranap->pasien->nama }}</td>
+                                <td>{{ ucwords($ranap->pasien->nama) }}</td>
                                 <td>{{ $ranap->nama_kamar }}</td>
-                                <td>{{ $ranap->diagnosa_awal }}</td>
-                                <td>{{ $ranap->user->nama }}</td>
+                                <td>{{ ucfirst($ranap->diagnosa_awal) }}</td>
+                                <td>{{ ucwords($ranap->user->nama) }}</td>
                                 <td>{{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
                                 <td>
                                     <div class="btn-group">

@@ -8,27 +8,31 @@
     <div class="card-body">
         <div class="col-md-12">
             <div class="page-header">
-                <h4>Perintah Dokter dan Pengobatan Pasien: {{ $perintah->perjalanan_penyakit->rawat_inap->pasien->nama }}</h4>
+                <h4>Perintah Dokter dan Pengobatan Pasien: {{ ucwords($perintah->perjalanan_penyakit->rawat_inap->pasien->nama) }}</h4>
                 <hr>
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
-                        <tr>
-                            <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perintah->perjalanan_penyakit->rawat_inap->pasien->jenkel) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Umur</th>
-                            <td id="umur" style="padding-left: 10px"></td>
-                        </tr>
-                        <tr>
-                            <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perintah->perjalanan_penyakit->rawat_inap->tanggal_masuk)) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perintah->perjalanan_penyakit->rawat_inap->diagnosa_awal) }}</td>
-                        </tr>
+                            <tr>
+                                <th>Jenis Kelamin</th>
+                                <td style="padding-left: 10px">: {{ ucwords($perintah->perjalanan_penyakit->rawat_inap->pasien->jenkel) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Umur</th>
+                                <td id="umur" style="padding-left: 10px"></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Masuk</th>
+                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perintah->perjalanan_penyakit->rawat_inap->tanggal_masuk)) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Diagnosa Awal</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($perintah->perjalanan_penyakit->rawat_inap->diagnosa_awal) }}</td>
+                            </tr>
+                            <tr>
+                                <th>DPJP</th>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <br>
@@ -56,7 +60,7 @@
                             <p>{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                         </td>
                         <td class="text-justify">
-                            <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->user->nama }}</b><br>
+                            <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b> oleh <b>{{ ucwords($perintah->user->nama) }}</b><br>
                             @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
                                 <b>Diubah tanggal: –</b>
                             @else
@@ -70,7 +74,6 @@
                                 @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
                                     <hr>
                                     <div class="btn-group float-right">
-                                        {{--<a href="{{ route('perintah_dokter_dan_pengobatan.edit', [$ranap->id, $perintah->id]) }}" class="btn btn-sm btn-warning">Ubah</a>--}}
                                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-perintah="{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!}" data-catatan="{{ $perintah->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
                                     </div>
                                 @else
@@ -90,7 +93,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalUbahCatatanPerintah">Ubah Rincian Perintah Dokter dan Pengobatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="modalUbahCatatanPerintah">Ubah Rincian Perintah Dokter dan Pengobatan Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset"><span aria-hidden="true">&times;</span></button>
                 </div>
 

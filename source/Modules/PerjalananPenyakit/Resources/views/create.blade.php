@@ -9,7 +9,7 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Buat Catatan Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h4>
+                    <h4>Buat Catatan Perjalanan Penyakit Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
                     <br>
                 </div>
 

@@ -17,22 +17,26 @@
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
-                        <tr>
-                            <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->pasien->jenkel) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Umur</th>
-                            <td id="umur" style="padding-left: 10px"></td>
-                        </tr>
-                        <tr>
-                            <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perjalanan->rawat_inap->tanggal_masuk)) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->diagnosa_awal) }}</td>
-                        </tr>
+                            <tr>
+                                <th>Jenis Kelamin</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->pasien->jenkel) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Umur</th>
+                                <td id="umur" style="padding-left: 10px"></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Masuk</th>
+                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perjalanan->rawat_inap->tanggal_masuk)) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Diagnosa Awal</th>
+                                <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->diagnosa_awal) }}</td>
+                            </tr>
+                            <tr>
+                                <th>DPJP</th>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <br>

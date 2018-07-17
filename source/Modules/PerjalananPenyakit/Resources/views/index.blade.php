@@ -13,14 +13,14 @@
                     <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatPerjalananPenyakit">Buat Catatan Perjalanan Penyakit Baru</button>
                 @endif
 
-                <h4>Perjalanan Penyakit: {{ $ranap->pasien->nama }}</h4>
+                <h4>Perjalanan Penyakit: {{ ucwords($ranap->pasien->nama) }}</h4>
                 <hr>
                 <div class="col-md-12">
                     <table>
                         <tbody class="small">
                             <tr>
                                 <th>Jenis Kelamin</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->pasien->jenkel) }}</td>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                             </tr>
                             <tr>
                                 <th>Umur</th>
@@ -36,7 +36,7 @@
                             </tr>
                             <tr>
                                 <th>DPJP</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->user->nama) }}</td>
+                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,7 +88,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalBuatPerjalananPenyakit">Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="modalBuatPerjalananPenyakit">Catatan Harian Perawatan Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
@@ -136,7 +136,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalUbahPerjalananPenyakit">Ubah Rincian Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <h5 class="modal-title" id="modalUbahPerjalananPenyakit">Ubah Rincian Perjalanan Penyakit Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset"><span aria-hidden="true">&times;</span></button>
                 </div>
 

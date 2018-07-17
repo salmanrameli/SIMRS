@@ -9,7 +9,7 @@
         <div class="card card-body">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h4>Rawat Inap Pasien: {{ $ranap->pasien->nama }}</h4>
+                    <h4>Rawat Inap Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
                     <br>
                 </div>
                 <table class="table table-striped">
@@ -24,11 +24,11 @@
                         </tr>
                         <tr>
                             <th>Dokter Pengirim</th>
-                            <td>{{ ucfirst($ranap->dokter_pengirim) }}</td>
+                            <td>{{ ucwords($ranap->dokter_pengirim) }}</td>
                         </tr>
                         <tr>
                             <th>Petugas Penerima</th>
-                            <td>{{ ucfirst($ranap->petugas->nama) }}</td>
+                            <td>{{ ucwords($ranap->petugas->nama) }}</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <th>Dokter Penanggung Jawab</th>
-                            <td>{{ ucfirst($ranap->user->nama) }}</td>
+                            <td>{{ ucwords($ranap->user->nama) }}</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Sekunder</th>

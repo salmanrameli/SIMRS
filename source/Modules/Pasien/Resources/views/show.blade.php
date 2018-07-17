@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card card-body">
             <div class="col-md-12">
-                <h3>{{ ucfirst($pasien->nama) }}</h3>
+                <h3>{{ ucwords($pasien->nama) }}</h3>
                 <br>
                 <table class="table" id="table">
                     <tbody>
@@ -18,15 +18,15 @@
                     </tr>
                     <tr>
                         <th>Jenis Kelamin</th>
-                        <td>{{ ucfirst($pasien->jenkel) }}</td>
+                        <td>{{ ucwords($pasien->jenkel) }}</td>
                     </tr>
                     <tr>
                         <th>Nama Ayah/Suami</th>
-                        <td>{{ ucfirst($pasien->nama_wali) }}</td>
+                        <td>{{ ucwords($pasien->nama_wali) }}</td>
                     </tr>
                     <tr>
                         <th>Alamat</th>
-                        <td>{{ ucfirst($pasien->alamat) }}</td>
+                        <td>{{ ucwords($pasien->alamat) }}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Lahir</th>
