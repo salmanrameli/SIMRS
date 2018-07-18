@@ -134,10 +134,10 @@
                         </tr>
                     @endforeach
                     <tr>
-                        <td><button type="button" class="btn btn-default" style="width: 100%" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
+                        <td><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
                         <td colspan="7"></td>
                     </tr>
-                    <tr>
+                    <tr style="border-left-style: hidden; border-right-style: hidden">
                         <td colspan="8"><br></td>
                     </tr>
                 @endforeach
@@ -182,10 +182,6 @@
                         <div class="form-group">
                             {{ Form::label('berat_badan', 'Berat Badan', ['class' => 'control-label']) }}
                             {{ Form::number('berat_badan', null, ['class' => 'form-control']) }}
-                        </div>
-
-                        <div hidden>
-                            {{ Form::text('id_petugas', \Illuminate\Support\Facades\Auth::id()) }}
                         </div>
                     </div>
                 </div>
