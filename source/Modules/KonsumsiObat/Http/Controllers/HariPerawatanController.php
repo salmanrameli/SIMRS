@@ -58,7 +58,7 @@ class HariPerawatanController extends Controller
 
         Session::flash('message', 'Rincian hari perawatan berhasil disimpan.');
 
-        return redirect()->route('konsumsi_obat.index', $request->get('id_ranap'));
+        return redirect()->back();
     }
 
     /**
