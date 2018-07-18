@@ -36,7 +36,7 @@ class KonsumsiObatController extends Controller
     {
         $ranap = RawatInap::where('id', '=', $id_ranap)->first();
 
-        $hari_perawatan = HariPerawatan::with('konsumsi_obat')->where('id_ranap', '=', $id_ranap)->orderBy('created_at', 'asc')->get();
+        $hari_perawatan = HariPerawatan::with('konsumsi_obat')->where('id_ranap', '=', $id_ranap)->orderBy('tanggal', 'desc')->get();
 
         $daftar_obat = Obat::all();
 
