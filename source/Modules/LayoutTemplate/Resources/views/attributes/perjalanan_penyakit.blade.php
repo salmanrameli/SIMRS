@@ -4,4 +4,5 @@
     $('#perintah_dokter').removeAttr("class", "active").attr("class", "nav-link");
     $('#catatan_harian').removeAttr("class", "active").attr("class", "nav-link");
     $('#konsumsi_obat').removeAttr("class", "active").attr("class", "nav-link");
+    $('#tensi').removeAttr("class", "active").attr("class", "nav-link");
 </script>

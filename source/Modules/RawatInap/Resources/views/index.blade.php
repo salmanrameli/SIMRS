@@ -68,8 +68,10 @@
 
                                                 <div class="dropdown-divider"></div>
                                                 <a href="{{ route('konsumsi_obat.index', $ranap->id) }}" class="dropdown-item">Konsumsi Obat</a>
-                                            @endif
 
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{{ route('tensi.index', $ranap->id) }}" class="dropdown-item">Tensi</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
