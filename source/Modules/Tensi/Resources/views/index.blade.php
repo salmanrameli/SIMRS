@@ -76,23 +76,29 @@
                             @if(empty($hari->tensi_siang->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="siang" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Siang</button>
                             @else
-                                Siang: {{ $hari->tensi_siang->tensi }} - {{ $hari->tensi_siang->tensi_bawah }}
+                                Siang: {{ $hari->tensi_siang->tensi_atas }} - {{ $hari->tensi_siang->tensi_bawah }}
                             @endif
                         </th>
                         <th class="text-center">
                             @if(empty($hari->tensi_sore->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="sore" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Sore</button>
                             @else
-                                Sore: {{ $hari->tensi_sore->tensi }} - {{ $hari->tensi_sore->tensi_bawah }}
+                                Sore: {{ $hari->tensi_sore->tensi_atas }} - {{ $hari->tensi_sore->tensi_bawah }}
                             @endif
                         </th>
                         <th class="text-center">
                             @if(empty($hari->tensi_malam->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="malam" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Malam</button>
                             @else
-                                Malam: {{ $hari->tensi_malam->tensi }} - {{ $hari->tensi_malam->tensi_bawah }}
+                                Malam: {{ $hari->tensi_malam->tensi_atas }} - {{ $hari->tensi_malam->tensi_bawah }}
                             @endif
                         </th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div id="chart_{{ $hari->id }}"></div>
+                            @linechart($hari->id.'_tensi', 'chart_'.$hari->id)
+                        </td>
                     </tr>
                     <tr style="border-left-style: hidden; border-right-style: hidden">
                         <td colspan="4"><br></td>

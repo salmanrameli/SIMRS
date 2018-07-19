@@ -27,11 +27,35 @@ class TensiController extends Controller
     {
         $ranap = RawatInap::where('id', '=', $id_ranap)->first();
 
-        $hari_perawatan = HariPerawatan::with('konsumsi_obat')->where('id_ranap', '=', $id_ranap)->orderBy('tanggal', 'desc')->get();
+        $hari_perawatans = HariPerawatan::with('konsumsi_obat')->where('id_ranap', '=', $id_ranap)->orderBy('tanggal', 'desc')->get();
+
+        foreach($hari_perawatans as $hari_perawatan)
+        {
+            $table = \Lava::DataTable();
+            $table->addStringColumn('Waktu')
+                ->addNumberColumn('Tensi Atas')
+                ->addNumberColumn('Tensi Bawah');
+
+            if(!empty($hari_perawatan->tensi_pagi->tensi_atas) && !empty($hari_perawatan->tensi_pagi->tensi_bawah))
+                $table->addRow(['Pagi', $hari_perawatan->tensi_pagi->tensi_atas, $hari_perawatan->tensi_pagi->tensi_bawah]);
+
+            if(!empty($hari_perawatan->tensi_siang->tensi_atas) && !empty($hari_perawatan->tensi_siang->tensi_bawah))
+                $table->addRow(['Siang', $hari_perawatan->tensi_siang->tensi_atas, $hari_perawatan->tensi_siang->tensi_bawah]);
+
+            if(!empty($hari_perawatan->tensi_sore->tensi_atas) && !empty($hari_perawatan->tensi_sore->tensi_bawah))
+                $table->addRow(['Sore', $hari_perawatan->tensi_sore->tensi_atas, $hari_perawatan->tensi_sore->tensi_bawah]);
+
+            if(!empty($hari_perawatan->tensi_malam->tensi_atas) && !empty($hari_perawatan->tensi_pagi->tensi_bawah))
+                $table->addRow(['Malam', $hari_perawatan->tensi_malam->tensi_atas, $hari_perawatan->tensi_malam->tensi_bawah]);
+
+            \Lava::LineChart($hari_perawatan->id.'_tensi', $table, [
+                'hAxis' => ['Pagi', 'Siang', 'Sore', 'Malam']
+            ]);
+        }
 
         return view('tensi::index')
             ->with('ranap', $ranap)
-            ->with('haris', $hari_perawatan);
+            ->with('haris', $hari_perawatans);
     }
 
     /**
