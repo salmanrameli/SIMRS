@@ -11,7 +11,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "nwidart/laravel-modules": "^2.7",
-        "spatie/laravel-permission": "^2.9"
+        "khill/lavacharts" : "3.0.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
