@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Modules\KonsumsiObat\Entities\HariPerawatan;
+use Modules\HariPerawatan\Entities\HariPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
 use Modules\Tensi\Entities\TensiMalam;
 use Modules\Tensi\Entities\TensiPagi;
@@ -120,7 +120,7 @@ class TensiController extends Controller
             $malam->save();
         }
 
-        Session::flash('message', 'Catatan tensi pasien berhasil disimpan');
+        Session::flash('message', 'Catatan tensi pasien berhasil disimpan.');
 
         return redirect()->back();
     }

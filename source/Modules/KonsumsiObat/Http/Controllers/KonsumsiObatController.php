@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Modules\KonsumsiObat\Entities\HariPerawatan;
+use Modules\HariPerawatan\Entities\HariPerawatan;
 use Modules\KonsumsiObat\Entities\KonsumsiObat;
 use Modules\KonsumsiObat\Entities\KonsumsiObatMalam;
 use Modules\KonsumsiObat\Entities\KonsumsiObatPagi;
@@ -25,7 +25,7 @@ class KonsumsiObatController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:3')->except(['showAllKonsmsiObat']);
+        $this->middleware('checkRole:3')->except(['showAllKonsumsiObat']);
     }
 
     /**

@@ -1,0 +1,16 @@
+{
+    "name": "HariPerawatan",
+    "alias": "hariperawatan",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\HariPerawatan\\Providers\\HariPerawatanServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
