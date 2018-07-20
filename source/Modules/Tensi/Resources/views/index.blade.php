@@ -100,7 +100,7 @@
                             @linechart($hari->id.'_tensi', 'chart_'.$hari->id)
                         </td>
                     </tr>
-                    <tr style="border-left-style: hidden; border-right-style: hidden">
+                    <tr style="border-left-style: hidden; border-right-style: hidden; border-bottom-style: hidden">
                         <td colspan="4"><br></td>
                     </tr>
                 @endforeach
