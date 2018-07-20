@@ -65,34 +65,34 @@
                         <th colspan="4" class="text-center">Tensi</th>
                     </tr>
                     <tr>
-                        <th class="text-center">
+                        <td class="text-center">
                             @if(empty($hari->tensi_pagi->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="pagi" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Pagi</button>
                             @else
-                                Pagi: {{ $hari->tensi_pagi->tensi_atas }} - {{ $hari->tensi_pagi->tensi_bawah }}
+                                <b>Pagi:</b> {{ $hari->tensi_pagi->tensi_atas }} - {{ $hari->tensi_pagi->tensi_bawah }}, {{ $hari->tensi_pagi->temperatur }}º
                                 @endif
-                        </th>
-                        <th class="text-center">
+                        </td>
+                        <td class="text-center">
                             @if(empty($hari->tensi_siang->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="siang" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Siang</button>
                             @else
-                                Siang: {{ $hari->tensi_siang->tensi_atas }} - {{ $hari->tensi_siang->tensi_bawah }}
+                                <b>Siang:</b> {{ $hari->tensi_siang->tensi_atas }} - {{ $hari->tensi_siang->tensi_bawah }}, {{ $hari->tensi_siang->temperatur }}º
                             @endif
-                        </th>
-                        <th class="text-center">
+                        </td>
+                        <td class="text-center">
                             @if(empty($hari->tensi_sore->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="sore" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Sore</button>
                             @else
-                                Sore: {{ $hari->tensi_sore->tensi_atas }} - {{ $hari->tensi_sore->tensi_bawah }}
+                                <b>Sore:</b> {{ $hari->tensi_sore->tensi_atas }} - {{ $hari->tensi_sore->tensi_bawah }}, {{ $hari->tensi_sore->temperatur }}º
                             @endif
-                        </th>
-                        <th class="text-center">
+                        </td>
+                        <td class="text-center">
                             @if(empty($hari->tensi_malam->tensi_atas))
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="malam" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Malam</button>
                             @else
-                                Malam: {{ $hari->tensi_malam->tensi_atas }} - {{ $hari->tensi_malam->tensi_bawah }}
+                                <b>Malam:</b> {{ $hari->tensi_malam->tensi_atas }} - {{ $hari->tensi_malam->tensi_bawah }}, {{ $hari->tensi_malam->temperatur }}º
                             @endif
-                        </th>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -180,6 +180,11 @@
                     <div class="form-group">
                         {{ Form::label('tensi_bawah', 'Tensi Bawah', ['class' => 'control-label']) }}
                         {{ Form::number('tensi_bawah', null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('temperatur', 'Temperatur', ['class' => 'control-label']) }}
+                        {{ Form::number('temperatur', null, ['class' => 'form-control']) }}
                     </div>
 
                     <div class="form-group" hidden>

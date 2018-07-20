@@ -18,6 +18,7 @@ class CreateTensiPagiTable extends Migration
             $table->integer('id_hari_perawatan');
             $table->integer('tensi_atas');
             $table->integer('tensi_bawah');
+            $table->integer('temperatur');
             $table->integer('id_petugas');
             $table->timestamps();
         });

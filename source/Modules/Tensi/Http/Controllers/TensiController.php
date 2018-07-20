@@ -34,19 +34,20 @@ class TensiController extends Controller
             $table = \Lava::DataTable();
             $table->addStringColumn('Waktu')
                 ->addNumberColumn('Tensi Atas')
-                ->addNumberColumn('Tensi Bawah');
+                ->addNumberColumn('Tensi Bawah')
+                ->addNumberColumn('Suhu');
 
             if(!empty($hari_perawatan->tensi_pagi->tensi_atas) && !empty($hari_perawatan->tensi_pagi->tensi_bawah))
-                $table->addRow(['Pagi', $hari_perawatan->tensi_pagi->tensi_atas, $hari_perawatan->tensi_pagi->tensi_bawah]);
+                $table->addRow(['Pagi', $hari_perawatan->tensi_pagi->tensi_atas, $hari_perawatan->tensi_pagi->tensi_bawah, $hari_perawatan->tensi_pagi->temperatur]);
 
             if(!empty($hari_perawatan->tensi_siang->tensi_atas) && !empty($hari_perawatan->tensi_siang->tensi_bawah))
-                $table->addRow(['Siang', $hari_perawatan->tensi_siang->tensi_atas, $hari_perawatan->tensi_siang->tensi_bawah]);
+                $table->addRow(['Siang', $hari_perawatan->tensi_siang->tensi_atas, $hari_perawatan->tensi_siang->tensi_bawah, $hari_perawatan->tensi_siang->temperatur]);
 
             if(!empty($hari_perawatan->tensi_sore->tensi_atas) && !empty($hari_perawatan->tensi_sore->tensi_bawah))
-                $table->addRow(['Sore', $hari_perawatan->tensi_sore->tensi_atas, $hari_perawatan->tensi_sore->tensi_bawah]);
+                $table->addRow(['Sore', $hari_perawatan->tensi_sore->tensi_atas, $hari_perawatan->tensi_sore->tensi_bawah, $hari_perawatan->tensi_sore->temperatur]);
 
             if(!empty($hari_perawatan->tensi_malam->tensi_atas) && !empty($hari_perawatan->tensi_pagi->tensi_bawah))
-                $table->addRow(['Malam', $hari_perawatan->tensi_malam->tensi_atas, $hari_perawatan->tensi_malam->tensi_bawah]);
+                $table->addRow(['Malam', $hari_perawatan->tensi_malam->tensi_atas, $hari_perawatan->tensi_malam->tensi_bawah, $hari_perawatan->tensi_malam->temperatur]);
 
             \Lava::LineChart($hari_perawatan->id.'_tensi', $table, [
                 'hAxis' => ['Pagi', 'Siang', 'Sore', 'Malam']
@@ -78,6 +79,7 @@ class TensiController extends Controller
             'id_hari_perawatan' => 'required',
             'tensi_atas' => 'required',
             'tensi_bawah' => 'required',
+            'temperatur' => 'required',
             'waktu' => 'required'
         ]);
 
@@ -89,6 +91,7 @@ class TensiController extends Controller
             $pagi->id_hari_perawatan = $request->get('id_hari_perawatan');
             $pagi->tensi_atas = $request->get('tensi_atas');
             $pagi->tensi_bawah = $request->get('tensi_bawah');
+            $pagi->temperatur = $request->get('temperatur');
             $pagi->id_petugas = Auth::id();
             $pagi->save();
         }
@@ -98,6 +101,7 @@ class TensiController extends Controller
             $siang->id_hari_perawatan = $request->get('id_hari_perawatan');
             $siang->tensi_atas = $request->get('tensi_atas');
             $siang->tensi_bawah = $request->get('tensi_bawah');
+            $siang->temperatur = $request->get('temperatur');
             $siang->id_petugas = Auth::id();
             $siang->save();
         }
@@ -107,6 +111,7 @@ class TensiController extends Controller
             $sore->id_hari_perawatan = $request->get('id_hari_perawatan');
             $sore->tensi_atas = $request->get('tensi_atas');
             $sore->tensi_bawah = $request->get('tensi_bawah');
+            $sore->temperatur = $request->get('temperatur');
             $sore->id_petugas = Auth::id();
             $sore->save();
         }
@@ -116,11 +121,12 @@ class TensiController extends Controller
             $malam->id_hari_perawatan = $request->get('id_hari_perawatan');
             $malam->tensi_atas = $request->get('tensi_atas');
             $malam->tensi_bawah = $request->get('tensi_bawah');
+            $malam->temperatur = $request->get('temperatur');
             $malam->id_petugas = Auth::id();
             $malam->save();
         }
 
-        Session::flash('message', 'Catatan tensi pasien berhasil disimpan.');
+        Session::flash('message', 'Catatan tensi dan temperatur pasien berhasil disimpan.');
 
         return redirect()->back();
     }
