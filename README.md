@@ -28,6 +28,16 @@ Jika sudah pernah melakukan langkah di atas sebelumnya:
 &nbsp;&nbsp;&nbsp; `DB_USERNAME=root`<br>
 &nbsp;&nbsp;&nbsp; `DB_PASSWORD=secret`<br>
 5. Jalankan perintah `php artisan key:generate`
-6. Jalankan perintah `php artisan migrate`
+6. Jalankan perintah `php artisan module:migrate`
+7. Jalankan perintah `php artisan module:seed`
 
 Jika langkah di atas sudah dilakukan semuanya, maka sistem dapat diakses pada url `localhost:8080` di browser
+ ### Login
+ - Username: id_user di tabel users
+ - Pass: `pass`
+ 
+ #### Jabatan
+ - 1: Administrator Sistem
+ - 2: Staff Administrasi
+ - 3: Perawat
+ - 4: Dokter
