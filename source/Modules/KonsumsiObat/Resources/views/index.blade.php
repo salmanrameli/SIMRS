@@ -46,7 +46,7 @@
                 <tbody>
                 @foreach($haris as $hari)
                     <tr>
-                        <th colspan="3" class="text-center table-info">Tanggal</th>
+                        <th colspan="3" class="text-center table-info"><i class="fas fa-calendar-alt"></i> Tanggal</th>
                         <td colspan="4" class="text-center table-info">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
                         <th rowspan="5" class="align-middle text-center" width="20%">Keterangan</th>
                     </tr>

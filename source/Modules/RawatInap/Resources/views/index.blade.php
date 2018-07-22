@@ -51,26 +51,26 @@
                                             @if(Auth::user()->jabatan_id == 2)
                                                 <a href="{{ route('ranap.edit', $ranap->id) }}" class="dropdown-item">Ubah</a>
                                             @else
-                                                <a href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" class="dropdown-item">Perjalanan Penyakit Pasien</a>
+                                                <a href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit Pasien</a>
 
                                                 @if(Auth::user()->jabatan_id == 4)
                                                     <a href="{{ route('perjalanan_penyakit.create', $ranap->id) }}" class="dropdown-item">Buat Catatan Perjalanan Penyakit Baru</a>
                                                 @endif
                                                 <div class="dropdown-divider"></div>
 
-                                                <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" class="dropdown-item">Perintah Dokter Dan Pengobatan</a>
+                                                <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-file-medical"></i> Perintah Dokter Dan Pengobatan</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}" class="dropdown-item">Catatan Harian dan Perawatan</a>
+                                                <a href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-notes-medical"></i> Catatan Harian dan Perawatan</a>
 
                                                 @if(Auth::user()->jabatan_id == 3)
                                                     <a href="{{ route('catatan_harian_perawatan.create', $ranap->id) }}" class="dropdown-item">Buat Catatan Harian dan Perawatan Baru</a>
                                                 @endif
 
                                                 <div class="dropdown-divider"></div>
-                                                <a href="{{ route('konsumsi_obat.index', $ranap->id) }}" class="dropdown-item">Konsumsi Obat</a>
+                                                <a href="{{ route('konsumsi_obat.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-pills"></i> Konsumsi Obat</a>
 
                                                 <div class="dropdown-divider"></div>
-                                                <a href="{{ route('tensi.index', $ranap->id) }}" class="dropdown-item">Tensi</a>
+                                                <a href="{{ route('tensi.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-signature"></i> Tensi</a>
                                             @endif
                                         </div>
                                     </div>

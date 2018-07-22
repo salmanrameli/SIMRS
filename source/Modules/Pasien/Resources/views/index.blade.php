@@ -21,7 +21,7 @@
                             &nbsp;&nbsp;
                             <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
                             &nbsp;
-                            <button type="submit" class="btn btn-primary">Cari Pasien</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Cari Pasien</button>
                         </form>
                     </div>
                 </div>

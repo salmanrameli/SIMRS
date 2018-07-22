@@ -14,10 +14,9 @@
         <script src="{{ asset('js/bootstrap-timepicker.min.js') }}"></script>
         <script src="{{ asset('js/jHtmlArea-0.8.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('bootstrap/css/fontawesome-all.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/fontawesome-all.css') }}">
         <link rel="stylesheet" href="{{ asset('css/vertical-tabs.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-timepicker.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jHtmlArea.css') }}">
@@ -26,7 +25,7 @@
     </head>
     <body style="background-image: url({{ asset('img/grey.png') }})">
         <div class="container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 5px; border-bottom: 2px solid whitesmoke;">
-            <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
             <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
             <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
         </div>
@@ -59,19 +58,19 @@
                                             <a class="nav-link" href="{{ route('ranap.index') }}"><i class="fa fa-home"></i> Beranda</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" id="perjalanan_penyakit">Perjalanan Penyakit</a>
+                                            <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" id="perjalanan_penyakit"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" id="perintah_dokter">Perintah Dokter dan Pengobatan</a>
+                                            <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" id="perintah_dokter"><i class="fas fa-file-medical"></i> Perintah Dokter dan Pengobatan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}" id="catatan_harian">Catatan Harian dan Perawatan</a>
+                                            <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}" id="catatan_harian"><i class="fas fa-notes-medical"></i> Catatan Harian dan Perawatan</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link active" href="{{ route('konsumsi_obat.index', $ranap->id) }}" id="konsumsi_obat">Konsumsi Obat</a>
+                                            <a class="nav-link active" href="{{ route('konsumsi_obat.index', $ranap->id) }}" id="konsumsi_obat"><i class="fas fa-pills"></i> Konsumsi Obat</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link active" href="{{ route('tensi.index', $ranap->id) }}" id="tensi">Tensi</a>
+                                            <a class="nav-link active" href="{{ route('tensi.index', $ranap->id) }}" id="tensi"><i class="fas fa-signature"></i> Tensi</a>
                                         </li>
                                     </ul>
                                 </div>
