@@ -133,10 +133,12 @@
                             </td>
                         </tr>
                     @endforeach
+                    @if(Auth::user()->jabatan_id == 3)
                     <tr>
                         <td><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
                         <td colspan="7"></td>
                     </tr>
+                    @endif
                     <tr style="border-left-style: hidden; border-right-style: hidden; border-bottom-style: hidden">
                         <td colspan="8"><br></td>
                     </tr>

@@ -67,28 +67,36 @@
                     <tr>
                         <td class="text-center">
                             @if(empty($hari->tensi_pagi->tensi_atas))
+                                @if(Auth::user()->jabatan_id == 3)
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="pagi" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Pagi</button>
+                                    @endif
                             @else
                                 <b>Pagi:</b> {{ $hari->tensi_pagi->tensi_atas }} - {{ $hari->tensi_pagi->tensi_bawah }}, {{ $hari->tensi_pagi->temperatur }}º
                                 @endif
                         </td>
                         <td class="text-center">
                             @if(empty($hari->tensi_siang->tensi_atas))
+                                @if(Auth::user()->jabatan_id == 3)
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="siang" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Siang</button>
+                                    @endif
                             @else
                                 <b>Siang:</b> {{ $hari->tensi_siang->tensi_atas }} - {{ $hari->tensi_siang->tensi_bawah }}, {{ $hari->tensi_siang->temperatur }}º
                             @endif
                         </td>
                         <td class="text-center">
                             @if(empty($hari->tensi_sore->tensi_atas))
+                                @if(Auth::user()->jabatan_id == 3)
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="sore" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Sore</button>
+                                    @endif
                             @else
                                 <b>Sore:</b> {{ $hari->tensi_sore->tensi_atas }} - {{ $hari->tensi_sore->tensi_bawah }}, {{ $hari->tensi_sore->temperatur }}º
                             @endif
                         </td>
                         <td class="text-center">
                             @if(empty($hari->tensi_malam->tensi_atas))
+                                @if(Auth::user()->jabatan_id == 3)
                                 <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="malam" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Malam</button>
+                                    @endif
                             @else
                                 <b>Malam:</b> {{ $hari->tensi_malam->tensi_atas }} - {{ $hari->tensi_malam->tensi_bawah }}, {{ $hari->tensi_malam->temperatur }}º
                             @endif
