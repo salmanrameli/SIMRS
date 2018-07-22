@@ -39,7 +39,7 @@ class ObatDatabaseSeeder extends Seeder
             {
                 $obat->tipe_obat = 'kompress';
             }
-            else
+            if($rand1 == 3)
             {
                 $obat->tipe_obat = 'suppositoria';
             }
