@@ -115,7 +115,7 @@ class DokterController extends Controller
 
         Session::flash('message', 'Perubahan berhasil disimpan');
 
-        return redirect()->route('dokter.index');
+        return redirect()->route('dokter.show', $id);
     }
 
     /**
