@@ -83,7 +83,7 @@ class UserSettingController extends Controller
 
         if($id == $user_id)
         {
-            return view('usersetting::edit_password');
+            return view('usersetting::edit_password')->with('id', $id);
         }
 
         Session::flash('warning', 'Anda tidak memiliki hak akses.');

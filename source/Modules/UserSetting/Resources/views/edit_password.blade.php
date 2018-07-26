@@ -9,7 +9,7 @@
         <h3>Ubah Password</h3>
         <br>
         <div class="col-md-12">
-            <form action="{{ route('setting.update_password') }}" method="post" role="form" class="form-horizontal">
+            <form action="{{ route('setting.update_password', $id) }}" method="post" role="form" class="form-horizontal">
                 {{csrf_field()}}
 
                 <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">
