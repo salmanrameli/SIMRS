@@ -146,7 +146,7 @@
 
                 {{ Form::open(['method' => 'PATCH', 'route' => ['jabatan.update']]) }}
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         {{ Form::label('id_jabatan', 'ID Jabatan', ['class' => 'control-label']) }}
                         {!! Form::text('id_jabatan', null, ['class' => 'form-control']) !!}
                     </div>
