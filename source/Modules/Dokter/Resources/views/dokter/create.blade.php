@@ -1,4 +1,4 @@
-@extends('layouttemplate::pages')
+@extends('layouttemplate::master')
 
 @section('title')
     Registrasi Dokter Baru
@@ -39,3 +39,7 @@
         </div>
     </div>
     @endsection
+
+@section('script')
+    @include('layouttemplate::attributes.dokter')
+@endsection
