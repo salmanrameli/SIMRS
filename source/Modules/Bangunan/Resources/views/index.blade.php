@@ -37,7 +37,7 @@
                                     <div class="row float-right">
                                         <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-lantai="{{ $lantai->id }}" data-nomor="{{ $lantai->nomor_lantai }}" data-target="#modalUbahLantai">Ubah</button>
 
-                                        {{ Form::open(['route' => ['lantai.delete', $lantai->id], 'method' => 'delete']) }}
+                                        {{ Form::open(['method' => 'delete', 'route' => ['lantai.delete', $lantai->id]]) }}
                                         <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menghapus lantai ini?')">Hapus</button>
                                         {{ Form::close() }}
                                     </div>
@@ -69,7 +69,17 @@
                                                         </tbody>
                                                     </table>
                                                     @if(Auth::user()->jabatan_id == 1)
-                                                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar">Ubah</button>
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar" style="width: 100%">Ubah</button>
+                                                            <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                {{ Form::open([ 'method' => 'delete', 'route' => ['kamar.delete', $kamar->id]]) }}
+                                                                <button type="submit" class="dropdown-item" onclick="return confirm('Apakah anda yakin menghapus kamar ini?')">Hapus</button>
+                                                                {{ Form::close() }}
+                                                            </div>
+                                                        </div>
                                                         @endif
                                                 </div>
                                             </div>
