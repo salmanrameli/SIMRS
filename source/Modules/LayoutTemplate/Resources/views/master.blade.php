@@ -24,10 +24,23 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <body style="background-image: url({{ asset('img/grey.png') }})">
-        <div class="container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 15px; border-bottom: 1px solid lightgrey;">
+        <div class="d-none container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 15px; border-bottom: 1px solid lightgrey;">
             <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
+            <a href="{{ route('setting.index') }}" class="d-none btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
             <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
+        </div>
+        <div class="d-md-none">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/">SIMRS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        @include('layouttemplate::sidebar-mobile')
+                    </ul>
+                </div>
+            </nav>
         </div>
         <div class="container-fluid">
             <div class="col-md-12">
@@ -37,9 +50,11 @@
                     </form>
 
                     <div class="d-flex">
-                        <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left">
-                            @include('layouttemplate::sidebar')
-                        </ul>
+                        <div class="d-none">
+                            <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left">
+                                @include('layouttemplate::sidebar')
+                            </ul>
+                        </div>
                         <div class="tab-content">
                             <div class="row pre-scrollable" style="padding: 10px 25px 0 10px; max-height: 85vh; min-width: 100%">
                                 <table>
@@ -65,5 +80,5 @@
         </div>
         @yield('script')
     </body>
-    <footer style="padding-bottom: 2%"></footer>
+    <footer class="d-none" style="padding-bottom: 2%"></footer>
 </html>
