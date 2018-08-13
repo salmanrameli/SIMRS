@@ -146,12 +146,12 @@
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('tinggi_badan', 'Tinggi Badan', ['class' => 'control-label']) }}
+                            {{ Form::label('tinggi_badan', 'Tinggi Badan (cm)', ['class' => 'control-label']) }}
                             {{ Form::number('tinggi_badan', null, ['class' => 'form-control']) }}
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('berat_badan', 'Berat Badan', ['class' => 'control-label']) }}
+                            {{ Form::label('berat_badan', 'Berat Badan (kg)', ['class' => 'control-label']) }}
                             {{ Form::number('berat_badan', null, ['class' => 'form-control']) }}
                         </div>
                     </div>
