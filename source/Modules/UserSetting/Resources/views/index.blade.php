@@ -45,49 +45,50 @@
                         </table>
                     </div>
                 </div>
-
-                {{--tampilan mobile--}}
-                <div class="d-block d-sm-none">
-                    <div class="card card-body" style="width: 48vh">
-                        <h3>Detail Akun: <b>{{ $user->nama }}</b></h3>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
-                                <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
-                            </div>
-                        </div>
-                        <br>
-                        <table class="table small">
-                            <tbody>
-                                <tr>
-                                    <th style="padding-right: 50px">ID</th>
-                                    <td class="w-50" style="padding-left: 20px">{{ $user->id }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nama</th>
-                                    <td style="padding-left: 20px">{{ $user->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td style="padding-left: 20px">{{ $user->alamat }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Telepon</th>
-                                    <td style="padding-left: 20px">{{ $user->telepon }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Hak Akses</th>
-                                    <td style="padding-left: 20px">{{ ucfirst($user->jabatan->nama ) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 @endsection
+
+@section('content-mobile')
+    <div class="d-block d-sm-none">
+        <div class="card card-body" style="width: 50vh">
+            <h3>Detail Akun: <b>{{ $user->nama }}</b></h3>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
+                    <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
+                </div>
+            </div>
+            <br>
+            <table class="table small">
+                <tbody>
+                    <tr>
+                        <th style="padding-right: 50px">ID</th>
+                        <td class="w-50" style="padding-left: 20px">{{ $user->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td style="padding-left: 20px">{{ $user->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Alamat</th>
+                        <td style="padding-left: 20px">{{ $user->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telepon</th>
+                        <td style="padding-left: 20px">{{ $user->telepon }}</td>
+                    </tr>
+                    <tr>
+                        <th>Hak Akses</th>
+                        <td style="padding-left: 20px">{{ ucfirst($user->jabatan->nama ) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @endsection
 
 @section('script')
     @include('layouttemplate::attributes.setting')
