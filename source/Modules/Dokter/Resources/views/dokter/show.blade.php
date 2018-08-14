@@ -16,7 +16,7 @@
                     <tbody>
                         <tr>
                             <th>ID</th>
-                            <td>{{ $dokter->id_dokter }}</td>
+                            <td>{{ $dokter->id }}</td>
                         </tr>
                         <tr>
                             <th>Telepon</th>
