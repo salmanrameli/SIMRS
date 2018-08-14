@@ -130,7 +130,7 @@ class DokterController extends Controller
     {
         $query = $request->get('query');
 
-        $results = DB::table('dokter')->select('*')->where('id_dokter', 'like', '%'.$query.'%')->
+        $results = DB::table('users')->select('*')->where('id', 'like', '%'.$query.'%')->
         orWhere('nama', 'like', '%'.$query.'%')->
         orWhere('alamat', 'like', '%'.$query.'%')->
         orWhere('telepon', 'like', '%'.$query.'%')->get();
