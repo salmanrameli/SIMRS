@@ -107,60 +107,72 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+@endsection
 
-            {{--tampilan mobile--}}
-            <div class="col-md-12 d-block d-sm-none">
-                <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="{{ route('pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
-                            <br>
-                            <br>
-                            <nav>
-                                <ul class="pagination justify-content-end float-left">
-                                    {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
-                                </ul>
-                            </nav>
-                            <table class="table small">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Telepon</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($pasiens as $pasien)
-                                    <tr>
-                                        <td>{{ ucwords($pasien->nama) }}</td>
-                                        <td>{{ $pasien->telepon }}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-sm btn-outline-info">Rincian<br>Pasien</a>
-                                                <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                                                        <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $pasien->id]) }}">Ubah</a>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                            <ul class="pagination justify-content-end float-left">
-                                {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
-                            </ul>
-                        </div>
+@section('content-mobile')
+    @if(Auth::user()->jabatan_id == 1)
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h3>Manajemen Pasien</h3>
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
+    @endif
+    <div class="col-md-12 d-block d-sm-none">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ route('pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
+                    <br><br>
+                    <nav>
+                        <ul class="pagination justify-content-end float-left">
+                            {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
+                        </ul>
+                    </nav>
+                    <table class="table small">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Telepon</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($pasiens as $pasien)
+                            <tr>
+                                <td>{{ ucwords($pasien->nama) }}</td>
+                                <td>{{ $pasien->telepon }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-sm btn-outline-info">Rincian<br>Pasien</a>
+                                        <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                                                <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $pasien->id]) }}">Ubah</a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <ul class="pagination justify-content-end float-left">
+                        {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-@endsection
+    @endsection
 
 @section('script')
     @if(Auth::user()->jabatan_id == 1)

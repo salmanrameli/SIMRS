@@ -54,7 +54,7 @@
                             @include('layouttemplate::alert')
                         </div>
 
-                        @yield('content')
+                        @yield('content-mobile')
                     </div>
 
                     <div class="d-none d-sm-block">

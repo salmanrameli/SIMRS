@@ -76,37 +76,38 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    @endsection
 
-        {{--tampilan mobile--}}
-        <div class="d-block d-sm-none">
-            <div class="card card-body">
-                <table class="table table-striped small">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($results as $result)
-                        <tr>
-                            <td>{{ $result->nama }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-sm btn-outline-info">Detail..</a>
-                                    <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ route('user.edit', ['id' => $result->id]) }}">Ubah</a>
-                                    </div>
+@section('content-mobile')
+    <div class="d-block d-sm-none">
+        <div class="card card-body">
+            <table class="table table-striped small">
+                <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($results as $result)
+                    <tr>
+                        <td>{{ $result->nama }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-sm btn-outline-info">Detail..</a>
+                                <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ route('user.edit', ['id' => $result->id]) }}">Ubah</a>
                                 </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
     @endsection
