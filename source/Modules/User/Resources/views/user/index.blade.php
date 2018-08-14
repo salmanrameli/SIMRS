@@ -5,14 +5,20 @@
 @endsection
 
 @section('content')
-    <div class="page-header">
-        <h3>Manajemen Staff & Jabatan</h3>
-        <br>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h3>Manajemen Staff & Jabatan</h3>
+                    <br>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-body">
+                <div class="d-none d-sm-block card card-body">
                     <div class="row">
                         <div class="col-md-12">
                             <form class="form-inline" action="{{ route('user.cari') }}" method="get">
@@ -25,20 +31,36 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="d-block d-sm-none">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-inline" action="{{ route('user.cari') }}" method="get">
+                                    <label for="cari" class="control-label">Cari Staff: </label>
+                                    <input type="text" class="form-control" id="query" name="query" placeholder="John Doe">
+                                    <br><br><br>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Cari</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 d-none d-sm-block">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-staff-tab" data-toggle="tab" href="#nav-staff" role="tab" aria-controls="nav-staff" aria-selected="true">Staff</a>
-                        <a class="nav-item nav-link" id="nav-jabatan-tab" data-toggle="tab" href="#nav-jabatan" role="tab" aria-controls="nav-profile" aria-selected="false">Jabatan</a>
+                        <a class="nav-item nav-link active" id="nav-staff" data-toggle="tab" href="#nav-staff" role="tab" aria-controls="nav-staff" aria-selected="true">Staff</a>
+                        <a class="nav-item nav-link" id="nav-jabatan" data-toggle="tab" href="#nav-jabatan" role="tab" aria-controls="nav-jabatan" aria-selected="false">Jabatan</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-staff" role="tabpanel" aria-labelledby="nav-staff-tab">
+                    <div class="tab-pane fade show active" id="nav-staff" role="tabpanel" aria-labelledby="nav-staff">
                         <div class="card card-body">
                             <div class="col-md-12">
                                 <a class="btn btn-outline-primary" href="{{ route('user.create') }}">Daftarkan Staff Baru</a>
@@ -46,13 +68,13 @@
                                 <br>
                                 <table class="table">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nama</th>
-                                        <th>Telepon</th>
-                                        <th>Jabatan</th>
-                                        <th></th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama</th>
+                                            <th>Telepon</th>
+                                            <th>Jabatan</th>
+                                            <th></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($users as $user)
@@ -82,29 +104,111 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-jabatan" role="tabpanel" aria-labelledby="nav-jabatan-tab">
+                    <div class="tab-pane fade" id="nav-jabatan" role="tabpanel" aria-labelledby="nav-jabatan">
                         <div class="card card-body">
                             <div class="col-md-12">
                                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJabatan">Daftarkan Jabatan Baru</button>
                                 <br><br>
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th>Nama</th>
-                                            <th></th>
-                                        </tr>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th></th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($jabatans as $jabatan)
-                                            <tr>
-                                                <td>{{ ucfirst($jabatan->nama) }}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-id-jabatan="{{ $jabatan->id }}" data-nama-jabatan="{{ $jabatan->nama }}" data-target="#modalUbahJabatan">Ubah</button>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach($jabatans as $jabatan)
+                                        <tr>
+                                            <td>{{ ucfirst($jabatan->nama) }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-id-jabatan="{{ $jabatan->id }}" data-nama-jabatan="{{ $jabatan->nama }}" data-target="#modalUbahJabatan">Ubah</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{--tampilan mobile--}}
+            <div class="col-md-12 d-block d-sm-none">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-staff-tab-mobile" data-toggle="tab" href="#nav-staff-mobile" role="tab" aria-controls="nav-staff-mobile" aria-selected="true">Staff</a>
+                                <a class="nav-item nav-link" id="nav-jabatan-tab-mobile" data-toggle="tab" href="#nav-jabatan-mobile" role="tab" aria-controls="nav-jabatan-mobile" aria-selected="false">Jabatan</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-staff-mobile" role="tabpanel" aria-labelledby="nav-staff-mobile">
+                                <div class="card card-body">
+                                    <div class="col-md-12">
+                                        <a class="btn btn-sm btn-outline-primary" href="{{ route('user.create') }}">Daftarkan Staff Baru</a>
+                                        <br>
+                                        <br>
+                                        <table class="table table-striped small">
+                                            <thead class="small">
+                                                <tr>
+                                                    <th>Nama</th>
+                                                    <th>Jabatan</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="small">
+                                            @foreach($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->nama }}</td>
+                                                    <td>{{ ucfirst($user->jabatan->nama ) }}</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-info">Detail..</a>
+                                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Ubah</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                        <ul class="pagination justify-content-end float-left">
+                                            {{ $users->links('vendor.pagination.bootstrap-4') }}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-jabatan-mobile" role="tabpanel" aria-labelledby="nav-jabatan-mobile">
+                                <div class="card card-body">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJabatan">Daftarkan Jabatan Baru</button>
+                                        <br><br>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($jabatans as $jabatan)
+                                                <tr>
+                                                    <td>{{ ucfirst($jabatan->nama) }}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-id-jabatan="{{ $jabatan->id }}" data-nama-jabatan="{{ $jabatan->nama }}" data-target="#modalUbahJabatan">Ubah</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
