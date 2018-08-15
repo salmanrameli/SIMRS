@@ -89,7 +89,7 @@
 
 @section('content-mobile')
     <div class="d-block d-sm-none">
-        <div class="card card-body">
+        <div class="card-body">
             <div class="page-header">
                 <h4>Perjalanan Penyakit: {{ ucwords($ranap->pasien->nama) }}</h4>
                 <br>

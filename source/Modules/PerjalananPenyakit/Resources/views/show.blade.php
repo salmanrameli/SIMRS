@@ -87,7 +87,7 @@
 
 @section('content-mobile')
     <div class="d-block d-sm-none">
-        <div class="card card-body">
+        <div class="card-body">
             <div class="page-header">
                 <h4>Perjalanan Penyakit: {{ $perjalanan->rawat_inap->pasien->nama }}</h4>
                 <br>

@@ -24,7 +24,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     <div class="d-block d-sm-none">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 20px">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <a class="navbar-brand" href="/">SIMRS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,9 +50,8 @@
                     </form>
 
                     <div class="d-block d-sm-none">
-                        <div class="col-md-12">
-                            @include('layouttemplate::alert')
-                        </div>
+                        @include('layouttemplate::alert')
+
                         <ul class="nav nav-tabs" style="border-bottom: none">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catatan Pasien</a>
