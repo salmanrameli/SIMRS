@@ -67,53 +67,51 @@
 @section('content-mobile')
     <div class="d-block d-sm-none">
         <div class="card card-body">
-            <div class="col-md-12">
-                <h4>{{ ucwords($pasien->nama) }}</h4>
-                <br>
-                <table class="table small" id="table">
-                    <tbody>
-                    <tr>
-                        <th class="w-25">KTP</th>
-                        <td>{{ $pasien->ktp }}</td>
-                    </tr>
-                    <tr>
-                        <th>Jenis Kelamin</th>
-                        <td>{{ ucwords($pasien->jenkel) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Nama Ayah/Suami</th>
-                        <td>{{ ucwords($pasien->nama_wali) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Alamat</th>
-                        <td>{{ ucwords($pasien->alamat) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Tanggal Lahir</th>
-                        <td id="tanggal_lahir">{{ date("d F Y", strtotime($pasien->tanggal_lahir)) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Telepon</th>
-                        <td>{{ $pasien->telepon }}</td>
-                    </tr>
-                    <tr>
-                        <th>Pekerjaan</th>
-                        <td>{{ ucfirst($pasien->pekerjaan) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Agama</th>
-                        <td>{{ ucfirst($pasien->agama) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Golongan Darah</th>
-                        <td>{{ $pasien->golongan_darah }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                    <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-left">Ubah Data Pasien</a>
-                @endif
-            </div>
+            <h4>{{ ucwords($pasien->nama) }}</h4>
+            <br>
+            <table class="table small" id="table">
+                <tbody>
+                <tr>
+                    <th class="w-25">KTP</th>
+                    <td>{{ $pasien->ktp }}</td>
+                </tr>
+                <tr>
+                    <th>Jenis Kelamin</th>
+                    <td>{{ ucwords($pasien->jenkel) }}</td>
+                </tr>
+                <tr>
+                    <th>Nama Ayah/Suami</th>
+                    <td>{{ ucwords($pasien->nama_wali) }}</td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>{{ ucwords($pasien->alamat) }}</td>
+                </tr>
+                <tr>
+                    <th>Tanggal Lahir</th>
+                    <td id="tanggal_lahir">{{ date("d F Y", strtotime($pasien->tanggal_lahir)) }}</td>
+                </tr>
+                <tr>
+                    <th>Telepon</th>
+                    <td>{{ $pasien->telepon }}</td>
+                </tr>
+                <tr>
+                    <th>Pekerjaan</th>
+                    <td>{{ ucfirst($pasien->pekerjaan) }}</td>
+                </tr>
+                <tr>
+                    <th>Agama</th>
+                    <td>{{ ucfirst($pasien->agama) }}</td>
+                </tr>
+                <tr>
+                    <th>Golongan Darah</th>
+                    <td>{{ $pasien->golongan_darah }}</td>
+                </tr>
+                </tbody>
+            </table>
+            @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-left">Ubah Data Pasien</a>
+            @endif
         </div>
     </div>
     @endsection
