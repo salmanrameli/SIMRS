@@ -134,43 +134,35 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 d-block d-sm-none">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahObatMobile">Daftarkan Obat Baru</button>
-                            <br><br>
-                            <table class="table small">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Tipe</th>
-                                        <th>Harga</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($obats as $obat)
-                                    <tr>
-                                        <td>{{ ucwords($obat->nama) }}</td>
-                                        <td>{{ ucfirst($obat->tipe_obat) }}</td>
-                                        <td>{{ $obat->harga }}</td>
-                                        <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-nama="{{ $obat->nama }}" data-harga="{{ $obat->harga }}" data-tipe="{{ $obat->tipe_obat }}" data-target="#modalUbahObatMobile">Ubah</button></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="d-block d-sm-none">
+        <div class="card card-body">
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahObatMobile">Daftarkan Obat Baru</button>
+            <br>
+            <table class="table small">
+                <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Tipe</th>
+                    <th>Harga</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($obats as $obat)
+                    <tr>
+                        <td>{{ ucwords($obat->nama) }}</td>
+                        <td>{{ ucfirst($obat->tipe_obat) }}</td>
+                        <td>{{ $obat->harga }}</td>
+                        <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-nama="{{ $obat->nama }}" data-harga="{{ $obat->harga }}" data-tipe="{{ $obat->tipe_obat }}" data-target="#modalUbahObatMobile">Ubah</button></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
     <div class="modal fade" id="modalTambahObatMobile" tabindex="-1" role="dialog" aria-labelledby="modalTambahObatMobile" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTambahObatMobile">Masukkan Obat Baru</h5>
@@ -202,7 +194,7 @@
     </div>
 
     <div class="modal fade" id="modalUbahObatMobile" tabindex="-1" role="dialog" aria-labelledby="modalUbahObatMobile" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalUbahObatMobile">Ubah Rincian Obat</h5>
