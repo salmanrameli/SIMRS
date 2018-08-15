@@ -43,8 +43,8 @@
             <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
         </div>
         <div class="container-fluid">
-            <div class="col-md-12">
-                <div class="row">
+            <div class="row">
+                <div class="col-md-12">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
