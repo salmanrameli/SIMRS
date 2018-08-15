@@ -5,18 +5,19 @@
 @endsection
 
 @section('content')
-    <div class="card-body">
-        <div class="col-md-12">
-            <div class="page-header">
-                @if(Auth::user()->jabatan_id == 4)
-                    <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatPerjalananPenyakit">Buat Catatan Perjalanan Penyakit Baru</button>
-                @endif
+    <div class="d-none d-sm-block">
+        <div class="card-body">
+            <div class="col-md-12">
+                <div class="page-header">
+                    @if(Auth::user()->jabatan_id == 4)
+                        <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatPerjalananPenyakit">Buat Catatan Perjalanan Penyakit Baru</button>
+                    @endif
 
-                <h4>Perjalanan Penyakit: {{ $perjalanan->rawat_inap->pasien->nama }}</h4>
-                <hr>
-                <div class="col-md-12">
-                    <table>
-                        <tbody class="small">
+                    <h4>Perjalanan Penyakit: {{ $perjalanan->rawat_inap->pasien->nama }}</h4>
+                    <hr>
+                    <div class="col-md-12">
+                        <table>
+                            <tbody class="small">
                             <tr>
                                 <th>Jenis Kelamin</th>
                                 <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->pasien->jenkel) }}</td>
@@ -37,21 +38,21 @@
                                 <th>DPJP</th>
                                 <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <p id="tanggal_lahir" hidden>{{ $perjalanan->rawat_inap->pasien->tanggal_lahir }}</p>
+                            </tbody>
+                        </table>
+                        <br>
+                        <p id="tanggal_lahir" hidden>{{ $perjalanan->rawat_inap->pasien->tanggal_lahir }}</p>
+                    </div>
                 </div>
-            </div>
-            <table class="table small">
-                <thead>
+                <table class="table small">
+                    <thead>
                     <tr>
                         <th>Perjalanan Penyakit</th>
                         <th>Perintah Dokter dan Pengobatan</th>
                         <th></th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td class="text-justify w-50">
                             <b>Dibuat tanggal: {{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</b><br>
@@ -77,8 +78,9 @@
                             @endif
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
