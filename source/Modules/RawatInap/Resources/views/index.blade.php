@@ -90,10 +90,10 @@
         <div class="card card-body">
             <div class="page-header">
                 <h3>Daftar Pasien Rawat Inap</h3>
-                <hr>
             </div>
 
             @if(Auth::user()->jabatan_id == 2)
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary btn-sm btn-block" style="margin-bottom: 10px">Daftarkan Pasien Baru</a>
