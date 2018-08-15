@@ -49,7 +49,7 @@
 
 @section('content-mobile')
     <div class="d-block d-sm-none">
-        <div class="card card-body" style="width: 48vh">
+        <div class="card card-body">
             {{ Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', 'id' => $user->id]]) }}
 
             <div class="form-group">
