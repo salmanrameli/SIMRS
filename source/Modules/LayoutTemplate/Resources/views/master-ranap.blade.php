@@ -58,9 +58,13 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catatan Pasien</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}"><i class="fas fa-file-medical"></i> Perintah Dokter dan Pengobatan</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}"><i class="fas fa-notes-medical"></i> Catatan Harian dan Perawatan</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('konsumsi_obat.index', $ranap->id) }}"><i class="fas fa-pills"></i> Konsumsi Obat</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('tensi.index', $ranap->id) }}"><i class="fas fa-signature"></i> Tensi</a>
                                 </div>
                             </li>
@@ -114,6 +118,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @yield('modal')
                 </div>
             </div>
         </div>
