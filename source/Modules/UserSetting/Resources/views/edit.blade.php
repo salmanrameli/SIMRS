@@ -59,7 +59,7 @@
 
 @section('content-mobile')
     <div class="d-block d-sm-none">
-        <div class="card card-body" style="width: 50vh">
+        <div class="card card-body">
             <h3>Ubah Data Akun</h3>
             <br>
 

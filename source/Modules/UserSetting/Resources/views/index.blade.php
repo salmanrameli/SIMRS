@@ -52,21 +52,18 @@
 
 @section('content-mobile')
     <div class="d-block d-sm-none">
-        <div class="card card-body" style="width: 50vh">
-            <h3>Detail Akun: <b>{{ $user->nama }}</b></h3>
+        <div class="card card-body">
+            <h3>Detail Akun: <br><b>{{ $user->nama }}</b></h3>
+            <hr>
+            <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
             <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
-                    <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
-                </div>
-            </div>
+            <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
             <br>
             <table class="table small">
                 <tbody>
                     <tr>
                         <th style="padding-right: 50px">ID</th>
-                        <td class="w-50" style="padding-left: 20px">{{ $user->id }}</td>
+                        <td class="w-75" style="padding-left: 20px">{{ $user->id }}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
