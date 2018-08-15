@@ -218,14 +218,14 @@
 @endsection
 
 @section('content-mobile')
-    <div class="col-md-12 d-block d-sm-none">
+    <div class="d-block d-sm-none">
         @foreach($lantais as $lantai)
             <div class="card">
                 <div class="card-header">
                     <h5>
                         Lantai {{ $lantai->nomor_lantai }}
                         @if(Auth::user()->jabatan_id == 1)
-                            <button type="button" class="btn btn-sm btn-outline-primary" style="margin-left: 15px" data-toggle="modal" data-nomor="{{ $lantai->nomor_lantai }}" data-target="#modalTambahKamarMobile">Tambah Kamar Baru</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary float-right" style="margin-left: 15px" data-toggle="modal" data-nomor="{{ $lantai->nomor_lantai }}" data-target="#modalTambahKamarMobile">Tambah Kamar Baru</button>
                             <hr>
                             <div class="row">
                                 <div class="col-6">
