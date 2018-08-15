@@ -115,41 +115,33 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 d-block d-sm-none">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahAlatKesehatanMobile">Tambah Alat Kesehatan Baru</button>
-                            <br><br>
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Harga</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($alkess as $alkes)
-                                    <tr>
-                                        <td class="w-50">{{ ucfirst($alkes->nama) }}</td>
-                                        <td class="w-50">{{ $alkes->harga }}</td>
-                                        <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-alat="{{ $alkes->id }}" data-nama="{{ $alkes->nama }}" data-harga="{{ $alkes->harga }}" data-target="#modalUbahAlatKesehatanMobile">Ubah</button></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="d-block d-sm-none">
+        <div class="card card-body">
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahAlatKesehatanMobile">Tambah Alat Kesehatan Baru</button>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($alkess as $alkes)
+                    <tr>
+                        <td class="w-50">{{ ucfirst($alkes->nama) }}</td>
+                        <td class="w-50">{{ $alkes->harga }}</td>
+                        <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-alat="{{ $alkes->id }}" data-nama="{{ $alkes->nama }}" data-harga="{{ $alkes->harga }}" data-target="#modalUbahAlatKesehatanMobile">Ubah</button></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
     <div class="modal fade" id="modalTambahAlatKesehatanMobile" tabindex="-1" role="dialog" aria-labelledby="modalTambahAlatKesehatanMobile" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTambahAlatKesehatanMobile">Tambah Alat Kesehatan Baru</h5>
@@ -176,7 +168,7 @@
     </div>
 
     <div class="modal fade" id="modalUbahAlatKesehatanMobile" tabindex="-1" role="dialog" aria-labelledby="modalUbahAlatKesehatanMobile" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalUbahAlatKesehatanMobile">Ubah Rincian Alat Kesehatan</h5>
