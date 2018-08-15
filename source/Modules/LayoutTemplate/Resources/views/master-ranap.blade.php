@@ -43,8 +43,8 @@
             <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
         </div>
         <div class="container-fluid" style="padding-top: 15px">
-            <div class="col-md-12">
-                <div class="row">
+            <div class="row">
+                <div class="col-md-12">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
@@ -53,49 +53,64 @@
                         <div class="col-md-12">
                             @include('layouttemplate::alert')
                         </div>
-
-                        @yield('content')
+                        <ul class="nav nav-tabs" style="border-bottom: none">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catatan Pasien</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit</a>
+                                    <a class="dropdown-item" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}"><i class="fas fa-file-medical"></i> Perintah Dokter dan Pengobatan</a>
+                                    <a class="dropdown-item" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}"><i class="fas fa-notes-medical"></i> Catatan Harian dan Perawatan</a>
+                                    <a class="dropdown-item" href="{{ route('konsumsi_obat.index', $ranap->id) }}"><i class="fas fa-pills"></i> Konsumsi Obat</a>
+                                    <a class="dropdown-item" href="{{ route('tensi.index', $ranap->id) }}"><i class="fas fa-signature"></i> Tensi</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card">
+                            @yield('content-mobile')
+                        </div>
                     </div>
 
-                    <div class="tab-content">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <th class="w-100 hidden"></th>
-                                <td class="w-100 hidden"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="d-none d-sm-block">
+                        <div class="tab-content">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <th class="w-100 hidden"></th>
+                                    <td class="w-100 hidden"></td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-                        <div class="col-md-12">
-                            @include('layouttemplate::alert')
-                        </div>
+                            <div class="col-md-12">
+                                @include('layouttemplate::alert')
+                            </div>
 
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <ul class="nav nav-tabs card-header-tabs small">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('ranap.index') }}"><i class="fa fa-home"></i> Beranda</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" id="perjalanan_penyakit"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" id="perintah_dokter"><i class="fas fa-file-medical"></i> Perintah Dokter dan Pengobatan</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}" id="catatan_harian"><i class="fas fa-notes-medical"></i> Catatan Harian dan Perawatan</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="{{ route('konsumsi_obat.index', $ranap->id) }}" id="konsumsi_obat"><i class="fas fa-pills"></i> Konsumsi Obat</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="{{ route('tensi.index', $ranap->id) }}" id="tensi"><i class="fas fa-signature"></i> Tensi</a>
-                                        </li>
-                                    </ul>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs card-header-tabs small">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('ranap.index') }}"><i class="fa fa-home"></i> Beranda</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" id="perjalanan_penyakit"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" id="perintah_dokter"><i class="fas fa-file-medical"></i> Perintah Dokter dan Pengobatan</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('catatan_harian_perawatan.index', $ranap->id) }}" id="catatan_harian"><i class="fas fa-notes-medical"></i> Catatan Harian dan Perawatan</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="{{ route('konsumsi_obat.index', $ranap->id) }}" id="konsumsi_obat"><i class="fas fa-pills"></i> Konsumsi Obat</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="{{ route('tensi.index', $ranap->id) }}" id="tensi"><i class="fas fa-signature"></i> Tensi</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    @yield('content')
                                 </div>
-                                @yield('content')
                             </div>
                         </div>
                     </div>
