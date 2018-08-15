@@ -23,6 +23,10 @@
 
     <div class="col-md-12">
         <div class="d-none d-sm-block card card-body">
+            <div class="page-header">
+                <h3>Hasil pencarian untuk: {{ ucwords($query) }}</h3>
+                <br>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -72,6 +76,10 @@
     </div>
     <div class="d-block d-sm-none">
         <div class="card card-body">
+            <div class="page-header">
+                <h3>Hasil pencarian untuk: {{ ucwords($query) }}</h3>
+                <br>
+            </div>
             <table class="table small">
                 <thead>
                     <tr>
