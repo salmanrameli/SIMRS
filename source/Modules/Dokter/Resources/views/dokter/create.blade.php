@@ -50,7 +50,7 @@
 
 @section('content-mobile')
     <div class="d-block d-sm-none">
-        <div class="card card-body" style="width: 52vh">
+        <div class="card card-body">
             {{ Form::open(['route' => 'dokter.store']) }}
 
             <div class="form-group">

@@ -35,9 +35,9 @@
     @endsection
 
 @section('content-mobile')
-    <div class="card card-body">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="d-block d-sm-none">
+        <div class="card">
+            <div class="card-body">
                 <div class="page-header">
                     <h2>Dokter: {{ $dokter->nama }}</h2>
                 </div>

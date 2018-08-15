@@ -19,18 +19,6 @@
                 </div>
             </div>
         </div>
-        <div class="d-block d-sm-none">
-            <div class="card card-body">
-                <div class="col-md-12">
-                    <form class="form-inline" action="{{ route('dokter.cari') }}" method="get">
-                        <label for="cari" class="control-label">Cari Dokter: </label>
-                        <input type="text" class="form-control" id="query" name="query" placeholder="John Doe" value="{{ $query }}">
-                        <br><br><br>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Cari Dokter</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="col-md-12">
@@ -70,6 +58,18 @@
     @endsection
 
 @section('content-mobile')
+    <div class="d-block d-sm-none">
+        <div class="card card-body">
+            <div class="col-md-12">
+                <form class="form-inline" action="{{ route('dokter.cari') }}" method="get">
+                    <label for="cari" class="control-label">Cari Dokter: </label>
+                    <input type="text" class="form-control" id="query" name="query" placeholder="John Doe" value="{{ $query }}">
+                    <br><br><br>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Cari Dokter</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="d-block d-sm-none">
         <div class="card card-body">
             <table class="table small">
