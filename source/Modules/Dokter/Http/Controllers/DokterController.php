@@ -39,7 +39,7 @@ class DokterController extends Controller
      */
     public function createNewDokter()
     {
-        return view('dokter::dokter.create');
+        return view('dokter::create');
     }
 
     /**
@@ -78,7 +78,7 @@ class DokterController extends Controller
     {
         $dokter = User::findorFail($id);
 
-        return view('dokter::dokter.show')->with('dokter', $dokter);
+        return view('dokter::show')->with('dokter', $dokter);
     }
 
     /**
@@ -89,7 +89,7 @@ class DokterController extends Controller
     {
         $dokter = User::findorFail($id);
 
-        return view('dokter::dokter.edit')
+        return view('dokter::edit')
             ->with('dokter', $dokter);
     }
 
@@ -135,6 +135,6 @@ class DokterController extends Controller
         orWhere('alamat', 'like', '%'.$query.'%')->
         orWhere('telepon', 'like', '%'.$query.'%')->get();
 
-        return view('dokter::dokter.hasil_cari')->with('dokters', $results)->with('query', $query);
+        return view('dokter::hasil_cari')->with('dokters', $results)->with('query', $query);
     }
 }
