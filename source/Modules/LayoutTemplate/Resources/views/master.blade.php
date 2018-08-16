@@ -49,11 +49,9 @@
                         {{ csrf_field() }}
                     </form>
 
-                    <div class="d-block d-sm-none">
-                        <div class="col-md-12">
-                            @include('layouttemplate::alert')
-                        </div>
+                    @include('layouttemplate::alert')
 
+                    <div class="d-block d-sm-none">
                         @yield('content-mobile')
                     </div>
 
@@ -72,10 +70,6 @@
                                         </tr>
                                         </tbody>
                                     </table>
-
-                                    <div class="col-md-12">
-                                        @include('layouttemplate::alert')
-                                    </div>
 
                                     @yield('content')
                                 </div>

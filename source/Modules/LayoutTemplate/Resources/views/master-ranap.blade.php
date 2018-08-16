@@ -49,8 +49,9 @@
                         {{ csrf_field() }}
                     </form>
 
+                    @include('layouttemplate::alert')
+
                     <div class="d-block d-sm-none">
-                        @include('layouttemplate::alert')
 
                         <ul class="nav nav-tabs" style="border-bottom: none">
                             <li class="nav-item dropdown">
@@ -83,10 +84,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-
-                            <div class="col-md-12">
-                                @include('layouttemplate::alert')
-                            </div>
 
                             <div class="col-md-12">
                                 <div class="card">
