@@ -36,4 +36,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\KonsumsiObat\Http\C
         'as' => 'konsumsi_obat.update',
         'uses' => 'KonsumsiObatController@updateKonsumsiObat'
     ]);
+
+    Route::patch('ranap/simpan_perubahan_keterangan_obat', [
+        'as' => 'konsumsi_obat.update_keterangan',
+        'uses' => 'KonsumsiObatController@ubahKeteranganObat'
+    ]);
 });
