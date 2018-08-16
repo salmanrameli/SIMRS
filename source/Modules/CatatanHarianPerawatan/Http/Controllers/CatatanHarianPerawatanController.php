@@ -63,7 +63,7 @@ class CatatanHarianPerawatanController extends Controller
         $this->validate($request, [
             'id_ranap' => 'required',
             'tanggal_keterangan' => 'required',
-            'jam' => 'required|date_format:H:i',
+            'jam' => 'required',
             'asuhan_keperawatan_soap' => 'required',
         ]);
 
