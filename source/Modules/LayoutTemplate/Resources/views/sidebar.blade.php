@@ -1,71 +1,21 @@
 @if(Auth::user()->jabatan_id == 1)
-    <li class="nav-item d-inline-block">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('user.index') }}" class="nav-link" id="manajemen_staff_jabatan" style="min-width: 200px"><i class="fas fa-users-cog"></i> Manajemen Staff</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('user.create') }}" class="nav-link small">Daftarkan Staff Baru</a>
-                <a href="{{ route('jabatan.create') }}" class="nav-link small">Buat Jabatan Baru</a>
-            </div>
-        </div>
+    <li class="nav-item" id="manajemen_staff_jabatan" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('user.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-users-cog"></i> Manajemen Staff<span class="caret"></span></a>
     </li>
-    <li class="nav-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('dokter.index') }}" class="nav-link" id="manajemen_dokter" style="min-width: 200px"><i class="fas fa-user-md"></i> Manajemen Dokter</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('dokter.create') }}" class="nav-link small">Daftarkan Dokter Baru</a>
-            </div>
-        </div>
+    <li class="nav-item" id="manajemen_dokter" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('dokter.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-user-md"></i> Manajemen Dokter</a>
     </li>
-    <li class="nav-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('pasien.index') }}" class="nav-link" id="manajemen_data_pasien" style="min-width: 200px"><i class="fas fa-heartbeat"></i> Manajemen Pasien</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('pasien.create') }}" class="nav-link small">Daftarkan Pasien Baru</a>
-            </div>
-        </div>
+    <li class="nav-item" id="manajemen_data_pasien" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('pasien.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-heartbeat"></i> Manajemen Pasien</a>
     </li>
-    <li class="nav-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('bangunan.index') }}" class="nav-link" id="denah_ruangan" style="min-width: 200px"><i class="fas fa-hospital"></i> Manajemen Bangunan</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('lantai.create') }}" class="nav-link small">Tambah Lantai Baru</a>
-                <a href="{{ route('kamar.create') }}" class="nav-link small">Tambah Kamar Baru</a>
-            </div>
-        </div>
+    <li class="nav-item" id="denah_ruangan" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('bangunan.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-hospital"></i> Manajemen Bangunan</a>
     </li>
-    <li class="nav-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('obat.index') }}" class="nav-link" id="manajemen_obat" style="min-width: 200px"><i class="fas fa-pills"></i> Manajemen Obat</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('obat.create') }}" class="nav-link small">Daftarkan Obat Baru</a>
-            </div>
-        </div>
+    <li class="nav-item" id="manajemen_obat" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('obat.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-pills"></i> Manajemen Obat</a>
     </li>
-    <li class="nav-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('alat_kesehatan.index') }}" class="nav-link" id="manajemen_alkes" style="min-width: 200px"><i class="fas fa-toolbox"></i> Manajemen<br>Alat Kesehatan</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('alat_kesehatan.create') }}" class="nav-link small">Tambah Alat Kesehatan Baru</a>
-            </div>
-        </div>
+    <li class="nav-item" id="manajemen_alkes" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('alat_kesehatan.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-toolbox"></i> Manajemen<br>Alat Kesehatan</a>
     </li>
     @endif
 
