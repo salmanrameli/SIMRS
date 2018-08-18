@@ -82,43 +82,9 @@
 
                             @yield('content')
 
+                            @yield('modal')
                         </div>
                     </div>
-
-                    {{--<div class="d-block d-sm-block d-md-none">--}}
-                        {{--@yield('content-mobile')--}}
-                    {{--</div>--}}
-
-                    {{--<div class="row">--}}
-                        {{--<div class="col-md-2">--}}
-                            {{--@include('layouttemplate::sidebar')--}}
-                        {{--</div>--}}
-                        {{--<div class="col-md-10">--}}
-                            {{--@yield('content')--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="d-none d-md-block">--}}
-                        {{--<div class="d-flex">--}}
-                            {{--<ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" data-spy="affix">--}}
-                                {{--@include('layouttemplate::sidebar')--}}
-                            {{--</ul>--}}
-                            {{--<div class="tab-content">--}}
-                                {{--<div class="row" style="padding: 10px 25px 0 10px; min-width: 100%">--}}
-                                    {{--<table>--}}
-                                        {{--<tbody>--}}
-                                            {{--<tr>--}}
-                                                {{--<th class="w-100 hidden"></th>--}}
-                                                {{--<td class="w-100 hidden"></td>--}}
-                                            {{--</tr>--}}
-                                        {{--</tbody>--}}
-                                    {{--</table>--}}
-
-
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
 
                 </div>
             </div>
