@@ -11,7 +11,7 @@
     display: flex;
     width: 100%;
     align-items: stretch;
-    perspective: 1500px;
+    /*perspective: 1500px;*/
 }
 
 
@@ -26,15 +26,6 @@
 #sidebar.active {
     margin-left: -220px;
     /*transform: rotateY(100deg);*/
-}
-
-#sidebar .sidebar-header {
-    /*padding: 20px;*/
-    /*background: #6d7fcc;*/
-}
-
-#sidebar ul.components {
-    /*padding: 20px 0;*/
 }
 
 #sidebar ul p {
