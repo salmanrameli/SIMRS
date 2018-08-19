@@ -51,57 +51,62 @@
             </tbody>
         </table>
 
-        <div class="d-none d-md-block">
-            <div class="col-md-12">
-                <div class="btn-group">
+        <div class="d-none d-lg-block">
+            <div class="btn-group">
+                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
                     <a href="{{ route('pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Rincian Pasien</a>
+                    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="{{ route('pasien.edit', $ranap->pasien->id) }}" class="dropdown-item">Ubah Data Pasien</a>
+                    </div>
+                    @else
+                    <a href="{{ route('pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info">Rincian Pasien</a>
+                @endif
+            </div>
+            @if(Auth::user()->jabatan_id == 3 || Auth::user()->jabatan_id == 4)
+                <hr>
+                <div class="d-inline-flex">
+                    <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perjalanan Penyakit Pasien</a>
+                    <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->pasien->id) }}" class="btn btn-outline-info" style="margin-left: 5px; margin-right:5px">Perintah Dokter Dan Pengobatan</a>
+                    <a href="{{ route('catatan_harian_perawatan.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Catatan Harian dan Perawatan</a>
+                </div>
+            @endif
+
+            @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-warning float-right">Ubah</a>
+            @endif
+        </div>
+
+        <div class="d-lg-none">
+            <div class="row">
+                <div class="col-md-12">
                     @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                    <div class="btn-group">
+                        <a href="{{ route('pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info" style="">Rincian Pasien</a>
                         <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only"></span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('pasien.edit', $ranap->pasien->id) }}" class="dropdown-item">Ubah Data Pasien</a>
                         </div>
+                    </div>
+                    <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-warning btn-block">Ubah</a>
+                        @else
+                        <a href="{{ route('pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info btn-block">Rincian Pasien</a>
+                        <hr>
                     @endif
                 </div>
-
-                @if(Auth::user()->jabatan_id == 3 || Auth::user()->jabatan_id == 4)
-                    <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perjalanan Penyakit Pasien</a>
-                    <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Perintah Dokter Dan Pengobatan</a>
-                    <a href="{{ route('catatan_harian_perawatan.index', $ranap->pasien->id) }}" class="btn btn-outline-info">Catatan Harian dan Perawatan</a>
-                @endif
-
-                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                    <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-warning float-right">Ubah</a>
-                @endif
             </div>
-        </div>
-
-        <div class="d-md-none">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="btn-group">
-                        <a href="{{ route('pasien.show', $ranap->pasien->id) }}" class="btn btn-outline-info" style="">Rincian Pasien</a>
-                        @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                            <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only"></span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{ route('pasien.edit', $ranap->pasien->id) }}" class="dropdown-item">Ubah Data Pasien</a>
-                            </div>
-                        @endif
-                    </div>
-                    @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
-                        <a href="{{ route('ranap.edit', $ranap->id) }}" class="btn btn-warning float-right">Ubah</a>
+                    @if(Auth::user()->jabatan_id == 3 || Auth::user()->jabatan_id == 4)
+                        <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-block btn-outline-info">Perjalanan Penyakit Pasien</a>
+                        <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->pasien->id) }}" class="btn btn-block btn-outline-info">Perintah Dokter Dan Pengobatan</a>
+                        <a href="{{ route('catatan_harian_perawatan.index', $ranap->pasien->id) }}" class="btn btn-block btn-outline-info">Catatan Harian dan Perawatan</a>
                     @endif
                 </div>
-            </div>
-            <div class="col-md-12">
-                @if(Auth::user()->jabatan_id == 3 || Auth::user()->jabatan_id == 4)
-                    <a href="{{ route('perjalanan_penyakit.index', $ranap->pasien->id) }}" class="btn btn-block btn-outline-info">Perjalanan Penyakit Pasien</a>
-                    <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->pasien->id) }}" class="btn btn-block btn-outline-info">Perintah Dokter Dan Pengobatan</a>
-                    <a href="{{ route('catatan_harian_perawatan.index', $ranap->pasien->id) }}" class="btn btn-block btn-outline-info">Catatan Harian dan Perawatan</a>
-                @endif
             </div>
         </div>
 
