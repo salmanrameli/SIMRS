@@ -5,163 +5,143 @@
 @endsection
 
 @section('content')
-    <div class="d-none d-sm-block">
-        <div class="card-body">
+    <div class="card-body">
+        <div class="page-header">
+            @if(Auth::user()->jabatan_id == 3)
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
+            @endif
+            <h4>Catatan Harian Perawatan: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <hr>
             <div class="col-md-12">
-                <div class="page-header">
-                    @if(Auth::user()->jabatan_id == 3)
-                        <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
-                    @endif
-                    <h4>Catatan Harian Perawatan: {{ ucwords($ranap->pasien->nama) }}</h4>
-                    <hr>
-                    <div class="col-md-12">
-                        <table>
-                            <tbody class="small">
-                                <tr>
-                                    <th>Jenis Kelamin</th>
-                                    <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Umur</th>
-                                    <td id="umur" style="padding-left: 10px"></td>
-                                </tr>
-                                <tr>
-                                    <th>Tanggal Masuk</th>
-                                    <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Diagnosa Awal</th>
-                                    <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>DPJP</th>
-                                    <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                    </div>
-                </div>
-                <table class="table table-striped small">
-                    <thead>
+                <table>
+                    <tbody class="small">
                         <tr>
-                            <th>Asuhan Keperawatan (SOAP)</th>
+                            <th>Jenis Kelamin</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                    @if(!empty($catatans))
-                        @foreach($catatans as $catatan)
-                            <tr>
-                                <td class="text-justify">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <th>Dibuat tanggal</th>
-                                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</td>
-                                            </tr>
-                                            <tr>
-                                                @if(date("d F Y", strtotime($catatan->tanggal_keterangan)) == date("d F Y", strtotime($catatan->updated_at)))
-                                                    <th>Diubah tanggal</th>
-                                                    <td>: -</td>
-                                                @else
-                                                    <th>Diubah tanggal</th>
-                                                    <td>: {{ date("d F Y", strtotime($catatan->updated_at)) }}</td>
-                                                @endif
-                                            </tr>
-                                            <tr>
-                                                <th>Ditulis oleh</th>
-                                                <td>: {{ ucwords($catatan->user->nama) }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <hr>
-                                    <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
-                                    <hr>
-                                    @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
-                                        <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
+                        <tr>
+                            <th>Umur</th>
+                            <td id="umur" style="padding-left: 10px"></td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Diagnosa Awal</th>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                        </tr>
+                        <tr>
+                            <th>DPJP</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                        </tr>
                     </tbody>
                 </table>
+                <br>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
             </div>
         </div>
+        <table class="table table-striped small">
+            <thead>
+                <tr>
+                    <th>Asuhan Keperawatan (SOAP)</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if(!empty($catatans))
+                @foreach($catatans as $catatan)
+                    <tr>
+                        <td class="text-justify">
+                            <b>Dibuat tanggal: {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</b><br>
+                            @if(date("d F Y", strtotime($catatan->tanggal_keterangan)) == date("d F Y", strtotime($catatan->updated_at)))
+                                <b>Diubah tanggal: –</b>
+                            @else
+                                <b>Diubah tanggal: {{ date("d F Y", strtotime($catatan->updated_at)) }}</b>
+                            @endif
+                            <br><b>Ditulis oleh: {{ ucwords($catatan->user->nama) }}</b>
+                            <hr>
+                            <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
+                            <hr>
+                            @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
+                                <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
+            </tbody>
+        </table>
     </div>
 @endsection
 
 @section('content-mobile')
-    <div class="d-block d-sm-none">
-        <div class="card-body">
-            <div class="page-header">
-                <h4>Catatan Harian Perawatan: {{ ucwords($ranap->pasien->nama) }}</h4>
-                <br>
-                @if(Auth::user()->jabatan_id == 3)
-                    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
-                @endif
-                <hr>
-                <div class="col-md-12">
-                    <table>
-                        <tbody class="small">
-                            <tr>
-                                <th>Jenis Kelamin</th>
-                                <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Umur</th>
-                                <td id="umur" style="padding-left: 10px"></td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Masuk</th>
-                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Diagnosa Awal</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                            </tr>
-                            <tr>
-                                <th>DPJP</th>
-                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                </div>
-            </div>
-            <table class="table table-striped small">
-                <thead>
-                    <tr>
-                        <th>Asuhan Keperawatan (SOAP)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @if(!empty($catatans))
-                    @foreach($catatans as $catatan)
+    <div class="card-body">
+        <div class="page-header">
+            <h4>Catatan Harian Perawatan: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <br>
+            @if(Auth::user()->jabatan_id == 3)
+                <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
+            @endif
+            <hr>
+            <div class="col-md-12">
+                <table>
+                    <tbody class="small">
                         <tr>
-                            <td class="text-justify w-75">
-                                <b>Dibuat tanggal: {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</b><br>
-                                @if(date("d F Y", strtotime($catatan->tanggal_keterangan)) == date("d F Y", strtotime($catatan->updated_at)))
-                                    <b>Diubah tanggal: –</b>
-                                @else
-                                    <b>Diubah tanggal: {{ date("d F Y", strtotime($catatan->updated_at)) }}</b>
-                                @endif
-                                <br><b>Ditulis oleh: {{ ucwords($catatan->user->nama) }}</b>
-                                <hr>
-                                <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
-                                <hr>
-                                @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
-                                    <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
-                                @endif
-                            </td>
+                            <th>Jenis Kelamin</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                         </tr>
-                    @endforeach
-                @endif
-                </tbody>
-            </table>
+                        <tr>
+                            <th>Umur</th>
+                            <td id="umur" style="padding-left: 10px"></td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Diagnosa Awal</th>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                        </tr>
+                        <tr>
+                            <th>DPJP</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+            </div>
         </div>
+        <table class="table table-striped small">
+            <thead>
+                <tr>
+                    <th>Asuhan Keperawatan (SOAP)</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if(!empty($catatans))
+                @foreach($catatans as $catatan)
+                    <tr>
+                        <td class="text-justify w-75">
+                            <b>Dibuat tanggal: {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</b><br>
+                            @if(date("d F Y", strtotime($catatan->tanggal_keterangan)) == date("d F Y", strtotime($catatan->updated_at)))
+                                <b>Diubah tanggal: –</b>
+                            @else
+                                <b>Diubah tanggal: {{ date("d F Y", strtotime($catatan->updated_at)) }}</b>
+                            @endif
+                            <br><b>Ditulis oleh: {{ ucwords($catatan->user->nama) }}</b>
+                            <hr>
+                            <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
+                            <hr>
+                            @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
+                                <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
+            </tbody>
+        </table>
     </div>
     @endsection
 
