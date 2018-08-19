@@ -23,9 +23,9 @@
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
-    <div class="d-block d-sm-none">
+    <div class="d-block d-md-none">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">SIMRS</a>
+            <a class="navbar-brand" href="/">SIMRS</a><small style="font-size: 15px; color: white" class="float-right">@ {{ Auth::user()->nama }}</small>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,7 +37,7 @@
         </nav>
     </div>
     <body style="background-image: url({{ asset('img/grey.png') }})">
-        <div class="d-none d-sm-block container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 5px; border-bottom: 2px solid whitesmoke;">
+        <div class="d-none d-md-block container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 5px; border-bottom: 2px solid whitesmoke;">
             <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
             <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
             <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
@@ -51,8 +51,7 @@
 
                     @include('layouttemplate::alert')
 
-                    <div class="d-block d-sm-none">
-
+                    <div class="d-block d-md-none">
                         <ul class="nav nav-tabs" style="border-bottom: none">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catatan Pasien</a>
@@ -74,7 +73,7 @@
                         </div>
                     </div>
 
-                    <div class="d-none d-sm-block">
+                    <div class="d-none d-md-block">
                         <div class="tab-content">
                             <table>
                                 <tbody>
