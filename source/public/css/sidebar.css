@@ -18,8 +18,9 @@
 #sidebar {
     min-width: 220px;
     max-width: 250px;
-    padding-right: 20px;
     transition: all 0.2s;
+    min-height: 100%;
+    padding-right: 20px;
     /*transform-origin: bottom left;*/
 }
 
@@ -41,6 +42,9 @@
 #sidebar ul li a:hover {
     color: whitesmoke;
     background: black;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    transition: 0.4s;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
