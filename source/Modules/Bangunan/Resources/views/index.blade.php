@@ -64,48 +64,46 @@
                 </div>
             </div>
 
-            <div class="card-body row align-items-center justify-content-center">
-                <div class="col-md-12">
-                    <div class="row">
-                        @foreach($kamars as $kamar)
-                            @if($lantai->nomor_lantai == $kamar->nomor_lantai)
-                                <div class="col-md-2">
-                                    <div class="card card-body">
-                                        <h6 class="text-center">Kamar {{ $kamar->nama_kamar }}</h6>
-                                        <table class="table table-striped">
-                                            <tbody class="small">
-                                                <tr>
-                                                    <th>Kapasitas</th>
-                                                    <td>{{ $kamar->jumlah_maks_pasien }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Terisi</th>
-                                                    @foreach($terisis as $terisi)
-                                                        @if($terisi->nama_kamar == $kamar->nama_kamar)
-                                                            <td>{{ $terisi->pasien_inap }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        @if(Auth::user()->jabatan_id == 1)
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar" style="width: 100%">Ubah</button>
-                                                <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    {{ Form::open([ 'method' => 'delete', 'route' => ['kamar.delete', $kamar->id]]) }}
-                                                    <button type="submit" class="dropdown-item" onclick="return confirm('Apakah anda yakin menghapus kamar ini?')">Hapus</button>
-                                                    {{ Form::close() }}
-                                                </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach($kamars as $kamar)
+                        @if($lantai->nomor_lantai == $kamar->nomor_lantai)
+                            <div class="col-sm-4 col-md-3">
+                                <div class="card card-body">
+                                    <h6 class="text-center">Kamar {{ $kamar->nama_kamar }}</h6>
+                                    <table class="table table-striped small">
+                                        <tbody>
+                                        <tr>
+                                            <th>Kapasitas</th>
+                                            <td>{{ $kamar->jumlah_maks_pasien }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Terisi</th>
+                                            @foreach($terisis as $terisi)
+                                                @if($terisi->nama_kamar == $kamar->nama_kamar)
+                                                    <td>{{ $terisi->pasien_inap }}</td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    @if(Auth::user()->jabatan_id == 1)
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar" style="width: 100%">Ubah</button>
+                                            <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                {{ Form::open([ 'method' => 'delete', 'route' => ['kamar.delete', $kamar->id]]) }}
+                                                <button type="submit" class="dropdown-item" onclick="return confirm('Apakah anda yakin menghapus kamar ini?')">Hapus</button>
+                                                {{ Form::close() }}
                                             </div>
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
                                 </div>
-                            @endif
-                        @endforeach
-                    </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
