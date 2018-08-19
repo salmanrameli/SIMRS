@@ -5,188 +5,182 @@
 @endsection
 
 @section('content')
-    <div class="d-none d-sm-block">
-        <div class="card-body">
+    <div class="card-body">
+        <div class="page-header">
+            <h4>Perintah Dokter dan Pengobatan: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <hr>
             <div class="col-md-12">
-                <div class="page-header">
-                    <h4>Perintah Dokter dan Pengobatan: {{ ucwords($ranap->pasien->nama) }}</h4>
-                    <hr>
-                    <div class="col-md-12">
-                        <table>
-                            <tbody class="small">
-                                <tr>
-                                    <th>Jenis Kelamin</th>
-                                    <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Umur</th>
-                                    <td id="umur" style="padding-left: 10px"></td>
-                                </tr>
-                                <tr>
-                                    <th>Tanggal Masuk</th>
-                                    <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Diagnosa Awal</th>
-                                    <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>DPJP</th>
-                                    <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                    </div>
-                </div>
-                <table class="table table-striped small">
-                    <thead>
+                <table>
+                    <tbody class="small">
                         <tr>
-                            <th>Terapi dan Rencana Tindakan</th>
-                            <th>Catatan Perawat</th>
+                            <th>Jenis Kelamin</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($perintahs as $perintah)
                         <tr>
-                            <td class="text-justify w-50">
-                                <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
-                                @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
-                                    <b>Diubah tanggal: –</b>
-                                @else
-                                    <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
-                                @endif
-                                <hr>
-
-                                <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
-                            </td>
-                            <td class="text-justify">
-                                @if(!empty($perintah->perintah_dokter_dan_pengobatan))
-                                    <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b><br>
-                                    @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
-                                        <b>Diubah tanggal: –</b>
-                                    @else
-                                        <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
-                                    @endif
-                                    <hr>
-                                @endif
-
-                                {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
-
-                                @if(Auth::user()->jabatan_id == 3)
-                                    @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
-                                        <br><hr>
-                                        <div class="btn-group float-right">
-                                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
-                                        </div>
-                                    @else
-                                        <div class="btn-group float-left">
-                                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-target="#modalBuatCatatanBaru">Catatan Baru</button>
-                                        </div>
-                                    @endif
-                                @endif
-                            </td>
+                            <th>Umur</th>
+                            <td id="umur" style="padding-left: 10px"></td>
                         </tr>
-                    @endforeach
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Diagnosa Awal</th>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                        </tr>
+                        <tr>
+                            <th>DPJP</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                        </tr>
                     </tbody>
                 </table>
+                <br>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
             </div>
         </div>
+        <table class="table table-striped small">
+            <thead>
+                <tr>
+                    <th>Terapi dan Rencana Tindakan</th>
+                    <th>Catatan Perawat</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($perintahs as $perintah)
+                <tr>
+                    <td class="text-justify w-50">
+                        <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
+                        @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
+                            <b>Diubah tanggal: –</b>
+                        @else
+                            <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
+                        @endif
+                        <hr>
+
+                        <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
+                    </td>
+                    <td class="text-justify">
+                        @if(!empty($perintah->perintah_dokter_dan_pengobatan))
+                            <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b><br>
+                            @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
+                                <b>Diubah tanggal: –</b>
+                            @else
+                                <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
+                            @endif
+                            <hr>
+                        @endif
+
+                        {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
+
+                        @if(Auth::user()->jabatan_id == 3)
+                            @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
+                                <br><hr>
+                                <div class="btn-group float-right">
+                                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
+                                </div>
+                            @else
+                                <div class="btn-group float-left">
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-target="#modalBuatCatatanBaru">Catatan Baru</button>
+                                </div>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection
 
 @section('content-mobile')
-    <div class="d-block d-sm-none">
-        <div class="card-body">
-            <div class="page-header">
-                <h4>Perintah Dokter dan Pengobatan: {{ ucwords($ranap->pasien->nama) }}</h4>
-                <hr>
-                <div class="col-md-12">
-                    <table>
-                        <tbody class="small">
-                            <tr>
-                                <th>Jenis Kelamin</th>
-                                <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Umur</th>
-                                <td id="umur" style="padding-left: 10px"></td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Masuk</th>
-                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Diagnosa Awal</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                            </tr>
-                            <tr>
-                                <th>DPJP</th>
-                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                </div>
+    <div class="card-body">
+        <div class="page-header">
+            <h4>Perintah Dokter dan Pengobatan: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <hr>
+            <div class="col-md-12">
+                <table>
+                    <tbody class="small">
+                        <tr>
+                            <th>Jenis Kelamin</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Umur</th>
+                            <td id="umur" style="padding-left: 10px"></td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Diagnosa Awal</th>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                        </tr>
+                        <tr>
+                            <th>DPJP</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
             </div>
-            <table class="table table-striped small">
-                <thead>
-                    <tr>
-                        <th>Terapi dan Rencana Tindakan</th>
-                        <th>Catatan Perawat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($perintahs as $perintah)
-                    <tr>
-                        <td class="text-justify w-50">
-                            Dibuat tanggal:<br><b>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b>
-                            @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
+        </div>
+        <table class="table table-striped small">
+            <thead>
+                <tr>
+                    <th>Terapi dan Rencana Tindakan</th>
+                    <th>Catatan Perawat</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($perintahs as $perintah)
+                <tr>
+                    <td class="text-justify w-50">
+                        Dibuat tanggal:<br><b>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b>
+                        @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
+                            <hr>
+                            Diubah tanggal:<br><b>–</b>
+                        @else
+                            <hr>
+                            Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
+                        @endif
+                        <hr>
+
+                        <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
+                    </td>
+                    <td class="text-justify">
+                        @if(!empty($perintah->perintah_dokter_dan_pengobatan))
+                            Dibuat tanggal:<br><b>{{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b>
+                            @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
                                 <hr>
                                 Diubah tanggal:<br><b>–</b>
                             @else
                                 <hr>
-                                Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
+                                Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
                             @endif
                             <hr>
+                        @endif
 
-                            <p>{!! $perintah->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id]) }}">Perjalanan Penyakit...</a></p>
-                        </td>
-                        <td class="text-justify">
-                            @if(!empty($perintah->perintah_dokter_dan_pengobatan))
-                                Dibuat tanggal:<br><b>{{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b>
-                                @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
-                                    <hr>
-                                    Diubah tanggal:<br><b>–</b>
-                                @else
-                                    <hr>
-                                    Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
-                                @endif
-                                <hr>
+                        {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
+
+                        @if(Auth::user()->jabatan_id == 3)
+                            @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
+                                <br><hr>
+                                <div class="btn-group float-right">
+                                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
+                                </div>
+                            @else
+                                <div class="btn-group float-left">
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-target="#modalBuatCatatanBaru">Catatan Baru</button>
+                                </div>
                             @endif
-
-                            {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
-
-                            @if(Auth::user()->jabatan_id == 3)
-                                @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
-                                    <br><hr>
-                                    <div class="btn-group float-right">
-                                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
-                                    </div>
-                                @else
-                                    <div class="btn-group float-left">
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-target="#modalBuatCatatanBaru">Catatan Baru</button>
-                                    </div>
-                                @endif
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     @endsection
 
