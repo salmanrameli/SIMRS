@@ -28,18 +28,8 @@
     </li>
     @endif
 
-@if(Auth::user()->jabatan_id == 3)
-    <li class="nav-item">
-        <div class="btn-group">
-            <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
-        </div>
+@if(Auth::user()->jabatan_id == 3 || Auth::user()->jabatan_id == 4)
+    <li class="nav-item" id="pasien_ranap" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('ranap.index') }}" class="nav-link"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
     </li>
     @endif
-
-@if(Auth::user()->jabatan_id == 4)
-    <li class="nav-item">
-        <div class="btn-group">
-            <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
-        </div>
-    </li>
-@endif
