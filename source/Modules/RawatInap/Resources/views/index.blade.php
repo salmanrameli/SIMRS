@@ -5,7 +5,7 @@
     @endsection
 
 @section('content')
-    <div class="card card-body">
+    <div class="card card-body" style="min-height: 60vh">
         @if(Auth::user()->jabatan_id == 2)
             <div class="d-none d-md-block">
                 <div class="col-md-12">
@@ -22,10 +22,9 @@
                 <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info btn-block">Lihat Semua Pasien</a>
                 <hr>
             </div>
-
         @endif
 
-        <div class="table-responsive-sm">
+        <div class="table-responsive-sm" style="min-height: 50vh">
             <table class="table table-striped">
                 <thead>
                     <tr>
