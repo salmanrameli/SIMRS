@@ -50,6 +50,8 @@
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
     background: black;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 /* ---------------------------------------------------

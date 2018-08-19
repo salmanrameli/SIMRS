@@ -20,21 +20,11 @@
     @endif
 
 @if(Auth::user()->jabatan_id == 2)
-    <li class="nav-item">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <a href="{{ route('ranap.index') }}" class="nav-link" id="pasien_ranap"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('ranap.pasien.create') }}" class="nav-link small">Daftarkan Pasien Baru</a>
-                <a href="{{ route('ranap.create') }}" class="nav-link small">Daftarkan Rawat Inap Baru</a>
-                <a href="{{ route('ranap.pasien.index') }}" class="nav-link small">Lihat Semua Pasien</a>
-            </div>
-        </div>
+    <li class="nav-item" id="pasien_ranap" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('ranap.index') }}" class="nav-link"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
     </li>
-    <li class="nav-item">
-        <a href="{{ route('bangunan.index') }}" class="nav-link" id="denah_ruangan">Ruangan</a>
+    <li class="nav-item" id="denah_ruangan" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('bangunan.index') }}" class="nav-link">Ruangan</a>
     </li>
     @endif
 
