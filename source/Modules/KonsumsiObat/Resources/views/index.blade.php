@@ -5,162 +5,14 @@
 @endsection
 
 @section('content')
-    <div class="d-none d-sm-block">
-        <div class="card-body">
-        <div class="col-md-12">
-            <div class="page-header">
-                @if(Auth::user()->jabatan_id == 3)
-                    <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
-                @endif
-                <h4>Terapi / Penatalaksanaan Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
-                <hr>
-                <div class="col-md-12">
-                    <table>
-                        <tbody class="small">
-                            <tr>
-                                <th>Jenis Kelamin</th>
-                                <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Umur</th>
-                                <td id="umur" style="padding-left: 10px"></td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Masuk</th>
-                                <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Diagnosa Awal</th>
-                                <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                            </tr>
-                            <tr>
-                                <th>DPJP</th>
-                                <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                </div>
-            </div>
-            <table class="table table-bordered table-sm">
-                <tbody>
-                @foreach($haris as $hari)
-                    <tr>
-                        <th colspan="3" class="text-center table-info"><i class="fas fa-calendar-alt"></i> Tanggal</th>
-                        <td colspan="4" class="text-center table-info">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
-                        <th rowspan="5" class="align-middle text-center" width="20%">Keterangan</th>
-                    </tr>
-                    <tr>
-                        <th colspan="3" class="text-center">Hari Perawatan</th>
-                        <td colspan="4" class="text-center">{{ $hari->hari_perawatan }}</td>
-                    </tr>
-                    <tr>
-                        <th colspan="3" class="text-center">Tinggi Badan</th>
-                        <td colspan="4" class="text-center">{{ $hari->tinggi_badan }} cm</td>
-                    </tr>
-                    <tr>
-                        <th colspan="3" class="text-center">Berat Badan</th>
-                        <td colspan="4" class="text-center">{{ $hari->berat_badan }} kg</td>
-                    </tr>
-                    <tr>
-                        <th class="text-center">Nama Obat</th>
-                        <th class="text-center">Pemberian</th>
-                        <th class="text-center">Dosis</th>
-                        <th class="text-center">Pagi</th>
-                        <th class="text-center">Siang</th>
-                        <th class="text-center">Sore</th>
-                        <th class="text-center">Malam</th>
-                    </tr>
-                    @foreach($hari->konsumsi_obat as $obat)
-                        <tr>
-                            <td class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
-                            <td class="text-center">{{ ucfirst($obat->obat->tipe_obat) }}</td>
-                            <td class="text-center">{{ $obat->dosis }}</td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_pagi->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_siang->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_sore->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_malam->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if($obat->keterangan)
-                                    {{ ucfirst($obat->keterangan) }}
-                                    <div class="btn-group float-right">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropright</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="nav-link" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-keterangan="{{ $obat->keterangan }}" data-target="#modalUbahKeteranganObat">Ubah</a>
-                                        </div>
-                                    </div>
-                                @else
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-target="#modalTambahKeteranganObat" style="width: 100%"><i class="fa fa-plus"></i></button>
-                                        @else
-                                        -
-                                    @endif
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                    @if(Auth::user()->jabatan_id == 3)
-                    <tr>
-                        <td><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
-                        <td colspan="7"></td>
-                    </tr>
-                    @endif
-                    <tr style="border-left-style: hidden; border-right-style: hidden; border-bottom-style: hidden">
-                        <td colspan="8"><br></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-    </div>
-@endsection
-
-@section('content-mobile')
-    <div class="d-block d-sm-none">
-        <div class="card-body">
-            <div class="page-header">
-                <h4>Terapi / Penatalaksanaan Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
-                <br>
-                @if(Auth::user()->jabatan_id == 3)
-                    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
-                @endif
-                <hr>
+    <div class="card-body">
+        <div class="page-header">
+            @if(Auth::user()->jabatan_id == 3)
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
+            @endif
+            <h4>Terapi / Penatalaksanaan Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <hr>
+            <div class="col-md-12">
                 <table>
                     <tbody class="small">
                         <tr>
@@ -188,110 +40,252 @@
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
             </div>
-            <table class="table table-bordered table-sm">
-                <tbody>
-                @foreach($haris as $hari)
+        </div>
+        <table class="table table-bordered table-sm">
+            <tbody>
+            @foreach($haris as $hari)
+                <tr>
+                    <th colspan="3" class="text-center table-info"><i class="fas fa-calendar-alt"></i> Tanggal</th>
+                    <td colspan="4" class="text-center table-info">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
+                    <th rowspan="5" class="align-middle text-center" width="20%">Keterangan</th>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-center">Hari Perawatan</th>
+                    <td colspan="4" class="text-center">{{ $hari->hari_perawatan }}</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-center">Tinggi Badan</th>
+                    <td colspan="4" class="text-center">{{ $hari->tinggi_badan }} cm</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-center">Berat Badan</th>
+                    <td colspan="4" class="text-center">{{ $hari->berat_badan }} kg</td>
+                </tr>
+                <tr>
+                    <th class="text-center">Nama Obat</th>
+                    <th class="text-center">Pemberian</th>
+                    <th class="text-center">Dosis</th>
+                    <th class="text-center">Pagi</th>
+                    <th class="text-center">Siang</th>
+                    <th class="text-center">Sore</th>
+                    <th class="text-center">Malam</th>
+                </tr>
+                @foreach($hari->konsumsi_obat as $obat)
                     <tr>
-                        <th colspan="2" class="text-center table-info"><i class="fas fa-calendar-alt"></i> Tanggal</th>
-                        <td colspan="2" class="text-center table-info">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
-                        <th rowspan="5" class="align-middle text-center" width="20%">Keterangan</th>
-                    </tr>
-                    <tr>
-                        <th colspan="2" class="text-center">Hari Perawatan</th>
-                        <td colspan="2" class="text-center">{{ $hari->hari_perawatan }}</td>
-                    </tr>
-                    <tr>
-                        <th colspan="2" class="text-center">Tinggi Badan</th>
-                        <td colspan="2" class="text-center">{{ $hari->tinggi_badan }} cm</td>
-                    </tr>
-                    <tr>
-                        <th colspan="2" class="text-center">Berat Badan</th>
-                        <td colspan="2" class="text-center">{{ $hari->berat_badan }} kg</td>
-                    </tr>
-                    <tr>
-                        <th colspan="4" class="text-center">Nama Obat</th>
-                    </tr>
-                    @foreach($hari->konsumsi_obat as $obat)
-                        <tr>
-                            <td colspan="4" class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
-                            <td rowspan="3" class="text-center">
-                                @if($obat->keterangan)
-                                    {{ ucfirst($obat->keterangan) }}
-                                    <br>
-                                    <div class="btn-group float-right">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropright</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="nav-link" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-keterangan="{{ $obat->keterangan }}" data-target="#modalUbahKeteranganObat">Ubah</a>
-                                        </div>
+                        <td class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
+                        <td class="text-center">{{ ucfirst($obat->obat->tipe_obat) }}</td>
+                        <td class="text-center">{{ $obat->dosis }}</td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_pagi->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_siang->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_sore->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_malam->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if($obat->keterangan)
+                                {{ ucfirst($obat->keterangan) }}
+                                <div class="btn-group float-right">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropright</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="nav-link" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-keterangan="{{ $obat->keterangan }}" data-target="#modalUbahKeteranganObat">Ubah</a>
                                     </div>
-                                @else
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-target="#modalTambahKeteranganObat" style="width: 100%"><i class="fa fa-plus"></i></button>
+                                </div>
+                            @else
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-target="#modalTambahKeteranganObat" style="width: 100%"><i class="fa fa-plus"></i></button>
                                     @else
-                                        -
-                                    @endif
+                                    -
                                 @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">Pa</td>
-                            <td class="text-center">Si</td>
-                            <td class="text-center">So</td>
-                            <td class="text-center">Ma</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_pagi->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_siang->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_sore->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                @if(empty($obat->konsumsi_obat_malam->sudah))
-                                    @if(Auth::user()->jabatan_id == 3)
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
-                                    @endif
-                                @else
-                                    <i class="fa fa-check"></i>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach
-                    @if(Auth::user()->jabatan_id == 3)
-                        <tr>
-                            <td colspan="5"><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
-                        </tr>
-                    @endif
-                    <tr style="border-left-style: hidden; border-right-style: hidden">
-                        <td colspan="5" style="margin-bottom: 10px"><br></td>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
+                @if(Auth::user()->jabatan_id == 3)
+                <tr>
+                    <td><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
+                    <td colspan="7"></td>
+                </tr>
+                @endif
+                <tr style="border-left-style: hidden; border-right-style: hidden; border-bottom-style: hidden">
+                    <td colspan="8"><br></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
+
+@section('content-mobile')
+    <div class="card-body">
+        <div class="page-header">
+            <h4>Terapi / Penatalaksanaan Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <br>
+            @if(Auth::user()->jabatan_id == 3)
+                <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
+            @endif
+            <hr>
+            <table>
+                <tbody class="small">
+                    <tr>
+                        <th>Jenis Kelamin</th>
+                        <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Umur</th>
+                        <td id="umur" style="padding-left: 10px"></td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Masuk</th>
+                        <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Diagnosa Awal</th>
+                        <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                    </tr>
+                    <tr>
+                        <th>DPJP</th>
+                        <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                    </tr>
                 </tbody>
             </table>
+            <br>
+            <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
         </div>
+        <table class="table table-bordered table-sm">
+            <tbody>
+            @foreach($haris as $hari)
+                <tr>
+                    <th colspan="2" class="text-center table-info"><i class="fas fa-calendar-alt"></i> Tanggal</th>
+                    <td colspan="2" class="text-center table-info">{{ date("d F Y", strtotime($hari->tanggal)) }}</td>
+                    <th rowspan="5" class="align-middle text-center" width="20%">Keterangan</th>
+                </tr>
+                <tr>
+                    <th colspan="2" class="text-center">Hari Perawatan</th>
+                    <td colspan="2" class="text-center">{{ $hari->hari_perawatan }}</td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="text-center">Tinggi Badan</th>
+                    <td colspan="2" class="text-center">{{ $hari->tinggi_badan }} cm</td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="text-center">Berat Badan</th>
+                    <td colspan="2" class="text-center">{{ $hari->berat_badan }} kg</td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">Nama Obat</th>
+                </tr>
+                @foreach($hari->konsumsi_obat as $obat)
+                    <tr>
+                        <td colspan="4" class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
+                        <td rowspan="3" class="text-center">
+                            @if($obat->keterangan)
+                                {{ ucfirst($obat->keterangan) }}
+                                <br>
+                                <div class="btn-group float-right">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropright</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="nav-link" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-keterangan="{{ $obat->keterangan }}" data-target="#modalUbahKeteranganObat">Ubah</a>
+                                    </div>
+                                </div>
+                            @else
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-keterangan="{{ $obat->id }}" data-target="#modalTambahKeteranganObat" style="width: 100%"><i class="fa fa-plus"></i></button>
+                                @else
+                                    -
+                                @endif
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Pa</td>
+                        <td class="text-center">Si</td>
+                        <td class="text-center">So</td>
+                        <td class="text-center">Ma</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_pagi->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_siang->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_sore->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat->konsumsi_obat_malam->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                @if(Auth::user()->jabatan_id == 3)
+                    <tr>
+                        <td colspan="5"><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
+                    </tr>
+                @endif
+                <tr style="border-left-style: hidden; border-right-style: hidden">
+                    <td colspan="5" style="margin-bottom: 10px"><br></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     @endsection
 
