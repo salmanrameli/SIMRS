@@ -1,91 +1,49 @@
 @extends('layouttemplate::master')
 
 @section('title')
-    Detail Akun
+    Detail Akun: {{ $user->nama }}
 @endsection
 
 @section('content')
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="d-none d-sm-block">
-                    <div class="card card-body">
-                        <h3>Detail Akun: <b>{{ $user->nama }}</b></h3>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
-                                <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
-                            </div>
-                        </div>
-                        <br>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <th style="padding-right: 100px">ID</th>
-                                    <td class="w-100" style="padding-left: 70px">{{ $user->id }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nama</th>
-                                    <td style="padding-left: 70px">{{ $user->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td style="padding-left: 70px">{{ $user->alamat }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Telepon</th>
-                                    <td style="padding-left: 70px">{{ $user->telepon }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Hak Akses</th>
-                                    <td style="padding-left: 70px">{{ ucfirst($user->jabatan->nama ) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+    <div class="card card-body">
+        <div class="d-none d-sm-block">
+            &nbsp;<a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
+            <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}" style="margin-left: 10px">Ubah Password</a>
         </div>
-    </div>
-@endsection
 
-@section('content-mobile')
-    <div class="d-block d-sm-none">
-        <div class="card card-body">
-            <h3>Detail Akun: <br><b>{{ $user->nama }}</b></h3>
-            <hr>
-            <a class="btn btn-warning" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
-            <br>
-            <a class="btn btn-warning" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
-            <br>
-            <table class="table small">
+        <div class="d-sm-none">
+            <a class="btn btn-warning btn-block" href="{{ route('setting.edit', ['id' => $user->id]) }}">Ubah Akun</a>
+            <a class="btn btn-warning btn-block" href="{{ route('setting.edit_password', ['id' => $user->id]) }}">Ubah Password</a>
+        </div>
+        <hr>
+        <div class="table-responsive-sm">
+            <table class="table table-striped">
                 <tbody>
                     <tr>
-                        <th style="padding-right: 50px">ID</th>
-                        <td class="w-75" style="padding-left: 20px">{{ $user->id }}</td>
+                        <th>ID</th>
+                        <td>{{ $user->id }}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td style="padding-left: 20px">{{ $user->nama }}</td>
+                        <td>{{ $user->nama }}</td>
                     </tr>
                     <tr>
                         <th>Alamat</th>
-                        <td style="padding-left: 20px">{{ $user->alamat }}</td>
+                        <td>{{ $user->alamat }}</td>
                     </tr>
                     <tr>
                         <th>Telepon</th>
-                        <td style="padding-left: 20px">{{ $user->telepon }}</td>
+                        <td>{{ $user->telepon }}</td>
                     </tr>
                     <tr>
                         <th>Hak Akses</th>
-                        <td style="padding-left: 20px">{{ ucfirst($user->jabatan->nama ) }}</td>
+                        <td>{{ ucfirst($user->jabatan->nama ) }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    @endsection
+@endsection
 
 @section('script')
     @include('layouttemplate::attributes.setting')
