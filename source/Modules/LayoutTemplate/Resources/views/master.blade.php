@@ -92,12 +92,15 @@
         @yield('script')
         <script>
             $(document).ready(function () {
-
                 $('#sidebarCollapse').on('click', function () {
                     $('#sidebar').toggleClass('active');
                 });
-
             });
+        </script>
+        <script>
+            var date = new Date($('#tgl_masuk').text());
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            $('#tanggal_masuk').append(" " + date.toLocaleDateString('id', options));
         </script>
     </body>
     <footer class="d-none" style="padding-bottom: 2%"></footer>

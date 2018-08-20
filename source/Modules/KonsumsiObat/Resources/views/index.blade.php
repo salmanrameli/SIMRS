@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -39,6 +39,7 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table table-bordered table-sm">
@@ -168,7 +169,7 @@
                     </tr>
                     <tr>
                         <th>Tanggal Masuk</th>
-                        <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                     </tr>
                     <tr>
                         <th>Diagnosa Awal</th>
@@ -182,6 +183,7 @@
             </table>
             <br>
             <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+            <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
         </div>
         <table class="table table-bordered table-sm">
             <tbody>
@@ -208,8 +210,8 @@
                 </tr>
                 @foreach($hari->konsumsi_obat as $obat)
                     <tr>
-                        <td colspan="4" class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
-                        <td rowspan="3" class="text-center">
+                        <td colspan="4" class="text-center" style="border-top: solid 2px black"><b>{{ ucfirst($obat->obat->nama) }}</b></td>
+                        <td rowspan="5" class="text-center" style="border-top: solid 2px black">
                             @if($obat->keterangan)
                                 {{ ucfirst($obat->keterangan) }}
                                 <br>
@@ -229,6 +231,14 @@
                                 @endif
                             @endif
                         </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Pemberian</th>
+                        <td  colspan="2" class="text-center">{{ ucfirst($obat->obat->tipe_obat) }}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Dosis</th>
+                        <td colspan="2" class="text-center">{{ $obat->dosis }}</td>
                     </tr>
                     <tr>
                         <td class="text-center">Pa</td>
@@ -281,7 +291,7 @@
                     </tr>
                 @endif
                 <tr style="border-left-style: hidden; border-right-style: hidden">
-                    <td colspan="5" style="margin-bottom: 10px"><br></td>
+                    <td colspan="5"><br></td>
                 </tr>
             @endforeach
             </tbody>

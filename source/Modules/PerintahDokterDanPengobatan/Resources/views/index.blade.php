@@ -22,7 +22,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -36,6 +36,8 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
+                <br>
             </div>
         </div>
         <table class="table table-striped small">
@@ -110,7 +112,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -124,6 +126,7 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table table-striped small">

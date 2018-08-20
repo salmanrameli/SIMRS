@@ -14,7 +14,7 @@
                     <tbody class="small">
                         <tr>
                             <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucwords($perintah->perjalanan_penyakit->rawat_inap->pasien->jenkel) }}</td>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                         </tr>
                         <tr>
                             <th>Umur</th>
@@ -22,11 +22,11 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perintah->perjalanan_penyakit->rawat_inap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perintah->perjalanan_penyakit->rawat_inap->diagnosa_awal) }}</td>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
                         </tr>
                         <tr>
                             <th>DPJP</th>
@@ -35,7 +35,8 @@
                     </tbody>
                 </table>
                 <br>
-                <p id="tanggal_lahir" hidden>{{ $perintah->perjalanan_penyakit->rawat_inap->pasien->tanggal_lahir }}</p>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table small">
@@ -96,30 +97,31 @@
             <div class="col-md-12">
                 <table>
                     <tbody class="small">
-                    <tr>
-                        <th>Jenis Kelamin</th>
-                        <td style="padding-left: 10px">: {{ ucwords($perintah->perjalanan_penyakit->rawat_inap->pasien->jenkel) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Umur</th>
-                        <td id="umur" style="padding-left: 10px"></td>
-                    </tr>
-                    <tr>
-                        <th>Tanggal Masuk</th>
-                        <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perintah->perjalanan_penyakit->rawat_inap->tanggal_masuk)) }}</td>
-                    </tr>
-                    <tr>
-                        <th>Diagnosa Awal</th>
-                        <td style="padding-left: 10px">: {{ ucfirst($perintah->perjalanan_penyakit->rawat_inap->diagnosa_awal) }}</td>
-                    </tr>
-                    <tr>
-                        <th>DPJP</th>
-                        <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                    </tr>
+                        <tr>
+                            <th>Jenis Kelamin</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Umur</th>
+                            <td id="umur" style="padding-left: 10px"></td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
+                        </tr>
+                        <tr>
+                            <th>Diagnosa Awal</th>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                        </tr>
+                        <tr>
+                            <th>DPJP</th>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                        </tr>
                     </tbody>
                 </table>
                 <br>
-                <p id="tanggal_lahir" hidden>{{ $perintah->perjalanan_penyakit->rawat_inap->pasien->tanggal_lahir }}</p>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table small">

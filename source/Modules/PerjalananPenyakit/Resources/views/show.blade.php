@@ -18,7 +18,7 @@
                     <tbody class="small">
                         <tr>
                             <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->pasien->jenkel) }}</td>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                         </tr>
                         <tr>
                             <th>Umur</th>
@@ -26,11 +26,11 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perjalanan->rawat_inap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->diagnosa_awal) }}</td>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
                         </tr>
                         <tr>
                             <th>DPJP</th>
@@ -39,7 +39,8 @@
                     </tbody>
                 </table>
                 <br>
-                <p id="tanggal_lahir" hidden>{{ $perjalanan->rawat_inap->pasien->tanggal_lahir }}</p>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table small">
@@ -95,7 +96,7 @@
                     <tbody class="small">
                         <tr>
                             <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->pasien->jenkel) }}</td>
+                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
                         </tr>
                         <tr>
                             <th>Umur</th>
@@ -103,11 +104,11 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($perjalanan->rawat_inap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($perjalanan->rawat_inap->diagnosa_awal) }}</td>
+                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
                         </tr>
                         <tr>
                             <th>DPJP</th>
@@ -116,7 +117,8 @@
                     </tbody>
                 </table>
                 <br>
-                <p id="tanggal_lahir" hidden>{{ $perjalanan->rawat_inap->pasien->tanggal_lahir }}</p>
+                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table small">

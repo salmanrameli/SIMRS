@@ -14,6 +14,7 @@
         <script src="{{ asset('js/bootstrap-timepicker.min.js') }}"></script>
         <script src="{{ asset('js/jHtmlArea-0.8.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('js/datepicker-id.js') }}"></script>
         <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
@@ -120,6 +121,11 @@
         </div>
         @yield('script')
         <script>
+            $( function() {
+                $('#datepicker').datepicker( $.datepicker.regional[ "id" ] );
+            });
+        </script>
+        <script>
             var lahir = new Date($('#tanggal_lahir').text());
             var sekarang = new Date();
             var tahun_sekarang = sekarang.getFullYear();
@@ -127,5 +133,15 @@
             var umur = tahun_sekarang - tahun_lahir;
             $('#umur').append(": " + umur + " Tahun");
         </script>
+        <script>
+            var date = new Date($('#tgl_masuk').text());
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            $('#tanggal_masuk').append(" " + date.toLocaleDateString('id', options));
+
+            var date_mobile = new Date($('#tgl_masuk_mobile').text());
+            var options_mobile = { year: 'numeric', month: 'long', day: 'numeric' };
+            $('#tanggal_masuk_mobile').append(" " + date_mobile.toLocaleDateString('id', options_mobile));
+        </script>
+
     </body>
 </html>

@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <th>Tanggal Lahir</th>
-                    <td id="tanggal_lahir">{{ date("d F Y", strtotime($pasien->tanggal_lahir)) }}</td>
+                    <td id="tanggal_lahir"></td>
                 </tr>
                 <tr>
                     <th>Telepon</th>
@@ -46,7 +46,8 @@
                 </tr>
             </tbody>
         </table>
-        @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+        <p id="tgl_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
+    @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
             <div class="col-md-12">
                 <div class="row">
                     <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-left">Ubah Data Pasien</a>
@@ -63,11 +64,12 @@
         @include('layouttemplate::attributes.pasien_ranap')
     @endif
     <script>
-        var lahir = new Date($('#table').find('#tanggal_lahir').text());
+        var date = new Date($('#tgl_lahir').text());
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
         var sekarang = new Date();
         var tahun_sekarang = sekarang.getFullYear();
-        var tahun_lahir = lahir.getFullYear();
+        var tahun_lahir = date.getFullYear();
         var umur = tahun_sekarang - tahun_lahir;
-        $('#tanggal_lahir').append(" (" + umur + " tahun)");
+        $('#tanggal_lahir').append(" " + date.toLocaleDateString('id', options) + " (" + umur + " tahun)");
     </script>
     @endsection

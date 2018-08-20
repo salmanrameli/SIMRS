@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -39,6 +39,7 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <div class="table-responsive">
@@ -139,7 +140,7 @@
                     </tr>
                     <tr>
                         <th>Tanggal Masuk</th>
-                        <td style="padding-left: 10px">: {{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                        <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                     </tr>
                     <tr>
                         <th>Diagnosa Awal</th>
@@ -153,6 +154,7 @@
             </table>
             <br>
             <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+            <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
         </div>
         <table class="table table-bordered table-sm">
             <tbody>
@@ -221,7 +223,13 @@
                         @endif
                     </td>
                 </tr>
-                <tr style="border-left-style: hidden; border-right-style: hidden; border-bottom-style: hidden">
+                <tr>
+                    <td class="d-none d-md-table-cell" colspan="4">
+                        <div id="chart_{{ $hari->id }}"></div>
+                        @linechart($hari->id.'_tensi', 'chart_'.$hari->id)
+                    </td>
+                </tr>
+                <tr style="border-left-style: hidden; border-right-style: hidden;">
                     <td colspan="4"><br></td>
                 </tr>
             @endforeach

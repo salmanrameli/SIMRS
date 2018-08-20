@@ -14,7 +14,8 @@
                 </tr>
                 <tr>
                     <th>Tanggal Masuk</th>
-                    <td>{{ date("d F Y", strtotime($ranap->tanggal_masuk)) }}</td>
+                    <td id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</td>
+                    <td id="tanggal_masuk"></td>
                 </tr>
                 <tr>
                     <th>Dokter Pengirim</th>
