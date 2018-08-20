@@ -36,12 +36,16 @@
             </div>
         </nav>
     </div>
+    <div class="d-none d-lg-block">
+        <nav class="navbar navbar-light bg-white"  style="margin-bottom: 20px; border-bottom: 1px solid lightgrey;">
+            <a class="navbar-brand" href="/"><h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4></a>
+            <div class="float-right">
+                <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
+            </div>
+        </nav>
+    </div>
     <body style="background-image: url({{ asset('img/grey.png') }})">
-        <div class="d-none d-lg-block container-fluid" style="padding: 1% 20px 1% 20px; background-color: white; margin-bottom: 15px; border-bottom: 1px solid lightgrey;">
-            <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
-            <h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4>
-        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
