@@ -26,7 +26,7 @@
     </head>
     <div class="d-block d-md-none">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">SIMRS</a><small style="font-size: 15px; color: white" class="float-right">@ {{ Auth::user()->nama }}</small>
+            <a class="navbar-brand" href="/">SIMRS</a><small style="font-size: 12px; color: white" class="float-right">@ {{ Auth::user()->nama }} – {{ $jabatan }}</small>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,7 +39,7 @@
     </div>
     <div class="d-none d-lg-block">
         <nav class="navbar navbar-light bg-white"  style="margin-bottom: 20px; border-bottom: 1px solid lightgrey;">
-            <a class="navbar-brand" href="/"><h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 17px">{{ \Illuminate\Support\Facades\Auth::user()->nama }}</small></h4></a>
+            <a class="navbar-brand" href="/"><h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 14px">{{ Auth::user()->nama }} – {{ $jabatan }}</small></h4></a>
             <div class="float-right">
                 <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
