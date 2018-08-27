@@ -19,11 +19,11 @@ class CreatePasienTable extends Migration
             $table->string('id_penduduk_pasien')->unique();
             $table->string('nama');
             $table->string('jenkel');
-            $table->string('nama_wali');
+            $table->string('nama_wali')->nullable();
             $table->string('alamat');
             $table->date('tanggal_lahir');
             $table->string('telepon');
-            $table->string('pekerjaan');
+            $table->string('pekerjaan')->nullable();
             $table->string('agama');
             $table->string('golongan_darah', 2);
 

@@ -59,18 +59,25 @@ class PasienController extends Controller
                 'id_penduduk_pasien' => 'required',
                 'nama' => 'required',
                 'jenkel' => 'required',
-                'nama_wali' => 'required',
                 'alamat' => 'required',
                 'tanggal_lahir' => 'required',
                 'telepon' => 'required',
-                'pekerjaan' => 'required',
                 'agama' => 'required',
                 'golongan_darah' => 'required'
             ]);
 
-            $input = $request->all();
-
-            Pasien::create($input);
+            $pasien = new Pasien();
+            $pasien->id_penduduk_pasien = $request->id_penduduk_pasien;
+            $pasien->nama = $request->nama;
+            $pasien->jenkel = $request->jenkel;
+            $pasien->nama_wali = $request->nama_wali;
+            $pasien->alamat = $request->alamat;
+            $pasien->tanggal_lahir = $request->tanggal_lahir;
+            $pasien->telepon = $request->telepon;
+            $pasien->pekerjaan = $request->pekerjaan;
+            $pasien->agama = $request->agama;
+            $pasien->golongan_darah = $request->golongan_darah;
+            $pasien->save();
 
             Session::flash('message', 'Data pasien berhasil disimpan');
 
@@ -112,22 +119,27 @@ class PasienController extends Controller
             'id_penduduk_pasien' => 'required',
             'nama' => 'required',
             'jenkel' => 'required',
-            'nama_wali' => 'required',
             'alamat' => 'required',
             'tanggal_lahir' => 'required',
             'telepon' => 'required',
-            'pekerjaan' => 'required',
             'agama' => 'required',
             'golongan_darah' => 'required'
         ]);
 
-        $input = $request->all();
-
         $pasien = Pasien::findorFail($id);
+        $pasien->id_penduduk_pasien = $request->id_penduduk_pasien;
+        $pasien->nama = $request->nama;
+        $pasien->jenkel = $request->jenkel;
+        $pasien->nama_wali = $request->nama_wali;
+        $pasien->alamat = $request->alamat;
+        $pasien->tanggal_lahir = $request->tanggal_lahir;
+        $pasien->telepon = $request->telepon;
+        $pasien->pekerjaan = $request->pekerjaan;
+        $pasien->agama = $request->agama;
+        $pasien->golongan_darah = $request->golongan_darah;
+        $pasien->save();
 
-        $pasien->fill($input)->save();
-
-        Session::flash('message', 'Data pasien berhasil diubah');
+        Session::flash('message', 'Rincian pasien berhasil diubah');
 
         return redirect()->route('pasien.show', $pasien->id);
     }
