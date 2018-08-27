@@ -19,8 +19,8 @@
         </div>
 
         <div class="form-group">
-            <label for="datepicker" id="tanggal_masuk" class="control-label">Tanggal Masuk</label>
-            <input type="text" id="datepicker" name="tanggal_masuk" class="form-control">
+            <label for="datepicker" id="tanggal_masuk_ranap" class="control-label">Tanggal Masuk</label>
+            <input type="text" id="datepicker" name="tanggal_masuk_ranap" class="form-control">
         </div>
 
         <div class="form-group">

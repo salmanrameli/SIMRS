@@ -133,11 +133,8 @@ class RawatInapController extends Controller
             'id_pasien' => 'required',
             'nama_kamar' => 'required',
             'id_dokter_pj' => 'required',
-            'dokter_pengirim' => 'required',
             'id_petugas_penerima' => 'required',
-            'diagnosa_awal' => 'required',
-            'icd_x_diagnosa_awal' => 'required',
-            'tanggal_masuk' => 'required'
+            'tanggal_masuk_ranap' => 'required'
         ]);
 
         $terdaftar = Pasien::where('ktp', '=', $request->id_pasien)->first();
@@ -183,7 +180,7 @@ class RawatInapController extends Controller
         $ranap->icd_x_diagnosa_awal = $request->icd_x_diagnosa_awal;
         $ranap->diagnosa_sekunder = $request->diagnosa_sekunder;
         $ranap->icd_x_diagnosa_sekunder = $request->icd_x_diagnosa_sekunder;
-        $ranap->tanggal_masuk = $request->tanggal_masuk;
+        $ranap->tanggal_masuk = $request->tanggal_masuk_ranap;
         $ranap->save();
 
         Session::flash('message', 'Pendaftaran rawat inap berhasil dilakukan');
@@ -248,15 +245,12 @@ class RawatInapController extends Controller
             'id_pasien' => 'required',
             'nama_kamar' => 'required',
             'id_dokter_pj' => 'required',
-            'dokter_pengirim' => 'required',
             'id_petugas_penerima' => 'required',
-            'diagnosa_awal' => 'required',
-            'icd_x_diagnosa_awal' => 'required',
-            'tanggal_masuk' => 'required'
+            'tanggal_masuk_ranap' => 'required'
         ]);
 
         $ranap->id_rm = $request->id_rm;
-        $ranap->id_pasien = Pasien::where('ktp', '=', $request->id_pasien)->value('id');
+        $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
         $ranap->dokter_pengirim = $request->dokter_pengirim;
@@ -265,10 +259,10 @@ class RawatInapController extends Controller
         $ranap->icd_x_diagnosa_awal = $request->icd_x_diagnosa_awal;
         $ranap->diagnosa_sekunder = $request->diagnosa_sekunder;
         $ranap->icd_x_diagnosa_sekunder = $request->icd_x_diagnosa_sekunder;
-        $ranap->tanggal_masuk = $request->tanggal_masuk;
+        $ranap->tanggal_masuk = $request->tanggal_masuk_ranap;
         $ranap->save();
 
-        Session::flash('message', 'Perubahan detail rawat inap berhasil disimpan.');
+        Session::flash('message', 'Perubahan rincian rawat inap berhasil disimpan.');
 
         return redirect()->route('ranap.show', $id);
     }

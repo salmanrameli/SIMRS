@@ -1,7 +1,7 @@
 @extends('layouttemplate::master')
 
 @section('title')
-    Ubah Detail Rawat Inap
+    Ubah Detail Rawat Inap: {{ $ranap->pasien->nama }}
     @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
             {{ Form::text('id_rm', null, ['class' => 'form-control']) }}
         </div>
 
-        <div class="form-group">
+        <div class="form-group" hidden>
             {{ Form::label('id_pasien', 'ID Pasien', ['class' => 'control-label']) }}
             {{ Form::text('id_pasien', null, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">
-            <label for="datepicker" id="tanggal_masuk" class="control-label">Tanggal Masuk</label>
-            <input type="text" id="datepicker" name="tanggal_masuk" class="form-control" value="{{ $ranap->tanggal_masuk }}">
+            <label for="datepicker" id="tanggal_masuk_ranap" class="control-label">Tanggal Masuk</label>
+            <input type="text" id="datepicker" name="tanggal_masuk_ranap" class="form-control" value="{{ $ranap->tanggal_masuk }}">
         </div>
 
         <div class="form-group">
