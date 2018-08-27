@@ -14,6 +14,7 @@
         <script src="{{ asset('js/bootstrap-timepicker.min.js') }}"></script>
         <script src="{{ asset('js/jHtmlArea-0.8.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('js/datepicker-id.js') }}"></script>
         <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
@@ -94,6 +95,11 @@
             </div>
         </div>
         @yield('script')
+        <script>
+            $( function() {
+                $('#datepicker').datepicker( $.datepicker.regional[ "id" ] );
+            });
+        </script>
         <script>
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
