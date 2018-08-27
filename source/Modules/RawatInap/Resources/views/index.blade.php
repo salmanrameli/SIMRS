@@ -12,7 +12,6 @@
                     <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
                     <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary">Daftarkan Rawat Inap Baru</a>
                     <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info" style="margin-left: 10px">Lihat Semua Pasien</a>
-                    <hr>
                 </div>
             </div>
 
@@ -20,13 +19,12 @@
                 <a href="{{ route('ranap.pasien.create') }}" class="btn btn-outline-primary btn-block">Daftarkan Pasien Baru</a>
                 <a href="{{ route('ranap.create') }}" class="btn btn-outline-primary btn-block">Daftarkan Rawat Inap Baru</a>
                 <a href="{{ route('ranap.pasien.index') }}" class="btn btn-outline-info btn-block">Lihat Semua Pasien</a>
-                <hr>
             </div>
+            <br>
         @endif
-
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr style="border-top: solid 1px #d8dbdd; border-bottom: solid 1px #d8dbdd">
                     <th>Nama Pasien</th>
                     <th class="d-none d-md-table-cell">Nomor Kamar</th>
                     <th class="d-none d-md-table-cell">Diagnosa Awal</th>
