@@ -9,8 +9,8 @@
         {{ Form::open(['route' => 'pasien.store']) }}
 
         <div class="form-group">
-            {{ Form::label('ktp', 'KTP Pasien', ['class' => 'control-label']) }}
-            {{ Form::text('ktp', null, ['class' => 'form-control']) }}
+            {{ Form::label('id_penduduk_pasien', 'ID Penduduk Pasien', ['class' => 'control-label']) }}
+            {{ Form::text('id_penduduk_pasien', null, ['class' => 'form-control']) }}
         </div>
 
         <div class="form-group">

@@ -6,7 +6,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\Pasien\Entities\Pasien;
 
@@ -46,18 +45,18 @@ class PasienController extends Controller
      */
     public function saveNewPasien(Request $request)
     {
-        $pasien = Pasien::where('ktp', $request->ktp)->first();
+        $pasien = Pasien::where('id_penduduk_pasien', $request->id_penduduk_pasien)->first();
 
         if($pasien != null)
         {
-            Session::flash('warning', 'KTP sudah terdaftar');
+            Session::flash('warning', 'ID penduduk pasien sudah terdaftar');
 
             return redirect()->back();
         }
         else
         {
             $this->validate($request, [
-                'ktp' => 'required',
+                'id_penduduk_pasien' => 'required',
                 'nama' => 'required',
                 'jenkel' => 'required',
                 'nama_wali' => 'required',
@@ -110,7 +109,7 @@ class PasienController extends Controller
     public function updatePasien(Request $request, $id)
     {
         $this->validate($request, [
-            'ktp' => 'required',
+            'id_penduduk_pasien' => 'required',
             'nama' => 'required',
             'jenkel' => 'required',
             'nama_wali' => 'required',
@@ -152,7 +151,7 @@ class PasienController extends Controller
     {
         $query = $request->get('query');
 
-        $results = Pasien::where('ktp', 'like', '%'.$query.'%')->
+        $results = Pasien::where('id_penduduk_pasien', 'like', '%'.$query.'%')->
             orWhere('nama', 'like', '%'.$query.'%')->
             orWhere('tanggal_lahir', 'like', '%'.$query.'%')->
             orWhere('alamat', 'like', '%'.$query.'%')->

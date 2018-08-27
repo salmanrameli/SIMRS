@@ -137,7 +137,7 @@ class RawatInapController extends Controller
             'tanggal_masuk_ranap' => 'required'
         ]);
 
-        $terdaftar = Pasien::where('ktp', '=', $request->id_pasien)->first();
+        $terdaftar = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien)->first();
 
         if(!$terdaftar)
         {
@@ -171,9 +171,9 @@ class RawatInapController extends Controller
 
         $ranap = new RawatInap();
         $ranap->id_rm = $request->id_rm;
-        $ranap->id_pasien = Pasien::where('ktp', '=', $request->id_pasien)->value('id');
+        $ranap->id_pasien = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien)->value('id');
         $ranap->nama_kamar = $request->nama_kamar;
-        $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
+        $ranap->id_dokter_pj = $request->id_dokter_pj;
         $ranap->dokter_pengirim = $request->dokter_pengirim;
         $ranap->id_petugas_penerima = $request->id_petugas_penerima;
         $ranap->diagnosa_awal = $request->diagnosa_awal;
@@ -252,7 +252,7 @@ class RawatInapController extends Controller
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
         $ranap->nama_kamar = $request->nama_kamar;
-        $ranap->id_dokter_pj = User::where('id', '=', $request->id_dokter_pj)->value('id');
+        $ranap->id_dokter_pj = $request->id_dokter_pj;
         $ranap->dokter_pengirim = $request->dokter_pengirim;
         $ranap->id_petugas_penerima = $request->id_petugas_penerima;
         $ranap->diagnosa_awal = $request->diagnosa_awal;

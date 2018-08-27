@@ -16,7 +16,7 @@ class CreatePasienTable extends Migration
         Schema::create('pasien', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('ktp')->unique();
+            $table->string('id_penduduk_pasien')->unique();
             $table->string('nama');
             $table->string('jenkel');
             $table->string('nama_wali');

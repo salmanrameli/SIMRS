@@ -24,7 +24,7 @@ class PasienDatabaseSeeder extends Seeder
         {
             $pasien = new Pasien();
 
-            $pasien->ktp = $faker->creditCardNumber;
+            $pasien->id_penduduk_pasien = $faker->creditCardNumber;
             $pasien->nama = $faker->name;
 
             $rand1 = mt_rand(0, 1);

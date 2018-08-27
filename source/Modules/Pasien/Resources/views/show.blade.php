@@ -9,8 +9,8 @@
         <table class="table table-striped" id="table">
             <tbody>
                 <tr>
-                    <th class="w-25">KTP</th>
-                    <td>{{ $pasien->ktp }}</td>
+                    <th class="w-25">ID Penduduk Pasien</th>
+                    <td>{{ $pasien->id_penduduk_pasien }}</td>
                 </tr>
                 <tr>
                     <th>Jenis Kelamin</th>
