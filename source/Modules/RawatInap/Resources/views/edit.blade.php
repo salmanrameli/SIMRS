@@ -6,10 +6,11 @@
 
 @section('content')
     <div class="card card-body">
+        <p style="color: red">* = wajib diisi</p>
         {{ Form::model($ranap, ['method' => 'PATCH', 'route' => ['ranap.update', $ranap->id]]) }}
 
         <div class="form-group">
-            {{ Form::label('id_rm', 'Nomor Rekam Medis', ['class' => 'control-label']) }}
+            {{ Form::label('id_rm', 'Nomor Rekam Medis *', ['class' => 'control-label']) }}
             {{ Form::text('id_rm', null, ['class' => 'form-control']) }}
         </div>
 
@@ -19,7 +20,7 @@
         </div>
 
         <div class="form-group">
-            <label for="datepicker" id="tanggal_masuk_ranap" class="control-label">Tanggal Masuk</label>
+            <label for="datepicker" id="tanggal_masuk_ranap" class="control-label">Tanggal Masuk *</label>
             <input type="text" id="datepicker" name="tanggal_masuk_ranap" class="form-control" value="{{ $ranap->tanggal_masuk }}">
         </div>
 
@@ -29,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('id_petugas_penerima', 'Petugas Penerima', ['class' => 'control-label']) }}
+            {{ Form::label('id_petugas_penerima', 'Petugas Penerima *', ['class' => 'control-label']) }}
             <select class="form-control" name="id_petugas_penerima">
                 @foreach($petugass as $petugas)
                     <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}" {{ $ranap->id_petugas_penerima == $petugas->id ? 'selected' : '' }}>{{ ucwords($petugas->nama) }}</option>
@@ -48,7 +49,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('id_dokter_pj', 'Dokter Penanggung Jawab', ['class' => 'control-label']) }}
+            {{ Form::label('id_dokter_pj', 'Dokter Penanggung Jawab *', ['class' => 'control-label']) }}
             <select class="form-control" name="id_dokter_pj">
                 @foreach($dokters as $dokter)
                     <option value="{{ $dokter->id }}" id="id_dokter_pj" name="{{ $dokter->id }}" {{ $ranap->id_dokter_pj == $dokter->id ? 'selected' : '' }}>{{ ucwords($dokter->nama) }}</option>
@@ -67,7 +68,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('nama_kamar', 'Kamar', ['class' => 'control-label']) }}
+            {{ Form::label('nama_kamar', 'Kamar *', ['class' => 'control-label']) }}
             <select class="form-control" name="nama_kamar">
                 @foreach($kosongs as $kosong)
                     <option value="{{ $kosong }}" id="nama_kamar" name="{{ $kosong }}" {{ $ranap->nama_kamar == $kosong ? 'selected' : '' }}>{{ $kosong }}</option>
