@@ -69,10 +69,11 @@
                         <hr>
 
                         {!! $perintah->catatan_perawat !!}
+                        <br><hr>
+                        <a href="{{ route('perintah_dokter_dan_pengobatan.revisi', [$ranap->id, $perintah->id]) }}">revisi..>></a>
 
                         @if(Auth::user()->jabatan_id == 3)
                             @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
-                                <hr>
                                 <div class="btn-group float-right">
                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-perintah="{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!}" data-catatan="{{ $perintah->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
                                 </div>
@@ -158,10 +159,11 @@
                         <hr>
 
                         {!! $perintah->catatan_perawat !!}
+                        <br><hr>
+                        <a href="{{ route('perintah_dokter_dan_pengobatan.revisi', [$ranap->id, $perintah->id]) }}">revisi..>></a>
 
                         @if(Auth::user()->jabatan_id == 3)
                             @if($perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan != null && $perintah->catatan_perawat != null)
-                                <hr>
                                 <div class="btn-group float-right">
                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-perintah="{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!}" data-catatan="{{ $perintah->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
                                 </div>

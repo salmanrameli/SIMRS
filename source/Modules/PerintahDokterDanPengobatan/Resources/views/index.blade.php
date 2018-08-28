@@ -73,10 +73,11 @@
                         @endif
 
                         {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
+                        <br><hr>
+                        <a href="{{ route('perintah_dokter_dan_pengobatan.revisi', [$ranap->id, $perintah->id]) }}">revisi..>></a>
 
                         @if(Auth::user()->jabatan_id == 3)
                             @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
-                                <br><hr>
                                 <div class="btn-group float-right">
                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
                                 </div>
@@ -166,10 +167,11 @@
                         @endif
 
                         {!! $perintah->perintah_dokter_dan_pengobatan->catatan_perawat or ''!!}
+                        <br><hr>
+                        <a href="{{ route('perintah_dokter_dan_pengobatan.revisi', [$ranap->id, $perintah->id]) }}">revisi..>></a>
 
                         @if(Auth::user()->jabatan_id == 3)
                             @if(!empty($perintah->perintah_dokter_dan_pengobatan->catatan_perawat))
-                                <br><hr>
                                 <div class="btn-group float-right">
                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-perintah="{{ $perintah->perintah_dokter_dan_pengobatan->id }}" data-perintah="{!! html_entity_decode($perintah->planning_perintah_dokter_dan_pengobatan) !!}" data-catatan="{{ $perintah->perintah_dokter_dan_pengobatan->catatan_perawat }}" data-target="#modalUbahCatatanPerintah">Ubah</button>
                                 </div>

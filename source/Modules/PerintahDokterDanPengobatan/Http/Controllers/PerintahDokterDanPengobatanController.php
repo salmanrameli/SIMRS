@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
+use Modules\PerintahDokterDanPengobatan\Entities\RevisiPerintahDokterDanPengobatan;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
 
@@ -96,6 +97,12 @@ class PerintahDokterDanPengobatanController extends Controller
         ]);
 
         $perintah_dokter = PerintahDokterDanPengobatan::findorFail($request->get('id'));
+
+        $revisi_perintah_dokter = new RevisiPerintahDokterDanPengobatan();
+        $revisi_perintah_dokter->id_perintah_dokter_dan_pengobatan = $perintah_dokter->id;
+        $revisi_perintah_dokter->catatan_perawat = $perintah_dokter->catatan_perawat;
+        $revisi_perintah_dokter->save();
+
         $perintah_dokter->catatan_perawat = $request->get('catatan_perawat');
         $perintah_dokter->save();
 
@@ -110,5 +117,16 @@ class PerintahDokterDanPengobatanController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function lihatRevisiPerintahDokter($id_ranap, $id_perintah_dokter)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $revisi = RevisiPerintahDokterDanPengobatan::where('id_perintah_dokter_dan_pengobatan', '=', $id_perintah_dokter)->orderBy('created_at', 'desc')->get();
+
+        return view('perintahdokterdanpengobatan::revisi')
+            ->with('ranap', $ranap)
+            ->with('revisis', $revisi);
     }
 }

@@ -21,4 +21,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerintahDokterDanPe
         'as' => 'perintah_dokter_dan_pengobatan.update',
         'uses' => 'PerintahDokterDanPengobatanController@updatePerintahDokterDanPengobatanPasien'
     ]);
+
+    Route::get('/ranap/{id}/perintah_dokter_dan_pengobatan/{perintah_dokter_dan_pengobatan}/revisi', [
+        'as' => 'perintah_dokter_dan_pengobatan.revisi',
+        'uses' => 'PerintahDokterDanPengobatanController@lihatRevisiPerintahDokter'
+    ]);
 });
