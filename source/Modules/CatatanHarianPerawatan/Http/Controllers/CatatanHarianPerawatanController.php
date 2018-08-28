@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
+use Modules\CatatanHarianPerawatan\Entities\RevisiCatatanHarianPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
 
 class CatatanHarianPerawatanController extends Controller
@@ -49,6 +50,7 @@ class CatatanHarianPerawatanController extends Controller
     public function createNewCatatanHarianDanPerawatan($id_ranap)
     {
         $ranap = RawatInap::findorFail($id_ranap);
+
         return view('catatanharianperawatan::create')->with('ranap', $ranap);
     }
 
@@ -92,6 +94,12 @@ class CatatanHarianPerawatanController extends Controller
         ]);
 
         $catatan = CatatanHarianPerawatan::findorFail($request->get('id_catatan_harian'));
+
+        $revisi_catatan = new RevisiCatatanHarianPerawatan();
+        $revisi_catatan->id_catatan_harian_perawatan = $catatan->id;
+        $revisi_catatan->asuhan_keperawatan_soap = $catatan->asuhan_keperawatan_soap;
+        $revisi_catatan->save();
+
         $catatan->asuhan_keperawatan_soap = $request->get('asuhan_keperawatan_soap');
         $catatan->save();
 
@@ -106,5 +114,16 @@ class CatatanHarianPerawatanController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function lihatRevisiCatatanHarianDanPerawatan($id_ranap, $id_catatan_harian)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $revisi = RevisiCatatanHarianPerawatan::where('id_catatan_harian_perawatan', '=', $id_catatan_harian)->orderBy('created_at', 'desc')->get();
+
+        return view('catatanharianperawatan::revisi')
+            ->with('ranap', $ranap)
+            ->with('revisis', $revisi);
     }
 }

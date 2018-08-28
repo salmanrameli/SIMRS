@@ -63,6 +63,7 @@
                             <hr>
                             <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                             <hr>
+                            <a href="{{ route('catatan_harian_perawatan.revisi', [$ranap->id, $catatan->id]) }}">revisi..>></a>
                             @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
                                 <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
                             @endif
@@ -135,6 +136,7 @@
                             <hr>
                             <p>{!! $catatan->asuhan_keperawatan_soap !!}</p>
                             <hr>
+                            <a href="{{ route('catatan_harian_perawatan.revisi', [$ranap->id, $catatan->id]) }}">revisi..>></a>
                             @if(Auth::user()->jabatan_id == 3 && Auth::user()->id == $catatan->id_petugas)
                                 <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-id-catatan-harian="{{ $catatan->id }}" data-asuhan-keperawatan="{{ $catatan->asuhan_keperawatan_soap }}" data-target="#modalUbahCatatanHarian">Ubah</button>
                             @endif

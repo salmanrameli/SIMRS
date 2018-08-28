@@ -21,4 +21,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\CatatanHarianPerawa
         'as' => 'catatan_harian_perawatan.update',
         'uses' => 'CatatanHarianPerawatanController@updateCatatanHarianDanPerawatan'
     ]);
+
+    Route::get('/ranap/{id}/catatan_harian_perawatan/{catatan_harian_perawatan}/revisi', [
+        'as' => 'catatan_harian_perawatan.revisi',
+        'uses' => 'CatatanHarianPerawatanController@lihatRevisiCatatanHarianDanPerawatan'
+    ]);
 });
