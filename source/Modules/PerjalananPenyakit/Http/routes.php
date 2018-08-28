@@ -26,4 +26,9 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerjalananPenyakit\
         'as' => 'perjalanan_penyakit.update',
         'uses' => 'PerjalananPenyakitController@updatePerjalananPenyakitPasien'
     ]);
+
+    Route::get('/ranap/{id}/perjalanan_penyakit/{perjalanan_penyakit}/revisi', [
+        'as' => 'perjalanan_penyakit.revisi',
+        'uses' => 'PerjalananPenyakitController@lihatRevisiPerjalananPenyakit'
+    ]);
 });

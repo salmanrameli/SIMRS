@@ -71,8 +71,9 @@
                     <td class="text-justify">
                         <label><b>Planning</b></label>
                         <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->id]) }}">Pengobatan...</a></p>
+                        <hr>
+                        <a href="{{ route('perjalanan_penyakit.revisi', [$ranap->id, $perjalanan->id]) }}">revisi..>></a>
                         @if(Auth::user()->jabatan_id == 4)
-                            <hr>
                             <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-perjalanan="{{ $perjalanan->id }}" data-subjektif="{{ $perjalanan->subjektif }}" data-objektif="{{ $perjalanan->objektif }}" data-assessment="{{ $perjalanan->assessment }}" data-planning="{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}" data-target="#modalUbahPerjalananPenyakit">Ubah</button>
                         @endif
                     </td>

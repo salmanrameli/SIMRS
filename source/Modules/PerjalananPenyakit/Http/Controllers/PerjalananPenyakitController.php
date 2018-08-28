@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
+use Modules\PerjalananPenyakit\Entities\RevisiPerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
 
 class PerjalananPenyakitController extends Controller
@@ -110,6 +111,14 @@ class PerjalananPenyakitController extends Controller
 
         $perjalanan = PerjalananPenyakit::findorFail($request->get('perjalanan'));
 
+        $perjalanan_revisi = new RevisiPerjalananPenyakit();
+        $perjalanan_revisi->id_perjalanan_penyakit = $perjalanan->id;
+        $perjalanan_revisi->subjektif = $perjalanan->subjektif;
+        $perjalanan_revisi->objektif = $perjalanan->objektif;
+        $perjalanan_revisi->assessment = $perjalanan->assessment;
+        $perjalanan_revisi->planning_perintah_dokter_dan_pengobatan = $perjalanan->planning_perintah_dokter_dan_pengobatan;
+        $perjalanan_revisi->save();
+
         $perjalanan->subjektif = $request->get('subjektif_edit');
         $perjalanan->objektif = $request->get('objektif_edit');
         $perjalanan->assessment = $request->get('assessment_edit');
@@ -127,5 +136,16 @@ class PerjalananPenyakitController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function lihatRevisiPerjalananPenyakit($id_ranap, $id_perjalanan_penyakit)
+    {
+        $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        $revisi = RevisiPerjalananPenyakit::where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->orderBy('created_at', 'desc')->get();
+
+        return view('perjalananpenyakit::revisi')
+            ->with('ranap', $ranap)
+            ->with('revisis', $revisi);
     }
 }
