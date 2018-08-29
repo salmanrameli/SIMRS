@@ -46,7 +46,7 @@
             </div>
         </nav>
     </div>
-    <body style="background-image: url({{ asset('img/grey.png') }})">
+    <body>
         <div class="container-fluid" style="padding-top: 15px">
             <div class="row">
                 <div class="col-md-12">
