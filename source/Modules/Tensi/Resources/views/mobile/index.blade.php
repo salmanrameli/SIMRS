@@ -1,4 +1,4 @@
-@extends('layouttemplate::master-ranap')
+@extends('layouttemplate::master-ranap-mobile')
 
 @section('title')
     Tensi Pasien
@@ -7,43 +7,41 @@
 @section('content')
     <div class="card-body">
         <div class="page-header">
-            @if(Auth::user()->jabatan_id == 3)
-                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
-            @endif
             <h4>Tensi Pasien: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <br>
+            @if(Auth::user()->jabatan_id == 3)
+                <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-id-ranap="{{ $ranap->id }}" data-target="#modalCatatanHariPerawatanBaru">Buat Catatan Hari Perawatan Baru</button>
+            @endif
             <hr>
-            <div class="col-md-12">
-                <table>
-                    <tbody class="small">
-                        <tr>
-                            <th>Jenis Kelamin</th>
-                            <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
-                        </tr>
-                        <tr>
-                            <th>Umur</th>
-                            <td id="umur" style="padding-left: 10px"></td>
-                        </tr>
-                        <tr>
-                            <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
-                        </tr>
-                        <tr>
-                            <th>Diagnosa Awal</th>
-                            <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
-                        </tr>
-                        <tr>
-                            <th>DPJP</th>
-                            <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br>
-                <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
-            </div>
+            <table>
+                <tbody class="small">
+                    <tr>
+                        <th>Jenis Kelamin</th>
+                        <td style="padding-left: 10px">: {{ ucwords($ranap->pasien->jenkel) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Umur</th>
+                        <td id="umur" style="padding-left: 10px"></td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Masuk</th>
+                        <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
+                    </tr>
+                    <tr>
+                        <th>Diagnosa Awal</th>
+                        <td style="padding-left: 10px">: {{ ucfirst($ranap->diagnosa_awal) }}</td>
+                    </tr>
+                    <tr>
+                        <th>DPJP</th>
+                        <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
+            <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
         </div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-sm">
+        <table class="table table-bordered table-sm">
             <tbody>
             @foreach($haris as $hari)
                 <tr>
@@ -63,43 +61,50 @@
                     <td colspan="2" class="text-center">{{ $hari->berat_badan }} kg</td>
                 </tr>
                 <tr>
-                    <th colspan="4" class="text-center">Tensi</th>
+                    <th colspan="4" class="text-center">Tensi & Temperatur</th>
+                </tr>
+                <tr>
+                <tr>
+                    <td class="text-center">Pa</td>
+                    <td class="text-center">Si</td>
+                    <td class="text-center">So</td>
+                    <td class="text-center">Ma</td>
                 </tr>
                 <tr>
                     <td class="text-center">
                         @if(empty($hari->tensi_pagi->tensi_atas))
                             @if(Auth::user()->jabatan_id == 3)
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="pagi" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Pagi</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="pagi" data-target="#modalTambahCatatanTensi"><small>Tambah<br>Catatan<br>Tensi<br>Pagi</small></button>
                             @endif
                         @else
-                            <b>Pagi:</b> {{ $hari->tensi_pagi->tensi_atas }} - {{ $hari->tensi_pagi->tensi_bawah }}, {{ $hari->tensi_pagi->temperatur }}º
+                            <b>Pagi:</b><br>{{ $hari->tensi_pagi->tensi_atas }} - {{ $hari->tensi_pagi->tensi_bawah }},<br>{{ $hari->tensi_pagi->temperatur }}º
                         @endif
                     </td>
                     <td class="text-center">
                         @if(empty($hari->tensi_siang->tensi_atas))
                             @if(Auth::user()->jabatan_id == 3)
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="siang" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Siang</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="siang" data-target="#modalTambahCatatanTensi"><small>Tambah<br>Catatan<br>Tensi<br>Siang</small></button>
                             @endif
                         @else
-                            <b>Siang:</b> {{ $hari->tensi_siang->tensi_atas }} - {{ $hari->tensi_siang->tensi_bawah }}, {{ $hari->tensi_siang->temperatur }}º
+                            <b>Siang:</b><br>{{ $hari->tensi_siang->tensi_atas }} - {{ $hari->tensi_siang->tensi_bawah }},<br>{{ $hari->tensi_siang->temperatur }}º
                         @endif
                     </td>
                     <td class="text-center">
                         @if(empty($hari->tensi_sore->tensi_atas))
                             @if(Auth::user()->jabatan_id == 3)
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="sore" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Sore</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="sore" data-target="#modalTambahCatatanTensi"><small>Tambah<br>Catatan<br>Tensi<br>Sore</small></button>
                             @endif
                         @else
-                            <b>Sore:</b> {{ $hari->tensi_sore->tensi_atas }} - {{ $hari->tensi_sore->tensi_bawah }}, {{ $hari->tensi_sore->temperatur }}º
+                            <b>Sore:</b><br>{{ $hari->tensi_sore->tensi_atas }} - {{ $hari->tensi_sore->tensi_bawah }},<br>{{ $hari->tensi_sore->temperatur }}º
                         @endif
                     </td>
                     <td class="text-center">
                         @if(empty($hari->tensi_malam->tensi_atas))
                             @if(Auth::user()->jabatan_id == 3)
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="malam" data-target="#modalTambahCatatanTensi">Tambah Catatan Tensi Malam</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-waktu="malam" data-target="#modalTambahCatatanTensi"><small>Tambah<br>Catatan<br>Tensi<br>Malam</small></button>
                             @endif
                         @else
-                            <b>Malam:</b> {{ $hari->tensi_malam->tensi_atas }} - {{ $hari->tensi_malam->tensi_bawah }}, {{ $hari->tensi_malam->temperatur }}º
+                            <b>Malam:</b><br>{{ $hari->tensi_malam->tensi_atas }} - {{ $hari->tensi_malam->tensi_bawah }},<br>{{ $hari->tensi_malam->temperatur }}º
                         @endif
                     </td>
                 </tr>
@@ -109,15 +114,14 @@
                         @linechart($hari->id.'_tensi', 'chart_'.$hari->id)
                     </td>
                 </tr>
-                <tr style="border-left-style: hidden; border-right-style: hidden; border-bottom-style: hidden">
+                <tr style="border-left-style: hidden; border-right-style: hidden;">
                     <td colspan="4"><br></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        </div>
     </div>
-@endsection
+    @endsection
 
 @section('modal')
     <div class="modal fade" id="modalCatatanHariPerawatanBaru" tabindex="-1" role="dialog" aria-labelledby="modalCatatanHariPerawatanBaru" aria-hidden="true">

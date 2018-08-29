@@ -14,10 +14,18 @@ use Modules\Tensi\Entities\TensiMalam;
 use Modules\Tensi\Entities\TensiPagi;
 use Modules\Tensi\Entities\TensiSiang;
 use Modules\Tensi\Entities\TensiSore;
+use Jenssegers\Agent\Agent;
 
 class TensiController extends Controller
 {
     use ValidatesRequests;
+
+    public $agent;
+
+    public function __construct()
+    {
+        $this->agent = new Agent();
+    }
 
     /**
      * Display a listing of the resource.
@@ -52,6 +60,13 @@ class TensiController extends Controller
             \Lava::LineChart($hari_perawatan->id.'_tensi', $table, [
                 'hAxis' => ['Pagi', 'Siang', 'Sore', 'Malam']
             ]);
+        }
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('tensi::mobile.index')
+                ->with('ranap', $ranap)
+                ->with('haris', $hari_perawatans);
         }
 
         return view('tensi::index')
