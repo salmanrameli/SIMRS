@@ -21,7 +21,7 @@ class PerjalananPenyakitController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkRole:4')->except(['showAllPerjalananPenyakitPasien', 'showDetailPerjalananPenyakitPasien']);
+        $this->middleware('checkRole:4')->except(['showAllPerjalananPenyakitPasien', 'showDetailPerjalananPenyakitPasien', 'lihatRevisiPerjalananPenyakit']);
 
         $this->middleware('checkIfAuthorized');
 
@@ -106,7 +106,7 @@ class PerjalananPenyakitController extends Controller
         {
             return view('perjalananpenyakit::mobile.show')
                 ->with('ranap', $ranap)
-                ->with('perjalanans', $perjalanan);
+                ->with('perjalanan', $perjalanan);
         }
 
         return view('perjalananpenyakit::show')
