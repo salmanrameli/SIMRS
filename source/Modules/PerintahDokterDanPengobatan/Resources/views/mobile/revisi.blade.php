@@ -1,4 +1,4 @@
-@extends('layouttemplate::master-ranap')
+@extends('layouttemplate::master-ranap-mobile')
 
 @section('title')
     Revisi Catatan Perintah Dokter dan Pengobatan
@@ -7,7 +7,7 @@
 @section('content')
     <div class="card-body">
         <div class="page-header">
-            <h3>Revisi Catatan Perintah Dokter dan Pengobatan {{ ucwords($ranap->pasien->nama) }}</h3>
+            <h4>Revisi Catatan Perintah Dokter dan Pengobatan {{ ucwords($ranap->pasien->nama) }}</h4>
         </div>
         <table class="table table-striped small">
             <thead>

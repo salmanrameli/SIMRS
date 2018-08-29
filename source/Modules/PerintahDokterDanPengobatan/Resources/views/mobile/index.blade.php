@@ -1,4 +1,4 @@
-@extends('layouttemplate::master-ranap')
+@extends('layouttemplate::master-ranap-mobile')
 
 @section('title')
     Perintah Dokter dan Pengobatan Pasien
@@ -22,7 +22,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -36,8 +36,7 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
-                <br>
+                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table table-striped small">
@@ -51,11 +50,13 @@
             @foreach($perintahs as $perintah)
                 <tr>
                     <td class="text-justify w-50">
-                        <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b><br>
+                        Dibuat tanggal:<br><b>{{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b>
                         @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
-                            <b>Diubah tanggal: –</b>
+                            <hr>
+                            Diubah tanggal:<br><b>–</b>
                         @else
-                            <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
+                            <hr>
+                            Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                         @endif
                         <hr>
 
@@ -63,11 +64,13 @@
                     </td>
                     <td class="text-justify">
                         @if(!empty($perintah->perintah_dokter_dan_pengobatan))
-                            <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b><br>
+                            Dibuat tanggal:<br><b>{{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->tanggal_keterangan)) }}</b> oleh <b>{{ $perintah->perintah_dokter_dan_pengobatan->user->nama }}</b>
                             @if(strtotime($perintah->perintah_dokter_dan_pengobatan->created_at) == strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at))
-                                <b>Diubah tanggal: –</b>
+                                <hr>
+                                Diubah tanggal:<br><b>–</b>
                             @else
-                                <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
+                                <hr>
+                                Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->perintah_dokter_dan_pengobatan->updated_at)) }}</b>
                             @endif
                             <hr>
                         @endif
@@ -93,7 +96,7 @@
             </tbody>
         </table>
     </div>
-@endsection
+    @endsection
 
 @section('modal')
     <div class="modal fade" id="modalBuatCatatanBaru" tabindex="-1" role="dialog" aria-labelledby="modalBuatCatatanBaru" aria-hidden="true">

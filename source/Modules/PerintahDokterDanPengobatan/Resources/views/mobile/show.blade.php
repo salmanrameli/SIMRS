@@ -1,4 +1,4 @@
-@extends('layouttemplate::master-ranap')
+@extends('layouttemplate::master-ranap-mobile')
 
 @section('title')
     Perintah Dokter dan Pengobatan
@@ -22,7 +22,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -36,7 +36,7 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
+                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table small">
@@ -50,21 +50,25 @@
             <tbody>
                 <tr>
                     <td class="text-justify w-50">
-                        <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->perjalanan_penyakit->tanggal_keterangan)) }}</b><br>
+                        Dibuat tanggal:<br><b> {{ date("d F Y", strtotime($perintah->perjalanan_penyakit->tanggal_keterangan)) }}</b>
                         @if(strtotime($perintah->perjalanan_penyakit->tanggal_keterangan) == strtotime($perintah->perjalanan_penyakit->updated_at))
-                            <b>Diubah tanggal: –</b>
+                            <hr>
+                            Diubah tanggal:<br><b>–</b>
                         @else
-                            <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
+                            <hr>
+                            Diubah tanggal:<br><b> {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                         @endif
                         <hr>
                         <p>{!! $perintah->perjalanan_penyakit->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perjalanan_penyakit.show', [$ranap->id, $perintah->id_perjalanan_penyakit]) }}">Perjalanan Penyakit...</a></p>
                     </td>
                     <td class="text-justify">
-                        <b>Dibuat tanggal: {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b> oleh <b>{{ ucwords($perintah->user->nama) }}</b><br>
+                        Dibuat tanggal:<br><b> {{ date("d F Y", strtotime($perintah->tanggal_keterangan)) }}</b> oleh <b>{{ ucwords($perintah->user->nama) }}</b>
                         @if(strtotime($perintah->created_at) == strtotime($perintah->updated_at))
-                            <b>Diubah tanggal: –</b>
+                            <hr>
+                            Diubah tanggal:<br><b>–</b>
                         @else
-                            <b>Diubah tanggal: {{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
+                            <hr>
+                            Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perintah->updated_at)) }}</b>
                         @endif
                         <hr>
 

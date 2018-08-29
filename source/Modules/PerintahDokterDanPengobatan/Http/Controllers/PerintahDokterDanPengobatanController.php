@@ -13,16 +13,21 @@ use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\PerintahDokterDanPengobatan\Entities\RevisiPerintahDokterDanPengobatan;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
+use Jenssegers\Agent\Agent;
 
 class PerintahDokterDanPengobatanController extends Controller
 {
     use ValidatesRequests;
 
+    public $agent;
+
     public function __construct()
     {
-        $this->middleware('checkRole:3')->except(['showAllPerintahDokterDanPengobatanPasien', 'showDetailPerintahDokterDanPengobatanPasien']);
+        $this->middleware('checkRole:3')->except(['showAllPerintahDokterDanPengobatanPasien', 'showDetailPerintahDokterDanPengobatanPasien', 'lihatRevisiPerintahDokter']);
 
         $this->middleware('checkIfAuthorized');
+
+        $this->agent = new Agent();
     }
 
     /**
@@ -34,6 +39,13 @@ class PerintahDokterDanPengobatanController extends Controller
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         $perintah_dokter = PerjalananPenyakit::with('perintah_dokter_dan_pengobatan')->where('id_ranap', '=', $id_ranap)->orderBy('created_at', 'desc')->get();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('perintahdokterdanpengobatan::mobile.index')
+                ->with('ranap', $ranap)
+                ->with('perintahs', $perintah_dokter);
+        }
 
         return view('perintahdokterdanpengobatan::index')
             ->with('ranap', $ranap)
@@ -80,6 +92,13 @@ class PerintahDokterDanPengobatanController extends Controller
 
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('perintahdokterdanpengobatan::mobile.show')
+                ->with('ranap', $ranap)
+                ->with('perintah', $perintah);
+        }
+
         return view('perintahdokterdanpengobatan::show')
             ->with('perintah', $perintah)
             ->with('ranap', $ranap);
@@ -124,6 +143,13 @@ class PerintahDokterDanPengobatanController extends Controller
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         $revisi = RevisiPerintahDokterDanPengobatan::where('id_perintah_dokter_dan_pengobatan', '=', $id_perintah_dokter)->orderBy('created_at', 'desc')->get();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('perintahdokterdanpengobatan::mobile.revisi')
+                ->with('ranap', $ranap)
+                ->with('revisis', $revisi);
+        }
 
         return view('perintahdokterdanpengobatan::revisi')
             ->with('ranap', $ranap)
