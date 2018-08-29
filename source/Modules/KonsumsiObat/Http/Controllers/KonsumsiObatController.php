@@ -16,16 +16,21 @@ use Modules\KonsumsiObat\Entities\KonsumsiObatSiang;
 use Modules\KonsumsiObat\Entities\KonsumsiObatSore;
 use Modules\Obat\Entities\Obat;
 use Modules\RawatInap\Entities\RawatInap;
+use Jenssegers\Agent\Agent;
 
 class KonsumsiObatController extends Controller
 {
     use ValidatesRequests;
+
+    public $agent;
 
     public function __construct()
     {
         $this->middleware('auth');
 
         $this->middleware('checkRole:3')->except(['showAllKonsumsiObat']);
+
+        $this->agent = new Agent();
     }
 
     /**
@@ -39,6 +44,14 @@ class KonsumsiObatController extends Controller
         $hari_perawatan = HariPerawatan::with('konsumsi_obat')->where('id_ranap', '=', $id_ranap)->orderBy('tanggal', 'desc')->get();
 
         $daftar_obat = Obat::all();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('konsumsiobat::mobile.index')
+                ->with('ranap', $ranap)
+                ->with('haris', $hari_perawatan)
+                ->with('daftars', $daftar_obat);
+        }
 
         return view('konsumsiobat::index')
             ->with('ranap', $ranap)
@@ -126,7 +139,7 @@ class KonsumsiObatController extends Controller
         $konsumsi_obat->id_petugas = Auth::id();
         $konsumsi_obat->save();
 
-        Session::flash('message', 'Konsumsi obat berhasil disimpan');
+        Session::flash('message', 'Konsumsi obat berhasil disimpan.');
 
         return redirect()->route('konsumsi_obat.index', $request->get('id_ranap'));
     }
