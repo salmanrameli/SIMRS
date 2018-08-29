@@ -11,16 +11,21 @@ use Illuminate\Support\Facades\Session;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
 use Modules\CatatanHarianPerawatan\Entities\RevisiCatatanHarianPerawatan;
 use Modules\RawatInap\Entities\RawatInap;
+use Jenssegers\Agent\Agent;
 
 class CatatanHarianPerawatanController extends Controller
 {
     use ValidatesRequests;
+
+    public $agent;
 
     public function __construct()
     {
         $this->middleware('checkRole:3')->except('showAllCatatanHarianDanPerawatan');
 
         $this->middleware('checkIfAuthorized');
+
+        $this->agent = new Agent();
     }
 
     /**
@@ -37,6 +42,13 @@ class CatatanHarianPerawatanController extends Controller
         }
 
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('catatanharianperawatan::mobile.index')
+                ->with('ranap', $ranap)
+                ->with('catatans', $catatan);
+        }
 
         return view('catatanharianperawatan::index')
             ->with('ranap', $ranap)
@@ -121,6 +133,13 @@ class CatatanHarianPerawatanController extends Controller
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         $revisi = RevisiCatatanHarianPerawatan::where('id_catatan_harian_perawatan', '=', $id_catatan_harian)->orderBy('created_at', 'desc')->get();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('catatanharianperawatan::mobile.revisi')
+                ->with('ranap', $ranap)
+                ->with('revisis', $revisi);
+        }
 
         return view('catatanharianperawatan::revisi')
             ->with('ranap', $ranap)

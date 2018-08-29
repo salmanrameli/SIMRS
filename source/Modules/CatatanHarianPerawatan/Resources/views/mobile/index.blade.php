@@ -1,4 +1,4 @@
-@extends('layouttemplate::master-ranap')
+@extends('layouttemplate::master-ranap-mobile')
 
 @section('title')
     Catatan Harian Perawatan Pasien
@@ -7,10 +7,11 @@
 @section('content')
     <div class="card-body">
         <div class="page-header">
-            @if(Auth::user()->jabatan_id == 3)
-                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
-            @endif
             <h4>Catatan Harian Perawatan: {{ ucwords($ranap->pasien->nama) }}</h4>
+            <br>
+            @if(Auth::user()->jabatan_id == 3)
+                <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#modalBuatCatatanHarian">Buat Catatan Harian dan Perawatan Baru</button>
+            @endif
             <hr>
             <div class="col-md-12">
                 <table>
@@ -25,7 +26,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -39,7 +40,7 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
+                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
         <table class="table table-striped small">
@@ -52,7 +53,7 @@
             @if(!empty($catatans))
                 @foreach($catatans as $catatan)
                     <tr>
-                        <td class="text-justify">
+                        <td class="text-justify w-75">
                             <b>Dibuat tanggal: {{ date("d F Y", strtotime($catatan->tanggal_keterangan)) }} – {{ $catatan->jam }}</b><br>
                             @if(date("d F Y", strtotime($catatan->tanggal_keterangan)) == date("d F Y", strtotime($catatan->updated_at)))
                                 <b>Diubah tanggal: –</b>
@@ -74,7 +75,7 @@
             </tbody>
         </table>
     </div>
-@endsection
+    @endsection
 
 @section('modal')
     <div class="modal fade" id="modalBuatCatatanHarian" tabindex="-1" role="dialog" aria-labelledby="modalBuatCatatanHarian" aria-hidden="true">
