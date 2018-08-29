@@ -1,17 +1,17 @@
-@extends('layouttemplate::master-ranap')
+@extends('layouttemplate::master-ranap-mobile')
 
 @section('title')
     Perjalanan Penyakit Pasien
-    @endsection
+@endsection
 
 @section('content')
     <div class="card-body">
         <div class="page-header">
+            <h4>Perjalanan Penyakit: {{ $perjalanan->rawat_inap->pasien->nama }}</h4>
+            <br>
             @if(Auth::user()->jabatan_id == 4)
-                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalBuatPerjalananPenyakit">Buat Catatan Perjalanan Penyakit Baru</button>
+                <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#modalBuatPerjalananPenyakit">Buat Catatan Perjalanan Penyakit Baru</button>
             @endif
-
-            <h4>Perjalanan Penyakit: {{ ucwords($ranap->pasien->nama) }}</h4>
             <hr>
             <div class="col-md-12">
                 <table>
@@ -26,7 +26,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Masuk</th>
-                            <td style="padding-left: 10px" id="tanggal_masuk">:</td>
+                            <td style="padding-left: 10px" id="tanggal_masuk_mobile">:</td>
                         </tr>
                         <tr>
                             <th>Diagnosa Awal</th>
@@ -40,10 +40,10 @@
                 </table>
                 <br>
                 <p id="tanggal_lahir" hidden>{{ $ranap->pasien->tanggal_lahir }}</p>
-                <p id="tgl_masuk" hidden>{{ $ranap->tanggal_masuk }}</p>
+                <p id="tgl_masuk_mobile" hidden>{{ $ranap->tanggal_masuk }}</p>
             </div>
         </div>
-        <table class="table table-striped small">
+        <table class="table small">
             <thead>
                 <tr>
                     <th>Perjalanan Penyakit</th>
@@ -51,14 +51,16 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($perjalanans as $perjalanan)
                 <tr>
                     <td class="text-justify w-50">
-                        <b>Dibuat tanggal: {{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</b><br>
+                        Dibuat tanggal:
+                            <br>
+                            <b>{{ date("d F Y", strtotime($perjalanan->tanggal_keterangan)) }}</b>
+                        <hr>
                         @if(strtotime($perjalanan->created_at) == strtotime($perjalanan->updated_at))
-                            <b>Diubah tanggal: –</b>
+                            Diubah tanggal:<br><b>–</b>
                         @else
-                            <b>Diubah tanggal: {{ date("d F Y", strtotime($perjalanan->updated_at)) }}</b>
+                            Diubah tanggal:<br><b>{{ date("d F Y", strtotime($perjalanan->updated_at)) }}</b>
                         @endif
                         <hr>
                         <label><b>Subjektif</b></label>
@@ -70,30 +72,28 @@
                     </td>
                     <td class="text-justify">
                         <label><b>Planning</b></label>
-                        <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!}&nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->id]) }}">Pengobatan...</a></p>
-                        <hr>
-                        <a href="{{ route('perjalanan_penyakit.revisi', [$ranap->id, $perjalanan->id]) }}">revisi..>></a>
-                        @if(Auth::user()->jabatan_id == 4)
+                        <p>{!! $perjalanan->planning_perintah_dokter_dan_pengobatan !!} &nbsp;<a href="{{ route('perintah_dokter_dan_pengobatan.show', [$ranap->id, $perjalanan->id]) }}">Pengobatan...</a></p>
+                        @if(Auth::user()->jabatan_id ==4)
+                            <hr>
                             <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-perjalanan="{{ $perjalanan->id }}" data-subjektif="{{ $perjalanan->subjektif }}" data-objektif="{{ $perjalanan->objektif }}" data-assessment="{{ $perjalanan->assessment }}" data-planning="{{ $perjalanan->planning_perintah_dokter_dan_pengobatan }}" data-target="#modalUbahPerjalananPenyakit">Ubah</button>
                         @endif
                     </td>
                 </tr>
-            @endforeach
             </tbody>
         </table>
-    </div>
-@endsection
+        </div>
+    @endsection
 
 @section('modal')
     <div class="modal fade" id="modalBuatPerjalananPenyakit" tabindex="-1" role="dialog" aria-labelledby="modalBuatPerjalananPenyakit" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalBuatPerjalananPenyakit">Catatan Harian Perawatan Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
+                    <h5 class="modal-title" id="modalBuatPerjalananPenyakit">Catatan Harian Perawatan Pasien: {{ $ranap->pasien->nama }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
-                {{ Form::open(['method' => 'POST', 'route' => ['perjalanan_penyakit.store']]) }}
+                {{ Form::open(['method' => 'POST', 'route' => ['perjalanan_penyakit.store', $ranap->id]]) }}
                 <div class="modal-body">
                     <div hidden>
                         {{ Form::text('id_ranap', $ranap->id) }}
@@ -137,20 +137,20 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalUbahPerjalananPenyakit">Ubah Rincian Perjalanan Penyakit Pasien: {{ ucwords($ranap->pasien->nama) }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reset"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="modalUbahPerjalananPenyakit">Ubah Rincian Perjalanan Penyakit Pasien: {{ $ranap->pasien->nama }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-
                 {{ Form::open(['method' => 'PATCH', 'route' => ['perjalanan_penyakit.update']]) }}
                 <div class="modal-body">
-                    <div class="form-group" hidden>
-                        {{ Form::label('perjalanan', 'ID Perjalanan', ['class' => 'control-label']) }}
-                        {{ Form::textarea('perjalanan', null, ['class' => 'form-control']) }}
+                    <div hidden>
+                        {{ Form::text('id_ranap', $ranap->id) }}
                     </div>
 
-                    <div class="form-group" hidden>
-                        {{ Form::label('id_ranap', 'ID Ranap', ['class' => 'control-label']) }}
-                        {{ Form::text('id_ranap', $ranap->id, ['class' => 'form-control']) }}
+                    <div hidden>
+                        {{ Form::label('perjalanan', 'ID Perjalanan', ['class' => 'control-label']) }}
+                        {{ Form::textarea('perjalanan', null, ['class' => 'form-control']) }}
                     </div>
 
                     <div class="form-group">
@@ -172,7 +172,6 @@
                         {{ Form::label('planning_perintah_dokter_dan_pengobatan_edit', 'Planning / Perintah Dokter dan Pengobatan', ['class' => 'control-label']) }}
                         {{ Form::textarea('planning_perintah_dokter_dan_pengobatan_edit', null, ['class' => 'form-control']) }}
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
@@ -210,4 +209,4 @@
         });
     </script>
     @include('layouttemplate::attributes.perjalanan_penyakit')
-    @endsection
+@endsection

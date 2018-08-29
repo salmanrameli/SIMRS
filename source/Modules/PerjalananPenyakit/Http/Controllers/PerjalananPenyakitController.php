@@ -11,16 +11,21 @@ use Illuminate\Support\Facades\Session;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
 use Modules\PerjalananPenyakit\Entities\RevisiPerjalananPenyakit;
 use Modules\RawatInap\Entities\RawatInap;
+use Jenssegers\Agent\Agent;
 
 class PerjalananPenyakitController extends Controller
 {
     use ValidatesRequests;
+
+    public $agent;
 
     public function __construct()
     {
         $this->middleware('checkRole:4')->except(['showAllPerjalananPenyakitPasien', 'showDetailPerjalananPenyakitPasien']);
 
         $this->middleware('checkIfAuthorized');
+
+        $this->agent = new Agent();
     }
 
     /**
@@ -43,6 +48,13 @@ class PerjalananPenyakitController extends Controller
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         $perjalanan = PerjalananPenyakit::where('id_ranap', '=', $id_ranap)->orderBy('created_at', 'desc')->get();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('perjalananpenyakit::mobile.index')
+                ->with('ranap', $ranap)
+                ->with('perjalanans', $perjalanan);
+        }
 
         return view('perjalananpenyakit::index')
             ->with('ranap', $ranap)
@@ -89,6 +101,13 @@ class PerjalananPenyakitController extends Controller
         $perjalanan = PerjalananPenyakit::where('id', '=', $id_perjalanan_penyakit)->first();
 
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('perjalananpenyakit::mobile.show')
+                ->with('ranap', $ranap)
+                ->with('perjalanans', $perjalanan);
+        }
 
         return view('perjalananpenyakit::show')
             ->with('perjalanan', $perjalanan)
@@ -143,6 +162,13 @@ class PerjalananPenyakitController extends Controller
         $ranap = RawatInap::with('pasien')->where('id', '=', $id_ranap)->first();
 
         $revisi = RevisiPerjalananPenyakit::where('id_perjalanan_penyakit', '=', $id_perjalanan_penyakit)->orderBy('created_at', 'desc')->get();
+
+        if($this->agent->isMobile() || $this->agent->isTablet())
+        {
+            return view('perjalananpenyakit::mobile.revisi')
+                ->with('ranap', $ranap)
+                ->with('revisis', $revisi);
+        }
 
         return view('perjalananpenyakit::revisi')
             ->with('ranap', $ranap)
