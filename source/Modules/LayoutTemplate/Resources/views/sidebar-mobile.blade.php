@@ -22,6 +22,10 @@
     <li class="nav-item active">
         <a href="{{ route('alat_kesehatan.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-toolbox"></i> Manajemen Alat Kesehatan</a>
     </li>
+    <li class="dropdown-divider"></li>
+    <li class="nav-item active">
+        <a href="{{ route('personalisasi.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-wrench"></i> Personalisasi Sistem</a>
+    </li>
     @endif
 
 @if(Auth::user()->jabatan_id == 2)

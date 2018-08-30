@@ -1,0 +1,16 @@
+{
+    "name": "PersonalisasiSistem",
+    "alias": "personalisasisistem",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\PersonalisasiSistem\\Providers\\PersonalisasiSistemServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

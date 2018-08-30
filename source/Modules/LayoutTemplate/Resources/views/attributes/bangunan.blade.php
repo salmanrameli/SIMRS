@@ -6,4 +6,5 @@
     $('#denah_ruangan').attr("class", "nav-item active");
     $('#manajemen_obat').removeAttr("class", "active").attr("class", "nav-item");
     $('#manajemen_alkes').removeAttr("class", "active").attr("class", "nav-item");
+    $('#personalisasi').removeAttr("class", "active").attr("class", "nav-item");
 </script>

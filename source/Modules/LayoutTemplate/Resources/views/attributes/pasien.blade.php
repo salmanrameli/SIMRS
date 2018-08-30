@@ -6,4 +6,5 @@
     $('#pengaturan_rumah_sakit').removeAttr("class", "active").attr("class", "nav-item");
     $('#manajemen_obat').removeAttr("class", "active").attr("class", "nav-item");
     $('#manajemen_alkes').removeAttr("class", "active").attr("class", "nav-item");
+    $('#personalisasi').removeAttr("class", "active").attr("class", "nav-item");
 </script>

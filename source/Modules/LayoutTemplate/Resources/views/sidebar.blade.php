@@ -17,6 +17,9 @@
     <li class="nav-item" id="manajemen_alkes" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
         <a href="{{ route('alat_kesehatan.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-toolbox"></i> Manajemen<br>Alat Kesehatan</a>
     </li>
+    <li class="nav-item" id="personalisasi" style="border-bottom: 0.5px solid #d8dbdd; border-right: 0.5px solid #d8dbdd">
+        <a href="{{ route('personalisasi.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-wrench"></i> Personalisasi Sistem</a>
+    </li>
     @endif
 
 @if(Auth::user()->jabatan_id == 2)

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Modules\PersonalisasiSistem\Entities\PersonalisasiSistem;
 use Modules\User\Entities\Jabatan;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +22,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app['events']->listen(Authenticated::class, function ($e) {
             $jabatan = Jabatan::where('id', '=', $e->user->jabatan_id)->value('nama');
 
-            view()->share('jabatan', ucwords($jabatan));
+            view()->share('role', ucwords($jabatan));
         });
+
+        $sistem = PersonalisasiSistem::where('id', '=', '1')->value('nama');
+
+        view()->share('sistem', $sistem);
     }
 
     /**
