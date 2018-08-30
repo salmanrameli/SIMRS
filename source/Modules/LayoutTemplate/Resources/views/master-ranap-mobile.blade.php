@@ -24,28 +24,7 @@
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
-    <div class="d-block d-lg-none">
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">SIMRS</a><small style="font-size: 12px; color: white" class="float-right">@ {{ Auth::user()->nama }} – {{ $jabatan }}</small>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    @include('layouttemplate::sidebar-mobile')
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="d-none d-lg-block">
-        <nav class="navbar navbar-light bg-white"  style="margin-bottom: 20px; border-bottom: 1px solid lightgrey;">
-            <a class="navbar-brand" href="/"><h4>Sistem Informasi Manajemen Rumah Sakit | <small style="font-size: 14px">{{ Auth::user()->nama }} – {{ $jabatan }}</small></h4></a>
-            <div class="float-right">
-                <a href="{{ route('logout') }}" class="btn btn-outline-danger float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                <a href="{{ route('setting.index') }}" class="btn btn-outline-info float-right" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
-            </div>
-        </nav>
-    </div>
+    @include('layouttemplate::navbar')
     <body>
         <div class="container-fluid" style="padding-top: 15px">
             <div class="row">
