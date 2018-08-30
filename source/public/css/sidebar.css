@@ -19,12 +19,12 @@
     min-width: 220px;
     max-width: 250px;
     transition: all 0.2s;
-    min-height: 85vh;
+    min-height: 87vh;
     border-right: solid 1px black;
     margin-right: 15px;
     position: -webkit-sticky;
     position: sticky;
-    top: 20px;
+    top: 80px;
     /*min-height: 100%;*/
     /*transform-origin: bottom left;*/
 }
