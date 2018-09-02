@@ -88,6 +88,6 @@ class BangunanDatabaseSeeder extends Seeder
         $kamar->jumlah_maks_pasien = '4';
         $kamar->save();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(RegisterModulTableSeeder::class);
     }
 }

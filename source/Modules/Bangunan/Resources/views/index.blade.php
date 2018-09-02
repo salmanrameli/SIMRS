@@ -254,5 +254,5 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.bangunan')
+    @include('bangunan::attribute.nav')
     @endsection
