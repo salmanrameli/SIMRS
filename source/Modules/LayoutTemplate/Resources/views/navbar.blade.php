@@ -1,6 +1,6 @@
 <div class="d-lg-none">
     <nav class="navbar navbar-light bg-light" style="margin-bottom: 20px; border-bottom: solid 1px darkgray">
-        <a class="navbar-brand" href="/"><img src="{{ asset('/storage/logo.jpg') }}" width="35" height="35" alt="logo"><small style="font-size: 12px;"> @ {{ Auth::user()->nama }} – {{ $role }}</small></a>
+        <a class="navbar-brand" href="/"><img src="{{ asset('/storage/logo.jpg') }}" width="35" height="35" alt="logo"><small style="font-size: 12px;"> | {{ Auth::user()->nama }} – {{ $role }}</small></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
