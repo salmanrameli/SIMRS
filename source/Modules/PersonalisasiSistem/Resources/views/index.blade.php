@@ -44,5 +44,5 @@
 @stop
 
 @section('script')
-    @include('layouttemplate::attributes.personalisasi')
+    @include('personalisasisistem::attribute.nav')
     @endsection
