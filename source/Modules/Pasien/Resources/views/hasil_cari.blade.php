@@ -84,5 +84,5 @@
 @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.pasien')
+    @include('pasien::attribute.nav')
 @endsection

@@ -58,11 +58,7 @@
 @endsection
 
 @section('script')
-    @if(Auth::user()->jabatan_id == 1)
-        @include('layouttemplate::attributes.pasien')
-    @else
-        @include('layouttemplate::attributes.pasien_ranap')
-    @endif
+    @include('pasien::attribute.nav')
     <script>
         var date = new Date($('#tgl_lahir').text());
         var options = { year: 'numeric', month: 'long', day: 'numeric' };

@@ -85,5 +85,7 @@ class PasienDatabaseSeeder extends Seeder
 
             $pasien->save();
         }
+
+        $this->call(RegisterModulTableSeeder::class);
     }
 }
