@@ -102,5 +102,5 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.alkes')
+    @include('alatkesehatan::attribute.nav')
 @endsection

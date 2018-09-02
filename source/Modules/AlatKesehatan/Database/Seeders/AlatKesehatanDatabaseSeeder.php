@@ -16,6 +16,6 @@ class AlatKesehatanDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(RegisterModulTableSeeder::class);
     }
 }
