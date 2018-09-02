@@ -64,5 +64,5 @@
             $("textarea").htmlarea();
         });
     </script>
-    @include('layouttemplate::attributes.pasien_ranap')
+    @include('cattanharianperawatn::attribute.nav')
 @endsection
