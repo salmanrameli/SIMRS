@@ -33,8 +33,6 @@
                         {{ csrf_field() }}
                     </form>
 
-                    @include('layouttemplate::alert')
-
                     <div class="wrapper">
                         <div class="d-none d-lg-block">
                             <nav id="sidebar">
@@ -63,6 +61,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @include('layouttemplate::alert')
 
                             @yield('content')
 
