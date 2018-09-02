@@ -41,5 +41,5 @@
     @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.perjalanan_penyakit')
+    @include('perjalananpenyakit::attribute.nav')
 @endsection

@@ -68,5 +68,5 @@
             $("textarea").htmlarea();
         });
     </script>
-    @include('layouttemplate::attributes.pasien_ranap')
+    @include('perjalananpenyakit::attribute.nav')
 @endsection

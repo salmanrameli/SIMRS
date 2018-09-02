@@ -462,5 +462,5 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.konsumsi_obat')
+    @include('konsumsiobat::attribute.nav')
 @endsection

@@ -228,5 +228,5 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.tensi')
+    @include('tensi::attribute.nav')
 @endsection

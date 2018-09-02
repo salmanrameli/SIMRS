@@ -197,5 +197,5 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.perintah_dokter')
+    @include('perintahdokterdanpengobatan::attribute.nav')
 @endsection
