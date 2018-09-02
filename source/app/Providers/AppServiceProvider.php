@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
 
             view()->share('role', ucwords($jabatan));
 
-            $navigations = ModulSistem::where('id', '=', HakAksesModulSistem::where('id_jabatan', '=', $e->user->jabatan_id)->value('id_modul'))->get();
+            $modul_akses = HakAksesModulSistem::where('id_jabatan', '=', $e->user->jabatan_id)->pluck('id_modul');
+
+            $navigations = ModulSistem::whereIn('id', $modul_akses)->get();
 
             view()->share('navigations', $navigations);
         });
