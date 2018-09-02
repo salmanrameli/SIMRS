@@ -33,6 +33,6 @@ class DokterDatabaseSeeder extends Seeder
             $dokter->save();
         }
 
-        // $this->call("OthersTableSeeder");
+        $this->call(RegisterModulTableSeeder::class);
     }
 }

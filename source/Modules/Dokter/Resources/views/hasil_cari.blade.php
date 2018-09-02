@@ -73,5 +73,5 @@
     @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.dokter')
+    @include('dokter::attribute.nav')
     @endsection
