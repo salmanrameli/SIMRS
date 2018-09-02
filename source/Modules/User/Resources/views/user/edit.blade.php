@@ -77,5 +77,5 @@
     @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.user')
+    @include('user::attribute.nav')
 @endsection

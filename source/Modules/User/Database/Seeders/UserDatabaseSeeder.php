@@ -75,6 +75,6 @@ class UserDatabaseSeeder extends Seeder
             'nama' => 'dokter'
         ]);
 
-         //$this->call("JabatanDatabaseSeeder");
+         $this->call(RegisterModulTableSeeder::class);
     }
 }
