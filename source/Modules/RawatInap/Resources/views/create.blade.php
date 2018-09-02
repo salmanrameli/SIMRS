@@ -85,7 +85,7 @@
     @endsection
 
 @section('script')
-    @include('layouttemplate::attributes.pasien_ranap')
+    @include('rawatinap::attribute.nav')
     <script>
         $(function () {
             $("#datepicker").datepicker({
