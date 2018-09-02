@@ -47,6 +47,6 @@ class ObatDatabaseSeeder extends Seeder
 
         }
 
-        // $this->call("OthersTableSeeder");
+        $this->call(RegisterModulTableSeeder::class);
     }
 }

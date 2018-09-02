@@ -117,5 +117,5 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.obat')
+    @include('obat::attribute.nav')
     @endsection
