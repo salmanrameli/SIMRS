@@ -1,56 +1,9 @@
-@if(Auth::user()->jabatan_id == 1)
+@foreach($navigations as $navigation)
     <li class="nav-item active">
-        <a href="{{ route('user.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-users-cog"></i> Manajemen Staff</a>
+        <a href="{{ route($navigation->rute_home) }}" class="nav-link" style="min-width: 200px"><i class="{{ $navigation->icon }}"></i> {{ ucwords($navigation->nama_modul) }}</a>
     </li>
     <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('dokter.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-user-md"></i> Manajemen Dokter</a>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('pasien.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-heartbeat"></i> Manajemen Pasien</a>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('bangunan.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-hospital"></i> Manajemen Bangunan</a>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('obat.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-pills"></i> Manajemen Obat</a>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('alat_kesehatan.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-toolbox"></i> Manajemen Alat Kesehatan</a>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('personalisasi.index') }}" class="nav-link" style="min-width: 200px"><i class="fas fa-wrench"></i> Personalisasi Sistem</a>
-    </li>
-    @endif
-
-@if(Auth::user()->jabatan_id == 2)
-    <li class="nav-item active">
-        <a href="{{ route('ranap.index') }}" class="nav-link"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li class="nav-item active">
-        <a href="{{ route('bangunan.index') }}" class="nav-link">Ruangan</a>
-    </li>
-    @endif
-
-@if(Auth::user()->jabatan_id == 3)
-    <li class="nav-item active">
-        <a href="{{ route('ranap.index') }}" class="nav-link"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
-    </li>
-    @endif
-
-@if(Auth::user()->jabatan_id == 4)
-    <li class="nav-item active">
-        <a href="{{ route('ranap.index') }}" class="nav-link"><i class="fas fa-procedures"></i> Pasien Rawat Inap</a>
-    </li>
-    @endif
-
-<li class="dropdown-divider"></li>
+@endforeach
 <li class="nav-item active">
     <a href="{{ route('setting.index') }}" class="nav-link" style="margin-right: 10px"><i class="fa fa-cogs"></i> Pengaturan Akun</a>
 </li>
