@@ -38,7 +38,7 @@
                     <div class="wrapper">
                         <div class="d-none d-lg-block">
                             <nav id="sidebar">
-                                <ul class="list-unstyled components">
+                                <ul class="list-unstyled components" id="nav-elements">
                                     @include('layouttemplate::sidebar')
                                 </ul>
                             </nav>
@@ -74,6 +74,11 @@
             </div>
         </div>
         @yield('script')
+        <script>
+            $('#nav-elements').on('click', 'li', function() {
+                $('#nav-elements li.active').removeClass('active');
+            });
+        </script>
         <script>
             $( function() {
                 $('#datepicker').datepicker( $.datepicker.regional[ "id" ] );
