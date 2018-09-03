@@ -4,31 +4,20 @@ namespace Modules\Login\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Modules\ModulSistem\Entities\HakAksesModulSistem;
+use Modules\ModulSistem\Entities\ModulSistem;
 
 class LoginController extends Controller
 {
     public function home()
     {
         if (Auth::check()) {
-            $jabatan = Auth::user()->jabatan_id;
 
-            switch ($jabatan) {
-                case '1':
-                    return view('login::homepage.administrator');
-                    break;
-                case '2':
-                    return redirect()->route('ranap.index');
-                    break;
-                case '3':
-                    return redirect()->route('ranap.index');
-                    break;
-                case '4':
-                    return redirect()->route('ranap.index');
-                    break;
-                default:
-                    return view('welcome');
-                    break;
-            }
+            $modul = ModulSistem::whereIn('id', HakAksesModulSistem::where('id_jabatan', '=', Auth::user()->jabatan_id)->pluck('id_modul'))->get();
+
+            return view('login::index')
+                ->with('moduls', $modul);
+
         }
 
         return view('welcome');
