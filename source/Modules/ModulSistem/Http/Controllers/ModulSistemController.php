@@ -25,7 +25,7 @@ class ModulSistemController extends Controller
      */
     public function showAllModul()
     {
-        $modul = ModulSistem::all();
+        $modul = ModulSistem::orderBy('modul')->get();
 
         $jabatan = Jabatan::all();
 

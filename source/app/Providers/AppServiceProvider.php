@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
 
             $modul_akses = HakAksesModulSistem::where('id_jabatan', '=', $e->user->jabatan_id)->pluck('id_modul');
 
-            $navigations = ModulSistem::whereIn('id', $modul_akses)->get();
+            $navigations = ModulSistem::whereIn('id', $modul_akses)->orderBy('modul')->get();
 
             view()->share('navigations', $navigations);
         });

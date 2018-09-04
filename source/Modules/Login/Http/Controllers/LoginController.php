@@ -13,7 +13,7 @@ class LoginController extends Controller
     {
         if (Auth::check()) {
 
-            $modul = ModulSistem::whereIn('id', HakAksesModulSistem::where('id_jabatan', '=', Auth::user()->jabatan_id)->pluck('id_modul'))->get();
+            $modul = ModulSistem::whereIn('id', HakAksesModulSistem::where('id_jabatan', '=', Auth::user()->jabatan_id)->pluck('id_modul'))->orderBy('modul')->get();
 
             return view('login::index')
                 ->with('moduls', $modul);
