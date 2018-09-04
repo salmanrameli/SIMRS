@@ -18,7 +18,8 @@ class RegisterModulTableSeeder extends Seeder
         Model::unguard();
 
         DB::table('modul_sistem')->insert([
-            'nama_modul' => 'personalisasi sistem',
+            'nama' => 'personalisasi sistem',
+            'modul' => config('personalisasisistem.name'),
             'rute_home' => 'personalisasi.index',
             'nav_id' => 'personalisasi',
             'icon' => 'fas fa-paint-brush'

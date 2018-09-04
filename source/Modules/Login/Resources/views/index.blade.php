@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="card card-body">
                     <div class="col-md-12">
-                        <b>{{ ucwords($modul->nama_modul) }}</b>
+                        <span class="{{ $modul->icon }}"></span>&nbsp;&nbsp;<b>{{ ucwords($modul->nama) }}</b>
                         <a href="{{ route($modul->rute_home) }}" class="btn btn-outline-info float-right">Masuk</a>
                     </div>
                 </div>

@@ -15,7 +15,8 @@ class CreateModulSistemTable extends Migration
     {
         Schema::create('modul_sistem', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_modul');
+            $table->string('nama');
+            $table->string('modul');
             $table->string('rute_home');
             $table->string('nav_id');
             $table->string('icon')->nullable();

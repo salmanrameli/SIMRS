@@ -18,7 +18,8 @@ class RegisterModulTableSeeder extends Seeder
         Model::unguard();
 
         DB::table('modul_sistem')->insert([
-            'nama_modul' => 'alat kesehatan',
+            'nama' => 'alat kesehatan',
+            'modul' => config('alatkesehatan.name'),
             'rute_home' => 'alat_kesehatan.index',
             'nav_id' => 'manajemen_alkes',
             'icon' => 'fas fa-toolbox'

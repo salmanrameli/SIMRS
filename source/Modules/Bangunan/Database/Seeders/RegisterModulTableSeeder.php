@@ -18,7 +18,8 @@ class RegisterModulTableSeeder extends Seeder
         Model::unguard();
 
         DB::table('modul_sistem')->insert([
-            'nama_modul' => 'bangunan',
+            'nama' => 'bangunan',
+            'modul' => config('bangunan.name'),
             'rute_home' => 'bangunan.index',
             'nav_id' => 'denah_ruangan',
             'icon' => 'fas fa-hospital'

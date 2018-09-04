@@ -10,7 +10,7 @@
             <div class="col-md-4 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <b>{{ ucwords($modul->nama_modul) }}</b>
+                        <span class="{{ $modul->icon }}"></span>&nbsp;&nbsp;<b>{{ ucwords($modul->nama) }}</b>
                     </div>
                     <div class="card-body">
                         <div class="float-right btn-group">
@@ -42,7 +42,6 @@
                                 <tr>
                                     <td>{{ ucwords($akses->nama) }}</td>
                                     <td>
-                                        {{--<a href="" class="btn btn-danger float-right">Hapus</a>--}}
                                         {{ Form::open(['route' => ['modul.hapus_jabatan',  $modul->id,  $akses->id], 'method' => 'delete']) }}
                                         <button type="submit" class="btn btn-danger float-right">Hapus</button>
                                         {{ Form::close() }}

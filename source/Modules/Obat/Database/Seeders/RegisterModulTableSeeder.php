@@ -18,7 +18,8 @@ class RegisterModulTableSeeder extends Seeder
         Model::unguard();
 
         DB::table('modul_sistem')->insert([
-            'nama_modul' => 'obat',
+            'nama' => 'obat',
+            'modul' => config('obat.name'),
             'rute_home' => 'obat.index',
             'nav_id' => 'manajemen_obat',
             'icon' => 'fas fa-pills'
