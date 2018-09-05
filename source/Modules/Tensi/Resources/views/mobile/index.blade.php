@@ -232,5 +232,4 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.tensi')
 @endsection
