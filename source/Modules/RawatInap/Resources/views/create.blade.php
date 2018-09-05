@@ -90,7 +90,7 @@
         $(document).ready(function () {
             $('#id_pasien').select2({
                 placeholder: "Masukkan nomor identitas pasien, seperti: 3578290101010001",
-                minimumInputLength: 2,
+                minimumInputLength: 8,
                 ajax: {
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
