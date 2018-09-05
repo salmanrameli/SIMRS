@@ -45,18 +45,33 @@ class KonsumsiObatController extends Controller
 
         $daftar_obat = Obat::all();
 
+        if($hari_perawatan->isEmpty())
+        {
+            $hari_perawatan_ke = 1;
+        }
+        else
+        {
+            $hari_perawatan_terakhir = HariPerawatan::where('id_ranap', '=', $id_ranap)->select('hari_perawatan')->orderBy('created_at', 'desc')->first()->toArray();
+            foreach ($hari_perawatan_terakhir as $hari)
+                $hari_perawatan_terakhir = $hari;
+
+            $hari_perawatan_ke = $hari_perawatan_terakhir + 1;
+        }
+
         if($this->agent->isMobile() || $this->agent->isTablet())
         {
             return view('konsumsiobat::mobile.index')
                 ->with('ranap', $ranap)
                 ->with('haris', $hari_perawatan)
-                ->with('daftars', $daftar_obat);
+                ->with('daftars', $daftar_obat)
+                ->with('hari_perawatan_ke', $hari_perawatan_ke);
         }
 
         return view('konsumsiobat::index')
             ->with('ranap', $ranap)
             ->with('haris', $hari_perawatan)
-            ->with('daftars', $daftar_obat);
+            ->with('daftars', $daftar_obat)
+            ->with('hari_perawatan_ke', $hari_perawatan_ke);
     }
 
     /**

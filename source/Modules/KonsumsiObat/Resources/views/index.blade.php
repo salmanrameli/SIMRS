@@ -174,7 +174,7 @@
 
                         <div class="form-group">
                             {{ Form::label('hari_perawatan', 'Hari Perawatan Ke:', ['class' => 'control-label']) }}
-                            {{ Form::number('hari_perawatan', null, ['class' => 'form-control']) }}
+                            {{ Form::number('hari_perawatan', $hari_perawatan_ke, ['class' => 'form-control']) }}
                         </div>
 
                         <div class="form-group">
