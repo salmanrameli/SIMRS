@@ -166,6 +166,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         \Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Sofa\Eloquence\BaseServiceProvider::class,
 
         /*
          * Package Service Providers...

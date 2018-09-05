@@ -16,12 +16,14 @@
         <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
         <script src="{{ asset('js/datepicker-id.js') }}"></script>
         <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+        <script src="{{ asset('select2/select2.full.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-timepicker.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jHtmlArea.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+        <link rel="stylesheet" href="{{ asset('select2/select2.min.css') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     </head>
     @include('layouttemplate::navbar')

@@ -2,12 +2,12 @@
 
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\Pasien\Http\Controllers'], function()
 {
+    Route::get('/pasien/find', 'PasienController@find');
+
     Route::get('/pasien/cari', [
         'as' => 'pasien.cari',
         'uses' => 'PasienController@cariPasien'
     ]);
-
-    //Route::resource('pasien', 'PasienController');
 
     Route::get('/pasien', [
         'as' => 'pasien.index',

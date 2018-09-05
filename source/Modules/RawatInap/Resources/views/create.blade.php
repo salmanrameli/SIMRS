@@ -15,8 +15,8 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('id_pasien', 'ID Penduduk Pasien *', ['class' => 'control-label']) }}
-            {{ Form::text('id_pasien', null, ['class' => 'form-control']) }}
+            <label for="id_pasien" class="control-label">ID Penduduk Pasien *</label>
+            <select id="id_pasien" name="id_pasien[]" class="form-control"></select>
         </div>
 
         <div class="form-group">
@@ -33,7 +33,7 @@
             {{ Form::label('id_petugas_penerima', 'Petugas Penerima *', ['class' => 'control-label']) }}
             <select class="form-control" name="id_petugas_penerima">
                 @foreach($petugass as $petugas)
-                    <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}">{{ ucwords($petugas->nama) }}</option>
+                    <option value="{{ $petugas->id }}" id="id_petugas_penerima" name="{{ $petugas->id }}" {{ Auth::id() == $petugas->id ? 'selected' : '' }}>{{ ucwords($petugas->nama) }}</option>
                 @endforeach
             </select>
         </div>
@@ -86,6 +86,32 @@
 
 @section('script')
     @include('rawatinap::attribute.nav')
+    <script>
+        $(document).ready(function () {
+            $('#id_pasien').select2({
+                placeholder: "Masukkan nomor identitas pasien, seperti: 3578290101010001",
+                minimumInputLength: 2,
+                ajax: {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/pasien/find',
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            q: $.trim(params.term)
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    },
+                    cache: true
+                }
+            });
+        })
+    </script>
     <script>
         $(function () {
             $("#datepicker").datepicker({

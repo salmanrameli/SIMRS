@@ -137,7 +137,7 @@ class RawatInapController extends Controller
             'tanggal_masuk_ranap' => 'required'
         ]);
 
-        $terdaftar = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien)->first();
+        $terdaftar = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien[0])->first();
 
         if(!$terdaftar)
         {
@@ -155,7 +155,7 @@ class RawatInapController extends Controller
             return redirect()->back();
         }
 
-        $rawat_inap = RawatInap::where('id_pasien', '=', $request->id_pasien)->orderBy('id', 'desc')->first();
+        $rawat_inap = RawatInap::where('id_pasien', '=', $request->id_pasien[0])->orderBy('id', 'desc')->first();
 
         if($rawat_inap != null)
         {
@@ -171,7 +171,7 @@ class RawatInapController extends Controller
 
         $ranap = new RawatInap();
         $ranap->id_rm = $request->id_rm;
-        $ranap->id_pasien = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien)->value('id');
+        $ranap->id_pasien = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien[0])->value('id');
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->id_dokter_pj = $request->id_dokter_pj;
         $ranap->dokter_pengirim = $request->dokter_pengirim;
@@ -183,7 +183,7 @@ class RawatInapController extends Controller
         $ranap->tanggal_masuk = $request->tanggal_masuk_ranap;
         $ranap->save();
 
-        Session::flash('message', 'Pendaftaran rawat inap berhasil dilakukan');
+        Session::flash('message', 'Pendaftaran rawat inap berhasil dilakukan.');
 
         return redirect()->route('ranap.index');
     }

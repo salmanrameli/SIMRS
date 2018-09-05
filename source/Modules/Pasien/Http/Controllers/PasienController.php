@@ -171,4 +171,23 @@ class PasienController extends Controller
 
         return view('pasien::hasil_cari')->with('results', $results)->with('query', $query);
     }
+
+    public function find(Request $request)
+    {
+        $term = trim($request->q);
+
+        if (empty($term)) {
+            return Response::json([]);
+        }
+
+        $pasiens = Pasien::search($term)->get();
+
+        $formatted_tags = [];
+
+        foreach ($pasiens as $pasien) {
+            $formatted_tags[] = ['id' => $pasien->id_penduduk_pasien, 'text' => $pasien->nama];
+        }
+
+        return response()->json($formatted_tags);
+    }
 }
