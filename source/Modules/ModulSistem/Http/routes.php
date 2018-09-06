@@ -12,6 +12,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\ModulSistem\Http\Co
         'uses' => 'ModulSistemController@tambahHakAksesModul'
     ]);
 
+    Route::post('/modul/simpan_permission', [
+        'as' => 'modul.simpan_permission',
+        'uses' => 'ModulSistemController@aturPermissionModul'
+    ]);
+
     Route::delete('/modul/{id_modul}/hapus/{id_jabatan}', [
         'as' => 'modul.hapus_jabatan',
         'uses' => 'ModulSistemController@hapusHakAksesModul'

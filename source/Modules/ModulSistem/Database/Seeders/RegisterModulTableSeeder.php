@@ -22,7 +22,7 @@ class RegisterModulTableSeeder extends Seeder
 
         if($modul_pertama != 'modul sistem')
         {
-            $temp = ModulSistem::findOrFail(1);
+            $temp = ModulSistem::where('id', '=', '1')->firstOrFail();
 
             ModulSistem::where('id', '=', '1')->delete();
 
@@ -39,7 +39,11 @@ class RegisterModulTableSeeder extends Seeder
 
             DB::table('hak_akses_modul_sistem')->insert([
                 'id_modul' => $id_modul,
-                'id_jabatan' => '1'
+                'id_jabatan' => '1',
+                'create' => true,
+                'read' => true,
+                'update' => true,
+                'delete' => true
             ]);
 
             $modul = new ModulSistem();

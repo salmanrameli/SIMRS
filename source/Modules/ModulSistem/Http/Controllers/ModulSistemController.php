@@ -69,6 +69,37 @@ class ModulSistemController extends Controller
         return redirect()->route('modul.index');
     }
 
+    public function aturPermissionModul(Request $request)
+    {
+        $id_modul = $request->get('id_modul');
+        $id_jabatan = $request->get('id_jabatan');
+
+        if($request->has('create'))
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['create' => 1]);
+        else
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['create' => 0]);
+
+
+        if($request->has('read'))
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['read' => 1]);
+        else
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['read' => 0]);
+
+        if($request->has('update'))
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['update' => 1]);
+        else
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['update' => 0]);
+
+        if($request->has('delete'))
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['delete' => 1]);
+        else
+            HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->update(['delete' => 0]);
+
+        Session::flash('message', 'Pengaturan permission berhasil disimpan.');
+
+        return redirect()->route('modul.index');
+    }
+
     /**
      * Show the specified resource.
      * @return Response

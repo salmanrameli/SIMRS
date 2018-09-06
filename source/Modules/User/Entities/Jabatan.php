@@ -18,6 +18,6 @@ class Jabatan extends Model
 
     public function modul_sistem()
     {
-        return $this->belongsToMany(ModulSistem::class, 'hak_akses_modul_sistem', 'id_jabatan', 'id_modul')->as('hak_akses')->withTimestamps();
+        return $this->belongsToMany(ModulSistem::class, 'hak_akses_modul_sistem', 'id_jabatan', 'id_modul')->withPivot('create', 'read', 'update', 'delete')->withTimestamps();
     }
 }

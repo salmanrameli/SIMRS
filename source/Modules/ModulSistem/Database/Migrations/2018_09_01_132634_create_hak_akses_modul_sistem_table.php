@@ -17,6 +17,10 @@ class CreateHakAksesModulSistemTable extends Migration
             $table->increments('id');
             $table->integer('id_modul');
             $table->integer('id_jabatan');
+            $table->boolean('create');
+            $table->boolean('read');
+            $table->boolean('update');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

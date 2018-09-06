@@ -15,6 +15,6 @@ class ModulSistem extends Model
 
     public function jabatan()
     {
-        return $this->belongsToMany(Jabatan::class, 'hak_akses_modul_sistem', 'id_modul', 'id_jabatan')->as('hak_akses')->withTimestamps();
+        return $this->belongsToMany(Jabatan::class, 'hak_akses_modul_sistem', 'id_modul', 'id_jabatan')->withPivot('create', 'read', 'update', 'delete')->withTimestamps();
     }
 }
