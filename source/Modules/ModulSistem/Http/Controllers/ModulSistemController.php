@@ -50,21 +50,20 @@ class ModulSistemController extends Controller
      */
     public function tambahHakAksesModul(Request $request)
     {
+        $jabatans = $request->get('id_jabatan');
         $id_modul = $request->get('id_modul');
-        $id_jabatan = $request->get('id_jabatan');
 
-        if(HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $id_jabatan)->exists())
+        foreach ($jabatans as $jabatan)
         {
-            Session::flash('warning', 'Hak akses gagal ditambahkan pada modul karena sudah ada.');
-        }
-        else
-        {
-            $hak_akses = new HakAksesModulSistem();
-            $hak_akses->id_modul = $id_modul;
-            $hak_akses->id_jabatan = $id_jabatan;
-            $hak_akses->save();
+            if(!HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', $jabatan)->exists())
+            {
+                $hak_akses = new HakAksesModulSistem();
+                $hak_akses->id_modul = $id_modul;
+                $hak_akses->id_jabatan = $jabatan;
+                $hak_akses->save();
 
-            Session::flash('message', 'Hak akses berhasil ditambahkan pada modul.');
+                Session::flash('message', 'Hak akses berhasil ditambahkan pada modul.');
+            }
         }
 
         return redirect()->route('modul.index');
