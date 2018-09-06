@@ -94,7 +94,7 @@
                     </tr>
                     <tr>
                         <th colspan="2">Dosis</th>
-                        <td colspan="2" class="text-center">{{ $obat->dosis }}</td>
+                        <td colspan="2" class="text-center">{{ $obat->dosis }}  {{ $obat->obat->satuan }}</td>
                     </tr>
                     <tr>
                         <td class="text-center">Pa</td>
@@ -300,7 +300,7 @@
                             {{ Form::label('id_obat', 'Obat', ['class' => 'control-label']) }}
                             <select class="form-control" name="id_obat">
                                 @foreach($daftars as $obat)
-                                    <option value="{{ $obat->id }}" id="id_obat" name="{{ $obat->id }}">{{ ucwords($obat->nama) }}</option>
+                                    <option value="{{ $obat->id }}" id="id_obat" name="{{ $obat->id }}">{{ ucwords($obat->nama) }} ({{ $obat->satuan }})</option>
                                 @endforeach
                             </select>
                         </div>
@@ -469,5 +469,4 @@
             });
         });
     </script>
-    @include('layouttemplate::attributes.konsumsi_obat')
 @endsection

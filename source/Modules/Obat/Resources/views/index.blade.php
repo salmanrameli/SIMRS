@@ -15,6 +15,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>Tipe</th>
+                            <th>Satuan Pemakaian</th>
                             <th>Harga</th>
                             <th></th>
                         </tr>
@@ -24,8 +25,9 @@
                         <tr>
                             <td>{{ ucwords($obat->nama) }}</td>
                             <td>{{ ucfirst($obat->tipe_obat) }}</td>
+                            <td>{{ $obat->satuan }}</td>
                             <td>{{ $obat->harga }}</td>
-                            <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-nama="{{ $obat->nama }}" data-harga="{{ $obat->harga }}" data-tipe="{{ $obat->tipe_obat }}" data-target="#modalUbahObat">Ubah</button></td>
+                            <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-nama="{{ $obat->nama }}" data-harga="{{ $obat->harga }}" data-tipe="{{ $obat->tipe_obat }}" data-satuan="{{ $obat->satuan }}" data-target="#modalUbahObat">Ubah</button></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -58,6 +60,12 @@
                     <div class="form-group">
                         {{ Form::label('jenis', 'Jenis Obat', ['class' => 'control-label']) }}
                         {{ Form::select('jenis', ['injeksi' => 'Injeksi', 'oral' => 'Oral', 'kompress' => 'Kompress', 'suppositoria' => 'Suppositoria'], null, ['class' => 'form-control']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('satuan', 'Satuan Pemakaian', ['class' => 'control-label']) }}
+                        <br>
+                        {{ Form::select('satuan', ['g' => 'Gram', 'mg' => 'Miligram', 'ml' => 'Mililiter'], null, ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -96,6 +104,12 @@
                         {{ Form::label('jenis', 'Jenis Obat', ['class' => 'control-label']) }}
                         {{ Form::select('jenis', ['injeksi' => 'Injeksi', 'oral' => 'Oral', 'kompress' => 'Kompress', 'suppositoria' => 'Suppositoria'], null, ['class' => 'form-control']) }}
                     </div>
+
+                    <div class="form-group">
+                        {{ Form::label('satuan', 'Satuan Pemakaian', ['class' => 'control-label']) }}
+                        <br>
+                        {{ Form::select('satuan', ['g' => 'Gram', 'mg' => 'Miligram', 'ml' => 'Mililiter'], null, ['class' => 'form-control']) }}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success float-right']) }}
@@ -114,6 +128,7 @@
                 $("#modalUbahObat").find('#nama').val($(e.relatedTarget).data('nama'));
                 $("#modalUbahObat").find('#harga').val($(e.relatedTarget).data('harga'));
                 $("#modalUbahObat").find('#jenis').val($(e.relatedTarget).data('tipe')).change();
+                $("#modalUbahObat").find('#satuan').val($(e.relatedTarget).data('satuan')).change();
             });
         });
     </script>

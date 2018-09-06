@@ -18,6 +18,7 @@ class CreateObatTable extends Migration
             $table->string('nama');
             $table->string('harga');
             $table->string('tipe_obat');
+            $table->string('satuan');
 
             $table->timestamps();
         });

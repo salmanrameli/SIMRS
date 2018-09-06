@@ -26,7 +26,7 @@ class ObatDatabaseSeeder extends Seeder
             $obat->nama = $faker->company;
             $obat->harga = rand(5, 100);
 
-            $rand1 = mt_rand(0, 4);
+            $rand1 = mt_rand(0, 3);
             if($rand1 == 0)
             {
                 $obat->tipe_obat = 'injeksi';
@@ -42,6 +42,20 @@ class ObatDatabaseSeeder extends Seeder
             if($rand1 == 3)
             {
                 $obat->tipe_obat = 'suppositoria';
+            }
+
+            $rand1 = mt_rand(0, 2);
+            if($rand1 == 0)
+            {
+                $obat->satuan = 'mg';
+            }
+            if($rand1 == 1)
+            {
+                $obat->satuan = 'g';
+            }
+            else
+            {
+                $obat->satuan = 'ml';
             }
             $obat->save();
 

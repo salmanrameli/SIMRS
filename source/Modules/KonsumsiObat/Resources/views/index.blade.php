@@ -75,7 +75,7 @@
                     <tr>
                         <td class="text-center">{{ ucfirst($obat->obat->nama) }}</td>
                         <td class="text-center">{{ ucfirst($obat->obat->tipe_obat) }}</td>
-                        <td class="text-center">{{ $obat->dosis }}</td>
+                        <td class="text-center">{{ $obat->dosis }} {{ $obat->obat->satuan }}</td>
                         <td class="text-center">
                             @if(empty($obat->konsumsi_obat_pagi->sudah))
                                 @if(Auth::user()->jabatan_id == 3)
@@ -293,7 +293,7 @@
                             {{ Form::label('id_obat', 'Obat', ['class' => 'control-label']) }}
                             <select class="form-control" name="id_obat">
                                 @foreach($daftars as $obat)
-                                    <option value="{{ $obat->id }}" id="id_obat" name="{{ $obat->id }}">{{ ucwords($obat->nama) }}</option>
+                                    <option value="{{ $obat->id }}" id="id_obat" name="{{ $obat->id }}">{{ ucwords($obat->nama) }} ({{ $obat->satuan }})</option>
                                 @endforeach
                             </select>
                         </div>
