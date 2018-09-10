@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\RawatInap;
 use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
@@ -23,9 +24,17 @@ class RawatInapController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkIfAuthorized')->except(['showAllRawatInap']);
+        $id_modul = ModulSistem::where('modul', '=', config('rawatinap.name'))->value('id');
 
-        $this->middleware('checkRole:1,2')->except(['showAllRawatInap', 'showDetailRawatInap']);
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllRawatInap']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => ['createNewRawatInap', 'saveNewRawatInap']]);
+
+        $this->middleware('userCanRead:'.$id_modul, ['only' => ['showDetailRawatInap']]);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => ['editRawatInap', 'updateRawatInap']]);
+
+        $this->middleware('checkIfAuthorized')->except(['showAllRawatInap']);
     }
 
     /**
@@ -34,10 +43,10 @@ class RawatInapController extends Controller
      */
     public function showAllRawatInap()
     {
-        if(Auth::user()->jabatan_id == 4)
-        {
-            $nama = Auth::user()->nama;
+        $nama = Auth::user()->nama;
 
+        if(Auth::user()->isDokter())
+        {
             $ranap = RawatInap::with('pasien')
                 ->select('*')
                 ->where('id_dokter_pj', '=', Auth::id())
@@ -48,24 +57,15 @@ class RawatInapController extends Controller
                 ->with('nama', $nama)
                 ->with('ranaps', $ranap);
         }
-        
-        if(Auth::user()->jabatan_id != 1)
-        {
-            $nama = Auth::user()->nama;
 
-            $ranap = RawatInap::with('pasien')
-                ->select('*')
-                ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
-                ->get();
+        $ranap = RawatInap::with('pasien')
+            ->select('*')
+            ->whereNotIn('id_rm', TanggalKeluarRawatInap::select('id_rm')->get())
+            ->get();
 
-            return view('rawatinap::index')
-                ->with('nama', $nama)
-                ->with('ranaps', $ranap);
-        }
-
-        Session::flash('warning', 'Anda tidak memiliki hak akses.');
-
-        return redirect()->back();
+        return view('rawatinap::index')
+            ->with('nama', $nama)
+            ->with('ranaps', $ranap);
     }
 
     function getKamarKosong($kamars)
@@ -194,16 +194,9 @@ class RawatInapController extends Controller
      */
     public function showDetailRawatInap($id)
     {
-        if(Auth::user()->jabatan_id != 1)
-        {
-            $ranap = RawatInap::findorFail($id);
+        $ranap = RawatInap::findorFail($id);
 
-            return view('rawatinap::show')->with('ranap', $ranap);
-        }
-
-        Session::flash('warning', 'Anda tidak memiliki hak akses.');
-
-        return redirect()->back();
+        return view('rawatinap::show')->with('ranap', $ranap);
     }
 
     /**
