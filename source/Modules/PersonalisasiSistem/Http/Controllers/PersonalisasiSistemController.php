@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\PersonalisasiSistem\Entities\PersonalisasiSistem;
 
 class PersonalisasiSistemController extends Controller
@@ -17,7 +18,11 @@ class PersonalisasiSistemController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1');
+        $id_modul = ModulSistem::where('modul', '=', config('personalisasisistem.name'))->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showPersonalisasiSistem']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => ['gantiLogo', 'gantiNama']]);
     }
 
     /**
