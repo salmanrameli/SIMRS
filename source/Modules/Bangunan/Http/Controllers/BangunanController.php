@@ -58,7 +58,8 @@ class BangunanController extends Controller
             ->with('pasiens', $pasien_ranap)
             ->with('terisis', $terisi_sekarang)
             ->with('lantais', $lantai)
-            ->with('kamars', $kamar);
+            ->with('kamars', $kamar)
+            ->with('lantai_baru', $lantai->first());
     }
 
     public function addNewLantai()

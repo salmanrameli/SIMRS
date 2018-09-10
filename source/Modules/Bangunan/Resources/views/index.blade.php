@@ -5,7 +5,7 @@
     @endsection
 
 @section('content')
-    @if(Auth::user()->jabatan_id == 1)
+    @if($lantai_baru->userCanCreate(Auth::user()))
         <div class="d-none d-sm-block">
             <div class="card card-body">
                 <div class="row">
