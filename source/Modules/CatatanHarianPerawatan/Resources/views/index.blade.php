@@ -176,5 +176,5 @@
             showMeridian: false
         });
     </script>
-    @include('cattanharianperawatn::attribute.nav')
+    @include('catatanharianperawatan::attribute.nav')
 @endsection
