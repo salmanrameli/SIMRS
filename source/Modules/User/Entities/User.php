@@ -5,7 +5,9 @@ namespace Modules\User\Entities;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
+use Modules\ModulSistem\Entities\HakAksesModulSistem;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\RawatInap\Entities\RawatInap;
 
@@ -22,6 +24,61 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function isAdmin()
+    {
+        if(User::where('id', '=', Auth::id())->value('jabatan_id') == '1')
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isPerawat()
+    {
+        if(User::where('id', '=', Auth::id())->value('jabatan_id') == '3')
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isDokter()
+    {
+        if(User::where('id', '=', Auth::id())->value('jabatan_id') == '4')
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function canAccess($id_modul)
+    {
+        return HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', Auth::user()->jabatan_id)->exists();
+    }
+
+    public function canCreate($id_modul)
+    {
+        return HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', Auth::user()->jabatan_id)->value('create');
+    }
+
+    public function canRead($id_modul)
+    {
+        return HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', Auth::user()->jabatan_id)->value('read');
+    }
+
+    public function canUpdate($id_modul)
+    {
+        return HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', Auth::user()->jabatan_id)->value('update');
+    }
+
+    public function canDelete($id_modul)
+    {
+        return HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', Auth::user()->jabatan_id)->value('delete');
+    }
 
     public function jabatan()
     {
