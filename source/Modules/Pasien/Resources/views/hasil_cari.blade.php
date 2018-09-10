@@ -53,24 +53,36 @@
                                 <td>{{ ucwords($result->telepon) }}</td>
                                 <td class="d-none d-lg-block">
                                     <div class="btn-group">
-                                        <a href="{{ route('pasien.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Rincian Pasien</a>
-                                        <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $result->id]) }}">Ubah</a>
-                                        </div>
+                                        @if($pasien->userCanRead(Auth::user()))
+                                            <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Rincian Pasien</a>
+                                        @endif
+                                        @if($pasien->userCanUpdate(Auth::user()))
+                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                                                    <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $pasien->id]) }}">Ubah</a>
+                                                @endif
+                                            </div>
+                                        @endif
                                     </div>
                                 </td>
                                 <td class="d-lg-none">
                                     <div class="btn-group">
-                                        <a href="{{ route('pasien.show', ['id' => $result->id]) }}" class="btn btn-sm btn-outline-info">Rincian<br>Pasien</a>
-                                        <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $result->id]) }}">Ubah</a>
-                                        </div>
+                                        @if($pasien->userCanRead(Auth::user()))
+                                            <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-sm btn-outline-info">Rincian<br>Pasien</a>
+                                        @endif()
+                                        @if($pasien->userCanUpdate(Auth::user()))
+                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+                                                    <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $pasien->id]) }}">Ubah</a>
+                                                @endif
+                                            </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\Pasien\Entities\Pasien;
 
 class PasienController extends Controller
@@ -16,6 +17,18 @@ class PasienController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $id_modul = ModulSistem::where('modul', '=', config('pasien.name'))->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllPasien']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => ['createNewPasien', 'saveNewPasien']]);
+
+        $this->middleware('userCanRead:'.$id_modul, ['only' => ['showDetailPasien']]);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => ['editPasien', 'updatePasien']]);
+
+        $this->middleware('userCanDelete:'.$id_modul, ['only' => 'destroy']);
     }
 
     /**
@@ -26,7 +39,9 @@ class PasienController extends Controller
     {
         $pasien = Pasien::orderBy('id')->paginate(15);
 
-        return view('pasien::index')->with('pasiens', $pasien);
+        return view('pasien::index')
+            ->with('pasiens', $pasien)
+            ->with('pasien', $pasien->first());
     }
 
     /**

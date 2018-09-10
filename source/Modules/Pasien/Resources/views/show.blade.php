@@ -47,7 +47,7 @@
             </tbody>
         </table>
         <p id="tgl_lahir" hidden>{{ $pasien->tanggal_lahir }}</p>
-    @if(Auth::user()->jabatan_id == 1 || Auth::user()->jabatan_id == 2)
+        @if($pasien->userCanUpdate(Auth::user()))
             <div class="col-md-12">
                 <div class="row">
                     <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-warning float-left">Ubah Data Pasien</a>

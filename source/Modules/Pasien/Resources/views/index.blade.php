@@ -29,8 +29,10 @@
 
     <div class="card card-body">
         <div class="table-responsive-sm">
+            @if($pasien->userCanCreate(Auth::user()))
             <a href="{{ route('pasien.create') }}" class="btn btn-outline-primary">Daftarkan Pasien Baru</a>
             <hr>
+            @endif
             <nav>
                 <ul class="pagination justify-content-end float-left">
                     {{ $pasiens->links('vendor.pagination.bootstrap-4') }}
@@ -53,7 +55,10 @@
                         <td>{{ $pasien->telepon }}</td>
                         <td class="d-none d-lg-block">
                             <div class="btn-group">
+                                @if($pasien->userCanRead(Auth::user()))
                                 <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-outline-info">Rincian Pasien</a>
+                                @endif
+                                @if($pasien->userCanUpdate(Auth::user()))
                                 <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
@@ -62,11 +67,15 @@
                                         <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $pasien->id]) }}">Ubah</a>
                                     @endif
                                 </div>
+                                @endif
                             </div>
                         </td>
                         <td class="d-lg-none">
                             <div class="btn-group">
+                                @if($pasien->userCanRead(Auth::user()))
                                 <a href="{{ route('pasien.show', ['id' => $pasien->id]) }}" class="btn btn-sm btn-outline-info">Rincian<br>Pasien</a>
+                                @endif()
+                                @if($pasien->userCanUpdate(Auth::user()))
                                 <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
@@ -75,6 +84,7 @@
                                         <a class="dropdown-item" href="{{ route('pasien.edit', ['id' => $pasien->id]) }}">Ubah</a>
                                     @endif
                                 </div>
+                                    @endif
                             </div>
                         </td>
                     </tr>
