@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
 use Modules\Bangunan\Entities\Lantai;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\RawatInap\Entities\RawatInap;
 use Modules\RawatInap\Entities\TanggalKeluarRawatInap;
 
@@ -21,7 +22,15 @@ class BangunanController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1')->except('showAllLantai');
+        $id_modul = ModulSistem::where('modul', '=', config('bangunan.name'))->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllLantai']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => ['saveNewLantai', 'saveKamar']]);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => ['updateLantai', 'updateKamar']]);
+
+        $this->middleware('userCanDelete:'.$id_modul, ['only' => ['deleteKamar', 'deleteLantai']]);
     }
 
     /**
