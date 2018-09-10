@@ -8,7 +8,9 @@
     <div class="card card-body">
         <div class="col-md-12">
             <div class="table-responsive-sm">
+                @if($obat->userCanCreate(Auth::user()))
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahObat">Daftarkan Obat Baru</button>
+                @endif
                 <hr>
                 <table class="table table-striped">
                     <thead>
@@ -27,7 +29,9 @@
                             <td>{{ ucfirst($obat->tipe_obat) }}</td>
                             <td>{{ $obat->satuan }}</td>
                             <td>{{ $obat->harga }}</td>
+                            @if($obat->userCanUpdate(Auth::user()))
                             <td><button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-id-obat="{{ $obat->id }}" data-nama="{{ $obat->nama }}" data-harga="{{ $obat->harga }}" data-tipe="{{ $obat->tipe_obat }}" data-satuan="{{ $obat->satuan }}" data-target="#modalUbahObat">Ubah</button></td>
+                                @endif
                         </tr>
                     @endforeach
                     </tbody>

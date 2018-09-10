@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\Obat\Entities\Obat;
 
 class ObatController extends Controller
@@ -15,7 +16,15 @@ class ObatController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkRole:1');
+        $this->middleware('auth');
+
+        $id_modul = ModulSistem::where('modul', '=', config('obat.name'))->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllObat']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => 'saveNewObat']);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => 'updateObat']);
     }
 
     /**
@@ -26,7 +35,9 @@ class ObatController extends Controller
     {
         $obat = Obat::all();
 
-        return view('obat::index')->with('obats', $obat);
+        return view('obat::index')
+            ->with('obats', $obat)
+            ->with('obat', $obat->first());
     }
 
     /**
