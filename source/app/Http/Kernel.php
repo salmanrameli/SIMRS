@@ -3,6 +3,11 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Modules\ModulSistem\Http\Middleware\userCanAccessMiddleware;
+use Modules\ModulSistem\Http\Middleware\userCanCreateMiddleware;
+use Modules\ModulSistem\Http\Middleware\userCanDeleteMiddleware;
+use Modules\ModulSistem\Http\Middleware\userCanReadMiddleware;
+use Modules\ModulSistem\Http\Middleware\userCanUpdateMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -59,5 +64,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'checkRole' => \App\Http\Middleware\CheckRole::class,
         'checkIfAuthorized' => \App\Http\Middleware\checkIfAuthorized::class,
+        'userCanAccess' => userCanAccessMiddleware::class,
+        'userCanCreate' => userCanCreateMiddleware::class,
+        'userCanRead' => userCanReadMiddleware::class,
+        'userCanUpdate' => userCanUpdateMiddleware::class,
+        'userCanDelete' => userCanDeleteMiddleware::class
     ];
 }
