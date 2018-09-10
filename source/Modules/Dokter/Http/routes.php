@@ -7,8 +7,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Dokter\Http\Control
         'uses' => 'DokterController@cariDokter'
     ]);
 
-    //Route::resource('dokter', 'DokterController');
-
     Route::get('/dokter', [
         'as' => 'dokter.index',
         'uses' => 'DokterController@showAllDokter'

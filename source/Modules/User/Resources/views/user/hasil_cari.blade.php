@@ -54,24 +54,32 @@
                                 <td>{{ $result->alamat }}</td>
                                 <td class="d-none d-lg-block">
                                     <div class="btn-group">
+                                        @if(Auth::user()->userCanRead())
                                         <a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-outline-info">Detail...</a>
+                                        @endif
+                                        @if(Auth::user()->userCanUpdate())
                                         <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('user.edit', ['id' => $result->id]) }}">Ubah</a>
                                         </div>
+                                        @endif
                                     </div>
                                 </td>
                                 <td class="d-lg-none">
                                     <div class="btn-group">
-                                        <a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-sm btn-outline-info">Detail...</a>
-                                        <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('user.edit', ['id' => $result->id]) }}">Ubah</a>
-                                        </div>
+                                        @if(Auth::user()->userCanRead())
+                                            <a href="{{ route('user.show', ['id' => $result->id]) }}" class="btn btn-sm btn-outline-info">Detail...</a>
+                                        @endif
+                                        @if(Auth::user()->userCanUpdate())
+                                            <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="{{ route('user.edit', ['id' => $result->id]) }}">Ubah</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

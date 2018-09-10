@@ -24,11 +24,13 @@
                 </tr>
             </tbody>
         </table>
+        @if(Auth::user()->userCanUpdate())
         <div class="col-md-12">
             <div class="row">
                 <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-warning float-left">Ubah Data</a>
             </div>
         </div>
+            @endif
     </div>
     @endsection
 

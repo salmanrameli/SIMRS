@@ -28,10 +28,14 @@
         </table>
         <div class="col-md-12">
             <div class="row">
+                @if(Auth::user()->userCanUpdate())
                 <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-outline-warning">Ubah</a>
+                @endif
+                @if(Auth::user()->userCanDelete())
                 {{ Form::open(['route' => ['user.delete', $user->id], 'method' => 'delete']) }}
                 <button type="submit" class="btn btn-danger" style="margin-left: 10px" onclick="return confirm('Apakah anda yakin menonaktifkan akun staff?')">Nonaktifkan Akun</button>
                 {{ Form::close() }}
+                @endif
             </div>
         </div>
     </div>

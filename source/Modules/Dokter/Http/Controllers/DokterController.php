@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\User\Entities\User;
 
 class DokterController extends Controller
@@ -18,7 +19,15 @@ class DokterController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1')->except(['show']);
+        $id_modul = ModulSistem::where('modul', '=', 'User')->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllDokter']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => ['createNewDokter', 'saveNewDokter']]);
+
+        $this->middleware('userCanRead:'.$id_modul, ['only' => ['showDetailDokter']]);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => ['editDokter', 'updateDokter']]);
     }
 
     /**

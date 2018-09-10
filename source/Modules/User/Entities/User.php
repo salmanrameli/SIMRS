@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
 use Modules\ModulSistem\Entities\HakAksesModulSistem;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;
 use Modules\RawatInap\Entities\RawatInap;
 
@@ -78,6 +79,31 @@ class User extends Authenticatable
     public function canDelete($id_modul)
     {
         return HakAksesModulSistem::where('id_modul', '=', $id_modul)->where('id_jabatan', '=', Auth::user()->jabatan_id)->value('delete');
+    }
+
+    public function userCanAccess()
+    {
+        return $this->canAccess(ModulSistem::where('modul', '=', config('user.name'))->value('id'));
+    }
+
+    public function userCanCreate()
+    {
+        return $this->canCreate(ModulSistem::where('modul', '=', config('user.name'))->value('id'));
+    }
+
+    public function userCanRead()
+    {
+        return $this->canRead(ModulSistem::where('modul', '=', config('user.name'))->value('id'));
+    }
+
+    public function userCanUpdate()
+    {
+        return $this->canUpdate(ModulSistem::where('modul', '=', config('user.name'))->value('id'));
+    }
+
+    public function userCanDelete()
+    {
+        return $this->canDelete(ModulSistem::where('modul', '=', config('user.name'))->value('id'));
     }
 
     public function jabatan()

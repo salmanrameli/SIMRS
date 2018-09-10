@@ -32,7 +32,9 @@
         <div class="tab-pane fade show active" id="nav-staff" role="tabpanel" aria-labelledby="nav-staff">
             <div class="card card-body">
                 <div class="table-responsive-sm">
+                    @if(Auth::user()->userCanCreate())
                     <a class="btn btn-outline-primary" href="{{ route('user.create') }}">Daftarkan Staff Baru</a>
+                    @endif
                     <hr>
                     <table class="table table-striped">
                         <thead>
@@ -53,24 +55,32 @@
                                 <td>{{ ucfirst($user->jabatan->nama ) }}</td>
                                 <td class="d-none d-lg-block">
                                     <div class="btn-group">
+                                        @if(Auth::user()->userCanRead())
                                         <a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-outline-info">Detail...</a>
+                                        @endif
+                                        @if(Auth::user()->userCanUpdate())
                                         <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Ubah</a>
                                         </div>
+                                            @endif
                                     </div>
                                 </td>
                                 <td class="d-lg-none">
                                     <div class="btn-group">
+                                        @if(Auth::user()->userCanRead())
                                         <a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-sm btn-outline-info">Detail..</a>
+                                        @endif
+                                        @if(Auth::user()->userCanUpdate())
                                         <button type="button" class="btn btn-outline-info btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('user.edit', ['id' => $user->id]) }}">Ubah</a>
                                         </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

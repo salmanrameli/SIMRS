@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\User\Entities\Jabatan;
 use Modules\User\Entities\User;
 
@@ -19,7 +20,15 @@ class UserController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1');
+        $id_modul = ModulSistem::where('modul', '=', 'User')->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllStaff']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => ['createNewStaff', 'saveNewStaff']]);
+
+        $this->middleware('userCanRead:'.$id_modul, ['only' => ['showDetailStaff']]);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => ['editStaff', 'updateStaff']]);
     }
 
     public function home()
