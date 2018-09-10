@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Modules\AlatKesehatan\Entities\AlatKesehatan;
+use Modules\ModulSistem\Entities\ModulSistem;
 
 class AlatKesehatanController extends Controller
 {
@@ -15,7 +16,13 @@ class AlatKesehatanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkRole:1');
+        $id_modul = ModulSistem::where('modul', '=', config('alatkesehatan.name'))->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllAlatKesehatan']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => 'saveNewAlatKesehatan']);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => 'updateAlatKesehatan']);
     }
 
     /**

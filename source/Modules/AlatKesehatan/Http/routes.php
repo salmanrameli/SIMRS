@@ -7,11 +7,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\AlatKesehatan\Http\
         'uses' => 'AlatKesehatanController@showAllAlatKesehatan'
     ]);
 
-    Route::get('/alat_kesehatan/create', [
-        'as' => 'alat_kesehatan.create',
-        'uses' => 'AlatKesehatanController@createNewAlatKesehatan'
-    ]);
-
     Route::post('/alat_kesehatan', [
         'as' => 'alat_kesehatan.store',
         'uses' => 'AlatKesehatanController@saveNewAlatKesehatan'
