@@ -8,8 +8,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\Jabatan\Entities\Jabatan;
 use Modules\ModulSistem\Entities\ModulSistem;
-use Modules\User\Entities\Jabatan;
 use Modules\User\Entities\User;
 
 class UserController extends Controller
@@ -31,11 +31,6 @@ class UserController extends Controller
         $this->middleware('userCanUpdate:'.$id_modul, ['only' => ['editStaff', 'updateStaff']]);
     }
 
-    public function home()
-    {
-        return view('user::administrator');
-    }
-
     /**
      * Display a listing of the resource.
      * @return Response
@@ -44,11 +39,8 @@ class UserController extends Controller
     {
         $user = User::where('jabatan_id', '!=', '4')->paginate(15);
 
-        $jabatan = Jabatan::all();
-
-        return view('user::user.index')
-            ->with('users', $user)
-            ->with('jabatans', $jabatan);
+        return view('user::index')
+            ->with('users', $user);
     }
 
     /**
@@ -59,7 +51,7 @@ class UserController extends Controller
     {
         $jabatan = Jabatan::where('id', '!=', '4')->get();
 
-        return view('user::user.create')->with('jabatans', $jabatan);
+        return view('user::create')->with('jabatans', $jabatan);
     }
 
     /**
@@ -87,7 +79,7 @@ class UserController extends Controller
 
         $user->save();
 
-        Session::flash('message', 'Akun berhasil dibuat');
+        Session::flash('message', 'Akun berhasil dibuat.');
 
         return redirect()->route('user.index');
     }
@@ -100,7 +92,7 @@ class UserController extends Controller
     {
         $staff = User::findorFail($id);
 
-        return view('user::user.show')->with('user', $staff);
+        return view('user::show')->with('user', $staff);
     }
 
     /**
@@ -113,7 +105,7 @@ class UserController extends Controller
 
         $jabatan = Jabatan::where('id', '!=', '4')->get();
 
-        return view('user::user.edit')
+        return view('user::edit')
             ->with('user', $user)
             ->with('jabatans', $jabatan);
     }
@@ -142,7 +134,7 @@ class UserController extends Controller
         $user->jabatan_id = $request->jabatan_id;
         $user->save();
 
-        Session::flash('message', 'Perubahan berhasil disimpan');
+        Session::flash('message', 'Perubahan berhasil disimpan.');
 
         return redirect()->route('user.index');
     }
@@ -157,7 +149,7 @@ class UserController extends Controller
 
         $staff->delete();
 
-        Session::flash('message', 'Staff berhasil dihapus');
+        Session::flash('message', 'Staff berhasil dihapus.');
 
         return redirect()->route('user.index');
     }
@@ -171,6 +163,6 @@ class UserController extends Controller
             orWhere('alamat', 'like', '%'.$query.'%')->
             orWhere('telepon', 'like', '%'.$query.'%')->get();
 
-        return view('user::user.hasil_cari')->with('results', $results)->with('query', $query);
+        return view('user::hasil_cari')->with('results', $results)->with('query', $query);
     }
 }

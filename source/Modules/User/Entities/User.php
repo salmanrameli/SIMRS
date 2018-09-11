@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Modules\CatatanHarianPerawatan\Entities\CatatanHarianPerawatan;
+use Modules\Jabatan\Entities\Jabatan;
 use Modules\ModulSistem\Entities\HakAksesModulSistem;
 use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\PerintahDokterDanPengobatan\Entities\PerintahDokterDanPengobatan;

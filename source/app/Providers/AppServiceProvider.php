@@ -5,10 +5,10 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Modules\Jabatan\Entities\Jabatan;
 use Modules\ModulSistem\Entities\HakAksesModulSistem;
 use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\PersonalisasiSistem\Entities\PersonalisasiSistem;
-use Modules\User\Entities\Jabatan;
 
 class AppServiceProvider extends ServiceProvider
 {

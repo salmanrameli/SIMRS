@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\Database\Seeders;
+namespace Modules\Jabatan\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -18,11 +18,11 @@ class RegisterModulTableSeeder extends Seeder
         Model::unguard();
 
         DB::table('modul_sistem')->insert([
-            'nama' => 'staff rs',
-            'modul' => config('user.name'),
-            'rute_home' => 'user.index',
-            'nav_id' => 'manajemen_staff',
-            'icon' => 'fas fa-users-cog'
+            'nama' => 'jabatan',
+            'modul' => config('jabatan.name'),
+            'rute_home' => 'jabatan.index',
+            'nav_id' => 'manajemen_jabatan',
+            'icon' => 'fas fa-certificate'
         ]);
 
         // $this->call("OthersTableSeeder");

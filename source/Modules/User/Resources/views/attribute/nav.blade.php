@@ -1,3 +1,3 @@
 <script>
-    $('#manajemen_staff_jabatan').attr("class", "nav-item active");
+    $('#manajemen_staff').attr("class", "nav-item active");
 </script>

@@ -41,19 +41,4 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\User\Http\Controlle
         'as' => 'user.delete',
         'uses' => 'UserController@deleteStaff'
     ]);
-
-    Route::get('/jabatan/create', [
-        'as' => 'jabatan.create',
-        'uses' => 'JabatanController@createNewJabatan'
-    ]);
-
-    Route::post('/jabatan', [
-        'as' => 'jabatan.store',
-        'uses' => 'JabatanController@saveNewJabatan'
-    ]);
-
-    Route::patch('/jabatan/simpan_perubahan_jabatan', [
-        'as' => 'jabatan.update',
-        'uses' => 'JabatanController@updateJabatan'
-    ]);
 });

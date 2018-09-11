@@ -59,22 +59,6 @@ class UserDatabaseSeeder extends Seeder
             ]);
         }
 
-        DB::table('jabatan')->insert([
-            'nama' => 'administrator'
-        ]);
-
-        DB::table('jabatan')->insert([
-            'nama' => 'administrasi'
-        ]);
-
-        DB::table('jabatan')->insert([
-            'nama' => 'perawat'
-        ]);
-
-        DB::table('jabatan')->insert([
-            'nama' => 'dokter'
-        ]);
-
          $this->call(RegisterModulTableSeeder::class);
     }
 }

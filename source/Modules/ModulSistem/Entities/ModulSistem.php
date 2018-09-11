@@ -3,7 +3,7 @@
 namespace Modules\ModulSistem\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\User\Entities\Jabatan;
+use Modules\Jabatan\Entities\Jabatan;
 
 class ModulSistem extends Model
 {

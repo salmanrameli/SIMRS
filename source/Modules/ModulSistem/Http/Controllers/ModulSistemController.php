@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
+use Modules\Jabatan\Entities\Jabatan;
 use Modules\ModulSistem\Entities\HakAksesModulSistem;
 use Modules\ModulSistem\Entities\ModulSistem;
-use Modules\User\Entities\Jabatan;
 
 class ModulSistemController extends Controller
 {

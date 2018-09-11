@@ -1,13 +1,14 @@
 <?php
 
-namespace Modules\User\Http\Controllers;
+namespace Modules\Jabatan\Http\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
-use Modules\User\Entities\Jabatan;
+use Modules\Jabatan\Entities\Jabatan;
+use Modules\ModulSistem\Entities\ModulSistem;
 
 class JabatanController extends Controller
 {
@@ -17,16 +18,28 @@ class JabatanController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:1');
+        $id_modul = ModulSistem::where('modul', '=', config('jabatan.name'))->value('id');
+
+        $this->middleware('userCanAccess:'.$id_modul, ['only' => 'showAllJabatan']);
+
+        $this->middleware('userCanCreate:'.$id_modul, ['only' => 'saveNewJabatan']);
+
+        $this->middleware('userCanUpdate:'.$id_modul, ['only' => 'updateJabatan']);
+
+        $this->middleware('userCanDelete:'.$id_modul, ['only' => 'deleteJabatan']);
     }
 
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function showAllJabatan()
     {
-        return view('user::index');
+        $jabatan = Jabatan::all();
+
+        return view('jabatan::index')
+            ->with('jabatans', $jabatan)
+            ->with('jabatan', $jabatan->first());
     }
 
     /**
@@ -35,7 +48,7 @@ class JabatanController extends Controller
      */
     public function createNewJabatan()
     {
-        return view('user::jabatan.create');
+        return view('jabatan::create');
     }
 
     /**
@@ -45,6 +58,7 @@ class JabatanController extends Controller
      */
     public function saveNewJabatan(Request $request)
     {
+
         $this->validate($request, [
             'nama' => 'required|unique:jabatan'
         ]);
@@ -55,7 +69,25 @@ class JabatanController extends Controller
 
         Session::flash('message', 'Jabatan berhasil disimpan.');
 
-        return redirect()->route('user.index');
+        return redirect()->route('jabatan.index');
+    }
+
+    /**
+     * Show the specified resource.
+     * @return Response
+     */
+    public function show()
+    {
+        return view('jabatan::show');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @return Response
+     */
+    public function edit()
+    {
+        return view('jabatan::edit');
     }
 
     /**
@@ -75,20 +107,20 @@ class JabatanController extends Controller
 
         Session::flash('message', 'Perubahan rincian jabatan berhasil disimpan.');
 
-        return redirect()->route('user.index');
+        return redirect()->route('jabatan.index');
     }
 
     /**
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy($id)
+    public function deleteJabatan($id)
     {
         $jabatan = Jabatan::findorFail($id);
 
         $jabatan->delete();
 
-        Session::flash('message', 'Jabatan berhasil dihapus');
+        Session::flash('message', 'Jabatan berhasil dihapus.');
 
         return redirect()->route('user.index');
     }
