@@ -8,8 +8,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Modules\Dokter\Entities\Dokter;
 use Modules\ModulSistem\Entities\ModulSistem;
-use Modules\User\Entities\User;
 
 class DokterController extends Controller
 {
@@ -36,10 +36,11 @@ class DokterController extends Controller
      */
     public function showAllDokter()
     {
-        $dokter = User::where('jabatan_id', '=', '4')->get();
+        $dokter = Dokter::where('jabatan_id', '=', '4')->get();
 
         return view('dokter::index')
-            ->with('dokters', $dokter);
+            ->with('dokters', $dokter)
+            ->with('dokter', $dokter->first);
     }
 
     /**
@@ -65,7 +66,7 @@ class DokterController extends Controller
             'telepon' => 'required|numeric',
         ]);
 
-        $user = new User();
+        $user = new Dokter();
         $user->id_user = $request->id_user;
         $user->nama = $request->nama;
         $user->alamat = $request->alamat;
@@ -74,7 +75,7 @@ class DokterController extends Controller
         $user->jabatan_id = '4';
         $user->save();
 
-        Session::flash('message', 'Data dokter berhasil disimpan');
+        Session::flash('message', 'Data dokter berhasil disimpan.');
 
         return redirect()->route('dokter.index');
     }
@@ -85,7 +86,7 @@ class DokterController extends Controller
      */
     public function showDetailDokter($id)
     {
-        $dokter = User::findorFail($id);
+        $dokter = Dokter::findorFail($id);
 
         return view('dokter::show')->with('dokter', $dokter);
     }
@@ -96,7 +97,7 @@ class DokterController extends Controller
      */
     public function editDokter($id)
     {
-        $dokter = User::findorFail($id);
+        $dokter = Dokter::findorFail($id);
 
         return view('dokter::edit')
             ->with('dokter', $dokter);
@@ -118,11 +119,11 @@ class DokterController extends Controller
 
         $input = $request->all();
 
-        $dokter = User::findorFail($id);
+        $dokter = Dokter::findorFail($id);
 
         $dokter->fill($input)->save();
 
-        Session::flash('message', 'Perubahan berhasil disimpan');
+        Session::flash('message', 'Perubahan berhasil disimpan.');
 
         return redirect()->route('dokter.show', $id);
     }
