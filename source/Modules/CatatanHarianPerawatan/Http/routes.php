@@ -12,12 +12,12 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\CatatanHarianPerawa
         'uses' => 'CatatanHarianPerawatanController@createNewCatatanHarianDanPerawatan'
     ]);
 
-    Route::post('ranap/store_catatan_harian_perawatan', [
+    Route::post('store_catatan_harian_perawatan', [
         'as' => 'catatan_harian_perawatan.store',
         'uses' => 'CatatanHarianPerawatanController@storeCatatanHarianDanPerawatan'
     ]);
 
-    Route::patch('ranap/update_catatan_harian_perawatan', [
+    Route::patch('update_catatan_harian_perawatan', [
         'as' => 'catatan_harian_perawatan.update',
         'uses' => 'CatatanHarianPerawatanController@updateCatatanHarianDanPerawatan'
     ]);

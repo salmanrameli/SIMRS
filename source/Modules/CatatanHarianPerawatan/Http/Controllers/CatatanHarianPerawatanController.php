@@ -21,7 +21,7 @@ class CatatanHarianPerawatanController extends Controller
 
     public function __construct()
     {
-        $this->middleware('checkRole:3')->except('showAllCatatanHarianDanPerawatan');
+        $this->middleware('auth');
 
         $this->middleware('checkIfAuthorized');
 

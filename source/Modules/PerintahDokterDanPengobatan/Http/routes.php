@@ -7,7 +7,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerintahDokterDanPe
         'uses' => 'PerintahDokterDanPengobatanController@showAllPerintahDokterDanPengobatanPasien'
     ]);
 
-    Route::post('/ranap/simpan_perintah_dokter_dan_pengobatan', [
+    Route::post('/simpan_perintah_dokter_dan_pengobatan', [
         'as' => 'perintah_dokter_dan_pengobatan.store',
         'uses' => 'PerintahDokterDanPengobatanController@savePerintahDokterDanPengobatanPasien'
     ]);
@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\PerintahDokterDanPe
         'uses' => 'PerintahDokterDanPengobatanController@showDetailPerintahDokterDanPengobatanPasien'
     ]);
 
-    Route::patch('/ranap/update_perintah_dokter_dan_pengobatan', [
+    Route::patch('/update_perintah_dokter_dan_pengobatan', [
         'as' => 'perintah_dokter_dan_pengobatan.update',
         'uses' => 'PerintahDokterDanPengobatanController@updatePerintahDokterDanPengobatanPasien'
     ]);
