@@ -54,8 +54,10 @@
                                 @endif
 
                                 @if($ranap->userIsDokter(Auth::user()) || $ranap->userIsPerawat(Auth::user()))
+                                    @if($ranap->userIsDokter(Auth::user()))
                                     <a href="{{ route('perjalanan_penyakit.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-file-medical-alt"></i> Perjalanan Penyakit Pasien</a>
                                     <div class="dropdown-divider"></div>
+                                        @endif
 
                                     <a href="{{ route('perintah_dokter_dan_pengobatan.index', $ranap->id) }}" class="dropdown-item"><i class="fas fa-file-medical"></i> Perintah Dokter Dan Pengobatan</a>
                                     <div class="dropdown-divider"></div>
