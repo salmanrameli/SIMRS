@@ -18,6 +18,7 @@ class CreateKamarTable extends Migration
             $table->string('nomor_lantai', 2);
             $table->string('nama_kamar');
             $table->string('jumlah_maks_pasien');
+            $table->string('biaya_per_malam');
 
             $table->timestamps();
         });

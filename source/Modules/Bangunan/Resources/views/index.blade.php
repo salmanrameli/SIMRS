@@ -88,11 +88,15 @@
                                                 @endif
                                             @endforeach
                                         </tr>
+                                        <tr>
+                                            <th>Biaya per malam</th>
+                                            <td>Rp {{ $kamar->biaya_per_malam }}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                     <div class="btn-group">
                                         @if($kamar->userCanUpdate(Auth::user()))
-                                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-target="#modalUbahKamar" style="width: 100%">Ubah</button>
+                                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-id-kamar="{{ $kamar->id }}" data-nama-kamar="{{ $kamar->nama_kamar }}" data-jumlah-maks="{{ $kamar->jumlah_maks_pasien }}" data-biaya="{{ $kamar->biaya_per_malam }}" data-target="#modalUbahKamar" style="width: 100%">Ubah</button>
                                         @endif
 
                                         @if($kamar->userCanDelete(Auth::user()))
@@ -195,6 +199,11 @@
                         {{ Form::label('jumlah_maks_pasien', 'Jumlah Maksimal Pasien', ['class' => 'control-label']) }}
                         {{ Form::number('jumlah_maks_pasien', null, ['class' => 'form-control']) }}
                     </div>
+
+                    <div class="form-group">
+                        {{ Form::label('biaya_per_malam', 'Biaya per malam', ['class' => 'control-label']) }}
+                        {{ Form::number('biaya_per_malam', null, ['class' => 'form-control']) }}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     {{ Form::submit('Tambahkan Kamar', ['class' => 'btn btn-outline-success']) }}
@@ -229,6 +238,11 @@
                         {{ Form::label('jumlah_maks_pasien', 'Jumlah Maksimal Pasien', ['class' => 'control-label']) }}
                         {{ Form::number('jumlah_maks_pasien', null, ['class' => 'form-control']) }}
                     </div>
+
+                    <div class="form-group">
+                        {{ Form::label('biaya_per_malam', 'Biaya per malam', ['class' => 'control-label']) }}
+                        {{ Form::number('biaya_per_malam', null, ['class' => 'form-control']) }}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     {{ Form::submit('Simpan Perubahan', ['class' => 'btn btn-outline-success']) }}
@@ -251,12 +265,14 @@
                 $("#modalTambahKamar").find('#nomor_lantai').val($(e.relatedTarget).data('nomor'));
                 $("#modalTambahKamar").find('#nama_kamar').val('');
                 $("#modalTambahKamar").find('#jumlah_maks_pasien').val('');
+                $("#modalTambahKamar").find('#biaya_per_malam').val('');
             });
 
             $('#modalUbahKamar').on("show.bs.modal", function (e) {
                 $("#modalUbahKamar").find('#id_kamar').val($(e.relatedTarget).data('id-kamar'));
                 $("#modalUbahKamar").find('#nama_kamar').val($(e.relatedTarget).data('nama-kamar'));
                 $("#modalUbahKamar").find('#jumlah_maks_pasien').val($(e.relatedTarget).data('jumlah-maks'));
+                $("#modalUbahKamar").find('#biaya_per_malam').val($(e.relatedTarget).data('biaya'));
             });
         });
     </script>

@@ -46,7 +46,7 @@ class BangunanController extends Controller
 
         $lantai = Lantai::select('nomor_lantai', 'id')->orderBy('lantai.id', 'desc')->get();
 
-        $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien')->get());
+        $kamar = collect(Kamar::select('id', 'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien', 'biaya_per_malam')->get());
 
         $terisi_sekarang = DB::table('rawat_inap')
             ->select('nama_kamar', DB::raw('count(id_pasien) as pasien_inap'))
@@ -70,7 +70,7 @@ class BangunanController extends Controller
     public function saveNewLantai(Request $request)
     {
         $this->validate($request, [
-            'nomor_lantai' => 'required'
+            'nomor_lantai' => 'required',
         ]);
 
         $lantai = new Lantai();
@@ -109,13 +109,15 @@ class BangunanController extends Controller
         $this->validate($request, [
             'nomor_lantai' => 'required',
             'nama_kamar' => 'required',
-            'jumlah_maks_pasien' => 'required'
+            'jumlah_maks_pasien' => 'required',
+            'biaya_per_malam' => 'required'
         ]);
 
         $kamar = new Kamar();
         $kamar->nomor_lantai = $request->get('nomor_lantai');
         $kamar->nama_kamar = $request->get('nama_kamar');
         $kamar->jumlah_maks_pasien = $request->get('jumlah_maks_pasien');
+        $kamar->biaya_per_malam = $request->get('biaya_per_malam');
         $kamar->save();
 
         Session::flash('message', 'Kamar berhasil disimpan.');
@@ -128,12 +130,14 @@ class BangunanController extends Controller
         $this->validate($request, [
             'id_kamar' => 'required',
             'nama_kamar' => 'required',
-            'jumlah_maks_pasien' => 'required'
+            'jumlah_maks_pasien' => 'required',
+            'biaya_per_malam' => 'required'
         ]);
 
         $kamar = Kamar::findorFail($request->get('id_kamar'));
         $kamar->nama_kamar = $request->get('nama_kamar');
         $kamar->jumlah_maks_pasien = $request->get('jumlah_maks_pasien');
+        $kamar->biaya_per_malam = $request->get('biaya_per_malam');
         $kamar->save();
 
         Session::flash('message', 'Rincian kamar berhasil diubah.');

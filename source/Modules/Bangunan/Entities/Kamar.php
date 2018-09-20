@@ -11,7 +11,7 @@ class Kamar extends Model
     protected $table = 'kamar';
 
     protected $fillable = [
-        'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien'
+        'nomor_lantai', 'nama_kamar', 'jumlah_maks_pasien', 'biaya_per_malam'
     ];
 
     public function userCanCreate(User $user)
