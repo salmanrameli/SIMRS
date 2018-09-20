@@ -55,6 +55,15 @@ class RegisterModulTableSeeder extends Seeder
             $modul->save();
         }
 
+        DB::table('hak_akses_modul_sistem')->insert([
+            'id_modul' => ModulSistem::where('modul', '=', config('modulsistem.name'))->value('id'),
+            'id_jabatan' => '1',
+            'create' => true,
+            'read' => true,
+            'update' => true,
+            'delete' => true
+        ]);
+
         // $this->call("OthersTableSeeder");
     }
 }
