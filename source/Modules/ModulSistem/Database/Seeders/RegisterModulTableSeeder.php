@@ -18,9 +18,9 @@ class RegisterModulTableSeeder extends Seeder
     {
         Model::unguard();
 
-        $modul_pertama = ModulSistem::where('id', '=', '1')->value('nama');
+        $modul_pertama = ModulSistem::where('id', '=', '1')->value('modul');
 
-        if($modul_pertama != 'modul sistem')
+        if($modul_pertama != config('modulsistem.name'))
         {
             $temp = ModulSistem::where('id', '=', '1')->firstOrFail();
 
@@ -35,17 +35,6 @@ class RegisterModulTableSeeder extends Seeder
                 'icon' => 'fas fa-hdd'
             ]);
 
-            $id_modul = ModulSistem::where('nama', '=', 'modul sistem')->value('id');
-
-            DB::table('hak_akses_modul_sistem')->insert([
-                'id_modul' => $id_modul,
-                'id_jabatan' => '1',
-                'create' => true,
-                'read' => true,
-                'update' => true,
-                'delete' => true
-            ]);
-
             $modul = new ModulSistem();
             $modul->nama = $temp->nama;
             $modul->modul = $temp->modul;
@@ -53,16 +42,16 @@ class RegisterModulTableSeeder extends Seeder
             $modul->nav_id = $temp->nav_id;
             $modul->icon = $temp->icon;
             $modul->save();
-        }
 
-        DB::table('hak_akses_modul_sistem')->insert([
-            'id_modul' => ModulSistem::where('modul', '=', config('modulsistem.name'))->value('id'),
-            'id_jabatan' => '1',
-            'create' => true,
-            'read' => true,
-            'update' => true,
-            'delete' => true
-        ]);
+            DB::table('hak_akses_modul_sistem')->insert([
+                'id_modul' => $modul->id,
+                'id_jabatan' => '1',
+                'create' => true,
+                'read' => true,
+                'update' => true,
+                'delete' => true
+            ]);
+        }
 
         // $this->call("OthersTableSeeder");
     }

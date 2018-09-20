@@ -46,7 +46,7 @@ class RegisterModulTableSeeder extends Seeder
 
         DB::table('hak_akses_modul_sistem')->insert([
             'id_modul' => ModulSistem::where('modul', '=', config('rawatinap.name'))->value('id'),
-            'id_jabatan' => '1',
+            'id_jabatan' => '4',
             'create' => false,
             'read' => true,
             'update' => false,
