@@ -18,15 +18,24 @@ class CreateRawatInapTable extends Migration
 
             $table->string('id_rm');
             $table->string('id_pasien');
-            $table->string('nama_kamar');
-            $table->string('id_dokter_pj');
+            $table->date('tanggal_masuk');
+
+            $table->string('estimasi_biaya');
+            $table->string('pembayaran');
+            $table->string('jaminan')->nullable();
+            $table->string('nama_penanggungjawab_pembayaran');
+            $table->string('alamat_penanggungjawab_pembayaran');
+            $table->string('telepon_penanggungjawab_pembayaran');
+            $table->string('hubungan_penanggungjawab');
+
             $table->string('dokter_pengirim')->nullable();
             $table->string('id_petugas_penerima');
             $table->string('diagnosa_awal')->nullable();
             $table->string('icd_x_diagnosa_awal')->nullable();
+            $table->string('id_dokter_pj');
             $table->string('diagnosa_sekunder')->nullable();
             $table->string('icd_x_diagnosa_sekunder')->nullable();
-            $table->date('tanggal_masuk');
+            $table->string('nama_kamar');
 
             $table->timestamps();
         });
