@@ -35,6 +35,10 @@
                         <th>DPJP</th>
                         <td style="padding-left: 10px">: {{ ucwords($ranap->user->nama) }}</td>
                     </tr>
+                    <tr>
+                        <th>Alergi Obat</th>
+                        <td style="padding-left: 10px">: {{ $ranap->alergi_obat }}</td>
+                    </tr>
                 </tbody>
             </table>
             <br>
