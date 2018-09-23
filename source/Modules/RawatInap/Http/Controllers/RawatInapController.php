@@ -179,21 +179,22 @@ class RawatInapController extends Controller
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = Pasien::where('id_penduduk_pasien', '=', $request->id_pasien[0])->value('id');
         $ranap->tanggal_masuk = $request->tanggal_masuk_ranap;
+        $ranap->alergi_obat = $request->alergi_obat;
         $ranap->estimasi_biaya = 'Rp. ' . $request->estimasi_biaya;
         $ranap->pembayaran = $request->pembayaran;
         if($ranap->pembayaran != 'bayar sendiri')
         {
             if($ranap->pembayaran == 'jaminan')
             {
-                $ranap->jaminan = ucwords($request->pembayaran) . " " . $request->jaminan;
+                $ranap->jaminan = $request->jaminan;
             }
             if($ranap->pembayaran == 'angsuran')
             {
-                $ranap->jaminan = ucwords($request->pembayaran) . " / Rp." . $request->angsuran . ' kali';
+                $ranap->jaminan = "Rp. " . $request->angsuran . ' kali';
             }
             if($ranap->pembayaran == 'bantuan lain')
             {
-                $ranap->jaminan = ucwords($request->pembayaran) . " (" . $request->bantuan_lain . ")";
+                $ranap->jaminan = $request->bantuan_lain;
             }
         }
         $ranap->nama_penanggungjawab_pembayaran = $request->penanggungjawab_pembayaran;
@@ -279,18 +280,48 @@ class RawatInapController extends Controller
 
         $ranap->id_rm = $request->id_rm;
         $ranap->id_pasien = $request->id_pasien;
-        $ranap->nama_kamar = $request->nama_kamar;
-        $ranap->id_dokter_pj = $request->id_dokter_pj;
+        $ranap->tanggal_masuk = $request->tanggal_masuk_ranap;
+        $ranap->alergi_obat = $request->alergi_obat;
+        $ranap->estimasi_biaya = 'Rp. ' . $request->estimasi_biaya;
+        $ranap->pembayaran = $request->pembayaran;
+        if($ranap->pembayaran != 'bayar sendiri')
+        {
+            if($ranap->pembayaran == 'jaminan')
+            {
+                $ranap->jaminan = $request->jaminan;
+            }
+            if($ranap->pembayaran == 'angsuran')
+            {
+                $ranap->jaminan = "Rp. " . $request->angsuran . ' kali';
+            }
+            if($ranap->pembayaran == 'bantuan lain')
+            {
+                $ranap->jaminan = $request->bantuan_lain;
+            }
+        }
+        $ranap->nama_penanggungjawab_pembayaran = $request->penanggungjawab_pembayaran;
+        $ranap->alamat_penanggungjawab_pembayaran = $request->alamat_penanggungjawab_pembayaran;
+        $ranap->telepon_penanggungjawab_pembayaran = $request->telepon_penanggungjawab_pembayaran;
+
+        if($request->hubungan_penanggungjawab == 'lainnya')
+        {
+            $ranap->hubungan_penanggungjawab = ucwords($request->hubungan_penanggungjawab_lainnya);
+        }
+        else
+        {
+            $ranap->hubungan_penanggungjawab = $request->hubungan_penanggungjawab;
+        }
         $ranap->dokter_pengirim = $request->dokter_pengirim;
         $ranap->id_petugas_penerima = $request->id_petugas_penerima;
         $ranap->diagnosa_awal = $request->diagnosa_awal;
         $ranap->icd_x_diagnosa_awal = $request->icd_x_diagnosa_awal;
+        $ranap->id_dokter_pj = $request->id_dokter_pj;
         $ranap->diagnosa_sekunder = $request->diagnosa_sekunder;
         $ranap->icd_x_diagnosa_sekunder = $request->icd_x_diagnosa_sekunder;
-        $ranap->tanggal_masuk = $request->tanggal_masuk_ranap;
+        $ranap->nama_kamar = $request->nama_kamar;
         $ranap->save();
 
-        Session::flash('message', 'Perubahan rincian rawat inap berhasil disimpan.');
+        Session::flash('message', 'Pengubahan rincian rawat inap berhasil disimpan.');
 
         return redirect()->route('ranap.show', $id);
     }

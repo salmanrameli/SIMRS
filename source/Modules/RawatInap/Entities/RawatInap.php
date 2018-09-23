@@ -13,7 +13,7 @@ class RawatInap extends Model
     protected $table = 'rawat_inap';
 
     protected $fillable = [
-        'id_rm', 'id_pasien', 'tanggal_masuk', 'estimasi_biaya', 'pembayaran', 'jaminan', 'nama_penanggungjawab_pembayaran', 'alamat_penanggungjawab_pembayaran', 'telepon_penanggungjawab_pembayaran', 'hubungan_penanggungjawab', 'dokter_pengirim', 'id_petugas_penerima', 'diagnosa_awal', 'icd_x_diagnosa_awal', 'id_dokter_pj', 'diagnosa_sekunder', 'icd_x_diagnosa_sekunder', 'nomor_kamar'
+        'id_rm', 'id_pasien', 'tanggal_masuk', 'alergi_obat', 'estimasi_biaya', 'pembayaran', 'jaminan', 'nama_penanggungjawab_pembayaran', 'alamat_penanggungjawab_pembayaran', 'telepon_penanggungjawab_pembayaran', 'hubungan_penanggungjawab', 'dokter_pengirim', 'id_petugas_penerima', 'diagnosa_awal', 'icd_x_diagnosa_awal', 'id_dokter_pj', 'diagnosa_sekunder', 'icd_x_diagnosa_sekunder', 'nomor_kamar'
     ];
 
     public function userCanAccess(User $user)

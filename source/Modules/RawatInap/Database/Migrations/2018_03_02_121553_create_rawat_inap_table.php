@@ -19,6 +19,7 @@ class CreateRawatInapTable extends Migration
             $table->string('id_rm');
             $table->string('id_pasien');
             $table->date('tanggal_masuk');
+            $table->text('alergi_obat');
 
             $table->string('estimasi_biaya');
             $table->string('pembayaran');

@@ -25,6 +25,11 @@
                 <label for="datepicker" id="tanggal_masuk_ranap" class="control-label">Tanggal Masuk *</label>
                 <input type="text" id="datepicker" name="tanggal_masuk_ranap" class="form-control">
             </div>
+
+            <div class="form-group">
+                {{ Form::label('alergi_obat', 'Alergi Obat', ['class' => 'control-label']) }}
+                {{ Form::textarea('alergi_obat', null, ['class' => 'form-control']) }}
+            </div>
         </div>
     </div>
 
@@ -35,10 +40,8 @@
                 {{ Form::label('estimasi_biaya', 'Estimasi Biaya (Rp)', ['class' => 'control-label']) }}
                 {{ Form::text('estimasi_biaya', null, ['class' => 'form-control', 'placeholder' => 'Rp.......................................']) }}
             </div>
-
+            <hr>
             <div class="form-group">
-                <h4>Pembayaran</h4>
-                <hr>
                 <h5>Mampu Bayar</h5>
                 {{ Form::radio('pembayaran', 'bayar sendiri', false) }}
                 {{ Form::label('pembayaran', 'Bayar Sendiri', ['class' => 'control-label']) }}
