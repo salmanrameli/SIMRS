@@ -49,7 +49,7 @@
         <table class="table table-striped small">
             <thead>
                 <tr>
-                    <th>Asuhan Keperawatan (SOAP)</th>
+                    <th>Asuhan Keperawatan</th>
                 </tr>
             </thead>
             <tbody>
