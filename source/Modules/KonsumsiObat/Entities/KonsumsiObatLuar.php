@@ -4,24 +4,24 @@ namespace Modules\KonsumsiObat\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\HariPerawatan\Entities\HariPerawatan;
-use Modules\Obat\Entities\Obat;
+use Modules\RawatInap\Entities\RawatInap;
 
-class KonsumsiObat extends Model
+class KonsumsiObatLuar extends Model
 {
-    protected $table = 'konsumsi_obat';
+    protected $table = 'konsumsi_obat_luar';
 
     protected $fillable = [
-        'id_ranap', 'id_hari_perawatan', 'nama_obat', 'obat_luar', 'dosis', 'id_petugas', 'keterangan'
+        'id_ranap', 'nama_obat'
     ];
+
+    public function rawat_inap()
+    {
+        return $this->belongsTo(RawatInap::class, 'id_ranap', 'id');
+    }
 
     public function hari_perawatan()
     {
-        return $this->belongsTo(HariPerawatan::class, 'id_hari_perawatan', 'id');
-    }
-
-    public function obat()
-    {
-        return $this->belongsTo(Obat::class, 'nama_obat', 'nama');
+        return $this->belongsTo(HariPerawatan::class, 'id_ranap', 'id_ranap');
     }
 
     public function konsumsi_obat_pagi()

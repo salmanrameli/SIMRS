@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Bangunan\Entities\Kamar;
+use Modules\KonsumsiObat\Entities\KonsumsiObatLuar;
 use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\Pasien\Entities\Pasien;
 use Modules\RawatInap\Entities\RawatInap;
@@ -218,6 +219,15 @@ class RawatInapController extends Controller
         $ranap->icd_x_diagnosa_sekunder = $request->icd_x_diagnosa_sekunder;
         $ranap->nama_kamar = $request->nama_kamar;
         $ranap->save();
+
+        $obat_luar = explode(',', $request->obat_luar);
+        foreach ($obat_luar as $obat)
+        {
+            $konsumsi_obat_luar = new KonsumsiObatLuar();
+            $konsumsi_obat_luar->id_ranap = $ranap->id;
+            $konsumsi_obat_luar->nama_obat = $obat;
+            $konsumsi_obat_luar->save();
+        }
 
         Session::flash('message', 'Pendaftaran rawat inap berhasil dilakukan.');
 

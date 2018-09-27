@@ -20,6 +20,20 @@
                         <td id="tanggal_masuk"></td>
                     </tr>
                     <tr>
+                        <th>Alergi Obat</th>
+                        <td>{{ $ranap->alergi_obat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Obat Luar</th>
+                        <td>
+                            <ul>
+                                @foreach($ranap->obat_luar as $obat)
+                                    <li>{{ ucwords($obat->nama_obat) }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Dokter Pengirim</th>
                         <td>{{ ucwords($ranap->dokter_pengirim) }}</td>
                     </tr>

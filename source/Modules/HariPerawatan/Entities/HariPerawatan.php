@@ -19,7 +19,12 @@ class HariPerawatan extends Model
 
     public function konsumsi_obat()
     {
-        return $this->hasMany(KonsumsiObat::class, 'id_hari_perawatan', 'id');
+        return $this->hasMany(KonsumsiObat::class, 'id_hari_perawatan', 'id')->where('obat_luar', '=', false);
+    }
+
+    public function konsumsi_obat_luar()
+    {
+        return $this->hasMany(KonsumsiObat::class, 'id_hari_perawatan', 'id')->where('obat_luar', '=', true);
     }
 
     public function tensi_pagi()

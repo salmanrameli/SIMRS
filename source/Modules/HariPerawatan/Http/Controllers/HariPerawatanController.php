@@ -9,10 +9,17 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Modules\HariPerawatan\Entities\HariPerawatan;
+use Modules\KonsumsiObat\Entities\KonsumsiObat;
+use Modules\KonsumsiObat\Entities\KonsumsiObatLuar;
 
 class HariPerawatanController extends Controller
 {
     use ValidatesRequests;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -55,6 +62,19 @@ class HariPerawatanController extends Controller
         $hari_perawatan->berat_badan = $request->get('berat_badan');
         $hari_perawatan->id_petugas = Auth::id();
         $hari_perawatan->save();
+
+        $obat_luar = KonsumsiObatLuar::where('id_ranap', '=', $request->get('id_ranap'))->get();
+        foreach ($obat_luar as $obat)
+        {
+            $konsumsi_obat = new KonsumsiObat();
+            $konsumsi_obat->id_ranap = $request->get('id_ranap');
+            $konsumsi_obat->id_hari_perawatan = $hari_perawatan->id;
+            $konsumsi_obat->nama_obat = $obat->nama_obat;
+            $konsumsi_obat->obat_luar = true;
+            $konsumsi_obat->id_petugas = Auth::id();
+            $konsumsi_obat->keterangan = KonsumsiObat::where('nama_obat', '=', $obat->nama_obat)->value('keterangan');
+            $konsumsi_obat->save();
+        }
 
         Session::flash('message', 'Rincian hari perawatan berhasil disimpan.');
 

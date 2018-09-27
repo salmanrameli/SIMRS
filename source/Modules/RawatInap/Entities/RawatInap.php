@@ -3,6 +3,7 @@
 namespace Modules\RawatInap\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\KonsumsiObat\Entities\KonsumsiObatLuar;
 use Modules\ModulSistem\Entities\ModulSistem;
 use Modules\Pasien\Entities\Pasien;
 use Modules\PerjalananPenyakit\Entities\PerjalananPenyakit;
@@ -84,6 +85,11 @@ class RawatInap extends Model
     public function petugas()
     {
         return $this->belongsTo(User::class,'id_petugas_penerima', 'id');
+    }
+
+    public function obat_luar()
+    {
+        return $this->hasMany(KonsumsiObatLuar::class, 'id_ranap', 'id');
     }
 
     public function perjalanan_penyakit()

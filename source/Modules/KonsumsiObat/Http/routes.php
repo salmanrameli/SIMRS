@@ -22,22 +22,22 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\KonsumsiObat\Http\C
         'uses' => 'KonsumsiObatController@storeRincianKonsumsiObat'
     ]);
 
-    Route::get('ranap/{id}/konsumsi_obat/{konsumsi_obat}', [
-        'as' => 'konsumsi_obat.show',
-        'uses' => 'KonsumsiObatController@showKonsumsiObat'
-    ]);
+//    Route::get('ranap/{id}/konsumsi_obat/{konsumsi_obat}', [
+//        'as' => 'konsumsi_obat.show',
+//        'uses' => 'KonsumsiObatController@showKonsumsiObat'
+//    ]);
+//
+//    Route::get('ranap/{id}/konsumsi_obat/{konsumsi_obat}/edit', [
+//        'as' => 'konsumsi_obat.edit',
+//        'uses' => 'KonsumsiObatController@editKonsumsiObat'
+//    ]);
 
-    Route::get('ranap/{id}/konsumsi_obat/{konsumsi_obat}/edit', [
-        'as' => 'konsumsi_obat.edit',
-        'uses' => 'KonsumsiObatController@editKonsumsiObat'
-    ]);
+//    Route::patch('ranap/{id}/konsumsi_obat/{konsumsi_obat}', [
+//        'as' => 'konsumsi_obat.update',
+//        'uses' => 'KonsumsiObatController@updateKonsumsiObat'
+//    ]);
 
-    Route::patch('ranap/{id}/konsumsi_obat/{konsumsi_obat}', [
-        'as' => 'konsumsi_obat.update',
-        'uses' => 'KonsumsiObatController@updateKonsumsiObat'
-    ]);
-
-    Route::patch('ranap/simpan_perubahan_keterangan_obat', [
+    Route::patch('/simpan_perubahan_keterangan_obat', [
         'as' => 'konsumsi_obat.update_keterangan',
         'uses' => 'KonsumsiObatController@ubahKeteranganObat'
     ]);

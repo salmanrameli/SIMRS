@@ -70,7 +70,7 @@
                 </tr>
                 @foreach($hari->konsumsi_obat as $obat)
                     <tr>
-                        <td colspan="4" class="text-center" style="border-top: solid 2px black"><b>{{ ucfirst($obat->obat->nama) }}</b></td>
+                        <td colspan="4" class="text-center" style="border-top: solid 2px black"><b>{{ ucfirst($obat->nama_obat) }}</b></td>
                         <td rowspan="5" class="text-center" style="border-top: solid 2px black">
                             @if($obat->keterangan)
                                 {{ ucfirst($obat->keterangan) }}
@@ -144,15 +144,91 @@
                             @endif
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
                 @if(Auth::user()->jabatan_id == 3)
                     <tr style="border-top: solid 2px black">
                         <td colspan="5"><button type="button" class="btn btn-default" style="width: 100%;" data-toggle="modal" data-id-hari-perawatan="{{ $hari->id }}" data-target="#modalTambahKonsumsiObat"><i class="fa fa-plus"></i> Tambah Obat</button></td>
                     </tr>
                 @endif
-                <tr style="border-left-style: hidden; border-right-style: hidden">
-                    <td colspan="5"><br></td>
+                <tr>
+                    <th class="text-center" colspan="4">Konsumsi Obat Luar</th>
+                    <td></td>
                 </tr>
+                @foreach($hari->konsumsi_obat_luar as $obat_luar)
+                    <tr>
+                        <td colspan="4" class="text-center" style="border-top: solid 2px black"><b>{{ ucfirst($obat_luar->nama_obat) }}</b></td>
+                        <td rowspan="3" class="text-center" style="border-top: solid 2px black">
+                            @if($obat_luar->keterangan)
+                                {{ ucfirst($obat_luar->keterangan) }}
+                                <br>
+                                <div class="btn-group float-right">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle dropdown-toggle-split small" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropright</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="nav-link" data-toggle="modal" data-id-keterangan="{{ $obat_luar->id }}" data-keterangan="{{ $obat_luar->keterangan }}" data-target="#modalUbahKeteranganObat">Ubah</a>
+                                    </div>
+                                </div>
+                            @else
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-id-keterangan="{{ $obat_luar->id }}" data-target="#modalTambahKeteranganObat" style="width: 100%"><i class="fa fa-plus"></i></button>
+                                @else
+                                    -
+                                @endif
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Pa</td>
+                        <td class="text-center">Si</td>
+                        <td class="text-center">So</td>
+                        <td class="text-center">Ma</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            @if(empty($obat_luar->konsumsi_obat_pagi->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-id-obat="{{ $obat_luar->id }}" data-target="#modalKonsumsiPagi" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat_luar->konsumsi_obat_siang->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-id-obat="{{ $obat_luar->id }}" data-target="#modalKonsumsiSiang" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat_luar->konsumsi_obat_sore->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-id-obat="{{ $obat_luar->id }}" data-target="#modalKonsumsiSore" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                        <td class="text-center">
+                            @if(empty($obat_luar->konsumsi_obat_malam->sudah))
+                                @if(Auth::user()->jabatan_id == 3)
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-id-obat="{{ $obat_luar->id }}" data-target="#modalKonsumsiMalam" style="width: 100%"><i class="fa fa-plus-circle"></i></button>
+                                @endif
+                            @else
+                                <i class="fa fa-check"></i>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                {{--<tr>--}}
+                    {{--<td colspan="8" style="border-left-style: hidden; border-right-style: hidden"><br></td>--}}
+                {{--</tr>--}}
+                {{--<tr style="border-left-style: hidden; border-right-style: hidden">--}}
+                    {{--<td colspan="5"><br></td>--}}
+                {{--</tr>--}}
             @endforeach
             </tbody>
         </table>

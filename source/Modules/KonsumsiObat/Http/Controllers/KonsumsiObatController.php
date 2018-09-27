@@ -28,7 +28,7 @@ class KonsumsiObatController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('checkRole:3')->except(['showAllKonsumsiObat']);
+        $this->middleware('checkRole:3')->except(['showAllKonsumsiObat', 'ubahKeteranganObat']);
 
         $this->agent = new Agent();
     }
@@ -41,7 +41,7 @@ class KonsumsiObatController extends Controller
     {
         $ranap = RawatInap::where('id', '=', $id_ranap)->first();
 
-        $hari_perawatan = HariPerawatan::with('konsumsi_obat')->where('id_ranap', '=', $id_ranap)->orderBy('tanggal', 'desc')->get();
+        $hari_perawatan = HariPerawatan::with('konsumsi_obat')->with('konsumsi_obat_luar')->where('id_ranap', '=', $id_ranap)->orderBy('tanggal', 'desc')->get();
 
         $daftar_obat = Obat::all();
 
@@ -52,6 +52,7 @@ class KonsumsiObatController extends Controller
         else
         {
             $hari_perawatan_terakhir = HariPerawatan::where('id_ranap', '=', $id_ranap)->select('hari_perawatan')->orderBy('created_at', 'desc')->first()->toArray();
+
             foreach ($hari_perawatan_terakhir as $hari)
                 $hari_perawatan_terakhir = $hari;
 
@@ -141,14 +142,14 @@ class KonsumsiObatController extends Controller
         $this->validate($request, [
             'id_ranap' => 'required',
             'id_hari_perawatan' => 'required',
-            'id_obat' => 'required',
+            'nama_obat' => 'required',
             'dosis' => 'required',
         ]);
 
         $konsumsi_obat = new KonsumsiObat();
         $konsumsi_obat->id_ranap = $request->get('id_ranap');
         $konsumsi_obat->id_hari_perawatan = $request->get('id_hari_perawatan');
-        $konsumsi_obat->id_obat = $request->get('id_obat');
+        $konsumsi_obat->nama_obat = $request->get('nama_obat');
         $konsumsi_obat->dosis = $request->get('dosis');
         $konsumsi_obat->keterangan = $request->get('keterangan');
         $konsumsi_obat->id_petugas = Auth::id();
@@ -174,6 +175,8 @@ class KonsumsiObatController extends Controller
         $konsumsi_obat = KonsumsiObat::findorFail($request->get('id_konsumsi_obat'));
         $konsumsi_obat->keterangan = $request->get('keterangan');
         $konsumsi_obat->save();
+
+        $keterangan_obat_dikonsumsi = KonsumsiObat::where('id_ranap', '=', $request->get('id_ranap'))->where('nama_obat', '=', $request->get('nama_obat'))->get();
 
         Session::flash('message', 'Keterangan berhasil disimpan.');
 

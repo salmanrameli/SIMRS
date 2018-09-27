@@ -27,8 +27,13 @@
             </div>
 
             <div class="form-group">
-                {{ Form::label('alergi_obat', 'Alergi Obat', ['class' => 'control-label']) }}
+                {{ Form::label('alergi_obat', 'Alergi Obat (pisahkan alergi obat dengan koma)', ['class' => 'control-label']) }}
                 {{ Form::textarea('alergi_obat', null, ['class' => 'form-control']) }}
+            </div>
+
+            <div class="form-group">
+                {{ Form::label('obat_luar', 'Obat-obatan yang dibawa dari luar (pisahkan nama obat dengan koma)', ['class' => 'control-label']) }}
+                {{ Form::textarea('obat_luar', null, ['class' => 'form-control']) }}
             </div>
         </div>
     </div>
