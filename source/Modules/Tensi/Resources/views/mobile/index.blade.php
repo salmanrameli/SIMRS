@@ -236,4 +236,5 @@
             });
         });
     </script>
+    @include('tensi::attribute.nav')
 @endsection

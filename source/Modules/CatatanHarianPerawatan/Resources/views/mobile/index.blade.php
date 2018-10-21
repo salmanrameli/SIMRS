@@ -181,5 +181,5 @@
             showMeridian: false
         });
     </script>
-    @include('layouttemplate::attributes.catatan_harian')
+    @include('cattanharianperawatan::attribute.nav')
 @endsection

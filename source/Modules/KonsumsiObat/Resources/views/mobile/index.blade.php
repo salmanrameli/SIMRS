@@ -549,4 +549,5 @@
             });
         });
     </script>
+    @include('konsumsiobat::attribute.nav')
 @endsection

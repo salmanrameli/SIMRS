@@ -64,5 +64,5 @@
             $("textarea").htmlarea();
         });
     </script>
-    @include('cattanharianperawatn::attribute.nav')
+    @include('cattanharianperawatan::attribute.nav')
 @endsection
